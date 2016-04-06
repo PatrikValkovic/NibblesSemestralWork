@@ -7,6 +7,12 @@ void ViewModel::NCursesViewModel::ShowSplashScreen()
     refresh();
     getch();
     endwin();
-
 }
+
+const char* ViewModel::NCursesViewModel::GetNameofViewModel()
+{
+    return "NCurse";
+}
+
+
 

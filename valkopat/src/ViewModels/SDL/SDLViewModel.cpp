@@ -18,6 +18,13 @@ void ViewModel::SDLViewModel::ShowSplashScreen()
     SDL_Quit();
 }
 
+const char* ViewModel::SDLViewModel::GetNameofViewModel()
+{
+    return "SDL";
+}
+
+
+
 
 
 

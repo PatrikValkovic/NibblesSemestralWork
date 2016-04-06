@@ -6,7 +6,11 @@ namespace ViewModel
     class BaseViewModel
     {
     public:
+        virtual ~BaseViewModel()
+        { }
+
         virtual void ShowSplashScreen() = 0;
+        virtual const char* GetNameofViewModel() = 0;
     };
 }
 

@@ -9,6 +9,7 @@ namespace ViewModel
     {
     public:
         virtual void ShowSplashScreen();
+        virtual const char* GetNameofViewModel();
     };
 }
 

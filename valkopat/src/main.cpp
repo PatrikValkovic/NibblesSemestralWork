@@ -1,8 +1,13 @@
 #include <iostream>
-using namespace std;
+#include "ViewModels/ViewModelChooser.h"
+
+
 
 int main()
 {
-    cout << "Hello, World!" << endl;
+    using namespace ViewModel;
+    ViewModelChooser Chooser;
+    BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
+    RenderEngine->ShowSplashScreen();
     return 0;
 }
