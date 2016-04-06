@@ -1,3 +1,4 @@
+#ifdef USE_NCURSES
 #ifndef CERVISEMESTRALKA_NCURSESVIEWMODEL_H
 #define CERVISEMESTRALKA_NCURSESVIEWMODEL_H
 #include <ncurses.h>
@@ -14,3 +15,4 @@ namespace ViewModel
 }
 
 #endif //CERVISEMESTRALKA_NCURSESVIEWMODEL_H
+#endif

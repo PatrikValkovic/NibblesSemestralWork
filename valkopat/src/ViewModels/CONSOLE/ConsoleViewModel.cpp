@@ -1,3 +1,4 @@
+#ifdef USE_CONSOLE
 #include "ConsoleViewModel.h"
 
 void ViewModel::ConsoleViewModel::ShowSplashScreen()
@@ -11,6 +12,10 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
 {
     return "Console";
 }
+
+
+
+#endif
 
 
 

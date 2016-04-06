@@ -1,7 +1,4 @@
-//
-// Created by kowalsky on 6.4.16.
-//
-
+#ifdef USE_SDL
 #include "SDLViewModel.h"
 
 void ViewModel::SDLViewModel::ShowSplashScreen()
@@ -22,6 +19,9 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
 {
     return "SDL";
 }
+
+
+#endif
 
 
 

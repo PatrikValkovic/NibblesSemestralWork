@@ -1,3 +1,4 @@
+#ifdef USE_NCURSES
 #include "NCursesViewModel.h"
 
 void ViewModel::NCursesViewModel::ShowSplashScreen()
@@ -13,6 +14,9 @@ const char* ViewModel::NCursesViewModel::GetNameofViewModel()
 {
     return "NCurse";
 }
+
+
+#endif
 
 
 

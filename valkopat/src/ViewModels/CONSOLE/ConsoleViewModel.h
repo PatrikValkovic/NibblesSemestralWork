@@ -1,3 +1,4 @@
+#ifdef USE_CONSOLE
 #ifndef CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #include <iostream>
@@ -15,3 +16,4 @@ namespace ViewModel
 
 
 #endif //CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
+#endif
