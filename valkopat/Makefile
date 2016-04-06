@@ -15,14 +15,11 @@ COMPILER = g++
 .PHONY: doc			#not implemented
 
 #Custom
-.PHONY: debug		#implemented
+.PHONY: debug		#not implemented
 .PHONY: tests		#implemented
 
-compile: Configure
+compile: Configure SDLViewModel.o ConsoleViewModel.o NCursesViewModel.o
 	COMPILE_FLAGS += -O2
-
-debug: Configure
-	COMPILE_FLAGS += -g
 
 clean:
 	rm -rf $(TARGET_DIR)
@@ -42,3 +39,13 @@ Configure: TargetDir
 
 TargetDir:
 	mkdir $(TARGET_DIR)
+
+
+NCursesViewModel.o: src/ViewModels/NCURSES/NCursesViewModel.h src/ViewModels/NCURSES/NCursesViewModel.cpp src/ViewModels/BaseViewModel.h
+	$(COMPILER) -c src/ViewModels/CONSOLE/ConsoleViewModel.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/ConsoleViewModel.o
+
+ConsoleViewModel.o: src/ViewModels/CONSOLE/ConsoleViewModel.h src/ViewModels/CONSOLE/ConsoleViewModel.cpp src/ViewModels/BaseViewModel.h
+	g++ -c src/ViewModels/CONSOLE/ConsoleViewModel.cpp -o $(TARGET_DIR)/ConsoleViewModel.o
+
+SDLViewModel.o: src/ViewModels/SDL/SDLViewModel.h src/ViewModels/SDL/SDLViewModel.cpp src/ViewModels/BaseViewModel.h
+	$(COMPILER) -c src/ViewModels/SDL/ConsoleViewModel.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/SDLViewModel.o
