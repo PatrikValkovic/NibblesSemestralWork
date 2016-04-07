@@ -4,6 +4,11 @@ ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel()
 {
     using namespace std;
     vector<BaseViewModel*> ViewModels = PrepareViewModels();
+
+    if(ViewModels.size()==1)
+	return ViewModels[0];
+
+
     int Choosed = -1;
     do
     {

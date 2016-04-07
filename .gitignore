@@ -29,3 +29,6 @@
 
 .idea
 CMakeLists.txt
+
+valkopat/build
+valkopat/nibbles.exe

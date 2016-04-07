@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_VIEWMODELCHOOSER_H
 #define CERVISEMESTRALKA_VIEWMODELCHOOSER_H
+#include <iostream>
 #include <vector>
 #include "BaseViewModel.h"
 #ifdef USE_CONSOLE
