@@ -4,7 +4,7 @@ USE_NCURSES = 1
 USE_CONSOLE = 1
 TARGET_DIR = build
 
-COMPILE_FLAGS = -Wall -pedantic -std=c++11
+COMPILE_FLAGS = -std=c++11
 COMPILER = g++
 LINKER = ld
 
@@ -20,13 +20,13 @@ LINKER = ld
 #Custom
 .PHONY: debug		#not implemented
 .PHONY: tests		#not implemented
-
+.PHONY: release		#implemented
 
 
 #Base actions
 all: compile doc
 
-compile: | Release Configure nibbles.exe
+compile: | Configure nibbles.exe
 	chmod +x nibbles.exe
 
 run: compile
@@ -42,6 +42,7 @@ doc:
 
 debug: | Debug compile
 
+release: | Release compile
 
 Configure: TargetDir
 ifeq ($(USE_SDL),1)
@@ -63,7 +64,7 @@ Release:
 	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -O2)
 
 Debug:
-	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -g)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -g -Wall -pedantic)
 
 
 
