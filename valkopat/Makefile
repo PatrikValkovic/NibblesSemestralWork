@@ -44,17 +44,17 @@ debug: | Debug compile
 
 
 Configure: TargetDir
-	$(ifeq($(USE_SDL),1))
-		$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -lSDL2 -lSDL2_ttf -lSDL2_image -D USE_SDL)
-		$(eval LINKER_FLAGS = $(LINKER_FLAGS) -lSDL2 -lSDL2_ttf -lSDL2_image)
-	$(endif)
-	$(ifeq($(USE_NCURSES),1)
-		$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -lncurses -D USE_NCURSES)
-		$(eval LINKER_FLAGS = $(LINKER_FLAGS) -lncurses)
-	$(endif)
-	$(ifeq($(USE_CONSOLE),1))
-		$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -D USE_CONSOLE)
-	$(endif)
+ifeq ($(USE_SDL),1)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -lSDL2 -lSDL2_ttf -lSDL2_image -D USE_SDL)
+	$(eval LINKER_FLAGS = $(LINKER_FLAGS) -lSDL2 -lSDL2_ttf -lSDL2_image)
+endif
+ifeq ($(USE_NCURSES),1)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -lncurses -D USE_NCURSES)
+	$(eval LINKER_FLAGS = $(LINKER_FLAGS) -lncurses)
+endif
+ifeq ($(USE_CONSOLE),1)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -D USE_CONSOLE)
+endif
 
 TargetDir:
 	[ -d $(TARGET_DIR) ] || mkdir $(TARGET_DIR)
