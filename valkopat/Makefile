@@ -68,18 +68,39 @@ Debug:
 
 
 
-
-#callbacks
+########################
+##  FINAL COMPILATION ##
+########################
 
 nibbles.exe: $(TARGET_DIR)/nibbles.exe
 	cp $(TARGET_DIR)/nibbles.exe ./nibbles.exe
 
-$(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o
-	$(COMPILER) -o $(TARGET_DIR)/nibbles.exe $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o $(COMPILE_FLAGS)
+$(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o
+	$(COMPILER) -o $(TARGET_DIR)/nibbles.exe $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/main.o: src/main.cpp src/ViewModels/ViewModelChooser.h
+$(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o
+	$(LINKER) -r -o $(TARGET_DIR)/all.o $(TARGET_DIR)/main.o
+
+############
+##	GAME  ##
+############
+
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o
+	$(LINKER) -r -o $(TARGET_DIR)/game.o $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o
+
+
+$(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 	$(COMPILER) -c src/main.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/main.o
 
+$(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h src/Game/NibbleGame.cpp
+	$(COMPILER) -c src/Game/NibbleGame.cpp -o $(TARGET_DIR)/NibbleGame.o
+
+
+
+
+##################
+##	VIEW MODELS ##
+##################
 $(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/SDLViewModel.o
 	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/SDLViewModel.o
 
