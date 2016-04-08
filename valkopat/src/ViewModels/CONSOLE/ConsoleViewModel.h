@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifdef USE_SDL
 #include <iostream>
 
 #include "../Abstract/BaseViewModel.h"
@@ -15,7 +15,7 @@
 
 namespace ViewModel
 {
-    class ConsoleViewModel : public BaseViewModel
+    class SDLViewModel : public BaseViewModel
     {
     public:
         virtual const char* GetNameofViewModel();

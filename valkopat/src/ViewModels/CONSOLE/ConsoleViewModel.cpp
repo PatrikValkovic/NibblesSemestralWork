@@ -1,59 +1,59 @@
 #ifdef USE_CONSOLE
 #include "ConsoleViewModel.h"
 
-const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
+const char* ViewModel::SDLViewModel::GetNameofViewModel()
 {
     return "Console";
 }
 
-void ViewModel::ConsoleViewModel::init()
+void ViewModel::SDLViewModel::init()
 {
     //TODO
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
-{
-    //TODO
-    return nullptr;
-}
-
-ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
+ViewModel::SplashScreenAbstractViewModel* ViewModel::SDLViewModel::SplashScreenModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+ViewModel::MenuAbstractViewModel* ViewModel::SDLViewModel::MenuModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
+ViewModel::LanguageAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
+ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::SDLViewModel::MultiplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
+ViewModel::NetMenuAbstractViewModel* ViewModel::SDLViewModel::NetModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
+ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::SDLViewModel::SingleplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
+ViewModel::GameAbstractViewModel* ViewModel::SDLViewModel::GameModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::ScoreAbstractViewModel* ViewModel::SDLViewModel::ScoreModel()
 {
     //TODO
     return nullptr;

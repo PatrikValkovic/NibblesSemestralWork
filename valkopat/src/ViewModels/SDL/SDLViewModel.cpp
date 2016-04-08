@@ -1,19 +1,5 @@
 #ifdef USE_SDL
-#include "SDLViewModel.h"
-
-void ViewModel::SDLViewModel::ShowSplashScreen()
-{
-    SDL_Window* win;
-    SDL_Renderer* Renderer;
-    SDL_SetMainReady();
-    SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(800,600,0,&win,&Renderer);
-    SDL_RenderPresent(Renderer);
-    SDL_Delay(2500);
-    SDL_DestroyRenderer(Renderer);
-    SDL_DestroyWindow(win);
-    SDL_Quit();
-}
+#include "ConsoleViewModel.h"
 
 const char* ViewModel::SDLViewModel::GetNameofViewModel()
 {
@@ -22,14 +8,59 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
 
 void ViewModel::SDLViewModel::init()
 {
+    //TODO
+}
 
+ViewModel::SplashScreenAbstractViewModel* ViewModel::SDLViewModel::SplashScreenModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::MenuAbstractViewModel* ViewModel::SDLViewModel::MenuModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::LanguageAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::SDLViewModel::MultiplayerModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::NetMenuAbstractViewModel* ViewModel::SDLViewModel::NetModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::SDLViewModel::SingleplayerModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::GameAbstractViewModel* ViewModel::SDLViewModel::GameModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::ScoreAbstractViewModel* ViewModel::SDLViewModel::ScoreModel()
+{
+    //TODO
+    return nullptr;
 }
 
 
 #endif
-
-
-
 
 
 
