@@ -6,7 +6,7 @@ namespace ViewModel
     class SplashScreenAbstractViewModel
     {
     public:
-        virtual ~SplashScreenViewModel()
+        virtual ~SplashScreenAbstractViewModel()
         { }
 
         virtual void ShowSplashScreen() = 0;
