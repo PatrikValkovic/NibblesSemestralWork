@@ -13,6 +13,10 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
     return "Console";
 }
 
+void ViewModel::ConsoleViewModel::init()
+{
+
+}
 
 
 #endif

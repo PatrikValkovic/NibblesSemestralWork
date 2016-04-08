@@ -20,6 +20,11 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
     return "SDL";
 }
 
+void ViewModel::SDLViewModel::init()
+{
+
+}
+
 
 #endif
 

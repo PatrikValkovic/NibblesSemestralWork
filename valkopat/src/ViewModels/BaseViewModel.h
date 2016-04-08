@@ -11,6 +11,7 @@ namespace ViewModel
 
         virtual void ShowSplashScreen() = 0;
         virtual const char* GetNameofViewModel() = 0;
+        virtual void init() = 0;
     };
 }
 

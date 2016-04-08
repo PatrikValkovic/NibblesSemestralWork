@@ -15,6 +15,11 @@ const char* ViewModel::NCursesViewModel::GetNameofViewModel()
     return "NCurse";
 }
 
+void ViewModel::NCursesViewModel::init()
+{
+
+}
+
 
 #endif
 
