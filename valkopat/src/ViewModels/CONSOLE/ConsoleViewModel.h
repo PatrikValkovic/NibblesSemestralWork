@@ -2,7 +2,7 @@
 #ifndef CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #include <iostream>
-#include "../BaseViewModel.h"
+#include "../Abstract/BaseViewModel.h"
 
 namespace ViewModel
 {

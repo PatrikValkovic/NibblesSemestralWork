@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_NIBBLESGAME_H
 #define CERVISEMESTRALKA_NIBBLESGAME_H
-#include "../ViewModels/BaseViewModel.h"
+#include "../ViewModels/Abstract/BaseViewModel.h"
 
 namespace Game
 {

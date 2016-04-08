@@ -2,7 +2,7 @@
 #ifndef CERVISEMESTRALKA_NCURSESVIEWMODEL_H
 #define CERVISEMESTRALKA_NCURSESVIEWMODEL_H
 #include <ncurses.h>
-#include "../BaseViewModel.h"
+#include "../Abstract/BaseViewModel.h"
 
 namespace ViewModel
 {

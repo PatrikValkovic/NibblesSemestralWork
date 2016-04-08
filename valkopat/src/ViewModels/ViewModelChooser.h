@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_VIEWMODELCHOOSER_H
 #include <iostream>
 #include <vector>
-#include "BaseViewModel.h"
+#include "Abstract/BaseViewModel.h"
 #ifdef USE_CONSOLE
 #include "CONSOLE/ConsoleViewModel.h"
 #endif

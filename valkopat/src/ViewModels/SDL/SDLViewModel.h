@@ -2,7 +2,7 @@
 #ifndef CERVISEMESTRALKA_SDLVIEWMODEL_H
 #define CERVISEMESTRALKA_SDLVIEWMODEL_H
 #include <SDL2/SDL.h>
-#include "../BaseViewModel.h"
+#include "../Abstract/BaseViewModel.h"
 
 namespace ViewModel
 {
