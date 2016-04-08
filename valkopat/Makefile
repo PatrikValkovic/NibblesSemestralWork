@@ -71,8 +71,11 @@ Debug:
 
 #callbacks
 
-nibbles.exe: $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o
-	$(COMPILER) -o nibbles.exe $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o $(COMPILE_FLAGS)
+nibbles.exe: $(TARGET_DIR)/nibbles.exe
+	cp $(TARGET_DIR)/nibbles.exe ./nibbles.exe
+
+$(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o
+	$(COMPILER) -o $(TARGET_DIR)/nibbles.exe $(TARGET_DIR)/main.o $(TARGET_DIR)/ViewModels.o $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/main.o: src/main.cpp src/ViewModels/ViewModelChooser.h
 	$(COMPILER) -c src/main.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/main.o
