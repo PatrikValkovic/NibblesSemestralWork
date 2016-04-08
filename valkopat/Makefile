@@ -1,6 +1,6 @@
 #Variable definitions
-USE_SDL = 1
-USE_NCURSES = 1
+USE_SDL = 0
+USE_NCURSES = 0
 USE_CONSOLE = 1
 TARGET_DIR = build
 
@@ -103,8 +103,8 @@ $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGam
 ##################
 __ABSTRACTION_FILES = src/ViewModels/Abstract/SplashScreenAbstractViewModel.h src/ViewModels/Abstract/MenuAbstractViewModel.h src/ViewModels/Abstract/LanguageAbstractViewModel.h src/ViewModels/Abstract/MultiplayerAbstractViewModel.h src/ViewModels/Abstract/NetMenuAbstractViewModel.h src/ViewModels/Abstract/SingpleplayerAbstractViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h src/ViewModels/Abstract/ScoreAbstractViewModel.h
 
-$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/SDLViewModel.o
-	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/SDLViewModel.o
+$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLViewModel.o
+	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLViewModel.o
 
 $(TARGET_DIR)/ViewModelChooser.o: src/ViewModels/ViewModelChooser.h src/ViewModels/ViewModelChooser.cpp
 	$(COMPILER) -o $(TARGET_DIR)/ViewModelChooser.o -c src/ViewModels/ViewModelChooser.cpp $(COMPILE_FLAGS)
@@ -117,3 +117,34 @@ $(TARGET_DIR)/ConsoleViewModel.o: src/ViewModels/CONSOLE/ConsoleViewModel.h src/
 
 $(TARGET_DIR)/SDLViewModel.o: src/ViewModels/SDL/SDLViewModel.h src/ViewModels/SDL/SDLViewModel.cpp $(__ABSTRACTION_FILES)
 	$(COMPILER) -o $(TARGET_DIR)/SDLViewModel.o -c src/ViewModels/SDL/SDLViewModel.cpp $(COMPILE_FLAGS)
+
+## CONSOLE
+$(TARGET_DIR)/ConsoleModel.o: $(TARGET_DIR)/SplashScreenConsoleViewModel.o $(TARGET_DIR)/SingpleplayerMenuConsoleViewModel.o $(TARGET_DIR)/ScoreConsoleViewModel.o: $(TARGET_DIR)/NetMenuConsoleViewModel.o $(TARGET_DIR)/MultiplayerConsoleViewModel.o: $(TARGET_DIR)/MenuConsoleViewModel.o: $(TARGET_DIR)/LanguageConsoleViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/GameConsoleViewModel.o
+	$(LINKER) -r -o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SplashScreenConsoleViewModel.o $(TARGET_DIR)/SingpleplayerMenuConsoleViewModel.o $(TARGET_DIR)/ScoreConsoleViewModel.o: $(TARGET_DIR)/NetMenuConsoleViewModel.o $(TARGET_DIR)/MultiplayerConsoleViewModel.o: $(TARGET_DIR)/MenuConsoleViewModel.o: $(TARGET_DIR)/LanguageConsoleViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/GameConsoleViewModel.o
+
+$(TARGET_DIR)/ConsoleViewModel.o: src/ViewModels/CONSOLE/ConsoleViewModel.cpp  ConsoleViewModel.h GameConsoleViewModel.h LanguageConsoleViewModel.h MenuConsoleViewModel.h MultiplayerConsoleViewModel.h netMenuConsoleViewModel.h ScoreConsoleViewModel.h SingleplayerMenuConsoleViewModel.h SplashScreenConsoleViewModel.h $(__ABSTRACTION_FILES)
+	g++ -c -o $(TARGET_DIR)/ConsoleViewModel.o src/ViewModels/CONSOLE/ConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/GameConsoleViewModel.o: src/ViewModels/CONSOLE/GameConsoleViewModel.cpp src/ViewModels/CONSOLE/GameConsoleViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/GameConsoleViewModel.o src/ViewModels/CONSOLE/GameConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/LanguageConsoleViewModel.o: src/ViewModels/CONSOLE/LanguageConsoleViewModel.cpp src/ViewModels/CONSOLE/LanguageConsoleViewModel.h src/ViewModels/Abstract/languageAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/LanguageConsoleViewModel.o src/ViewModels/CONSOLE/LanguageConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/MenuConsoleViewModel.o: src/ViewModels/CONSOLE/MenuConsoleViewModel.cpp src/ViewModels/CONSOLE/MenuConsoleViewModel.h src/ViewModels/Abstract/MenuAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/MenuConsoleViewModel.o src/ViewModels/CONSOLE/MenuConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/MultiplayerConsoleViewModel.o: src/ViewModels/CONSOLE/MultiplayerConsoleViewModel.cpp src/ViewModels/CONSOLE/MultiplayerConsoleViewModel.h src/ViewModels/Abstract/MultiplayerAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/MultiplayerConsoleViewModel.o src/ViewModels/CONSOLE/MultiplayerConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/NetMenuConsoleViewModel.o: src/ViewModels/CONSOLE/NetMenuConsoleViewModel.cpp src/ViewModels/CONSOLE/NetMenuConsoleViewModel.h src/ViewModels/Abstract/netMenuAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/NetMenuConsoleViewModel.o src/ViewModels/CONSOLE/NetMenuConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/ScoreConsoleViewModel.o: src/ViewModels/CONSOLE/ScoreConsoleViewModel.cpp src/ViewModels/CONSOLE/ScoreConsoleViewModel.h src/ViewModels/Abstract/ScoreAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/ScoreConsoleViewModel.o src/ViewModels/CONSOLE/ScoreConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/SingpleplayerMenuConsoleViewModel.o: src/ViewModels/CONSOLE/SingpleplayerMenuConsoleViewModel.cpp src/ViewModels/CONSOLE/SingpleplayerMenuConsoleViewModel.h src/ViewModels/Abstract/SingpleplayerAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/SingpleplayerMenuConsoleViewModel.o src/ViewModels/CONSOLE/SingpleplayerMenuConsoleViewModel.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/SplashScreenConsoleViewModel.o: src/ViewModels/CONSOLE/SplashScreenConsoleViewModel.cpp src/ViewModels/CONSOLE/SplashScreenConsoleViewModel.h src/ViewModels/Abstract/SplashScreenAbstractViewModel.h
+	g++ -c -o $(TARGET_DIR)/SplashScreenConsoleViewModel.o src/ViewModels/CONSOLE/SplashScreenConsoleViewModel.cpp $(COMPILE_FLAGS)

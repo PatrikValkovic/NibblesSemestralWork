@@ -8,7 +8,7 @@
 #include "LanguageConsoleViewModel.h"
 #include "MultiplayerConsoleViewModel.h"
 #include "NetMenuConsoleViewModel.h"
-#include "SingpleplayermenuConsoleViewModel.h"
+#include "SingpleplayerMenuConsoleViewModel.h"
 #include "GameConsoleViewModel.h"
 #include "ScoreConsoleViewModel.h"
 
