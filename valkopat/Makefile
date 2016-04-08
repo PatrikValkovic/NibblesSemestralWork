@@ -61,10 +61,10 @@ TargetDir:
 	[ -d $(TARGET_DIR) ] || mkdir $(TARGET_DIR)
 
 Release:
-	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -O2)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -O2 -D RELEASE)
 
 Debug:
-	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -g -Wall -pedantic)
+	$(eval COMPILE_FLAGS = $(COMPILE_FLAGS) -g -Wall -pedantic -D DEBUG)
 
 
 
