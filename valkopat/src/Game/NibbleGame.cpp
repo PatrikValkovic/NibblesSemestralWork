@@ -1,6 +1,20 @@
 #include "NibbleGame.h"
 
-NibbleGame::NibbleGame(ViewModel::BaseViewModel* RenderingEngine)
+Game::NibbleGame::NibbleGame(ViewModel::BaseViewModel* RenderingEngine)
         : RenderEngine(RenderingEngine)
 { }
+
+void Game::NibbleGame::run()
+{
+
+}
+
+void Game::NibbleGame::init()
+{
+
+}
+
+
+
+
 

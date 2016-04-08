@@ -10,6 +10,13 @@ int main()
     ViewModelChooser Chooser;
     BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
     RenderEngine->init();
-    RenderEngine->ShowSplashScreen();
+
+    Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);
+    game->init();
+    game->run();
+    
+    delete game;
+    delete RenderEngine;
+
     return 0;
 }

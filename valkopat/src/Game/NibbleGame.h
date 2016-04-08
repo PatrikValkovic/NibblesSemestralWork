@@ -2,14 +2,19 @@
 #define CERVISEMESTRALKA_NIBBLESGAME_H
 #include "../ViewModels/BaseViewModel.h"
 
-class NibbleGame
+namespace Game
 {
-public:
-    NibbleGame(ViewModel::BaseViewModel* RenderingEngine);
+    class NibbleGame
+    {
+    public:
+        NibbleGame(ViewModel::BaseViewModel* RenderingEngine);
+        void run();
+        void init();
 
-private:
-    ViewModel::BaseViewModel* RenderEngine;
-};
+    private:
+        ViewModel::BaseViewModel* RenderEngine;
+    };
+}
 
 
 #endif //CERVISEMESTRALKA_NIBBLESGAME_H
