@@ -14,7 +14,7 @@ int main()
     Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);
     game->init();
     game->run();
-    
+
     delete game;
     delete RenderEngine;
 

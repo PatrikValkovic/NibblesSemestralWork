@@ -79,7 +79,7 @@ $(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o
 	$(COMPILER) -o $(TARGET_DIR)/nibbles.exe $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o
-	$(LINKER) -r -o $(TARGET_DIR)/all.o $(TARGET_DIR)/main.o
+	$(LINKER) -r -o $(TARGET_DIR)/all.o $(TARGET_DIR)/game.o
 
 ############
 ##	GAME  ##
@@ -90,10 +90,10 @@ $(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o
 
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
-	$(COMPILER) -c src/main.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/main.o
+	$(COMPILER) -o $(TARGET_DIR)/main.o -c src/main.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h src/Game/NibbleGame.cpp
-	$(COMPILER) -c src/Game/NibbleGame.cpp -o $(TARGET_DIR)/NibbleGame.o
+	$(COMPILER) -o $(TARGET_DIR)/NibbleGame.o -c src/Game/NibbleGame.cpp
 
 
 
@@ -105,13 +105,13 @@ $(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCurs
 	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/NCursesViewModel.o $(TARGET_DIR)/ConsoleViewModel.o $(TARGET_DIR)/SDLViewModel.o
 
 $(TARGET_DIR)/ViewModelChooser.o: src/ViewModels/ViewModelChooser.h src/ViewModels/ViewModelChooser.cpp src/ViewModels/ViewModelChooser.h
-	$(COMPILER) -c src/ViewModels/ViewModelChooser.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/ViewModelChooser.o
+	$(COMPILER) -o $(TARGET_DIR)/ViewModelChooser.o -c src/ViewModels/ViewModelChooser.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/NCursesViewModel.o: src/ViewModels/NCURSES/NCursesViewModel.h src/ViewModels/NCURSES/NCursesViewModel.cpp src/ViewModels/BaseViewModel.h
-	$(COMPILER) -c src/ViewModels/NCURSES/NCursesViewModel.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/NCursesViewModel.o
+	$(COMPILER) -o $(TARGET_DIR)/NCursesViewModel.o -c src/ViewModels/NCURSES/NCursesViewModel.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/ConsoleViewModel.o: src/ViewModels/CONSOLE/ConsoleViewModel.h src/ViewModels/CONSOLE/ConsoleViewModel.cpp src/ViewModels/BaseViewModel.h
-	$(COMPILER) -c src/ViewModels/CONSOLE/ConsoleViewModel.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/ConsoleViewModel.o
+	$(COMPILER) -o $(TARGET_DIR)/ConsoleViewModel.o -c src/ViewModels/CONSOLE/ConsoleViewModel.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/SDLViewModel.o: src/ViewModels/SDL/SDLViewModel.h src/ViewModels/SDL/SDLViewModel.cpp src/ViewModels/BaseViewModel.h
-	$(COMPILER) -c src/ViewModels/SDL/SDLViewModel.cpp $(COMPILE_FLAGS) -o $(TARGET_DIR)/SDLViewModel.o
+	$(COMPILER) -o $(TARGET_DIR)/SDLViewModel.o -c src/ViewModels/SDL/SDLViewModel.cpp $(COMPILE_FLAGS)
