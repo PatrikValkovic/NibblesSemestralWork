@@ -5,7 +5,7 @@
 
 namespace ViewModel
 {
-    class GameSDLViewModel : public GameAbstractViewModel
+    class GameConsoleViewModel : public GameAbstractViewModel
     {
 
     };

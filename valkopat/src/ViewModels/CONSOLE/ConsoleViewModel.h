@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
-#ifdef USE_SDL
+#ifdef USE_CONSOLE
 #include <iostream>
 
 #include "../Abstract/BaseViewModel.h"
