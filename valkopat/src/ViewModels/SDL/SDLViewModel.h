@@ -9,9 +9,17 @@ namespace ViewModel
     class SDLViewModel : public BaseViewModel
     {
     public:
-        virtual void ShowSplashScreen();
         virtual const char* GetNameofViewModel();
         virtual void init();
+
+        virtual SplashScreenAbstractViewModel* SplashScreenModel();
+        virtual MenuAbstractViewModel* MenuModel();
+        virtual LanguageAbstractViewModel* LanguageModel();
+        virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
+        virtual NetMenuAbstractViewModel* NetModel();
+        virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();
+        virtual GameAbstractViewModel* GameModel();
+        virtual ScoreAbstractViewModel* ScoreModel();
     };
 }
 

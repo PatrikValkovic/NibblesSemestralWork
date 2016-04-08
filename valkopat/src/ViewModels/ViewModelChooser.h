@@ -7,7 +7,7 @@
 #include "CONSOLE/ConsoleViewModel.h"
 #endif
 #ifdef USE_SDL
-#include "SDL/ConsoleViewModel.h"
+#include "SDL/SDLViewModel.h"
 #endif
 #ifdef USE_NCURSES
 #include "NCURSES/NCursesViewModel.h"

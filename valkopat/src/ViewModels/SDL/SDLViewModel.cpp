@@ -1,5 +1,5 @@
 #ifdef USE_SDL
-#include "ConsoleViewModel.h"
+#include "SDLViewModel.h"
 
 const char* ViewModel::SDLViewModel::GetNameofViewModel()
 {

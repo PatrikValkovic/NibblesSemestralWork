@@ -15,7 +15,7 @@
 
 namespace ViewModel
 {
-    class SDLViewModel : public BaseViewModel
+    class ConsoleViewModel : public BaseViewModel
     {
     public:
         virtual const char* GetNameofViewModel();
