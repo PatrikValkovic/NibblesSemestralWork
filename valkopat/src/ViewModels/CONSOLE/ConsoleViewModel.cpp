@@ -11,49 +11,49 @@ void ViewModel::ConsoleViewModel::init()
     //TODO
 }
 
-SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
+ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
 {
     //TODO
     return nullptr;
 }
 
-MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
+ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
 {
     //TODO
     return nullptr;
 }
 
-LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
 {
     //TODO
     return nullptr;
 }
 
-MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
+ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
+ViewModel::NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
 {
     //TODO
     return nullptr;
 }
 
-SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
+ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
+ViewModel::GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
 {
     //TODO
     return nullptr;
 }
 
-ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
+ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
 {
     //TODO
     return nullptr;

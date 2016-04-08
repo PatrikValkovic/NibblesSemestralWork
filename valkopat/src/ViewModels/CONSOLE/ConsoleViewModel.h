@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
 #include <iostream>
+
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenConsoleViewModel.h"
 #include "MenuConsoleViewModel.h"
