@@ -8,6 +8,8 @@ namespace GameState
     public:
         virtual ~AbstractGameState()
         { }
+
+        virtual AbstractGameState* run() = 0;
     };
 }
 #endif //CERVISEMESTRALKA_ABSTRACTGAMESTATE_H
