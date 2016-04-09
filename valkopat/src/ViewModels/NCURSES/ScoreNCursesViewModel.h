@@ -6,7 +6,7 @@
 
 namespace ViewModel
 {
-    class ScoreNCursesViewModel : ScoreAbstractViewModel
+    class ScoreConsoleViewModel : ScoreAbstractViewModel
     {
 
     };

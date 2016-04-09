@@ -7,7 +7,7 @@
 
 namespace ViewModel
 {
-    class LanguageNCursesViewModel : public LanguageAbstractViewModel
+    class LanguageConsoleViewModel : public LanguageAbstractViewModel
     {
     public:
         virtual int ShowMenu(std::vector<LanguageEntry>);

@@ -1,4 +1,4 @@
-#include "MenuConsoleViewModel.h"
+#include "MenuNCursesViewModel.h"
 #ifdef USE_CONSOLE
 int ViewModel::MenuConsoleViewModel::ShowMenu(std::vector<ViewModel::MenuAbstractViewModel::MenuEntry>)
 {

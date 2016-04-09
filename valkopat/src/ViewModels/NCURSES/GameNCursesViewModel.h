@@ -5,7 +5,7 @@
 
 namespace ViewModel
 {
-    class GameNCursesViewModel : public GameAbstractViewModel
+    class GameConsoleViewModel : public GameAbstractViewModel
     {
 
     };

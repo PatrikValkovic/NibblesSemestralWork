@@ -6,7 +6,7 @@
 
 namespace ViewModel
 {
-    class MultiplayerNCursesViewModel : public MultiplayerMenuAbstractViewModel
+    class MultiplayerConsoleViewModel : public MultiplayerMenuAbstractViewModel
     {
     public:
 

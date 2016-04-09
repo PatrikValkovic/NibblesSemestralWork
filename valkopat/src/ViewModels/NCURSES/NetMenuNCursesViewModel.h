@@ -5,7 +5,7 @@
 
 namespace ViewModel
 {
-    class NetMenuNCursesViewModel : public NetMenuAbstractViewModel
+    class NetMenuConsoleViewModel : public NetMenuAbstractViewModel
     {
 
     };

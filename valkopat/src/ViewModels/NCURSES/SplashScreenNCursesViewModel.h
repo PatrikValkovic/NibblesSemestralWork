@@ -5,7 +5,7 @@
 
 namespace ViewModel
 {
-    class SplashScreenNCursesViewModel : public SplashScreenAbstractViewModel
+    class SplashScreenConsoleViewModel : public SplashScreenAbstractViewModel
     {
     public:
         virtual void ShowSplashScreen();

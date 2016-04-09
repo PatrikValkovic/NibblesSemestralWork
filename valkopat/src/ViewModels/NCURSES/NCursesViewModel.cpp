@@ -1,23 +1,62 @@
-#ifdef USE_NCURSES
+#ifdef USE_CONSOLE
 #include "NCursesViewModel.h"
 
-void ViewModel::NCursesViewModel::ShowSplashScreen()
+const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
 {
-    initscr();
-    printw("Splash screen pro libncurses");
-    refresh();
-    getch();
-    endwin();
+    return "Console";
 }
 
-const char* ViewModel::NCursesViewModel::GetNameofViewModel()
+void ViewModel::ConsoleViewModel::init()
 {
-    return "NCurse";
+    //TODO
 }
 
-void ViewModel::NCursesViewModel::init()
+ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
 {
+    //TODO
+    return nullptr;
+}
 
+ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
+{
+    //TODO
+    return nullptr;
 }
 
 

@@ -6,7 +6,7 @@
 
 namespace ViewModel
 {
-    class MenuNCursesViewModel : public MenuAbstractViewModel
+    class MenuConsoleViewModel : public MenuAbstractViewModel
     {
     public:
         virtual int ShowMenu(std::vector<MenuEntry>);

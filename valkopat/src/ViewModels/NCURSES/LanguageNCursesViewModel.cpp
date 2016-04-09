@@ -1,4 +1,4 @@
-#include "LanguageConsoleViewModel.h"
+#include "LanguageNCursesViewModel.h"
 #ifdef USE_CONSOLE
 
 int ViewModel::LanguageConsoleViewModel::ShowMenu(std::vector<ViewModel::LanguageAbstractViewModel::LanguageEntry>)

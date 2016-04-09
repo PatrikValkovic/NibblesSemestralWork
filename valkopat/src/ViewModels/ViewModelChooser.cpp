@@ -30,7 +30,7 @@ std::vector<ViewModel::BaseViewModel*> ViewModel::ViewModelChooser::PrepareViewM
 {
     std::vector<BaseViewModel*> ViewModels;
 #ifdef USE_CONSOLE
-    ViewModels.push_back(new ViewModel::ConsoleViewModel());
+    ViewModels.push_back(new ViewModel::NCursesViewModel());
 #endif
 #ifdef USE_SDL
     ViewModels.push_back(new ViewModel::SDLViewModel());
