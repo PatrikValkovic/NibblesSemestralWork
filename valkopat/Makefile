@@ -1,7 +1,7 @@
 #Variable definitions
 USE_SDL = 0
-USE_NCURSES = 1
-USE_CONSOLE = 0
+USE_NCURSES = 0
+USE_CONSOLE = 1
 TARGET_DIR = build
 
 COMPILE_FLAGS = -std=c++11 -pthread
@@ -93,7 +93,7 @@ $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 	$(COMPILER) -o $(TARGET_DIR)/main.o -c src/main.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h src/Game/NibbleGame.cpp
-	$(COMPILER) -o $(TARGET_DIR)/NibbleGame.o -c src/Game/NibbleGame.cpp
+	$(COMPILER) -o $(TARGET_DIR)/NibbleGame.o -c src/Game/NibbleGame.cpp $(COMPILE_FLAGS)
 
 
 ##############
@@ -101,13 +101,13 @@ $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGam
 ##############
 
 $(TARGET_DIR)/States.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
-	$(LINKER) -t -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
+	$(LINKER) -r -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
 
 $(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h
-	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp
+	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.h src/States/SplashScreenGameState.cpp src/States/AbstractGameState.h
-	$(COMPILER) -c -o $(TARGET_DIR)/SplashScreenGameState.o src/States/SplashScreenGameState.cpp
+	$(COMPILER) -c -o $(TARGET_DIR)/SplashScreenGameState.o src/States/SplashScreenGameState.cpp $(COMPILE_FLAGS)
 
 
 ##################
