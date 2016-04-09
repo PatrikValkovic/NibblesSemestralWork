@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <iostream>
 #include "../Abstract/SplashScreenAbstractViewModel.h"
 
 namespace ViewModel

@@ -1,8 +1,9 @@
 #include "GameStates.h"
 
-GameState::GameStates::GameStates()
+GameState::GameStates::GameStates(ViewModel::BaseViewModel* Model)
+    :RenderingModel(Model)
 {
-    SplashScreenGameState* SplashScreen = new SplashScreenGameState;
+    SplashScreenGameState* SplashScreen = new SplashScreenGameState(this->RenderingModel);
 
 
     this->AllStates.push_back(SplashScreen);
@@ -17,7 +18,7 @@ GameState::GameStates::~GameStates()
         delete (*Moving);
 }
 
-AbstractGameState* GameState::GameStates::GetFirstState() const
+GameState::AbstractGameState* GameState::GameStates::GetFirstState() const
 {
     return this->First;
 }

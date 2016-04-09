@@ -3,7 +3,8 @@
 
 void ViewModel::SplashScreenConsoleViewModel::ShowSplashScreen()
 {
-
+    using namespace std;
+    cout << "Splash screen pro konzoli " << endl;
 }
 
 #endif

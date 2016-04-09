@@ -9,12 +9,13 @@ namespace GameState
     class GameStates
     {
     public:
-        GameStates();
+        GameStates(ViewModel::BaseViewModel* Model);
         ~GameStates();
 
         AbstractGameState* GetFirstState() const;
 
     private:
+        ViewModel::BaseViewModel* RenderingModel;
         std::vector<AbstractGameState*> AllStates;
         AbstractGameState* First;
     };

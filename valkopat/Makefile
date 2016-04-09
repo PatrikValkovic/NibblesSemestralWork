@@ -4,7 +4,7 @@ USE_NCURSES = 1
 USE_CONSOLE = 0
 TARGET_DIR = build
 
-COMPILE_FLAGS = -std=c++11
+COMPILE_FLAGS = -std=c++11 -pthread
 COMPILER = g++
 LINKER = ld
 

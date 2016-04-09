@@ -8,55 +8,54 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
 
 void ViewModel::ConsoleViewModel::init()
 {
-    //TODO
+    SplashScren = new SplashScreenConsoleViewModel();
+    Menu = new MenuConsoleViewModel();
+    Language = new LanguageConsoleViewModel();
+    Multiplayer = new MultiplayerConsoleViewModel();
+    NetMenu = new NetMenuConsoleViewModel();
+    Singpleplayer = new SingpleplayerMenuConsoleViewModel();
+    Game = new GameConsoleViewModel();
+    Score = new ScoreConsoleViewModel();
 }
 
 ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
 {
-    //TODO
-    return nullptr;
+    return this->SplashScren;
 }
 
 ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
 {
-    //TODO
-    return nullptr;
+    return this->Menu;
 }
 
 ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
 {
-    //TODO
-    return nullptr;
+    return this->Language;
 }
 
 ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
 {
-    //TODO
-    return nullptr;
+    return this->Multiplayer;
 }
 
 ViewModel::NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
 {
-    //TODO
-    return nullptr;
+    return this->NetMenu;
 }
 
 ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
 {
-    //TODO
-    return nullptr;
+    return this->Singpleplayer;
 }
 
 ViewModel::GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
 {
-    //TODO
-    return nullptr;
+    return this->Game;
 }
 
 ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
 {
-    //TODO
-    return nullptr;
+    return this->Score;
 }
 
 

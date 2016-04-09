@@ -29,6 +29,15 @@ namespace ViewModel
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
+    private:
+        SplashScreenAbstractViewModel* SplashScren;
+        MenuAbstractViewModel* Menu;
+        LanguageAbstractViewModel* Language;
+        MultiplayerMenuAbstractViewModel* Multiplayer;
+        NetMenuAbstractViewModel* NetMenu;
+        SingleplayerMenuAbstractViewModel* Singpleplayer;
+        GameAbstractViewModel* Game;
+        ScoreAbstractViewModel* Score;
     };
 }
 
