@@ -1,11 +1,11 @@
-#ifndef CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_SPLASHSCREENNCURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_SPLASHSCREENNCURSESVIEWMODEL_H
+#ifdef USE_NCURSES
 #include "../Abstract/SplashScreenAbstractViewModel.h"
 
 namespace ViewModel
 {
-    class SplashScreenConsoleViewModel : public SplashScreenAbstractViewModel
+    class SplashScreenNCursesViewModel : public SplashScreenAbstractViewModel
     {
     public:
         virtual void ShowSplashScreen();
@@ -13,4 +13,4 @@ namespace ViewModel
 }
 
 #endif
-#endif //CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_SPLASHSCREENNCURSESVIEWMODEL_H

@@ -1,13 +1,13 @@
-#ifndef CERVISEMESTRALKA_SINGPLEPLAYERMENUCONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_SINGPLEPLAYERMENUCONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_SINGPLEPLAYERMENUNCURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_SINGPLEPLAYERMENUNCURSESVIEWMODEL_H
+#ifdef USE_NCURSES
 #include "../Abstract/SingpleplayerAbstractViewModel.h"
 namespace ViewModel
 {
-    class SingpleplayerMenuConsoleViewModel : public SingleplayerMenuAbstractViewModel
+    class SingpleplayerMenuNCursesViewModel : public SingleplayerMenuAbstractViewModel
     {
 
     };
 }
 #endif
-#endif //CERVISEMESTRALKA_SINGPLEPLAYERMENUCONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_SINGPLEPLAYERMENUNCURSESVIEWMODEL_H

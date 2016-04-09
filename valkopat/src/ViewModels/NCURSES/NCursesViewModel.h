@@ -1,6 +1,6 @@
-#ifndef CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_NCURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_NCURSESVIEWMODEL_H
+#ifdef USE_NCURSES
 #include <iostream>
 
 #include "../Abstract/BaseViewModel.h"
@@ -15,7 +15,7 @@
 
 namespace ViewModel
 {
-    class ConsoleViewModel : public BaseViewModel
+    class NCursesViewModel : public BaseViewModel
     {
     public:
         virtual const char* GetNameofViewModel();
@@ -34,4 +34,4 @@ namespace ViewModel
 
 
 #endif
-#endif //CERVISEMESTRALKA_CONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_NCURSESVIEWMODEL_H

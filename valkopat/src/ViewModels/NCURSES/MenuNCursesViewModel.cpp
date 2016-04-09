@@ -1,5 +1,5 @@
 #include "MenuNCursesViewModel.h"
-#ifdef USE_CONSOLE
+#ifdef USE_NCURSES
 int ViewModel::MenuConsoleViewModel::ShowMenu(std::vector<ViewModel::MenuAbstractViewModel::MenuEntry>)
 {
     //TODO

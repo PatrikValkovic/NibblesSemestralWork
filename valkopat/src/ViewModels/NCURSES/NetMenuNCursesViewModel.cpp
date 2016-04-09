@@ -1,5 +1,5 @@
 #include "NetMenuNCursesViewModel.h"
-#ifdef USE_CONSOLE
+#ifdef USE_NCURSES
 
 
 

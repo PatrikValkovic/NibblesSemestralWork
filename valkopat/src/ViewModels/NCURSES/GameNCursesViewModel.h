@@ -1,15 +1,15 @@
-#ifndef CERVISEMESTRALKA_GAMECONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_GAMECONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_GAMENCOURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_GAMENCOURSESVIEWMODEL_H
+#ifdef USE_NCOURSES
 #include "../Abstract/GameAbstractViewModel.h"
 
 namespace ViewModel
 {
-    class GameConsoleViewModel : public GameAbstractViewModel
+    class GameNCursesViewModel : public GameAbstractViewModel
     {
 
     };
 }
 
 #endif
-#endif //CERVISEMESTRALKA_GAMECONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_GAMENCOURSESVIEWMODEL_H

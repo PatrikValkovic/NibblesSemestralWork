@@ -1,5 +1,5 @@
 #include "SingpleplayerMenuNCursesViewModel.h"
-#ifdef USE_CONSOLE
+#ifdef USE_NCURSES
 
 
 

@@ -1,12 +1,12 @@
-#ifndef CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_MULTIPLAYERNCURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_MULTIPLAYERNCURSESVIEWMODEL_H
+#ifdef USE_NCURSES
 #include "../Abstract/MultiplayerAbstractViewModel.h"
 
 
 namespace ViewModel
 {
-    class MultiplayerConsoleViewModel : public MultiplayerMenuAbstractViewModel
+    class MultiplayerNCursesViewModel : public MultiplayerMenuAbstractViewModel
     {
     public:
 
@@ -14,4 +14,4 @@ namespace ViewModel
 }
 
 #endif
-#endif //CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_MULTIPLAYERNCURSESVIEWMODEL_H

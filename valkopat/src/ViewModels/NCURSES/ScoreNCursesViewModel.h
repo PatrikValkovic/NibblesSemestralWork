@@ -1,16 +1,16 @@
-#ifndef CERVISEMESTRALKA_SCORECONSOLEVIEWMODEL_H
-#define CERVISEMESTRALKA_SCORECONSOLEVIEWMODEL_H
-#ifdef USE_CONSOLE
+#ifndef CERVISEMESTRALKA_SCORENCURSESVIEWMODEL_H
+#define CERVISEMESTRALKA_SCORENCURSESVIEWMODEL_H
+#ifdef USE_NCURSES
 #include "../Abstract/ScoreAbstractViewModel.h"
 
 
 namespace ViewModel
 {
-    class ScoreConsoleViewModel : ScoreAbstractViewModel
+    class ScoreNCursesViewModel : ScoreAbstractViewModel
     {
 
     };
 }
 
 #endif
-#endif //CERVISEMESTRALKA_SCORECONSOLEVIEWMODEL_H
+#endif //CERVISEMESTRALKA_SCORENCURSESVIEWMODEL_H

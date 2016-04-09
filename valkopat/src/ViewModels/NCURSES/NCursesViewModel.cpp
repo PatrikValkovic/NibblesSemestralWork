@@ -1,59 +1,59 @@
-#ifdef USE_CONSOLE
+#ifdef USE_NCURSES
 #include "NCursesViewModel.h"
 
-const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
+const char* ViewModel::NCursesViewModel::GetNameofViewModel()
 {
     return "Console";
 }
 
-void ViewModel::ConsoleViewModel::init()
+void ViewModel::NCursesViewModel::init()
 {
     //TODO
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
-{
-    //TODO
-    return nullptr;
-}
-
-ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
+ViewModel::SplashScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashScreenModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+ViewModel::MenuAbstractViewModel* ViewModel::NCursesViewModel::MenuModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::MultiplayerModel()
+ViewModel::LanguageAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::NetMenuAbstractViewModel* ViewModel::ConsoleViewModel::NetModel()
+ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::NCursesViewModel::MultiplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::ConsoleViewModel::SingleplayerModel()
+ViewModel::NetMenuAbstractViewModel* ViewModel::NCursesViewModel::NetModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::GameAbstractViewModel* ViewModel::ConsoleViewModel::GameModel()
+ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::NCursesViewModel::SingleplayerModel()
 {
     //TODO
     return nullptr;
 }
 
-ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
+ViewModel::GameAbstractViewModel* ViewModel::NCursesViewModel::GameModel()
+{
+    //TODO
+    return nullptr;
+}
+
+ViewModel::ScoreAbstractViewModel* ViewModel::NCursesViewModel::ScoreModel()
 {
     //TODO
     return nullptr;

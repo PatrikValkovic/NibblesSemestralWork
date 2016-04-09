@@ -1,5 +1,5 @@
 #include "ScoreNCursesViewModel.h"
-#ifdef USE_CONSOLE
+#ifdef USE_NCURSES
 
 
 
