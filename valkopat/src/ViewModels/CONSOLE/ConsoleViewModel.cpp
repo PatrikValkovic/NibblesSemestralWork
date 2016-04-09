@@ -58,6 +58,18 @@ ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
     return this->Score;
 }
 
+ViewModel::ConsoleViewModel::~ConsoleViewModel()
+{
+    delete SplashScren;
+    delete Menu;
+    delete Language;
+    delete Multiplayer;
+    delete NetMenu;
+    delete Singpleplayer;
+    delete Game;
+    delete Score;
+}
+
 
 #endif
 

@@ -18,6 +18,7 @@ namespace ViewModel
     class ConsoleViewModel : public BaseViewModel
     {
     public:
+        virtual ~ConsoleViewModel();
         virtual const char* GetNameofViewModel();
         virtual void init();
 

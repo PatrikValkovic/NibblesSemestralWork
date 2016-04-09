@@ -3,7 +3,7 @@
 
 const char* ViewModel::NCursesViewModel::GetNameofViewModel()
 {
-    return "Console";
+    return "NCurses";
 }
 
 void ViewModel::NCursesViewModel::init()
