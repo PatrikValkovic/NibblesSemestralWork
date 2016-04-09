@@ -6,7 +6,8 @@ namespace GameState
 {
     class SplashScreenGameState : public AbstractGameState
     {
-
+    public:
+        virtual AbstractGameState* run();
     };
 }
 

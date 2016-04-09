@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_GAMESTATES_H
 #include <vector>
 #include "AbstractGameState.h"
+#include "SplashScreenGameState.h"
 
 namespace GameState
 {
@@ -15,6 +16,7 @@ namespace GameState
 
     private:
         std::vector<AbstractGameState*> AllStates;
+        AbstractGameState* First;
     };
 }
 
