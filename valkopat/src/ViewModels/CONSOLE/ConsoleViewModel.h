@@ -15,7 +15,7 @@
 
 namespace ViewModel
 {
-    class NCursesViewModel : public BaseViewModel
+    class ConsoleViewModel : public BaseViewModel
     {
     public:
         virtual const char* GetNameofViewModel();

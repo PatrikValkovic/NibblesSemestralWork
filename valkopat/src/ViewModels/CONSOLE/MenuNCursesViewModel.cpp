@@ -1,6 +1,6 @@
 #include "MenuConsoleViewModel.h"
 #ifdef USE_CONSOLE
-int ViewModel::MenuNCursesViewModel::ShowMenu(std::vector<ViewModel::MenuAbstractViewModel::MenuEntry>)
+int ViewModel::MenuConsoleViewModel::ShowMenu(std::vector<ViewModel::MenuAbstractViewModel::MenuEntry>)
 {
     //TODO
     return 0;

@@ -4,7 +4,7 @@
 #include "../Abstract/SingpleplayerAbstractViewModel.h"
 namespace ViewModel
 {
-    class SingpleplayerMenuNCursesViewModel : public SingleplayerMenuAbstractViewModel
+    class SingpleplayerMenuConsoleViewModel : public SingleplayerMenuAbstractViewModel
     {
 
     };
