@@ -85,8 +85,8 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o
-	$(LINKER) -r -o $(TARGET_DIR)/game.o $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o
+	$(LINKER) -r -o $(TARGET_DIR)/game.o $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o
 
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
@@ -100,8 +100,8 @@ $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGam
 ##	STATES  ##
 ##############
 
-$(TARGET_DIR)/State.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
-	$(LINKER) -t -o $(TARGET_DIR)/State.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
+$(TARGET_DIR)/States.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
+	$(LINKER) -t -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o
 
 $(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h
 	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp
