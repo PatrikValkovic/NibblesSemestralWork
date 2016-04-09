@@ -100,6 +100,9 @@ $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGam
 ##	STATES  ##
 ##############
 
+$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h
+	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp
+
 
 ##################
 ##	VIEW MODELS ##
