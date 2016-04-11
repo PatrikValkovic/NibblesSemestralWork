@@ -4,8 +4,6 @@
 
 namespace GameState
 {
-    class MenuGameState;
-
     class ChangeLanguageState : public AbstractGameState
     {
     public:

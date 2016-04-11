@@ -26,6 +26,6 @@ namespace GameState
 #include "MultiplayerGameState.h"
 #include "SingleplayerGameState.h"
 #include "NetGameState.h"
-#include "EndState.cpp"
+#include "EndState.h"
 #include "ChangeLanguageState.h"
 #endif //CERVISEMESTRALKA_MENUGAMESTATE_H

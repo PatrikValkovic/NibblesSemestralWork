@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_CLASSNAMES_H
 namespace GameState
 {
-    class ChangeLanguageGameState;
+    class ChangeLanguageState;
     class EndState;
     class GamePauseState;
     class MenuGameState;

@@ -4,7 +4,7 @@ GameState::GamePauseState::GamePauseState(ViewModel::BaseViewModel* RenderingMod
         : AbstractGameState(RenderingModel)
 { }
 
-AbstractGameState* GameState::GamePauseState::run()
+GameState::AbstractGameState* GameState::GamePauseState::run()
 {
     return this->GameState;
 }
