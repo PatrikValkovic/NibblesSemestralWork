@@ -1,7 +1,6 @@
 #ifndef CERVISEMESTRALKA_GAMEPAUSESTATE_H
 #define CERVISEMESTRALKA_GAMEPAUSESTATE_H
 #include "AbstractGameState.h"
-#include "PlayingState.h"
 
 namespace GameState
 {
@@ -21,4 +20,6 @@ namespace GameState
 }
 
 
+#include "PlayingState.h"
+#include "MenuGameState.h"
 #endif //CERVISEMESTRALKA_GAMEPAUSESTATE_H

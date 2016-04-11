@@ -1,12 +1,7 @@
 #ifndef CERVISEMESTRALKA_MENUGAMESTATE_H
 #define CERVISEMESTRALKA_MENUGAMESTATE_H
 #include "../ViewModels/Abstract/BaseViewModel.h"
-#include "SingleplayerGameState.h"
-#include "NetGameState.h"
-#include "MultiplayerGameState.h"
 #include "AbstractGameState.h"
-#include "EndState.h"
-#include "ChangeLanguageState.h"
 
 namespace GameState
 {
@@ -30,5 +25,9 @@ namespace GameState
     };
 }
 
-
+#include "MultiplayerGameState.h"
+#include "SingleplayerGameState.h"
+#include "NetGameState.h"
+#include "EndState.cpp"
+#include "ChangeLanguageState.h"
 #endif //CERVISEMESTRALKA_MENUGAMESTATE_H

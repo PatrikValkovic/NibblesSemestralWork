@@ -1,10 +1,11 @@
 #ifndef CERVISEMESTRALKA_CHANGELANGUAGESTATE_H
 #define CERVISEMESTRALKA_CHANGELANGUAGESTATE_H
-#include "MenuGameState.h"
 #include "AbstractGameState.h"
 
 namespace GameState
 {
+    class MenuGameState;
+
     class ChangeLanguageState : public AbstractGameState
     {
     public:
@@ -17,4 +18,5 @@ namespace GameState
     };
 }
 
+#include "MenuGameState.h"
 #endif //CERVISEMESTRALKA_CHANGELANGUAGESTATE_H

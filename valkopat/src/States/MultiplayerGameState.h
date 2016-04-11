@@ -1,10 +1,11 @@
 #ifndef CERVISEMESTRALKA_MULTIPLAYERGAMESTATE_H
 #define CERVISEMESTRALKA_MULTIPLAYERGAMESTATE_H
 #include "AbstractGameState.h"
-#include "PlayingState.h"
 
 namespace GameState
 {
+    class MenuGameState;
+
     class MultiplayerGameState : public AbstractGameState
     {
     public:
@@ -20,4 +21,6 @@ namespace GameState
     };
 }
 
+#include "PlayingState.h"
+#include "MenuGameState.h"
 #endif //CERVISEMESTRALKA_MULTIPLAYERGAMESTATE_H

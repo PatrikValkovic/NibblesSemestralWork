@@ -133,6 +133,8 @@ $(TARGET_DIR)/ChangeLanguageState.o: src/States/ChangeLanguageState.h src/States
 $(TARGET_DIR)/GamePauseState.o: src/States/GamePauseState.h src/States/GamePauseState.cpp src/States/AbstractGameState.h
 	$(COMPILER) -c -o $(TARGET_DIR)/GamePauseState.o src/States/GamePauseState.cpp
 
+src/States/AbstractGameState.h : src/States/StatesNames.h
+
 ##################
 ##	VIEW MODELS ##
 ##################

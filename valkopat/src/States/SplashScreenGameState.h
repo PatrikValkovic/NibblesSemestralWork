@@ -4,7 +4,6 @@
 #include <chrono>
 #include <thread>
 #include "AbstractGameState.h"
-#include "MenuGameState.h"
 
 namespace GameState
 {
@@ -20,4 +19,5 @@ namespace GameState
     };
 }
 
+#include "MenuGameState.h"
 #endif //CERVISEMESTRALKA_SPLASHSCREENGAMESTATE_H
