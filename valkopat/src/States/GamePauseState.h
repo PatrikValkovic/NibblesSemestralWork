@@ -8,12 +8,15 @@ namespace GameState
     class GamePauseState : public AbstractGameState
     {
     public:
-        GamePauseState(ViewModel::BaseViewModel* RenderingModel, PlayingState* StateOfGame);
+        GamePauseState(ViewModel::BaseViewModel* RenderingModel,
+                       PlayingState* StateOfGame,
+                       MenuGameState* MenuState);
 
         virtual AbstractGameState* run();
 
     private:
         PlayingState* GameState;
+        MenuGameState* Menu;
     };
 }
 

@@ -6,8 +6,10 @@ GameState::AbstractGameState* GameState::MultiplayerGameState::run()
     return NULL;
 }
 
-GameState::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel)
-        : AbstractGameState(RenderingModel)
+GameState::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel,
+                                                      GameState::PlayingState* PlayingState)
+        : AbstractGameState(RenderingModel),
+          PlayState(PlayingState)
 { }
 
 

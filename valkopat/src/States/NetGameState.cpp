@@ -6,8 +6,10 @@ GameState::AbstractGameState* GameState::NetGameState::run()
     return NULL;
 }
 
-GameState::NetGameState::NetGameState(ViewModel::BaseViewModel* RenderingModel)
-        : AbstractGameState(RenderingModel)
+GameState::NetGameState::NetGameState(ViewModel::BaseViewModel* RenderingModel,
+                                      GameState::PlayingState* GameState)
+        : AbstractGameState(RenderingModel),
+          PlayState(GameState)
 { }
 
 
