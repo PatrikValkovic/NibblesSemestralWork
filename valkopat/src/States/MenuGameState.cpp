@@ -14,5 +14,17 @@ GameState::AbstractGameState* GameState::MenuGameState::run()
     return NULL;
 }
 
+void GameState::MenuGameState::AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single,
+                                         NetGameState* OverNet, EndState* End, ChangeLanguageState* Language)
+{
+    this->Multi = Multi;
+    this->Single = Single;
+    this->Net = OverNet;
+    this->End = End;
+    this->Language = Language;
+}
+
+
+
 
 

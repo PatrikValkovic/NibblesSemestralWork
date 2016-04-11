@@ -10,5 +10,13 @@ GameState::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* 
         : AbstractGameState(RenderingModel)
 { }
 
+void GameState::MultiplayerGameState::AddStates(PlayingState* PlayState, MenuGameState* MenuState)
+{
+    this->PlayState = PlayState;
+    this->Menu = MenuState;
+}
+
+
+
 
 

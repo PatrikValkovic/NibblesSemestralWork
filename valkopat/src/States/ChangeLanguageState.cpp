@@ -10,5 +10,12 @@ GameState::AbstractGameState* GameState::ChangeLanguageState::run()
     return NULL;
 }
 
+void GameState::ChangeLanguageState::AddStates(MenuGameState* MenuState)
+{
+    this->Menu = MenuState;
+}
+
+
+
 
 

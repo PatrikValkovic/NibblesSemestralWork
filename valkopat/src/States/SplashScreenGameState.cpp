@@ -16,6 +16,13 @@ GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel
         : AbstractGameState(RenderingModel)
 { }
 
+void GameState::SplashScreenGameState::AddStates(MenuGameState* NextState)
+{
+    this->NextState = NextState;
+}
+
+
+
 
 
 

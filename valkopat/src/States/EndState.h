@@ -10,6 +10,8 @@ namespace GameState
         EndState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates();
     };
 }
 

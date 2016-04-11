@@ -9,4 +9,12 @@ GameState::SingleplayerGameState::SingleplayerGameState(ViewModel::BaseViewModel
         : AbstractGameState(RenderingModel)
 { }
 
+void GameState::SingleplayerGameState::AddStates(PlayingState* GameState, MenuGameState* MenuState)
+{
+    this->Play = GameState;
+    this->Menu = MenuState;
+}
+
+
+
 

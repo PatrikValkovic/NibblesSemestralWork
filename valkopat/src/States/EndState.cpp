@@ -10,6 +10,11 @@ GameState::AbstractGameState* GameState::EndState::run()
     return NULL;
 }
 
+void GameState::EndState::AddStates()
+{ }
+
+
+
 
 
 
