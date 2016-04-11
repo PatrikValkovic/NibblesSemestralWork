@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
 #include "AbstractGameState.h"
 #include "MenuGameState.h"
+#include "GamePauseState.h"
 
 namespace GameState
 {
@@ -9,12 +10,14 @@ namespace GameState
     {
     public:
         PlayingState(ViewModel::BaseViewModel* RenderingModel,
-        MenuGameState* MenuState);
+                     MenuGameState* MenuState,
+                     GamePauseState* PauseState);
 
         virtual AbstractGameState* run();
 
     private:
         MenuGameState* Menu;
+        GamePauseState* Pause;
     };
 }
 

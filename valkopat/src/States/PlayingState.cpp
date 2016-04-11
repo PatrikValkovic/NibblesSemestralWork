@@ -7,9 +7,11 @@ GameState::AbstractGameState* GameState::PlayingState::run()
 }
 
 GameState::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel,
-                                      MenuGameState* MenuState)
+                                      GameState::MenuGameState* MenuState,
+                                      GameState::GamePauseState* PauseState)
         : AbstractGameState(RenderingModel),
-          Menu(MenuState)
+          Menu(MenuState),
+          Pause(PauseStates)
 { }
 
 

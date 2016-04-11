@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_NETGAMESTATE_H
 #include "AbstractGameState.h"
 #include "PlayingState.h"
+#include "MenuGameState.h"
 
 namespace GameState
 {
@@ -9,11 +10,13 @@ namespace GameState
     {
     public:
         NetGameState(ViewModel::BaseViewModel* RenderingModel,
-        PlayingState* GameState);
+                     PlayingState* GameState,
+                     MenuGameState* MenuState);
 
         virtual AbstractGameState* run();
     private:
         PlayingState* PlayState;
+        MenuGameState* Menu;
     };
 }
 
