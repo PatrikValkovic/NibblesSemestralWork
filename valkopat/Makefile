@@ -110,7 +110,7 @@ $(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.h src/St
 	$(COMPILER) -c -o $(TARGET_DIR)/SplashScreenGameState.o src/States/SplashScreenGameState.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/MenuGameState.o: src/States/MenuGameState.h src/States/MenuGameState.cpp src/States/AbstractGameState.h
-	$(COMPILER) -c -o $(TARGET_DIR)/SplashScreenGameState.o src/States/MenuGameState.cpp
+	$(COMPILER) -c -o $(TARGET_DIR)/MenuGameState.o src/States/MenuGameState.cpp
 
 ##################
 ##	VIEW MODELS ##
