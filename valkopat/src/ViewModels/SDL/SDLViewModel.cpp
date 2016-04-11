@@ -14,49 +14,49 @@ void ViewModel::SDLViewModel::init()
 ViewModel::SplashScreenAbstractViewModel* ViewModel::SDLViewModel::SplashScreenModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::MenuAbstractViewModel* ViewModel::SDLViewModel::MenuModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::LanguageAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::SDLViewModel::MultiplayerModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::NetMenuAbstractViewModel* ViewModel::SDLViewModel::NetModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::SDLViewModel::SingleplayerModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::GameAbstractViewModel* ViewModel::SDLViewModel::GameModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::ScoreAbstractViewModel* ViewModel::SDLViewModel::ScoreModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 

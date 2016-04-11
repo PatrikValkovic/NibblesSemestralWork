@@ -3,7 +3,7 @@
 GameState::AbstractGameState* GameState::MultiplayerGameState::run()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 GameState::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel)

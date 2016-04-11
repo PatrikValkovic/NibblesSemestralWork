@@ -4,10 +4,10 @@ GameState::ChangeLanguageState::ChangeLanguageState(ViewModel::BaseViewModel* Re
         : AbstractGameState(RenderingModel)
 { }
 
-AbstractGameState* GameState::ChangeLanguageState::run()
+GameState::AbstractGameState* GameState::ChangeLanguageState::run()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 

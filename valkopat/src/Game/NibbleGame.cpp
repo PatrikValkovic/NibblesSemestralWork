@@ -8,7 +8,7 @@ void Game::NibbleGame::run()
 {
     using namespace GameState;
     AbstractGameState* ActualState = this->States->GetFirstState();
-    while(ActualState!=NULL)
+    while(ActualState!=nullptr)
         ActualState = ActualState->run();
 }
 

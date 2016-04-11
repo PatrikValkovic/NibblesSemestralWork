@@ -3,7 +3,7 @@
 GameState::AbstractGameState* GameState::NetGameState::run()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 GameState::NetGameState::NetGameState(ViewModel::BaseViewModel* RenderingModel)

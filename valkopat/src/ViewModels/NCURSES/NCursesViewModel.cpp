@@ -14,49 +14,49 @@ void ViewModel::NCursesViewModel::init()
 ViewModel::SplashScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashScreenModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::MenuAbstractViewModel* ViewModel::NCursesViewModel::MenuModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::LanguageAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::MultiplayerMenuAbstractViewModel* ViewModel::NCursesViewModel::MultiplayerModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::NetMenuAbstractViewModel* ViewModel::NCursesViewModel::NetModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::SingleplayerMenuAbstractViewModel* ViewModel::NCursesViewModel::SingleplayerModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::GameAbstractViewModel* ViewModel::NCursesViewModel::GameModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 ViewModel::ScoreAbstractViewModel* ViewModel::NCursesViewModel::ScoreModel()
 {
     //TODO
-    return nullptr;
+    return NULL;
 }
 
 
