@@ -1,0 +1,52 @@
+.TH "GameState::AbstractGameState" 3 "Mon Apr 11 2016" "Nibbles Semestral work" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GameState::AbstractGameState \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AbstractGameState\&.h>\fP
+.PP
+Inherited by \fBGameState::ChangeLanguageState\fP, \fBGameState::EndState\fP, \fBGameState::MenuGameState\fP, \fBGameState::MultiplayerGameState\fP, \fBGameState::NetGameState\fP, \fBGameState::PlayingState\fP, \fBGameState::SingleplayerGameState\fP, and \fBGameState::SplashScreenGameState\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractGameState\fP (\fBViewModel::BaseViewModel\fP *\fBRenderingModel\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~AbstractGameState\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBAbstractGameState\fP * \fBrun\fP ()=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBViewModel::BaseViewModel\fP * \fBRenderingModel\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GameState::AbstractGameState::AbstractGameState (\fBViewModel::BaseViewModel\fP * RenderingModel)\fC [inline]\fP"
+
+.SS "virtual GameState::AbstractGameState::~AbstractGameState ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBAbstractGameState\fP* GameState::AbstractGameState::run ()\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBGameState::SplashScreenGameState\fP, \fBGameState::ChangeLanguageState\fP, \fBGameState::EndState\fP, \fBGameState::MenuGameState\fP, \fBGameState::MultiplayerGameState\fP, \fBGameState::NetGameState\fP, \fBGameState::PlayingState\fP, and \fBGameState::SingleplayerGameState\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBViewModel::BaseViewModel\fP* GameState::AbstractGameState::RenderingModel\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Nibbles Semestral work from the source code\&.

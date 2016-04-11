@@ -1,0 +1,58 @@
+.TH "GameState::GameStates" 3 "Mon Apr 11 2016" "Nibbles Semestral work" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GameState::GameStates \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GameStates\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGameStates\fP (\fBViewModel::BaseViewModel\fP *Model)"
+.br
+.ti -1c
+.RI "\fB~GameStates\fP ()"
+.br
+.ti -1c
+.RI "\fBAbstractGameState\fP * \fBGetFirstState\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBViewModel::BaseViewModel\fP * \fBRenderingModel\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBAbstractGameState\fP * > \fBAllStates\fP"
+.br
+.ti -1c
+.RI "\fBAbstractGameState\fP * \fBFirst\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GameState::GameStates::GameStates (\fBViewModel::BaseViewModel\fP * Model)"
+
+.SS "GameState::GameStates::~GameStates ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAbstractGameState\fP* GameState::GameStates::GetFirstState () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBAbstractGameState\fP*> GameState::GameStates::AllStates\fC [private]\fP"
+
+.SS "\fBAbstractGameState\fP* GameState::GameStates::First\fC [private]\fP"
+
+.SS "\fBViewModel::BaseViewModel\fP* GameState::GameStates::RenderingModel\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Nibbles Semestral work from the source code\&.
