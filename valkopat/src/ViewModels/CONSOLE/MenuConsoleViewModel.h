@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_MENUCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
 #include <vector>
+#include <iostream>
 #include "../Abstract/MenuAbstractViewModel.h"
 
 namespace ViewModel

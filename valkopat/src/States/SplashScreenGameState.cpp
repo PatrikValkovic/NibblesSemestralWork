@@ -1,11 +1,5 @@
 #include "SplashScreenGameState.h"
 
-GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel)
-    : AbstractGameState(RenderingModel)
-{
-
-}
-
 GameState::AbstractGameState* GameState::SplashScreenGameState::run()
 {
     using namespace std::this_thread; // sleep_for, sleep_until
@@ -15,8 +9,17 @@ GameState::AbstractGameState* GameState::SplashScreenGameState::run()
     this->RenderingModel->SplashScreenModel()->ShowSplashScreen();
 
     sleep_until(BeginOfMethod + seconds(this->SleepForSecond));
-    return NULL;
+    return NextState;
 }
+
+GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel,
+                                                        MenuGameState* NextState)
+        : AbstractGameState(RenderingModel)
+{
+    this->NextState = NextState;
+}
+
+
 
 
 
