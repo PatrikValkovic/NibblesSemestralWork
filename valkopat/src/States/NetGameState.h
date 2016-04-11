@@ -7,11 +7,12 @@ namespace GameState
     class NetGameState : public AbstractGameState
     {
     public:
-        NetGameState(ViewModel::BaseViewModel* RenderingModel,
-                     PlayingState* GameState,
-                     MenuGameState* MenuState);
+        NetGameState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates(PlayingState* GameState, MenuGameState* MenuState);
+
     private:
         PlayingState* PlayState;
         MenuGameState* Menu;

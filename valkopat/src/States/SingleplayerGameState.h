@@ -7,11 +7,11 @@ namespace GameState
     class SingleplayerGameState : public AbstractGameState
     {
     public:
-        SingleplayerGameState(ViewModel::BaseViewModel* RenderingModel,
-                              PlayingState* GameState,
-                              MenuGameState* MenuState);
+        SingleplayerGameState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates(PlayingState* GameState, MenuGameState* MenuState);
 
     private:
         MenuGameState* Menu;

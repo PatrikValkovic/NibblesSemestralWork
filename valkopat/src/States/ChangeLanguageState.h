@@ -9,9 +9,11 @@ namespace GameState
     class ChangeLanguageState : public AbstractGameState
     {
     public:
-        ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel, MenuGameState* MenuState);
+        ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates(MenuGameState* MenuState);
 
     private:
         MenuGameState* Menu;

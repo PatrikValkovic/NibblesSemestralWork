@@ -9,11 +9,11 @@ namespace GameState
     class MultiplayerGameState : public AbstractGameState
     {
     public:
-        MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel,
-                             PlayingState* PlayState,
-                             MenuGameState* MenuState);
+        MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates(PlayingState* PlayState, MenuGameState* MenuState);
 
     private:
         PlayingState* PlayState;

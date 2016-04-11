@@ -10,8 +10,10 @@ namespace GameState
     class SplashScreenGameState : public AbstractGameState
     {
     public:
-        SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel,MenuGameState* NextState);
+        SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel);
         virtual AbstractGameState* run();
+
+        void AddStates(MenuGameState* NextState);
 
     private:
         MenuGameState* NextState;

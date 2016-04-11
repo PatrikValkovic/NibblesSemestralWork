@@ -8,13 +8,11 @@ namespace GameState
     class MenuGameState : public AbstractGameState
     {
     public:
-        MenuGameState(ViewModel::BaseViewModel* RenderingModel,
-                      MultiplayerGameState* Multi,
-                      SingleplayerGameState* Single,
-                      NetGameState* OverNet,
-                      EndState* End,
-                      ChangeLanguageState* Language);
+        MenuGameState(ViewModel::BaseViewModel* RenderingModel);
         virtual AbstractGameState* run();
+
+        void AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single, NetGameState* OverNet,
+                       EndState* End, ChangeLanguageState* Language);
 
     private:
         MultiplayerGameState* Multi;
