@@ -3,6 +3,8 @@
 #include <string>
 #include "Exception.h"
 
+using namespace std;
+
 namespace Exceptions
 {
     class InvalidArgumentException : public std::exception
