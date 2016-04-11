@@ -12,12 +12,9 @@ GameState::AbstractGameState* GameState::SplashScreenGameState::run()
     return NextState;
 }
 
-GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel,
-                                                        MenuGameState* NextState)
+GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
-{
-    this->NextState = NextState;
-}
+{ }
 
 
 

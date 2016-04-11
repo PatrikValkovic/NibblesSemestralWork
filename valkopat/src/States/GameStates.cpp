@@ -4,8 +4,8 @@ GameState::GameStates::GameStates(ViewModel::BaseViewModel* Model)
     :RenderingModel(Model)
 {
 
-    MenuGameState* MenuScreen = new MenuGameState(this->RenderingModel);
-    SplashScreenGameState* SplashScreen = new SplashScreenGameState(this->RenderingModel,MenuScreen);
+    //MenuGameState* MenuScreen = new MenuGameState(this->RenderingModel);
+    //SplashScreenGameState* SplashScreen = new SplashScreenGameState(this->RenderingModel,MenuScreen);
 
     this->AllStates.push_back(MenuScreen);
     this->AllStates.push_back(SplashScreen);

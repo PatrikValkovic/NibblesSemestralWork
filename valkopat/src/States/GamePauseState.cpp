@@ -1,11 +1,7 @@
 #include "GamePauseState.h"
 
-GameState::GamePauseState::GamePauseState(ViewModel::BaseViewModel* RenderingModel,
-                                          GameState::PlayingState* StateOfGame,
-                                          GameState::MenuGameState* MenuState)
-        : AbstractGameState(RenderingModel),
-          GameState(StateOfGame),
-          Menu(MenuState)
+GameState::GamePauseState::GamePauseState(ViewModel::BaseViewModel* RenderingModel)
+        : AbstractGameState(RenderingModel)
 { }
 
 AbstractGameState* GameState::GamePauseState::run()
