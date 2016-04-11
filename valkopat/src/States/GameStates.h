@@ -3,6 +3,7 @@
 #include <vector>
 #include "AbstractGameState.h"
 #include "SplashScreenGameState.h"
+#include "MenuGameState.h"
 
 namespace GameState
 {

@@ -103,7 +103,7 @@ $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGam
 $(TARGET_DIR)/States.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o
 	$(LINKER) -r -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o
 
-$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h
+$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h src/States/MenuGameState.h src/States/SplashScreenGameState.h
 	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.h src/States/SplashScreenGameState.cpp src/States/AbstractGameState.h
