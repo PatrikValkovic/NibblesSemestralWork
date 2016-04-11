@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENGAMESTATE_H
 #define CERVISEMESTRALKA_SPLASHSCREENGAMESTATE_H
-#include <stdint.h>
+#include <cstdint>
 #include <chrono>
 #include <thread>
 #include "AbstractGameState.h"
