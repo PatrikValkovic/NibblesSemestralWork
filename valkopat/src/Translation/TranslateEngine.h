@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_TRANSLATEENGINE_H
 #define CERVISEMESTRALKA_TRANSLATEENGINE_H
+#include <exception>
 #include <string>
 #include <vector>
 #include <map>
@@ -20,6 +21,7 @@ namespace Translate
         void SetLanguage(string CodeOfLanguage);
 
     private:
+
         map<string,string> TranslationForCurrentLanguage;
         string CurrentLangauge;
     };
