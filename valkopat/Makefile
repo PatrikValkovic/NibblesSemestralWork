@@ -108,6 +108,17 @@ $(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentExceptio
 $(TARGET_DIR)/Exception.o: src/Exceptions/Exception.h src/Exceptions/Exception.cpp
 	$(COMPILER) -c -o $(TARGET_DIR)/Exception.o src/Exceptions/Exception.cpp $(COMPILE_FLAGS)
 
+#################
+##	TRANSLATE  ##
+#################
+
+$(TARGET_DIR)/Translate.o : $(TARGET_DIR)/TranslateEngine.o
+	$(LINKER) -r -o $(TARGET_DIR)/Translate.o $(TARGET_DIR)/TranslateEngine.o
+
+$(TARGET_DIR)/TranslateEngine.o: src/Translation/TranslateEngine.cpp src/Translation/TranslateEngine.h
+	$(COMPILER) -c -o $(TARGET_DIR)/TranslateEngine.o src/Translation/TranslateEngine.cpp $(COMPILE_FLAGS)
+
+
 ##############
 ##	STATES  ##
 ##############
@@ -152,8 +163,8 @@ src/States/AbstractGameState.h : src/States/StatesNames.h
 ##################
 __ABSTRACTION_FILES = src/ViewModels/Abstract/SplashScreenAbstractViewModel.h src/ViewModels/Abstract/MenuAbstractViewModel.h src/ViewModels/Abstract/LanguageAbstractViewModel.h src/ViewModels/Abstract/MultiplayerAbstractViewModel.h src/ViewModels/Abstract/NetMenuAbstractViewModel.h src/ViewModels/Abstract/SingpleplayerAbstractViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h src/ViewModels/Abstract/ScoreAbstractViewModel.h
 
-$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o
-	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o
+$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o $(TARGET_DIR)/Translate.o
+	$(LINKER) -r -o $(TARGET_DIR)/ViewModels.o $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o $(TARGET_DIR)/Translate.o
 
 $(TARGET_DIR)/ViewModelChooser.o: src/ViewModels/ViewModelChooser.h src/ViewModels/ViewModelChooser.cpp
 	$(COMPILER) -o $(TARGET_DIR)/ViewModelChooser.o -c src/ViewModels/ViewModelChooser.cpp $(COMPILE_FLAGS)
