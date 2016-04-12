@@ -34,7 +34,6 @@ string Exceptions::Exception::GetType() const
 
 string Exceptions::Exception::ToString() const
 {
-    //TODO move to cpp file?
     string BuildingString;
 
     BuildingString.append("Exception of type ");

@@ -85,16 +85,28 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o
-	$(LINKER) -r -o $(TARGET_DIR)/game.o $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/Exceptions.o
+	$(LINKER) -r -o $(TARGET_DIR)/game.o $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/Exceptions.o
 
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
-	$(COMPILER) -o $(TARGET_DIR)/main.o -c src/main.cpp $(COMPILE_FLAGS)
+	$(COMPILER) -c -o $(TARGET_DIR)/main.o src/main.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/NibbleGame.o: src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h src/Game/NibbleGame.cpp
-	$(COMPILER) -o $(TARGET_DIR)/NibbleGame.o -c src/Game/NibbleGame.cpp $(COMPILE_FLAGS)
+	$(COMPILER) -c -o $(TARGET_DIR)/NibbleGame.o src/Game/NibbleGame.cpp $(COMPILE_FLAGS)
 
+##################
+##	EXCEPTIONS  ##
+##################
+
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o
+	$(LINKER) -r -o $(TARGET_DIR)/Exceptions.o $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o
+
+$(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.h src/Exceptions/InvalidArgumentException.cpp $(TARGET_DIR)/Exception.o
+	$(COMPILER) -c -o $(TARGET_DIR)/InvalidArgumentException.o src/Exceptions/InvalidArgumentException.cpp $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/Exception.o: src/Exceptions/Exception.h src/Exceptions/Exception.cpp
+	$(COMPILER) -c -o $(TARGET_DIR)/Exception.o src/Exceptions/Exception.cpp $(COMPILE_FLAGS)
 
 ##############
 ##	STATES  ##
