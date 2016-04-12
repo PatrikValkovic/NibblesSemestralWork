@@ -38,15 +38,15 @@ string Exceptions::Exception::ToString() const
     string BuildingString;
 
     BuildingString.append("Exception of type ");
-    BuildingString.append(e.GetType());
+    BuildingString.append(this->GetType());
     BuildingString.append(" was throw");
     if (this->FileName != "")
-        BuildingString.append(" at ").append(e.FileName);
+        BuildingString.append(" at ").append(this->FileName);
     if (this->Line != -1)
-        BuildingString.append(" on line ").append(to_string(e.Line));
+        BuildingString.append(" on line ").append(to_string(this->Line));
     BuildingString.append(".");
     if (this->Message != "")
-        BuildingString.append("Message: ").append(e.Message).append(".\n");
+        BuildingString.append("Message: ").append(this->Message).append(".\n");
 
     if (this->InException != NULL)
     {
