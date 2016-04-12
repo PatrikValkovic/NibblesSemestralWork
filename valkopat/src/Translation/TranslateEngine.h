@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "../Exceptions/InvalidArgumentException.h"
 
 using namespace std;
 
