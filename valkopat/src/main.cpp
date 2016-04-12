@@ -1,22 +1,30 @@
 #include <iostream>
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
-
 #include "Exceptions/Exception.h"
 
 int main()
 {
-    using namespace ViewModel;
-    ViewModelChooser Chooser;
-    BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
-    RenderEngine->init();
+    try
+    {
+        using namespace ViewModel;
+        ViewModelChooser Chooser;
+        BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
+        RenderEngine->init();
 
-    Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);
-    game->init();
-    game->run();
+        Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);
+        game->init();
+        game->run();
 
-    delete game;
-    delete RenderEngine;
+        delete game;
+        delete RenderEngine;
 
-    return 0;
+        return 0;
+    }
+    catch(Exceptions::Exception* e)
+    {
+        std::cout << e->ToString();
+        delete e;
+        return 1;
+    }
 }
