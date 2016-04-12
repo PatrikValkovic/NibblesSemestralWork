@@ -10,24 +10,25 @@ namespace Exceptions
 {
     class Exception : public std::exception
     {
+    private:
+        string Message;
+        int Line;
+        Exception* InException;
+        string FileName;
+    public:
         virtual ~Exception();
         Exception();
         Exception(string Message);
         Exception(string Message, int Line);
         Exception(string Message, int Line, string FileName);
         Exception(string Message, int Line, Exception* InnerException);
-        Exception(string Message, int Line, string FunctionName, Exception* InnerException);
+        Exception(string ErrorMessage, int Line, string File, Exception* InnerException);
 
-        friend ostream& operator<<(ostream& os, const Exception& e);
-
-    protected:
         virtual string GetType() const;
-    private:
-        string Message;
-        int Line;
-        Exception* InnerException;
-        string FileName;
+
+        string ToString() const;
     };
 }
+
 
 #endif //CERVISEMESTRALKA_EXCEPTION_H
