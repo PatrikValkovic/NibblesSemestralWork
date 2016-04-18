@@ -2,13 +2,17 @@
 #define CERVISEMESTRALKA_MENUABSTRACTVIEWMODEL_H
 #include <string>
 #include <vector>
-
+#include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class MenuAbstractViewModel
+    class MenuAbstractViewModel : public ViewModelAbstractClass
     {
     public:
+        MenuAbstractViewModel(Translate::TranslateEngine* Translate)
+                : ViewModelAbstractClass(Translate)
+        { }
+
         struct MenuEntry
         {
             int index;

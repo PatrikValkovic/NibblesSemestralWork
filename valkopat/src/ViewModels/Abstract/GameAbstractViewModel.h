@@ -1,11 +1,16 @@
 #ifndef CERVISEMESTRALKA_GAMEABSTRACTVIEWMODEL_H
 #define CERVISEMESTRALKA_GAMEABSTRACTVIEWMODEL_H
+#include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class GameAbstractViewModel
+    class GameAbstractViewModel : public ViewModelAbstractClass
     {
     public:
+        GameAbstractViewModel(Translate::TranslateEngine* Translate)
+                : ViewModelAbstractClass(Translate)
+        { }
+
         virtual ~GameAbstractViewModel()
         { }
     };

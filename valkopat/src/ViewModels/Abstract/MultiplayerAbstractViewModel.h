@@ -1,11 +1,16 @@
 #ifndef CERVISEMESTRALKA_MULTIPLAYERABSTRACTVIEWMODEL_H
 #define CERVISEMESTRALKA_MULTIPLAYERABSTRACTVIEWMODEL_H
+#include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class MultiplayerMenuAbstractViewModel
+    class MultiplayerMenuAbstractViewModel : public ViewModelAbstractClass
     {
     public:
+        MultiplayerMenuAbstractViewModel(Translate::TranslateEngine* Translate)
+                : ViewModelAbstractClass(Translate)
+        { }
+
         virtual ~MultiplayerMenuAbstractViewModel()
         { }
     };

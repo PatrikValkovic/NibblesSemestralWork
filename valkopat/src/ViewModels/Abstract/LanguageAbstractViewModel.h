@@ -2,12 +2,17 @@
 #define CERVISEMESTRALKA_LANGUAGEABSTRACTVIEWMODEL_H
 #include <string>
 #include <vector>
+#include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class LanguageAbstractViewModel
+    class LanguageAbstractViewModel : public ViewModelAbstractClass
     {
     public:
+        LanguageAbstractViewModel(Translate::TranslateEngine* Translate)
+                : ViewModelAbstractClass(Translate)
+        { }
+
         struct LanguageEntry
         {
             int Index;

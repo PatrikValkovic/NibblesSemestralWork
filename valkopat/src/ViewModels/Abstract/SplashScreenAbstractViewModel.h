@@ -1,11 +1,16 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENABSTRACTVIEWMODEL_H
 #define CERVISEMESTRALKA_SPLASHSCREENABSTRACTVIEWMODEL_H
+#include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class SplashScreenAbstractViewModel
+    class SplashScreenAbstractViewModel : public ViewModelAbstractClass
     {
     public:
+        SplashScreenAbstractViewModel(Translate::TranslateEngine* Translate)
+                : ViewModelAbstractClass(Translate)
+        { }
+
         virtual ~SplashScreenAbstractViewModel()
         { }
 
