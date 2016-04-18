@@ -11,8 +11,7 @@ int main()
         using namespace ViewModel;
         ViewModelChooser Chooser;
         BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
-        Translate::TranslateEngine engine;
-        engine.SetLanguage("asdf");
+        Translate::TranslateEngine Translate;
         RenderEngine->init();
 
         Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);

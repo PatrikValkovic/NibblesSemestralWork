@@ -5,6 +5,7 @@ Translate::TranslateEngine::TranslateEngine(string DefaultLanguage)
 {
     this->TranslationFiles = GetTranslateFiles();
     this->Aviable = this->ReadHeaders(this->TranslationFiles);
+    this->SetLanguage(DefaultLanguage);
 }
 
 string Translate::TranslateEngine::GetTranslation(string OriginalName) const
@@ -34,10 +35,18 @@ vector<string> Translate::TranslateEngine::GetTranslateFiles() const
 
 void Translate::TranslateEngine::SetLanguage(string CodeOfLanguage)
 {
-    //TODO
+    vector<AviableTranslations>::iterator Moving = this->Aviable.begin();
+    vector<AviableTranslations>::iterator End = this->Aviable.end();
+    for(;Moving!=End;Moving++)
+        if(Moving->Shortcut == CodeOfLanguage)
+            return LoadTranslation(Moving->File);
+
+    throw new Exceptions::InvalidArgumentException(
+            "Translation for language " + CodeOfLanguage + " wasnt found",__LINE__,__FILE__);
 }
 
-vector<Translate::TranslateEngine::AviableTranslations> Translate::TranslateEngine::ReadHeaders(vector<string> Files)
+vector<Translate::TranslateEngine::AviableTranslations>
+    Translate::TranslateEngine::ReadHeaders(vector<string> Files) const
 {
     vector<AviableTranslations> Translations;
     vector<string>::iterator Moving = Files.begin();
@@ -57,6 +66,27 @@ vector<Translate::TranslateEngine::AviableTranslations> Translate::TranslateEngi
 
     return Translations;
 }
+
+void Translate::TranslateEngine::LoadTranslation(string Filename)
+{
+    ifstream File(Filename);
+    string Line;
+    File.ignore(0xFFFFFFFF,'\n');
+    while(!getline(File,Line))
+    {
+        unsigned long Position = Line.find(':');
+
+        if(Position==string::npos)
+            throw new Exceptions::Exception("Invalid format of translate file " + Filename,__LINE__,__FILE__);
+
+        string Key = Line.substr(0,Position);
+        string Translation = Line.substr(Position+1);
+        this->TranslationForCurrentLanguage.insert(this->TranslationForCurrentLanguage.begin(),
+                                                   pair<string,string>(Key,Translation));
+    }
+}
+
+
 
 
 

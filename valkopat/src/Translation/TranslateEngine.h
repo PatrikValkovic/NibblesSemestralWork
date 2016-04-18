@@ -16,7 +16,7 @@ namespace Translate
     class TranslateEngine
     {
     public:
-        TranslateEngine(string DefaultLanguage = "cs");
+        TranslateEngine(string DefaultLanguage = "cz");
 
         string GetTranslation(string OriginalName) const;
 
@@ -38,7 +38,8 @@ namespace Translate
         vector<AviableTranslations> Aviable;
 
         vector<string> GetTranslateFiles() const;
-        vector<AviableTranslations> ReadHeaders(vector<string> Files);
+        vector<AviableTranslations> ReadHeaders(vector<string> Files) const;
+        void LoadTranslation(string Filename);
     };
 }
 
