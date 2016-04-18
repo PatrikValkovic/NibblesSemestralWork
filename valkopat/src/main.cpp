@@ -2,6 +2,7 @@
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
 #include "Exceptions/Exception.h"
+#include "Translation/TranslateEngine.h"
 
 int main()
 {
@@ -10,6 +11,8 @@ int main()
         using namespace ViewModel;
         ViewModelChooser Chooser;
         BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
+        Translate::TranslateEngine engine;
+        engine.SetLanguage("asdf");
         RenderEngine->init();
 
         Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);

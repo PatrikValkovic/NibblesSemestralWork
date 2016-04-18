@@ -38,6 +38,10 @@ std::vector<ViewModel::BaseViewModel*> ViewModel::ViewModelChooser::PrepareViewM
 #ifdef USE_NCURSES
     ViewModels.push_back(new NCursesViewModel());
 #endif
+
+    if(ViewModels.size()==0)
+        throw new Exceptions::Exception("No ViewModel aviable",__LINE__,__FILE__);
+
     return ViewModels;
 }
 
