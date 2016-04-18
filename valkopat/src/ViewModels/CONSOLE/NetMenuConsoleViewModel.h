@@ -7,7 +7,8 @@ namespace ViewModel
 {
     class NetMenuConsoleViewModel : public NetMenuAbstractViewModel
     {
-
+    public:
+        NetMenuConsoleViewModel(Translate::TranslateEngine* Translate);
     };
 }
 

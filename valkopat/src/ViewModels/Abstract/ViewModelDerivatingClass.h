@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_VIEWMODELDERIVATINGCLASS_H
 #define CERVISEMESTRALKA_VIEWMODELDERIVATINGCLASS_H
-#include "ViewModelDerivatingClass.h"
+#include "../../Translation/TranslateEngine.h"
 
 
 namespace ViewModel

@@ -6,4 +6,9 @@ int ViewModel::LanguageConsoleViewModel::ShowMenu(std::vector<ViewModel::Languag
     return 0;
 }
 
+ViewModel::LanguageConsoleViewModel::LanguageConsoleViewModel(Translate::TranslateEngine* Translate)
+        : LanguageAbstractViewModel(Translate)
+{ }
+
+
 #endif

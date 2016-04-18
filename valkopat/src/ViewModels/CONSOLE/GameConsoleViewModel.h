@@ -7,7 +7,8 @@ namespace ViewModel
 {
     class GameConsoleViewModel : public GameAbstractViewModel
     {
-
+    public:
+        GameConsoleViewModel(Translate::TranslateEngine* Translate);
     };
 }
 

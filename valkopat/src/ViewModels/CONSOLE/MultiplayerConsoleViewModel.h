@@ -9,7 +9,7 @@ namespace ViewModel
     class MultiplayerConsoleViewModel : public MultiplayerMenuAbstractViewModel
     {
     public:
-
+        MultiplayerConsoleViewModel(Translate::TranslateEngine* Translate);
     };
 }
 

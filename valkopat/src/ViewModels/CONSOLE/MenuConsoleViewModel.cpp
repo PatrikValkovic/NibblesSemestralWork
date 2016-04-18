@@ -7,4 +7,10 @@ int ViewModel::MenuConsoleViewModel::ShowMenu(std::vector<ViewModel::MenuAbstrac
     //TODO
     return 0;
 }
+
+ViewModel::MenuConsoleViewModel::MenuConsoleViewModel(Translate::TranslateEngine* Translate)
+        : MenuAbstractViewModel(Translate)
+{ }
+
+
 #endif
