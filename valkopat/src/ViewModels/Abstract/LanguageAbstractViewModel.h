@@ -9,7 +9,7 @@ namespace ViewModel
     class LanguageAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        LanguageAbstractViewModel(Translate::TranslateEngine* Translate)
+        LanguageAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 

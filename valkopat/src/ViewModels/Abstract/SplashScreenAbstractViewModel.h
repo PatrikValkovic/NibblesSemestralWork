@@ -7,7 +7,7 @@ namespace ViewModel
     class SplashScreenAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        SplashScreenAbstractViewModel(Translate::TranslateEngine* Translate)
+        SplashScreenAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 

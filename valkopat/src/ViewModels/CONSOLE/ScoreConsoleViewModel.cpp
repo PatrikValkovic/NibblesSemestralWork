@@ -1,7 +1,7 @@
 #include "ScoreConsoleViewModel.h"
 #ifdef USE_CONSOLE
 
-ViewModel::ScoreConsoleViewModel::ScoreConsoleViewModel(Translate::TranslateEngine* Translate)
+ViewModel::ScoreConsoleViewModel::ScoreConsoleViewModel(const Translate::TranslateEngine* Translate)
         : ScoreAbstractViewModel(Translate)
 { }
 

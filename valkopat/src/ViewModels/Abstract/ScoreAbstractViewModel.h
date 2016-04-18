@@ -7,7 +7,7 @@ namespace ViewModel
     class ScoreAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        ScoreAbstractViewModel(Translate::TranslateEngine* Translate)
+        ScoreAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 

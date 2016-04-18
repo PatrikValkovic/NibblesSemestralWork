@@ -1,7 +1,7 @@
 #include "SingpleplayerMenuConsoleViewModel.h"
 #ifdef USE_CONSOLE
 
-ViewModel::SingpleplayerMenuConsoleViewModel::SingpleplayerMenuConsoleViewModel(Translate::TranslateEngine* Translate)
+ViewModel::SingpleplayerMenuConsoleViewModel::SingpleplayerMenuConsoleViewModel(const Translate::TranslateEngine* Translate)
         : SingleplayerMenuAbstractViewModel(Translate)
 { }
 

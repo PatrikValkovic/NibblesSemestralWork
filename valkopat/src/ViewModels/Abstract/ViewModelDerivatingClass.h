@@ -8,7 +8,7 @@ namespace ViewModel
     class ViewModelAbstractClass
     {
     public:
-        ViewModelAbstractClass(Translate::TranslateEngine* Translate)
+        ViewModelAbstractClass(const Translate::TranslateEngine* Translate)
                 : Translation(Translate)
         { }
 
@@ -16,7 +16,7 @@ namespace ViewModel
         { }
 
     private:
-        Translate::TranslateEngine* Translation;
+        const Translate::TranslateEngine* Translation;
     };
 }
 

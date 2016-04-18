@@ -1,7 +1,7 @@
 #include "GameConsoleViewModel.h"
 #ifdef USE_CONSOLE
 
-ViewModel::GameConsoleViewModel::GameConsoleViewModel(Translate::TranslateEngine* Translate)
+ViewModel::GameConsoleViewModel::GameConsoleViewModel(const Translate::TranslateEngine* Translate)
         : GameAbstractViewModel(Translate)
 { }
 

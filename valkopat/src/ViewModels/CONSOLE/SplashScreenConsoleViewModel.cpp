@@ -83,7 +83,7 @@ void ViewModel::SplashScreenConsoleViewModel::ShowSplashScreen()
     cout << "                                       ``                                           " << endl;
 }
 
-ViewModel::SplashScreenConsoleViewModel::SplashScreenConsoleViewModel(Translate::TranslateEngine* Translate)
+ViewModel::SplashScreenConsoleViewModel::SplashScreenConsoleViewModel(const Translate::TranslateEngine* Translate)
         : SplashScreenAbstractViewModel(Translate)
 { }
 

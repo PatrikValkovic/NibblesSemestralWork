@@ -7,7 +7,7 @@ namespace ViewModel
     class NetMenuAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        NetMenuAbstractViewModel(Translate::TranslateEngine* Translate)
+        NetMenuAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 

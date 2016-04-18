@@ -7,7 +7,7 @@ namespace ViewModel
     class SingpleplayerMenuConsoleViewModel : public SingleplayerMenuAbstractViewModel
     {
     public:
-        SingpleplayerMenuConsoleViewModel(Translate::TranslateEngine* Translate);
+        SingpleplayerMenuConsoleViewModel(const Translate::TranslateEngine* Translate);
     };
 }
 #endif

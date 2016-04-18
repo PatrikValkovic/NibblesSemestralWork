@@ -8,14 +8,14 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
 
 void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    SplashScren = new SplashScreenConsoleViewModel();
-    Menu = new MenuConsoleViewModel();
-    Language = new LanguageConsoleViewModel();
-    Multiplayer = new MultiplayerConsoleViewModel();
-    NetMenu = new NetMenuConsoleViewModel();
-    Singpleplayer = new SingpleplayerMenuConsoleViewModel();
-    Game = new GameConsoleViewModel();
-    Score = new ScoreConsoleViewModel();
+    SplashScren = new SplashScreenConsoleViewModel(Translate);
+    Menu = new MenuConsoleViewModel(Translate);
+    Language = new LanguageConsoleViewModel(Translate);
+    Multiplayer = new MultiplayerConsoleViewModel(Translate);
+    NetMenu = new NetMenuConsoleViewModel(Translate);
+    Singpleplayer = new SingpleplayerMenuConsoleViewModel(Translate);
+    Game = new GameConsoleViewModel(Translate);
+    Score = new ScoreConsoleViewModel(Translate);
 }
 
 ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
