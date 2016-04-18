@@ -20,7 +20,7 @@ namespace Translate
 
         string GetTranslation(string OriginalName) const;
 
-        vector<string> GetAviablesLanguages() const;
+        map<string,string> GetAviablesLanguages() const;
 
         void SetLanguage(string CodeOfLanguage);
 
