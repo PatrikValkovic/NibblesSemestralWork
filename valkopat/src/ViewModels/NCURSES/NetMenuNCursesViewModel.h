@@ -5,9 +5,10 @@
 
 namespace ViewModel
 {
-    class NetMenuNCursesViewModel : public NetMenuAbstractViewModel
+    class NetMenuNCursesVIewModel : public NetMenuAbstractViewModel
     {
-
+    public:
+        NetMenuNCursesVIewModel(const Translate::TranslateEngine* Translation);
     };
 }
 

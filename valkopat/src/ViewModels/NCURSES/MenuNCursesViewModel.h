@@ -9,6 +9,7 @@ namespace ViewModel
     class MenuNCursesViewModel : public MenuAbstractViewModel
     {
     public:
+        MenuNCursesViewModel(const Translate::TranslateEngine* Translation);
         virtual int ShowMenu(std::vector<MenuEntry>);
     };
 }

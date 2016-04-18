@@ -3,3 +3,8 @@
 
 
 #endif
+
+ViewModel::GameNCursesViewModel::GameNCursesViewModel(const Translate::TranslateEngine* Translation)
+        : GameAbstractViewModel(Translation)
+{ }
+
