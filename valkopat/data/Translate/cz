@@ -1,4 +1,13 @@
 cz:Čeština
 WhoMakeIt:Vytvořeno Patrikem Valkovičem
-DateOfCreation:Vytvořeno v letním semestru 2016
-Faculty:České vysoké učení technické v Praze; Fakulta informačních technologií
+DateOfCreation:letní semestr 2016
+HightSchool:České vysoké učení technické v Praze
+Faculty:Fakulta informačních technologií
+ChangeLangaugeMenuEntry:Změna jazyka
+NetGameMenuEntry:Začít hrát po síti
+SingleplayerMenuEntry:Hrát proti počítači
+MultiplayerMenuEntry:Hra více hráčů
+ChangeLanguageMenuEntry:Změna jazyka
+EndMenuEntry:Ukončit program
+ChoiceFromUser:Vaše volba
+WrongEntry:Špatná volba, prosím opakujte akci

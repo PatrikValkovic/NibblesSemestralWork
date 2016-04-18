@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_MENUGAMESTATE_H
 #define CERVISEMESTRALKA_MENUGAMESTATE_H
+#include <algorithm>
 #include "../ViewModels/Abstract/BaseViewModel.h"
 #include "AbstractGameState.h"
 
@@ -20,6 +21,8 @@ namespace GameState
         NetGameState* Net;
         EndState* End;
         ChangeLanguageState* Language;
+
+        void FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu);
     };
 }
 
