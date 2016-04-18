@@ -6,7 +6,7 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
     return "SDL";
 }
 
-void ViewModel::SDLViewModel::init()
+void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
 {
     //TODO
 }

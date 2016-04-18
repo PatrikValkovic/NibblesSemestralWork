@@ -6,7 +6,7 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
     return "Console";
 }
 
-void ViewModel::ConsoleViewModel::init()
+void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Translate)
 {
     SplashScren = new SplashScreenConsoleViewModel();
     Menu = new MenuConsoleViewModel();

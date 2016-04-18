@@ -6,7 +6,7 @@ const char* ViewModel::NCursesViewModel::GetNameofViewModel()
     return "NCurses";
 }
 
-void ViewModel::NCursesViewModel::init()
+void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Translate)
 {
     //TODO
 }

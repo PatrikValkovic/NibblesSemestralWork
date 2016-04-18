@@ -20,7 +20,7 @@ namespace ViewModel
     public:
         virtual ~ConsoleViewModel();
         virtual const char* GetNameofViewModel();
-        virtual void init();
+        virtual void init(const Translate::TranslateEngine* Translate);
 
         virtual SplashScreenAbstractViewModel* SplashScreenModel();
         virtual MenuAbstractViewModel* MenuModel();

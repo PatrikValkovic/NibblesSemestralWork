@@ -9,10 +9,11 @@ int main()
     try
     {
         using namespace ViewModel;
-        ViewModelChooser Chooser;
-        BaseViewModel* RenderEngine = Chooser.ChooseViewModel();
-        Translate::TranslateEngine Translate;
-        RenderEngine->init();
+        ViewModelChooser* ChoosingOfViewModel = new ViewModelChooser();
+        BaseViewModel* RenderEngine = ChoosingOfViewModel->ChooseViewModel();
+        delete ChoosingOfViewModel;
+        Translate::TranslateEngine* Translation = new Translate::TranslateEngine();
+        RenderEngine->init(Translation);
 
         Game::NibbleGame* game = new Game::NibbleGame(RenderEngine);
         game->init();
@@ -20,6 +21,7 @@ int main()
 
         delete game;
         delete RenderEngine;
+        delete Translation;
 
         return 0;
     }

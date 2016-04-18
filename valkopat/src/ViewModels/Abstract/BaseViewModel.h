@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 
+#include "../../Translation/TranslateEngine.h"
 #include "SplashScreenAbstractViewModel.h"
 #include "MenuAbstractViewModel.h"
 #include "LanguageAbstractViewModel.h"
@@ -21,7 +22,7 @@ namespace ViewModel
         { }
 
         virtual const char* GetNameofViewModel() = 0;
-        virtual void init() = 0;
+        virtual void init(const Translate::TranslateEngine* Translate) = 0;
 
         virtual SplashScreenAbstractViewModel* SplashScreenModel() = 0;
         virtual MenuAbstractViewModel* MenuModel() = 0;
@@ -32,6 +33,7 @@ namespace ViewModel
         virtual GameAbstractViewModel* GameModel() = 0;
         virtual ScoreAbstractViewModel* ScoreModel() = 0;
     };
+
 }
 
 #endif //CERVISEMESTRALKA_BASEVIEWMODEL_H

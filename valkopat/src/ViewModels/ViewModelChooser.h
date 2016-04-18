@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Abstract/BaseViewModel.h"
+#include "../Translation/TranslateEngine.h"
 #include "../Exceptions/Exception.h"
 #ifdef USE_CONSOLE
 #include "CONSOLE/ConsoleViewModel.h"
