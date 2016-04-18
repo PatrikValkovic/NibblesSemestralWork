@@ -72,7 +72,7 @@ void Translate::TranslateEngine::LoadTranslation(string Filename)
     ifstream File(Filename);
     string Line;
     File.ignore(0xFFFFFFFF, '\n');
-    while (!getline(File, Line))
+    while (getline(File, Line))
     {
         unsigned long Position = Line.find(':');
 
