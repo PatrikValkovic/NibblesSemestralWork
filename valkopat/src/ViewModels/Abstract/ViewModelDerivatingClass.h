@@ -15,7 +15,7 @@ namespace ViewModel
         virtual ~ViewModelAbstractClass()
         { }
 
-    private:
+    protected:
         const Translate::TranslateEngine* Translation;
     };
 }
