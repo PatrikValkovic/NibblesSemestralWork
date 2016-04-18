@@ -6,4 +6,9 @@ int ViewModel::LanguageSDLViewModel::ShowMenu(std::vector<ViewModel::LanguageAbs
     return 0;
 }
 
+ViewModel::LanguageSDLViewModel::LanguageSDLViewModel(const Translate::TranslateEngine* Translation)
+        : LanguageAbstractViewModel(Translation)
+{ }
+
+
 #endif

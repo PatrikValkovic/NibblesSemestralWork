@@ -10,6 +10,7 @@ namespace ViewModel
     class LanguageSDLViewModel : public LanguageAbstractViewModel
     {
     public:
+        LanguageSDLViewModel(const Translate::TranslateEngine* Translation);
         virtual int ShowMenu(std::vector<LanguageEntry>);
     };
 }

@@ -8,7 +8,8 @@ namespace ViewModel
 {
     class ScoreSDLViewModel : ScoreAbstractViewModel
     {
-
+    public:
+        ScoreSDLViewModel(const Translate::TranslateEngine* Translation);
     };
 }
 

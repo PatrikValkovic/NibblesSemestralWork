@@ -6,7 +6,8 @@ namespace ViewModel
 {
     class SingpleplayerMenuSDLViewModel : public SingleplayerMenuAbstractViewModel
     {
-
+    public:
+        SingpleplayerMenuSDLViewModel(const Translate::TranslateEngine* Translation);
     };
 }
 #endif
