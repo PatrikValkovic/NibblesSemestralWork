@@ -1,6 +1,8 @@
 #ifndef CERVISEMESTRALKA_CHANGELANGUAGESTATE_H
 #define CERVISEMESTRALKA_CHANGELANGUAGESTATE_H
+#include <algorithm>
 #include "AbstractGameState.h"
+
 
 namespace GameState
 {

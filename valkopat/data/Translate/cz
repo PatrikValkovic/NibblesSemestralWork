@@ -7,9 +7,11 @@ ChangeLangaugeMenuEntry:Změna jazyka
 NetGameMenuEntry:Začít hrát po síti
 SingleplayerMenuEntry:Hrát proti počítači
 MultiplayerMenuEntry:Hra více hráčů
-ChangeLanguageMenuEntry:Změna jazyka
 EndMenuEntry:Ukončit program
 ChoiceFromUser:Vaše volba
 WrongEntry:Špatná volba, prosím opakujte akci
 WillBeExited:Program bude ukončen
 LastWord:Nashledanou
+LabelActualActivatedLanguage:Aktuálně používaný jazyk
+FromLanguageBackToMenu:Návrat zpět do menu
+ChangeLanguageTo:Změnit jazyk na

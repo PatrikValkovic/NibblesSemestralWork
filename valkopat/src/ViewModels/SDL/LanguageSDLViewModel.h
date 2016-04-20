@@ -11,7 +11,10 @@ namespace ViewModel
     {
     public:
         LanguageSDLViewModel(const Translate::TranslateEngine* Translation);
-        virtual int ShowMenu(std::vector<LanguageEntry>);
+
+        virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const;
+
+        virtual void ShowInfo() const;
     };
 }
 #endif

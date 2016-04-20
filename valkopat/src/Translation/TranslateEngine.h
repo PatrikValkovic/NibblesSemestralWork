@@ -24,6 +24,8 @@ namespace Translate
 
         void SetLanguage(string CodeOfLanguage);
 
+        string GetActualLanguage() const;
+
     private:
         struct AviableTranslations
         {

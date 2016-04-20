@@ -39,7 +39,11 @@ void Translate::TranslateEngine::SetLanguage(string CodeOfLanguage)
     vector<AviableTranslations>::iterator End = this->Aviable.end();
     for (; Moving != End; Moving++)
         if (Moving->Shortcut == CodeOfLanguage)
-            return LoadTranslation(Moving->File);
+        {
+            LoadTranslation(Moving->File);
+            this->CurrentLangauge = CodeOfLanguage;
+            return;
+        }
 
     throw new Exceptions::InvalidArgumentException(
             "Translation for language " + CodeOfLanguage + " wasnt found", __LINE__, __FILE__);
@@ -71,7 +75,8 @@ void Translate::TranslateEngine::LoadTranslation(string Filename)
 {
     ifstream File(Filename);
     string Line;
-    File.ignore(0xFFFFFFFF, '\n');
+    this->TranslationForCurrentLanguage.clear();
+
     while (getline(File, Line))
     {
         unsigned long Position = Line.find(':');
@@ -94,6 +99,13 @@ map<string, string> Translate::TranslateEngine::GetAviablesLanguages() const
         Languages.insert(Languages.begin(), pair<string, string>(Moving->Shortcut, Moving->LanguageName));
     return Languages;
 }
+
+string Translate::TranslateEngine::GetActualLanguage() const
+{
+    return this->GetTranslation(this->CurrentLangauge);
+}
+
+
 
 
 
