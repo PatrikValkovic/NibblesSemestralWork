@@ -11,3 +11,5 @@ ChangeLanguageMenuEntry:Změna jazyka
 EndMenuEntry:Ukončit program
 ChoiceFromUser:Vaše volba
 WrongEntry:Špatná volba, prosím opakujte akci
+WillBeExited:Program bude ukončen
+LastWord:Nashledanou
