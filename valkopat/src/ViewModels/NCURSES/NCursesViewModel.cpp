@@ -59,6 +59,12 @@ ViewModel::ScoreAbstractViewModel* ViewModel::NCursesViewModel::ScoreModel()
     return NULL;
 }
 
+ViewModel::QuitAbstractViewModel* ViewModel::NCursesViewModel::QuitModel()
+{
+    //TODO
+    return NULL;
+}
+
 
 #endif
 

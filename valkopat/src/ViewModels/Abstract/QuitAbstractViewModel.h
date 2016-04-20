@@ -7,7 +7,7 @@ namespace ViewModel
     class QuitAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        QuitAbstractViewModel(Translate::TranslateEngine* Translation)
+        QuitAbstractViewModel(const Translate::TranslateEngine* Translation)
                 : ViewModelAbstractClass(Translation)
         { }
 

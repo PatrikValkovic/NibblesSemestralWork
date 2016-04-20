@@ -9,7 +9,7 @@ namespace ViewModel
     class QuitConsoleViewModel : public QuitAbstractViewModel
     {
     public:
-        QuitConsoleViewModel(Translate::TranslateEngine* Translation);
+        QuitConsoleViewModel(const Translate::TranslateEngine* Translation);
 
         virtual void ShowEndScreen();
     };

@@ -1,7 +1,7 @@
 #include "QuitSDLViewModel.h"
 #ifdef USE_SDL
 
-ViewModel::QuitSDLViewModel::QuitSDLViewModel(Translate::TranslateEngine* Translate)
+ViewModel::QuitSDLViewModel::QuitSDLViewModel(const Translate::TranslateEngine* Translate)
         : QuitAbstractViewModel(Translate)
 { }
 

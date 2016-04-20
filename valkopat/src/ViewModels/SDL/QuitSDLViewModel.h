@@ -8,7 +8,7 @@ namespace ViewModel
     class QuitSDLViewModel : public QuitAbstractViewModel
     {
     public:
-        QuitSDLViewModel(Translate::TranslateEngine* Translate);
+        QuitSDLViewModel(const Translate::TranslateEngine* Translate);
 
         virtual void ShowEndScreen();
     };

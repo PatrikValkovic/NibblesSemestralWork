@@ -16,6 +16,7 @@ void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Transla
     Singpleplayer = new SingpleplayerMenuConsoleViewModel(Translate);
     Game = new GameConsoleViewModel(Translate);
     Score = new ScoreConsoleViewModel(Translate);
+    Quit = new QuitConsoleViewModel(Translate);
 }
 
 ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
@@ -58,6 +59,11 @@ ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
     return this->Score;
 }
 
+ViewModel::QuitAbstractViewModel* ViewModel::ConsoleViewModel::QuitModel()
+{
+    return this->Quit;
+}
+
 ViewModel::ConsoleViewModel::~ConsoleViewModel()
 {
     delete SplashScren;
@@ -69,6 +75,8 @@ ViewModel::ConsoleViewModel::~ConsoleViewModel()
     delete Game;
     delete Score;
 }
+
+
 
 
 #endif

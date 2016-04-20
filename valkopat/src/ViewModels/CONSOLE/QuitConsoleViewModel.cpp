@@ -1,7 +1,7 @@
 #include "QuitConsoleViewModel.h"
 #ifdef USE_CONSOLE
 
-ViewModel::QuitConsoleViewModel::QuitConsoleViewModel(Translate::TranslateEngine* Translation)
+ViewModel::QuitConsoleViewModel::QuitConsoleViewModel(const Translate::TranslateEngine* Translation)
     : QuitAbstractViewModel(Translation)
 {}
 

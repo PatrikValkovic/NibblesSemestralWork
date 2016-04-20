@@ -59,6 +59,12 @@ ViewModel::ScoreAbstractViewModel* ViewModel::SDLViewModel::ScoreModel()
     return NULL;
 }
 
+ViewModel::QuitAbstractViewModel* ViewModel::SDLViewModel::QuitModel()
+{
+    //TODO
+    return NULL;
+}
+
 
 #endif
 

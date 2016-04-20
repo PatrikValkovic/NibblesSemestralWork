@@ -20,6 +20,7 @@ namespace ViewModel
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
+        virtual QuitAbstractViewModel* QuitModel();
     };
 }
 

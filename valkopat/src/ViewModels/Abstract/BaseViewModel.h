@@ -12,6 +12,7 @@
 #include "SingpleplayerAbstractViewModel.h"
 #include "GameAbstractViewModel.h"
 #include "ScoreAbstractViewModel.h"
+#include "QuitAbstractViewModel.h"
 
 namespace ViewModel
 {
@@ -32,6 +33,7 @@ namespace ViewModel
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel() = 0;
         virtual GameAbstractViewModel* GameModel() = 0;
         virtual ScoreAbstractViewModel* ScoreModel() = 0;
+        virtual QuitAbstractViewModel* QuitModel() = 0;
     };
 
 }

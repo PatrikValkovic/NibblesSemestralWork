@@ -12,6 +12,7 @@
 #include "SingpleplayerMenuConsoleViewModel.h"
 #include "GameConsoleViewModel.h"
 #include "ScoreConsoleViewModel.h"
+#include "QuitConsoleViewModel.h"
 
 namespace ViewModel
 {
@@ -30,6 +31,7 @@ namespace ViewModel
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
+        virtual QuitAbstractViewModel* QuitModel();
     private:
         SplashScreenAbstractViewModel* SplashScren;
         MenuAbstractViewModel* Menu;
@@ -39,6 +41,7 @@ namespace ViewModel
         SingleplayerMenuAbstractViewModel* Singpleplayer;
         GameAbstractViewModel* Game;
         ScoreAbstractViewModel* Score;
+        QuitAbstractViewModel* Quit;
     };
 }
 
