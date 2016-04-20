@@ -22,7 +22,7 @@ namespace GameState
         EndState* End;
         ChangeLanguageState* Language;
 
-        void FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu);
+        map<int,AbstractGameState*> FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu);
     };
 }
 
