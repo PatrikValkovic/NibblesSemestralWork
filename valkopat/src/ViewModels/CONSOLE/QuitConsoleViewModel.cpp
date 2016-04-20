@@ -7,7 +7,9 @@ ViewModel::QuitConsoleViewModel::QuitConsoleViewModel(const Translate::Translate
 
 void ViewModel::QuitConsoleViewModel::ShowEndScreen()
 {
-    //TODO
+    using namespace std;
+    cout << Translation->GetTranslation("WillBeExited") << endl;
+    cout << Translation->GetTranslation("LastWord") << endl;
 }
 
 

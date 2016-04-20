@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_QUITCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_QUITCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <iostream>
 #include "../Abstract/QuitAbstractViewModel.h"
 
 
