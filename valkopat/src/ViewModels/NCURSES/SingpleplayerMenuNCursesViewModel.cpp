@@ -6,6 +6,24 @@ ViewModel::SingpleplayerMenuNCursesViewModel::SingpleplayerMenuNCursesViewModel(
         : SingleplayerMenuAbstractViewModel(Translation)
 { }
 
+std::string ViewModel::SingpleplayerMenuNCursesViewModel::NameOfPlayer()
+{
+    //TODO
+    return "";
+}
+
+int ViewModel::SingpleplayerMenuNCursesViewModel::CountOfAI()
+{
+    //TODO
+    return 0;
+}
+
+int ViewModel::SingpleplayerMenuNCursesViewModel::Level()
+{
+    //TODO
+    return 0;
+}
+
 
 #endif
 

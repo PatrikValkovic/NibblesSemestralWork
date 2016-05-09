@@ -1,20 +1,23 @@
 #ifndef CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
 #define CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
-#include "../Exceptions/OutOfRangeException.h"
 #include <vector>
+#include <map>
+#include <string>
+#include "../Exceptions/OutOfRangeException.h"
 #include "PlayGround.h"
+
+using namespace std;
 
 namespace Game
 {
     class PlaygroundFactory
     {
     public:
-        PlayGround* GetLevel(int Level);
-        static int GetCountOfAviableLevels();
+        static PlayGround* GetLevel(int Level);
+        static map<int,string> GetCountOfAviableLevels();
     private:
-        static const int CountOfLevels = 2;
-        PlayGround* FirstLevel();
-        PlayGround* SecondLevel();
+        static PlayGround* FirstLevel();
+        static PlayGround* SecondLevel();
     };
 }
 

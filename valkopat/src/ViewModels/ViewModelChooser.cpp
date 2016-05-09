@@ -12,6 +12,11 @@ ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel()
     int Choosed = -1;
     do
     {
+        if(!cin)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        }
         for (int a = 0; a < (int) ViewModels.size(); a++)
             cout << a + 1 << " - Use " << ViewModels[a]->GetNameofViewModel() << endl;
         cout << "Your choose: ";

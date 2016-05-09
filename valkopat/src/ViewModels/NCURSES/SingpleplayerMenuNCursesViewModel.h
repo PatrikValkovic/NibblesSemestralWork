@@ -8,6 +8,10 @@ namespace ViewModel
     {
     public:
         SingpleplayerMenuNCursesViewModel(const Translate::TranslateEngine* Translation);
+
+        virtual std::string NameOfPlayer();
+        virtual int CountOfAI();
+        virtual int Level() ;
     };
 }
 #endif

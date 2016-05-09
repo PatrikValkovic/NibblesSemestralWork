@@ -22,3 +22,8 @@ int Game::PlayGround::GetWidth() const
 {
     return Width;
 }
+
+int Game::PlayGround::CountOfStartPositions() const
+{
+    return (int)StartingPositions.size();
+}

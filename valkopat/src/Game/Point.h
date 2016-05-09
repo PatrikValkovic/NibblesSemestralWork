@@ -8,8 +8,6 @@ namespace Game
         int PositionX = 0;
         int PositionY = 0;
     protected:
-        virtual int GetPositionX() { return PositionX; }
-        virtual int GetPositionY() {return PositionY; }
         virtual void SetPositionX(int X) { PositionX = X;}
         virtual void SetPositionY(int Y) { PositionY = Y;}
     public:
@@ -19,6 +17,8 @@ namespace Game
             SetPositionX(X);
             SetPositionY(Y);
         }
+        virtual int GetPositionX() { return PositionX; }
+        virtual int GetPositionY() {return PositionY; }
     };
 }
 #endif //CERVISEMESTRALKA_POINT_H

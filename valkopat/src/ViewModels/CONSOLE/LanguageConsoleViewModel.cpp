@@ -27,6 +27,7 @@ int ViewModel::LanguageConsoleViewModel::ShowMenu(std::map<int,LanguageOverwiew>
         if(!(cin) || Keys.find(UserChoice)==Keys.end())
         {
             cin.clear();
+            cin.ignore();
             cout << Translation->GetTranslation("WrongEntry") << endl;
         }
         else

@@ -1,6 +1,8 @@
 #ifndef CERVISEMESTRALKA_SINGLEPLAYERGAMESTATE_H
 #define CERVISEMESTRALKA_SINGLEPLAYERGAMESTATE_H
 #include "AbstractGameState.h"
+#include "../Game/PlaygroundFactory.h"
+#include "../Game/Worm.h"
 
 namespace GameState
 {

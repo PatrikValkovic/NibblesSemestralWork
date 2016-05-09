@@ -19,7 +19,7 @@ GameState::AbstractGameState* GameState::ChangeLanguageState::run()
     auto End = Languages.end();
     for(;Moving!=End;Moving++)
         LanguagesEntries.insert(pair<int,LanguageAbstractViewModel::LanguageOverwiew>
-                        (Index++,(LanguageAbstractViewModel::LanguageOverwiew){Moving->first,Moving->second}));
+                        (Index++,LanguageAbstractViewModel::LanguageOverwiew{Moving->first,Moving->second}));
     AnotherEntries.insert(pair<int, string>(-1, "FromLanguageBackToMenu"));
 
 

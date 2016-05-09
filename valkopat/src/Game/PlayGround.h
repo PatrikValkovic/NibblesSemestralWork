@@ -31,6 +31,8 @@ namespace Game
 
         StartPosition GetNextStartPosition();
 
+        int CountOfStartPositions() const;
+
         int GetWidth() const;
         int GetHeight() const;
     };

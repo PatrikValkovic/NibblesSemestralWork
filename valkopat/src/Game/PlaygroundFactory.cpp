@@ -53,9 +53,12 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
     return Area;
 }
 
-int Game::PlaygroundFactory::GetCountOfAviableLevels()
+map<int,string> Game::PlaygroundFactory::GetCountOfAviableLevels()
 {
-    return CountOfLevels;
+    map<int,string> Levels;
+    Levels.insert(pair<int,string>(1,"ClearMap"));
+    Levels.insert(pair<int,string>(2,"BorderedMap"));
+    return Levels;
 }
 
 
