@@ -33,9 +33,9 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
     Area->Height = 11;
     Area->Width = 15;
 
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,5),Directions::Right});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,2),Directions::Right});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,8),Directions::Left});
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,5),Directions::Left});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,2),Directions::Left});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,8),Directions::Right});
 
 

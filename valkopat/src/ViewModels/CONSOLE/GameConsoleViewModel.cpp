@@ -22,13 +22,31 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     for(;Moving!=End;Moving++)
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
+    vector<Game::Worm*>::iterator MovingWorm = Worms.begin();
+    vector<Game::Worm*>::iterator EndWorms = Worms.end();
+    for(;MovingWorm!=EndWorms;MovingWorm++)
+    {
+        Game::Worm* RenderingWorm = *MovingWorm;
+        vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
+        for(int a=0;a<Segments.size();a++)
+            Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '+';
+    }
+
     //render it
+    for(int a=0;a<=Playground->GetWidth()+1;a++)
+        cout << '-';
+    cout << endl;
     for(int r=0;r<Playground->GetHeight();r++)
     {
+        cout << '|';
         for (int c = 0; c < Playground->GetWidth(); c++)
             cout << Canvas[r][c];
+        cout << '|';
         cout << endl;
     }
+    for(int a=0;a<=Playground->GetWidth()+1;a++)
+        cout << '-';
+    cout << endl;
 
     delete Playground;
     for_each(Worms.begin(),Worms.end(),[](Game::Worm* X) { delete X; });
