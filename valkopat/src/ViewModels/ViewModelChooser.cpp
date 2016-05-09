@@ -8,9 +8,6 @@ ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel()
     if (ViewModels.size() == 1)
         return ViewModels[0];
 
-    //TODO REMOVE
-    return ViewModels[0];
-
     int Choosed = -1;
     do
     {

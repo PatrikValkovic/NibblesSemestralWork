@@ -7,9 +7,6 @@ ViewModel::SingpleplayerMenuConsoleViewModel::SingpleplayerMenuConsoleViewModel(
 
 int ViewModel::SingpleplayerMenuConsoleViewModel::CountOfAI(int Max)
 {
-    //TODO REMOVE
-    return 1;
-
     using namespace std;
     while(true)
     {
@@ -30,9 +27,6 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::CountOfAI(int Max)
 
 std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
 {
-    //TODO REMOVE
-    return "Kowalsky";
-
     using namespace std;
     while(true)
     {
@@ -52,9 +46,6 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
 
 int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
 {
-    //TODO REMOVE
-    return 2;
-
     using namespace std;
     const map<int, string> Levels = Game::PlaygroundFactory::GetCountOfAviableLevels();
     while(true)

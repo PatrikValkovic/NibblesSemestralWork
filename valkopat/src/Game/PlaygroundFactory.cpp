@@ -19,9 +19,9 @@ Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
     PlayGround* Area = new PlayGround();
     Area->Height = 11;
     Area->Width = 15;
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,5),Directions::Right});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,2),Directions::Right});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,8),Directions::Left});
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,5),Directions::Left});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,2),Directions::Left});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,8),Directions::Right});
 
     return Area;
@@ -49,7 +49,6 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
         Area->Walls.push_back(Point(0,a));
         Area->Walls.push_back(Point(Area->Width-1,a));
     }
-    //Area->Walls.push_back(Point());
 
     return Area;
 }
