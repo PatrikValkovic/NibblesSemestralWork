@@ -2,7 +2,7 @@
 
 Game::PlayGround::StartPosition Game::PlayGround::GetNextStartPosition()
 {
-    if(StartPositionIndex>=StartingPositions.size())
+    if((size_t)StartPositionIndex>=StartingPositions.size())
         throw new Exceptions::OutOfRangeException();
 
     return StartingPositions[StartPositionIndex++];

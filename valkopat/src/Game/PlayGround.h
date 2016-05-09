@@ -4,11 +4,9 @@
 #include "../Exceptions/OutOfRangeException.h"
 #include "Enums.h"
 #include "Point.h"
-#include "PlaygroundFactory.h"
 
 namespace Game
 {
-
     class PlayGround
     {
         friend class PlaygroundFactory;
