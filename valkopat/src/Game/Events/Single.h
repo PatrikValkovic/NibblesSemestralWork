@@ -8,7 +8,12 @@ namespace Game
     {
         class Single : public Abstract
         {
+        public:
+            Single();
 
+            virtual bool HasActions();
+
+            virtual std::vector<Action> GetActions();
         };
     }
 }

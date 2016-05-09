@@ -6,7 +6,7 @@ namespace Game
 {
     namespace Event
     {
-        class ServerSide : public Abstract
+        class ServerSide
         {
 
         };

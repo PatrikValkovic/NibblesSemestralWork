@@ -8,7 +8,12 @@ namespace Game
     {
         class ClientSide : public Abstract
         {
+        public:
+            ClientSide();
 
+            virtual bool HasActions();
+
+            virtual std::vector<Action> GetActions();
         };
     }
 }
