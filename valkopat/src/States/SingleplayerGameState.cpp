@@ -2,6 +2,14 @@
 
 GameState::AbstractGameState* GameState::SingleplayerGameState::run()
 {
+
+    using ViewModel::SingleplayerMenuAbstractViewModel;
+
+    SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
+
+    int CountOfPC = 0;
+    string NameOfUser;
+
     return NULL;
 }
 
