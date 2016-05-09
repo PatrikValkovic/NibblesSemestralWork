@@ -3,24 +3,37 @@
 #include <string>
 #include <vector>
 #include "Enums.h"
+#include "Point.h"
 
 namespace Game
 {
     class Worm
     {
     public:
-        class Segment
+        class Segment : public Point
         {
             friend class Worm;
-            int PositionX = 0;
-            int PositionY = 0;
-        public:
-            Segment(){}
-            Segment(int X, int Y) : PositionX(X), PositionY(Y) {}
-            int GetPositionX() {return PositionX;};
-            int GetPositionY() {return PositionY;};
 
+            void SetPositionX(int X)
+            { Point::SetPositionX(X); }
+
+            void SetPositionY(int Y)
+            { Point::SetPositionY(Y); }
+
+        public:
+            Segment() : Point()
+            { }
+
+            Segment(int X, int Y) : Point(X, Y)
+            { }
+
+            int GetPositionX()
+            { return Point::GetPositionX(); };
+
+            int GetPositionY()
+            { return Point::GetPositionY(); };
         };
+
     private:
         static const int SizeAtBegin = 3;
 
@@ -29,7 +42,7 @@ namespace Game
 
         void DecideDirection(Directions Direction, int& Down, int& Right) const;
     public:
-        Worm(int PositionX,int PositionY, Directions Direction);
+        Worm(int PositionX, int PositionY, Directions Direction);
 
         std::vector<Segment> GetSegment() const;
 

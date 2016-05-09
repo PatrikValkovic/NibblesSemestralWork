@@ -33,8 +33,8 @@ void Game::Worm::Move(Directions Direction)
     DecideDirection(Direction,DownMove,RightMove);
 
     vector<Segment>::iterator FirstSegment = Segments.begin();
-    FirstSegment->PositionX += RightMove;
-    FirstSegment->PositionY += DownMove;
+    FirstSegment->SetPositionX(FirstSegment->GetPositionX() + RightMove);
+    FirstSegment->SetPositionY(FirstSegment->GetPositionY()+DownMove);
 }
 
 void Game::Worm::DecideDirection(Directions Direction, int& Down, int& Right) const
