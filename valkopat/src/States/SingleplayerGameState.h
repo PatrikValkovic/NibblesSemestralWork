@@ -4,6 +4,8 @@
 #include "../Game/PlaygroundFactory.h"
 #include "../Game/Worm.h"
 
+#include "../ViewModels/CONSOLE/GameConsoleViewModel.h"
+
 namespace GameState
 {
     class SingleplayerGameState : public AbstractGameState

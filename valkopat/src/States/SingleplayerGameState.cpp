@@ -12,12 +12,12 @@ GameState::AbstractGameState* GameState::SingleplayerGameState::run()
     string NameOfUser = View->NameOfPlayer();
 
     int Level = View->Level();
-    PlayGround* Ground = PlaygroundFactory::GetLevel(Level);
+    PlayGround* Round = PlaygroundFactory::GetLevel(Level);
 
-    int CountOfAI = View->CountOfAI(Ground->CountOfStartPositions()-1);
+    int CountOfAI = View->CountOfAI(Round->CountOfStartPositions()-1);
 
     //fill to game
-    PlayGround::StartPosition PlayerStartPosition = Ground->GetNextStartPosition();
+    PlayGround::StartPosition PlayerStartPosition = Round->GetNextStartPosition();
     Worm* Player = new Worm(PlayerStartPosition.Position.GetPositionX(),
                             PlayerStartPosition.Position.GetPositionY(),
                             PlayerStartPosition.Direction);
@@ -25,13 +25,20 @@ GameState::AbstractGameState* GameState::SingleplayerGameState::run()
     vector<Worm*> AI;
     for(int a=0;a<CountOfAI;a++)
     {
-        PlayGround::StartPosition Starting = Ground->GetNextStartPosition();
+        PlayGround::StartPosition Starting = Round->GetNextStartPosition();
         Worm* TempWorm = new Worm(Starting.Position.GetPositionX(),
                                 Starting.Position.GetPositionY(),
                                 Starting.Direction);
         AI.push_back(TempWorm);
     }
 
+
+    //TODO REMOVE
+    using ViewModel::GameConsoleViewModel;
+    GameAbstractViewModel* Game = this->RenderingModel->GameModel();
+    GameConsoleViewModel* ConsoleGame = (GameConsoleViewModel*)Game;
+    AI.push_back(Player);
+    ConsoleGame->RenderGame(Round,AI);
 
 
     return NULL;

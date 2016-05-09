@@ -38,6 +38,7 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10,5),Directions::Left});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4,8),Directions::Right});
 
+
     for(int a=0;a<Area->Width;a++)
     {
         Area->Walls.push_back(Point(a,0));
@@ -48,8 +49,8 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
         Area->Walls.push_back(Point(0,a));
         Area->Walls.push_back(Point(Area->Width-1,a));
     }
+    //Area->Walls.push_back(Point());
 
-    Area->Walls.push_back(Point());
     return Area;
 }
 
