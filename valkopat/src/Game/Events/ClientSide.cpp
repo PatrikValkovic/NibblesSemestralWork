@@ -11,7 +11,7 @@ bool Game::Event::ClientSide::HasActions()
     return false;
 }
 
-void Game::Event::ClientSide::ProccessActions()
+bool Game::Event::ClientSide::ProccessActions()
 {
     //TODO
 }

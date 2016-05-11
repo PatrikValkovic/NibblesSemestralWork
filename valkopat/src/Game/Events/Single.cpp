@@ -12,7 +12,7 @@ bool Game::Event::Single::HasActions()
     return Count>0;
 }
 
-void Game::Event::Single::ProccessActions()
+bool Game::Event::Single::ProccessActions()
 {
     using namespace std;
     char Readed;
@@ -20,6 +20,7 @@ void Game::Event::Single::ProccessActions()
                                                    {'s', Directions::Down},
                                                    {'a', Directions::Left},
                                                    {'d', Directions::Right}};
+    bool Continue = true;
     termios Mode = this->SetMode();
     int Count = this->kbhit();
     for(int a=0;a<Count;a++)
@@ -31,9 +32,12 @@ void Game::Event::Single::ProccessActions()
         } catch(out_of_range e) {
             NextDirection = Player->GetMoveDirection();
         }
+        if(Readed=='q')
+            Continue = false;
         this->Player->SetMoveDirection(NextDirection);
     }
     this->BackMode(Mode);
+    return Continue;
 }
 
 void Game::Event::Single::BackMode(termios old)

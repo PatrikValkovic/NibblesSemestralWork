@@ -12,7 +12,7 @@ namespace Game
         {
             std::vector<Abstract*> Events;
         public:
-            void ProccessEvents();
+            bool ProccessEvents();
             void AddEvent(Abstract* E);
             bool RemoveEvent(Abstract* E);
             void DeleteAllEvents();

@@ -15,8 +15,10 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
         vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
         WormsToRender.push_back(this->ContentOfGame->Player);
 
-        this->ProccessEvents();
+        if(!this->ProccessEvents())
+            return this->Pause;
         this->MoveWorms();
+        this->CheckCollisions();
 
         Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
     }
@@ -67,18 +69,25 @@ void GameStates::PlayingState::WaitToNextTurn()
 void GameStates::PlayingState::MoveWorms()
 {
     this->ContentOfGame->Player->Move(this->ContentOfGame->Player->GetMoveDirection());
-    this->ValidatePositionsOfWorms();
-
     for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[](Worm* W)
     {
         W->Move(W->GetMoveDirection());
     });
+
+    this->ValidatePositionsOfWorms();
 }
 
-void GameStates::PlayingState::ProccessEvents()
+bool GameStates::PlayingState::ProccessEvents()
 {
-    this->ContentOfGame->Events.ProccessEvents();
+    return this->ContentOfGame->Events.ProccessEvents();
 }
+
+void GameStates::PlayingState::CheckCollisions()
+{
+
+}
+
+
 
 
 

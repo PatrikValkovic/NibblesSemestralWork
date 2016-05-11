@@ -84,6 +84,13 @@ Game::Directions Game::Worm::GetMoveDirection() const
     return this->MoveDirection;
 }
 
+bool Game::Worm::IsPlaying()
+{
+    return this->Playing;
+}
+
+
+
 
 
 

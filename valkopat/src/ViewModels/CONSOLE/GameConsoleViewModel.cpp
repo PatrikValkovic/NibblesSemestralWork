@@ -11,7 +11,11 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     using namespace std;
     using Game::Worm;
     using Game::Point;
-    char Canvas[Playground->GetHeight()][Playground->GetWidth()];
+
+    //prepare map
+    char** Canvas = new char*[Playground->GetHeight()];
+    for(int a=0;a<Playground->GetHeight();a++)
+        Canvas[a] = new char[Playground->GetWidth()];
 
     for (int a = 0; a < Playground->GetHeight(); a++)
         for (int b = 0; b < Playground->GetWidth(); b++)
@@ -31,7 +35,7 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     {
         Game::Worm* RenderingWorm = *MovingWorm;
         vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
-        for (int a = 0; a < (int) Segments.size(); a++)
+        for (int a = (int)Segments.size()-1; a >= 0; a--)
         {
             if (a == 0)
                 Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '@';
@@ -57,6 +61,12 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     for (int a = 0; a <= Playground->GetWidth() + 1; a++)
         cout << '-';
     cout << endl;
+
+    //delete map
+    for(int a=0;a<Playground->GetHeight();a++)
+        delete [] Canvas[a];
+    delete [] Canvas;
+
 
     //render score
     MovingWorm = Worms.begin();

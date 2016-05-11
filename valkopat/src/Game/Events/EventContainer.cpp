@@ -1,14 +1,17 @@
 #include "EventContainer.h"
 
-void Game::Event::EventContainer::ProccessEvents()
+bool Game::Event::EventContainer::ProccessEvents()
 {
     using Game::Event::Abstract;
     using std::vector;
     vector<Abstract*>::iterator Moving = this->Events.begin();
     vector<Abstract*>::iterator End = this->Events.end();
+    bool Continue = true;
     for(;Moving!=End;Moving++)
         if((*Moving)->HasActions())
-            (*Moving)->ProccessActions();
+            if(!((*Moving)->ProccessActions()))
+                Continue = false;
+    return Continue;
 }
 
 void Game::Event::EventContainer::AddEvent(Abstract* E)

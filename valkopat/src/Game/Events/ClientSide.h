@@ -13,7 +13,7 @@ namespace Game
 
             virtual bool HasActions();
 
-            virtual void ProccessActions();
+            virtual bool ProccessActions();
         };
     }
 }
