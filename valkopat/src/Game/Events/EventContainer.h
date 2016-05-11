@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_EVENTCONTAINER_H
 #define CERVISEMESTRALKA_EVENTCONTAINER_H
 #include <vector>
+#include <algorithm>
 #include "AbstractEvent.h"
 
 namespace Game
@@ -9,8 +10,12 @@ namespace Game
     {
         class EventContainer
         {
-            std::vector<Abstract> Events;
-            
+            std::vector<Abstract*> Events;
+        public:
+            void ProccessEvents();
+            void AddEvent(Abstract* E);
+            bool RemoveEvent(Abstract* E);
+            void DeleteAllEvents();
         };
     }
 }

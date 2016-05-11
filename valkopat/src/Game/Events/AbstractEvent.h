@@ -14,11 +14,11 @@ namespace Game
         class Abstract
         {
         public:
-            ~Abstract(){}
+            virtual ~Abstract(){}
 
             virtual bool HasActions() = 0;
 
-            virtual std::vector<Action> GetActions() = 0;
+            virtual void ProccessActions() = 0;
         };
     }
 }
