@@ -1,7 +1,10 @@
 #ifndef CERVISEMESTRALKA_PLAYINGSTATE_H
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
 #include "AbstractGameState.h"
+#include "../Game/Enums.h"
 #include "../Game/GameContent.h"
+
+#include "../ViewModels/CONSOLE/GameConsoleViewModel.h"
 
 namespace GameStates
 {
@@ -17,6 +20,8 @@ namespace GameStates
         void AddStates(MenuGameState* MenuState, GamePauseState* PauseState);
 
         void ClearContent(Game::GameContent* NewContent);
+
+        void ValidatePositionsOfWorms();
 
     private:
         MenuGameState* Menu;

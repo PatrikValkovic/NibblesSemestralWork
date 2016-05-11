@@ -28,7 +28,7 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     {
         Game::Worm* RenderingWorm = *MovingWorm;
         vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
-        for(int a=0;a<Segments.size();a++)
+        for(int a=0;a<(int)Segments.size();a++)
             Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '+';
     }
 
@@ -47,9 +47,6 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     for(int a=0;a<=Playground->GetWidth()+1;a++)
         cout << '-';
     cout << endl;
-
-    delete Playground;
-    for_each(Worms.begin(),Worms.end(),[](Game::Worm* X) { delete X; });
 }
 
 

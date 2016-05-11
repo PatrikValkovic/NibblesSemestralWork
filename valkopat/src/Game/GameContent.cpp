@@ -12,7 +12,7 @@ Game::GameContent::~GameContent()
     Player = NULL;
 }
 
-Game::GameContent::GameContent(vector<Worm*> Wowms,Worm* Player, PlayGround* Playground)
+Game::GameContent::GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Playground)
         : Ground(Playground), Player(Player)
 {
     this->Worms = Worms;

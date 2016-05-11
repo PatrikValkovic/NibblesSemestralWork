@@ -10,28 +10,30 @@ namespace Game
     class Worm
     {
     public:
-        class Segment : public Point
+        class Segment
         {
             friend class Worm;
 
-            void SetPositionX(int X)
-            { Point::SetPositionX(X); }
-
-            void SetPositionY(int Y)
-            { Point::SetPositionY(Y); }
+            Point Coords;
 
         public:
-            Segment() : Point()
+            Segment() : Coords()
             { }
 
-            Segment(int X, int Y) : Point(X, Y)
+            Segment(int X, int Y) : Coords(X, Y)
             { }
 
             int GetPositionX()
-            { return Point::GetPositionX(); };
+            { return Coords.GetPositionX(); };
 
             int GetPositionY()
-            { return Point::GetPositionY(); };
+            { return Coords.GetPositionY(); };
+
+            void SetPositionX(int X)
+            { Coords.SetPositionX(X); }
+
+            void SetPositionY(int Y)
+            { Coords.SetPositionY(Y); }
         };
 
     private:
@@ -51,6 +53,8 @@ namespace Game
         std::string GetName() const;
 
         void SetName(std::string NewName);
+
+        void ValidatePosition(int MaxWidth,int MaxHeight);
     };
 }
 

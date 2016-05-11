@@ -2,8 +2,23 @@
 
 GameStates::AbstractGameState* GameStates::PlayingState::run()
 {
-    //TODO
-    return NULL;
+    ViewModel::GameConsoleViewModel* Rendering = (ViewModel::GameConsoleViewModel*)this->RenderingModel->GameModel();
+
+
+    while(true)
+    {
+        vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
+        WormsToRender.push_back(this->ContentOfGame->Player);
+
+        this->ValidatePositionsOfWorms();
+
+        Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
+
+        cout << "Update" << endl;
+        cin.get();
+
+        this->ContentOfGame->Player->Move(Game::Directions::Up);
+    }
 }
 
 GameStates::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel)
@@ -26,6 +41,20 @@ GameStates::PlayingState::~PlayingState()
 {
     delete ContentOfGame;
 }
+
+void GameStates::PlayingState::ValidatePositionsOfWorms()
+{
+    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
+    WormsToRender.push_back(this->ContentOfGame->Player);
+
+    vector<Worm*>::iterator Moving = WormsToRender.begin();
+    vector<Worm*>::iterator End = WormsToRender.end();
+    for(;Moving!=End;Moving++)
+        (*Moving)->ValidatePosition(this->ContentOfGame->Ground->GetWidth(),
+                                    this->ContentOfGame->Ground->GetHeight());
+}
+
+
 
 
 

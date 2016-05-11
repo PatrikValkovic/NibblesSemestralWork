@@ -6,6 +6,7 @@ std::vector<Game::Worm::Segment> Game::Worm::GetSegment() const
 }
 
 Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
+    : Segments()
 {
     int RightAdding = 0;
     int DownAdding = 0;
@@ -17,24 +18,27 @@ Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
         Segments.push_back(Segment(PositionX + a*RightAdding,PositionY+a*DownAdding));
 }
 
+#include <iostream>
 void Game::Worm::Move(Directions Direction)
 {
     using namespace std;
 
-    vector<Segment>::reverse_iterator First = Segments.rbegin();
-    vector<Segment>::reverse_iterator Before = Segments.rbegin();
-    Before++;
-    vector<Segment>::reverse_iterator End = Segments.rend();
-    for(;Before!=End;Before++, First++)
-        *End = *Before;
+    cout << "Presouvani od zadu" << endl;
+    for(int a=(int)this->Segments.size()-1;a>=1;a--)
+        Segments[a] = Segments[a-1];
+
+    cout << "Vse az na hlavu presunuto" << endl;
 
     int DownMove;
     int RightMove;
     DecideDirection(Direction,DownMove,RightMove);
 
-    vector<Segment>::iterator FirstSegment = Segments.begin();
-    FirstSegment->SetPositionX(FirstSegment->GetPositionX() + RightMove);
-    FirstSegment->SetPositionY(FirstSegment->GetPositionY()+DownMove);
+    cout << "Nalezena cesta dolu o " << DownMove << " a vpravo o " << RightMove << endl;
+
+    Segments[0].SetPositionY(Segments[0].GetPositionY()+DownMove);
+    Segments[0].SetPositionX(Segments[0].GetPositionX()+RightMove);
+
+    cout << "Vse presunuto" << endl;
 }
 
 void Game::Worm::DecideDirection(Directions Direction, int& Down, int& Right) const
@@ -60,6 +64,22 @@ void Game::Worm::SetName(std::string NewName)
 {
     this->name = NewName;
 }
+
+void Game::Worm::ValidatePosition(int MaxWidth, int MaxHeight)
+{
+    if(this->Segments[0].GetPositionX()<0)
+        this->Segments[0].SetPositionX(MaxWidth-1);
+    else if(this->Segments[0].GetPositionX()>=MaxWidth)
+        this->Segments[0].SetPositionX(0);
+
+
+    if(this->Segments[0].GetPositionY()<0)
+        this->Segments[0].SetPositionY(MaxHeight-1);
+    else if(this->Segments[0].GetPositionY()>=MaxHeight)
+        this->Segments[0].SetPositionY(0);
+}
+
+
 
 
 

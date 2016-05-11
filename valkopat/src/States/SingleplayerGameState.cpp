@@ -21,6 +21,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     Worm* Player = new Worm(PlayerStartPosition.Position.GetPositionX(),
                             PlayerStartPosition.Position.GetPositionY(),
                             PlayerStartPosition.Direction);
+    Player->SetName(NameOfUser);
 
     vector<Worm*> AI;
     for (int a = 0; a < CountOfAI; a++)

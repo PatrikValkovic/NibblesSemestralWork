@@ -13,7 +13,7 @@ namespace Game
     class GameContent
     {
     public:
-        GameContent(vector<Worm*> Wowms,Worm* Player, PlayGround* Playground);
+        GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Playground);
         ~GameContent();
 
         PlayGround* Ground;
