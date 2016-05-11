@@ -34,6 +34,9 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     for (; MovingWorm != EndWorms; MovingWorm++)
     {
         Game::Worm* RenderingWorm = *MovingWorm;
+        if(!RenderingWorm->IsPlaying())
+            continue;
+
         vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
         for (int a = (int)Segments.size()-1; a >= 0; a--)
         {
@@ -72,7 +75,13 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     MovingWorm = Worms.begin();
     EndWorms = Worms.end();
     for(;MovingWorm!=EndWorms;MovingWorm++)
-        cout << Translation->GetTranslation("ScoreOf") << ' ' << (*MovingWorm)->GetName() << ": " << (*MovingWorm)->GetSegment().size() << endl;
+    {
+        cout << Translation->GetTranslation("ScoreOf") << ' ' << (*MovingWorm)->GetName() << ": " <<
+        (*MovingWorm)->GetSegment().size();
+        if (!(*MovingWorm)->IsPlaying())
+            cout << "\t" << Translation->GetTranslation("WormDead");
+        cout << endl;
+    }
 }
 
 

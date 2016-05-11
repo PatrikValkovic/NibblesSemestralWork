@@ -102,8 +102,11 @@ void GameStates::PlayingState::CheckCollisions()
         Canvas[W.GetPositionY()][W.GetPositionX()] = 'W';
     });
     //fill it with snake's tails
-    for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[&Canvas](Worm* Snake){
-        for_each(++Snake->GetSegment().begin(),Snake->GetSegment().end(),[&Canvas](Worm::Segment S) {
+    vector<Worm*> Worms = this->ContentOfGame->Worms;
+    Worms.push_back(this->ContentOfGame->Player);
+    for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
+        vector<Worm::Segment> Segments = Snake->GetSegment();
+        for_each(++(Segments.begin()),Segments.end(),[&Canvas](Worm::Segment S) {
             Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
         });
     });
@@ -112,7 +115,7 @@ void GameStates::PlayingState::CheckCollisions()
     //TODO
 
     //check heads
-    for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[&Canvas](Worm* Snake){
+    for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
         Worm::Segment HeadSegment = Snake->GetSegment().at(0);
         if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
             Snake->StopPlaying();

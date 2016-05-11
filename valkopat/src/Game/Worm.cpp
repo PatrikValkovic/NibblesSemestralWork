@@ -21,6 +21,9 @@ Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
 #include <iostream>
 void Game::Worm::Move(Directions Direction)
 {
+    if(!IsPlaying())
+        return;
+
     using namespace std;
 
     for(int a=(int)this->Segments.size()-1;a>=1;a--)
@@ -62,6 +65,9 @@ void Game::Worm::SetName(std::string NewName)
 
 void Game::Worm::ValidatePosition(int MaxWidth, int MaxHeight)
 {
+    if(!IsPlaying())
+        return;
+
     if(this->Segments[0].GetPositionX()<0)
         this->Segments[0].SetPositionX(MaxWidth-1);
     else if(this->Segments[0].GetPositionX()>=MaxWidth)
