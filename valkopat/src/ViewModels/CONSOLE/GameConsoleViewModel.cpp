@@ -9,34 +9,43 @@ ViewModel::GameConsoleViewModel::GameConsoleViewModel(const Translate::Translate
 void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, std::vector<Game::Worm*> Worms)
 {
     using namespace std;
+    using Game::Worm;
+    using Game::Point;
     char Canvas[Playground->GetHeight()][Playground->GetWidth()];
 
-    for(int a=0;a<Playground->GetHeight();a++)
-        for(int b=0;b<Playground->GetWidth();b++)
+    for (int a = 0; a < Playground->GetHeight(); a++)
+        for (int b = 0; b < Playground->GetWidth(); b++)
             Canvas[a][b] = ' ';
 
-    //prepare it
-    vector<Game::Point> Walls = Playground->GetWalls();
-    vector<Game::Point>::iterator Moving = Walls.begin();
-    vector<Game::Point>::iterator End = Walls.end();
-    for(;Moving!=End;Moving++)
+    //prepare walls
+    vector<Point> Walls = Playground->GetWalls();
+    vector<Point>::iterator Moving = Walls.begin();
+    vector<Point>::iterator End = Walls.end();
+    for (; Moving != End; Moving++)
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
-    vector<Game::Worm*>::iterator MovingWorm = Worms.begin();
-    vector<Game::Worm*>::iterator EndWorms = Worms.end();
-    for(;MovingWorm!=EndWorms;MovingWorm++)
+    //prepare worms
+    vector<Worm*>::iterator MovingWorm = Worms.begin();
+    vector<Worm*>::iterator EndWorms = Worms.end();
+    for (; MovingWorm != EndWorms; MovingWorm++)
     {
         Game::Worm* RenderingWorm = *MovingWorm;
         vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
-        for(int a=0;a<(int)Segments.size();a++)
-            Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '+';
+        for (int a = 0; a < (int) Segments.size(); a++)
+        {
+            if (a == 0)
+                Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '@';
+            else
+                Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '+';
+        }
+
     }
 
     //render it
-    for(int a=0;a<=Playground->GetWidth()+1;a++)
+    for (int a = 0; a <= Playground->GetWidth() + 1; a++)
         cout << '-';
     cout << endl;
-    for(int r=0;r<Playground->GetHeight();r++)
+    for (int r = 0; r < Playground->GetHeight(); r++)
     {
         cout << '|';
         for (int c = 0; c < Playground->GetWidth(); c++)
@@ -44,9 +53,15 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
         cout << '|';
         cout << endl;
     }
-    for(int a=0;a<=Playground->GetWidth()+1;a++)
+    for (int a = 0; a <= Playground->GetWidth() + 1; a++)
         cout << '-';
     cout << endl;
+
+    //render score
+    MovingWorm = Worms.begin();
+    EndWorms = Worms.end();
+    for(;MovingWorm!=EndWorms;MovingWorm++)
+        cout << Translation->GetTranslation("ScoreOf") << ' ' << (*MovingWorm)->GetName() << ": " << (*MovingWorm)->GetSegment().size() << endl;
 }
 
 

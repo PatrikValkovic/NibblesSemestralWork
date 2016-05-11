@@ -14,7 +14,6 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
         vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
         WormsToRender.push_back(this->ContentOfGame->Player);
 
-
         this->ContentOfGame->Player->Move(Game::Directions::Up);
         this->ValidatePositionsOfWorms();
 
