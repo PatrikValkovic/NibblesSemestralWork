@@ -32,5 +32,4 @@ namespace GameStates
 #include "PlayingState.h"
 #include "SingleplayerGameState.h"
 #include "SplashScreenGameState.h"
-
 #endif //CERVISEMESTRALKA_ABSTRACTGAMESTATE_H

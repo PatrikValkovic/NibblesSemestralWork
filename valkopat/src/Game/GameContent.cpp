@@ -13,8 +13,10 @@ Game::GameContent::~GameContent()
 }
 
 Game::GameContent::GameContent(vector<Worm*> Wowms,Worm* Player, PlayGround* Playground)
-        : Worms(Worms), Ground(Playground), Player(Player)
-{ }
+        : Ground(Playground), Player(Player)
+{
+    this->Worms = Worms;
+}
 
 
 

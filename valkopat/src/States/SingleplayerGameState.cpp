@@ -29,9 +29,9 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
         Worm* TempWorm = new Worm(Starting.Position.GetPositionX(),
                                   Starting.Position.GetPositionY(),
                                   Starting.Direction);
-        string Name;
-        Name.resize(6);
-        TempWorm->SetName(sprintf(Name, "AI %d", a));
+        char Name[6];
+        sprintf(Name,"AI %d",a);
+        TempWorm->SetName(string(Name));
         TempWorm->SetName(Name);
 
         AI.push_back(TempWorm);
