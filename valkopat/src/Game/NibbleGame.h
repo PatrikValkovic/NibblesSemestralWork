@@ -1,7 +1,7 @@
 #ifndef CERVISEMESTRALKA_NIBBLESGAME_H
 #define CERVISEMESTRALKA_NIBBLESGAME_H
 #include "../ViewModels/Abstract/BaseViewModel.h"
-#include "../States/GameStates.h"
+#include "../States/GameState.h"
 
 namespace Game
 {
@@ -13,7 +13,7 @@ namespace Game
         void init();
 
     private:
-        GameState::GameStates* States;
+        GameState::GameState* States;
         ViewModel::BaseViewModel* RenderEngine;
     };
 }

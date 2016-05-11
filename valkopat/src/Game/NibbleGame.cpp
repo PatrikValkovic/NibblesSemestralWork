@@ -14,7 +14,7 @@ void Game::NibbleGame::run()
 
 void Game::NibbleGame::init()
 {
-    this->States = new GameState::GameStates(this->RenderEngine);
+    this->States = new GameState::GameState(this->RenderEngine);
 }
 
 

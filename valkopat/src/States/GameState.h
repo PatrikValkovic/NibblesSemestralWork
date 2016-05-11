@@ -6,11 +6,11 @@
 
 namespace GameState
 {
-    class GameStates
+    class GameState
     {
     public:
-        GameStates(ViewModel::BaseViewModel* Model);
-        ~GameStates();
+        GameState(ViewModel::BaseViewModel* Model);
+        ~GameState();
 
         AbstractGameState* GetFirstState() const;
 
