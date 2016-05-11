@@ -1,8 +1,10 @@
 #ifndef CERVISEMESTRALKA_PLAYINGSTATE_H
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
 #include <map>
+#include <algorithm>
 #include <cstdint>
 #include <chrono>
+#include <vector>
 #include "AbstractGameState.h"
 #include "../Game/Enums.h"
 #include "../Game/GameContent.h"

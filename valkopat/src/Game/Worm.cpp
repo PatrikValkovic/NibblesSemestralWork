@@ -89,6 +89,13 @@ bool Game::Worm::IsPlaying()
     return this->Playing;
 }
 
+void Game::Worm::StopPlaying()
+{
+    this->Playing = false;
+}
+
+
+
 
 
 

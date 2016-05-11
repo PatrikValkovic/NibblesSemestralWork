@@ -51,11 +51,13 @@ namespace Game
         void SetName(std::string NewName);
         Directions GetMoveDirection() const;
         void SetMoveDirection(Directions Direction);
+        bool IsPlaying();
+        void StopPlaying(); //TODO Move somewhere to better encapsulaion
 
         std::vector<Segment> GetSegment() const;
         void Move(Directions Direction);
         void ValidatePosition(int MaxWidth,int MaxHeight);
-        bool IsPlaying();
+
     };
 }
 

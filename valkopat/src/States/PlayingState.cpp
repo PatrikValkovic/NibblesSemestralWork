@@ -84,7 +84,44 @@ bool GameStates::PlayingState::ProccessEvents()
 
 void GameStates::PlayingState::CheckCollisions()
 {
+    using std::vector;
+    using Game::Point;
+    using Game::Worm;
+    //prepare collision map
+    char** Canvas = new char*[this->ContentOfGame->Ground->GetHeight()];
+    for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
+    {
+        Canvas[a] = new char[this->ContentOfGame->Ground->GetWidth()];
+        for(int b=0;b<this->ContentOfGame->Ground->GetWidth();b++)
+            Canvas[a][b] = 0;
+    }
 
+    //fill it with walls
+    vector<Point> Walls = this->ContentOfGame->Ground->GetWalls();
+    for_each(Walls.begin(),Walls.end(),[&Canvas](Point W){
+        Canvas[W.GetPositionY()][W.GetPositionX()] = 'W';
+    });
+    //fill it with snake's tails
+    for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[&Canvas](Worm* Snake){
+        for_each(++Snake->GetSegment().begin(),Snake->GetSegment().end(),[&Canvas](Worm::Segment S) {
+            Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
+        });
+    });
+
+    //fill grub
+    //TODO
+
+    //check heads
+    for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[&Canvas](Worm* Snake){
+        Worm::Segment HeadSegment = Snake->GetSegment().at(0);
+        if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
+            Snake->StopPlaying();
+    });
+
+    //delete collision map
+    for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
+        delete [] Canvas[a];
+    delete [] Canvas;
 }
 
 
