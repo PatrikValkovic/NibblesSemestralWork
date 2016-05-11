@@ -1,5 +1,7 @@
 #include "PlayingState.h"
 
+const int GameStates::PlayingState::WaitingTimeInMiliseconds = 800;
+
 GameStates::AbstractGameState* GameStates::PlayingState::run()
 {
     ViewModel::GameConsoleViewModel* Rendering = (ViewModel::GameConsoleViewModel*)this->RenderingModel->GameModel();
@@ -7,17 +9,16 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
 
     while(true)
     {
+        this->WaitToNextTurn();
+
         vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
         WormsToRender.push_back(this->ContentOfGame->Player);
 
+
+        this->ContentOfGame->Player->Move(Game::Directions::Up);
         this->ValidatePositionsOfWorms();
 
         Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
-
-        cout << "Update" << endl;
-        cin.get();
-
-        this->ContentOfGame->Player->Move(Game::Directions::Up);
     }
 }
 
@@ -53,6 +54,17 @@ void GameStates::PlayingState::ValidatePositionsOfWorms()
         (*Moving)->ValidatePosition(this->ContentOfGame->Ground->GetWidth(),
                                     this->ContentOfGame->Ground->GetHeight());
 }
+
+void GameStates::PlayingState::WaitToNextTurn()
+{
+    using namespace std::this_thread; // sleep_for, sleep_until
+    using namespace std::chrono; // nanoseconds, system_clock, seconds
+    time_point<system_clock> BeginOfMethod = system_clock::now();
+
+    sleep_until(BeginOfMethod + milliseconds(WaitingTimeInMiliseconds));
+}
+
+
 
 
 

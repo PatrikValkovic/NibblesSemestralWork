@@ -23,22 +23,17 @@ void Game::Worm::Move(Directions Direction)
 {
     using namespace std;
 
-    cout << "Presouvani od zadu" << endl;
     for(int a=(int)this->Segments.size()-1;a>=1;a--)
         Segments[a] = Segments[a-1];
-
-    cout << "Vse az na hlavu presunuto" << endl;
 
     int DownMove;
     int RightMove;
     DecideDirection(Direction,DownMove,RightMove);
 
-    cout << "Nalezena cesta dolu o " << DownMove << " a vpravo o " << RightMove << endl;
 
     Segments[0].SetPositionY(Segments[0].GetPositionY()+DownMove);
     Segments[0].SetPositionX(Segments[0].GetPositionX()+RightMove);
 
-    cout << "Vse presunuto" << endl;
 }
 
 void Game::Worm::DecideDirection(Directions Direction, int& Down, int& Right) const

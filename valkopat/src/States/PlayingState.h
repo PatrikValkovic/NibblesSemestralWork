@@ -1,5 +1,7 @@
 #ifndef CERVISEMESTRALKA_PLAYINGSTATE_H
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
+#include <cstdint>
+#include <chrono>
 #include "AbstractGameState.h"
 #include "../Game/Enums.h"
 #include "../Game/GameContent.h"
@@ -24,10 +26,11 @@ namespace GameStates
         void ValidatePositionsOfWorms();
 
     private:
+        static const int WaitingTimeInMiliseconds;
         MenuGameState* Menu;
         GamePauseState* Pause;
-
         Game::GameContent* ContentOfGame = NULL;
+        void WaitToNextTurn();
     };
 }
 
