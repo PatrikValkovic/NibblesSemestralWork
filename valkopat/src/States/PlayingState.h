@@ -32,7 +32,7 @@ namespace GameStates
         GamePauseState* Pause;
         Game::GameContent* ContentOfGame = NULL;
         void WaitToNextTurn();
-        std::map<Worm*,Game::Directions> CreateStartDirections();
+        void MoveWorms();
     };
 }
 
