@@ -6,12 +6,14 @@ Game::GameContent::~GameContent()
         delete X;
     });
     delete Ground;
+    delete Player;
 
     Ground = NULL;
+    Player = NULL;
 }
 
-Game::GameContent::GameContent(vector<Worm*> Wowms, PlayGround* Playground)
-        : Worms(Worms), Ground(Playground)
+Game::GameContent::GameContent(vector<Worm*> Wowms,Worm* Player, PlayGround* Playground)
+        : Worms(Worms), Ground(Playground), Player(Player)
 { }
 
 

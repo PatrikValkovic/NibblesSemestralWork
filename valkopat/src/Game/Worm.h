@@ -47,6 +47,10 @@ namespace Game
         std::vector<Segment> GetSegment() const;
 
         void Move(Directions Direction);
+
+        std::string GetName() const;
+
+        void SetName(std::string NewName);
     };
 }
 

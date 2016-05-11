@@ -51,6 +51,20 @@ void Game::Worm::DecideDirection(Directions Direction, int& Down, int& Right) co
         Down = 1;
 }
 
+std::string Game::Worm::GetName() const
+{
+    return this->name;
+}
+
+void Game::Worm::SetName(std::string NewName)
+{
+    this->name = NewName;
+}
+
+
+
+
+
 
 
 
