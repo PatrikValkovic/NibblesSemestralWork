@@ -14,6 +14,8 @@ namespace GameState
 
         AbstractGameState* GetFirstState() const;
 
+        void RemoveContent();
+
     private:
         ViewModel::BaseViewModel* RenderingModel;
         std::vector<AbstractGameState*> AllStates;
