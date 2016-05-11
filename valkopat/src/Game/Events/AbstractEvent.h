@@ -6,11 +6,6 @@ namespace Game
 {
     namespace Event
     {
-        enum Action
-        {
-
-        };
-
         class Abstract
         {
         public:

@@ -7,12 +7,13 @@ Game::Event::ClientSide::ClientSide()
 
 bool Game::Event::ClientSide::HasActions()
 {
+    //TODO
     return false;
 }
 
-std::vector<Game::Event::Action> Game::Event::ClientSide::GetActions()
+void Game::Event::ClientSide::ProccessActions()
 {
-    return std::vector<Action>();
+    //TODO
 }
 
 

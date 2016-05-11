@@ -13,7 +13,7 @@ namespace Game
 
             virtual bool HasActions();
 
-            virtual std::vector<Action> GetActions();
+            virtual void ProccessActions();
         };
     }
 }

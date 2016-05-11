@@ -8,9 +8,9 @@ bool Game::Event::Single::HasActions()
     return false;
 }
 
-std::vector<Game::Event::Action> Game::Event::Single::GetActions()
+void Game::Event::Single::ProccessActions()
 {
-    return std::vector<Action>();
+   //TODO
 }
 
 
