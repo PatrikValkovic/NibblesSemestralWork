@@ -5,6 +5,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using namespace Game;
     using ViewModel::SingleplayerMenuAbstractViewModel;
     using ViewModel::GameAbstractViewModel;
+    using Game::Event::Single;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -39,6 +40,11 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     }
 
     GameContent* NewContent = new GameContent(AI, Player, Round);
+
+    //create events
+    Single* SingleEvent = new Single(Player);
+    NewContent->Events.AddEvent(SingleEvent);
+
     this->Play->ClearContent(NewContent);
 
     return this->Play;

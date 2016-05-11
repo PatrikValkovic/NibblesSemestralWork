@@ -15,6 +15,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
         vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
         WormsToRender.push_back(this->ContentOfGame->Player);
 
+        this->ProccessEvents();
         this->MoveWorms();
 
         Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
@@ -73,6 +74,13 @@ void GameStates::PlayingState::MoveWorms()
         W->Move(W->GetMoveDirection());
     });
 }
+
+void GameStates::PlayingState::ProccessEvents()
+{
+    this->ContentOfGame->Events.ProccessEvents();
+}
+
+
 
 
 

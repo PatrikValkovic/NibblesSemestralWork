@@ -33,6 +33,7 @@ namespace GameStates
         Game::GameContent* ContentOfGame = NULL;
         void WaitToNextTurn();
         void MoveWorms();
+        void ProccessEvents();
     };
 }
 

@@ -3,12 +3,15 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-#include "../Game/Worm.h"
-#include "../Game/PlayGround.h"
+#include "Worm.h"
+#include "PlayGround.h"
+#include "Events/EventContainer.h"
+
 using std::vector;
 using std::map;
 using Game::Worm;
 using Game::PlayGround;
+using Game::Event::EventContainer;
 
 namespace Game
 {
@@ -22,6 +25,7 @@ namespace Game
         vector<Worm*> Worms;
         map<Worm*,Directions> MovingDirections;
         Worm* Player;
+        EventContainer Events;
     };
 }
 
