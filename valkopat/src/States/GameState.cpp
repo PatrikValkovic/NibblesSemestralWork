@@ -50,7 +50,7 @@ GameState::AbstractGameState* GameState::GameState::GetFirstState() const
     return this->First;
 }
 
-void GameState::GameState::RemoveContent()
+void GameState::GameState::RemoveContent(Game::GameContent* NewContent)
 {
 
 }

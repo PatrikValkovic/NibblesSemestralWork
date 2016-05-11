@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_GAMESTATES_H
 #include <vector>
 #include "AbstractGameState.h"
-
+#include "../Game/GameContent.h"
 
 namespace GameState
 {
@@ -14,7 +14,7 @@ namespace GameState
 
         AbstractGameState* GetFirstState() const;
 
-        void RemoveContent();
+        void RemoveContent(Game::GameContent* NewContent);
 
     private:
         ViewModel::BaseViewModel* RenderingModel;
