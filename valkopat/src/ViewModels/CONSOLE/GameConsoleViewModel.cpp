@@ -42,6 +42,7 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::PlayGround* Playground, s
     }
 
     //render it
+    cout << endl;
     for (int a = 0; a <= Playground->GetWidth() + 1; a++)
         cout << '-';
     cout << endl;

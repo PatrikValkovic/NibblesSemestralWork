@@ -1,6 +1,6 @@
 #include "PlayingState.h"
 
-const int GameStates::PlayingState::WaitingTimeInMiliseconds = 800;
+const int GameStates::PlayingState::WaitingTimeInMiliseconds = 1500;
 
 GameStates::AbstractGameState* GameStates::PlayingState::run()
 {

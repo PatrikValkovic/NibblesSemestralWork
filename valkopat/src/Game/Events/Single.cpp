@@ -6,16 +6,10 @@ Game::Event::Single::Single(Worm* Player)
 
 bool Game::Event::Single::HasActions()
 {
-    char ReadedCharacted;
-    std::cin.get(ReadedCharacted);
-    std::cout << "Byl nalezen znak s INT " << ReadedCharacted << " na vstupnim proudu" << std::endl;
-    if (!std::cin)
-    {
-        std::cin.clear();
-        return false;
-    }
-    std::cin.putback(ReadedCharacted);
-    return true;
+    termios Mode = this->SetMode();
+    int Count = this->kbhit();
+    this->BackMode(Mode);
+    return Count>0;
 }
 
 void Game::Event::Single::ProccessActions()
@@ -26,20 +20,32 @@ void Game::Event::Single::ProccessActions()
                                                    {'s', Directions::Down},
                                                    {'a', Directions::Left},
                                                    {'d', Directions::Right}};
-    while ((bool) (cin.get(Readed)))
+    termios Mode = this->SetMode();
+    int Count = this->kbhit();
+    for(int a=0;a<Count;a++)
     {
-        cout << "Byl precten znak " << (int) Readed << "Ze vstupniho proudu a bude zpracovat" << std::endl;
-        map<char, Directions>::iterator Finded = DirectionsTranslation.find(Readed);
-        if (Finded == DirectionsTranslation.end())
-            continue;
-        Player->SetMoveDirection((*Finded).second);
+        Readed = (char)getchar();
+        Directions NextDirection;
+        try {
+            NextDirection = DirectionsTranslation.at(Readed);
+        } catch(out_of_range e) {
+            NextDirection = Player->GetMoveDirection();
+        }
+        this->Player->SetMoveDirection(NextDirection);
     }
-    cin.clear();
+    this->BackMode(Mode);
 }
 
-char Game::Event::Single::MyGetCh()
+void Game::Event::Single::BackMode(termios old)
 {
-    char buf = 0;
+    old.c_lflag |= ICANON;
+    old.c_lflag |= ECHO;
+    if (tcsetattr(0, TCSADRAIN, &old) < 0)
+        perror("tcsetattr ~ICANON");
+}
+
+termios Game::Event::Single::SetMode()
+{
     struct termios old = {0};
     if (tcgetattr(0, &old) < 0)
         perror("tcsetattr()");
@@ -49,13 +55,14 @@ char Game::Event::Single::MyGetCh()
     old.c_cc[VTIME] = 0;
     if (tcsetattr(0, TCSANOW, &old) < 0)
         perror("tcsetattr ICANON");
-    if (read(0, &buf, 1) < 0)
-        perror("read()");
-    old.c_lflag |= ICANON;
-    old.c_lflag |= ECHO;
-    if (tcsetattr(0, TCSADRAIN, &old) < 0)
-        perror("tcsetattr ~ICANON");
-    return (buf);
+    return old;
+}
+
+int Game::Event::Single::kbhit()
+{
+    int i;
+    ioctl(0, FIONREAD, &i);
+    return i; /* return a count of chars available to read */
 }
 
 

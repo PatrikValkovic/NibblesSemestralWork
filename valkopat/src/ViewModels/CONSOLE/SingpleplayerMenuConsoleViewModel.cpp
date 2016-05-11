@@ -16,8 +16,6 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::CountOfAI(int Max)
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
             cout << Translation->GetTranslation("MaxCount") << " " << Max << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max());
             continue;
         }
         break;
@@ -35,8 +33,6 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
         if (cin.fail() || this->Name.length() == 0)
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max());
             continue;
         }
         break;
@@ -59,8 +55,6 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
         if(cin.fail() || Levels.find(this->LevelIndex)==Levels.end())
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max());
             continue;
         }
         break;

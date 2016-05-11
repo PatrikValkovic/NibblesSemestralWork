@@ -2,10 +2,11 @@
 #define CERVISEMESTRALKA_SINGPLE_H
 #include <iostream>
 #include <map>
+#include <termios.h>
+#include <sys/ioctl.h>
 #include "AbstractEvent.h"
 #include "../Worm.h"
-#include <unistd.h>
-#include <termios.h>
+
 
 
 namespace Game
@@ -24,7 +25,9 @@ namespace Game
         private:
             Worm* Player;
             char Buffer;
-            char MyGetCh();
+            void BackMode(termios old);
+            termios SetMode();
+            int kbhit();
         };
     }
 }
