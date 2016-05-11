@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_SINGPLE_H
 #define CERVISEMESTRALKA_SINGPLE_H
+#include <iostream>
 #include "AbstractEvent.h"
 
 namespace Game

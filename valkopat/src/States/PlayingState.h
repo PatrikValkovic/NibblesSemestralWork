@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_PLAYINGSTATE_H
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
+#include <map>
 #include <cstdint>
 #include <chrono>
 #include "AbstractGameState.h"
@@ -31,6 +32,7 @@ namespace GameStates
         GamePauseState* Pause;
         Game::GameContent* ContentOfGame = NULL;
         void WaitToNextTurn();
+        std::map<Worm*,Game::Directions> CreateStartDirections();
     };
 }
 

@@ -6,7 +6,7 @@ std::vector<Game::Worm::Segment> Game::Worm::GetSegment() const
 }
 
 Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
-    : Segments()
+    : Segments(), MoveDirection(Direction)
 {
     int RightAdding = 0;
     int DownAdding = 0;
@@ -73,6 +73,20 @@ void Game::Worm::ValidatePosition(int MaxWidth, int MaxHeight)
     else if(this->Segments[0].GetPositionY()>=MaxHeight)
         this->Segments[0].SetPositionY(0);
 }
+
+void Game::Worm::SetMoveDirection(Game::Directions Direction)
+{
+    this->MoveDirection = Direction;
+}
+
+Game::Directions Game::Worm::GetMoveDirection() const
+{
+    return this->MoveDirection;
+}
+
+
+
+
 
 
 

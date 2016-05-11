@@ -4,8 +4,9 @@ const int GameStates::PlayingState::WaitingTimeInMiliseconds = 800;
 
 GameStates::AbstractGameState* GameStates::PlayingState::run()
 {
+    using Game::Worm;
+    using Game::Directions;
     ViewModel::GameConsoleViewModel* Rendering = (ViewModel::GameConsoleViewModel*)this->RenderingModel->GameModel();
-
 
     while(true)
     {
@@ -14,7 +15,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
         vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
         WormsToRender.push_back(this->ContentOfGame->Player);
 
-        this->ContentOfGame->Player->Move(Game::Directions::Up);
+        this->ContentOfGame->Player->Move(this->ContentOfGame->Player->GetMoveDirection());
         this->ValidatePositionsOfWorms();
 
         Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
@@ -62,6 +63,8 @@ void GameStates::PlayingState::WaitToNextTurn()
 
     sleep_until(BeginOfMethod + milliseconds(WaitingTimeInMiliseconds));
 }
+
+
 
 
 
