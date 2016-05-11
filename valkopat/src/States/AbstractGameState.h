@@ -3,7 +3,7 @@
 #include "../ViewModels/Abstract/BaseViewModel.h"
 #include "StatesNames.h"
 
-namespace GameState
+namespace GameStates
 {
     class AbstractGameState
     {

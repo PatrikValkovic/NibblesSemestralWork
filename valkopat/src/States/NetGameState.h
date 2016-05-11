@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_NETGAMESTATE_H
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class NetGameState : public AbstractGameState
     {

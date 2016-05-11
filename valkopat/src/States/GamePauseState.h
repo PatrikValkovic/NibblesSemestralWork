@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_GAMEPAUSESTATE_H
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class GamePauseState : public AbstractGameState
     {

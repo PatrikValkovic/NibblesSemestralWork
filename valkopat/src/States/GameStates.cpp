@@ -1,6 +1,6 @@
-#include "GameState.h"
+#include "GameStates.h"
 
-GameState::GameState::GameState(ViewModel::BaseViewModel* Model)
+GameStates::GameStates::GameStates(ViewModel::BaseViewModel* Model)
     :RenderingModel(Model)
 {
     ChangeLanguageState* LanguageScreen = new ChangeLanguageState(this->RenderingModel);
@@ -37,7 +37,7 @@ GameState::GameState::GameState(ViewModel::BaseViewModel* Model)
     this->First = SplashScreen;
 }
 
-GameState::GameState::~GameState()
+GameStates::GameStates::~GameStates()
 {
     std::vector<AbstractGameState*>::iterator Moving = this->AllStates.begin();
     std::vector<AbstractGameState*>::iterator End = this->AllStates.end();
@@ -45,12 +45,12 @@ GameState::GameState::~GameState()
         delete (*Moving);
 }
 
-GameState::AbstractGameState* GameState::GameState::GetFirstState() const
+GameStates::AbstractGameState* GameStates::GameStates::GetFirstState() const
 {
     return this->First;
 }
 
-void GameState::GameState::RemoveContent(Game::GameContent* NewContent)
+void GameStates::GameStates::RemoveContent(Game::GameContent* NewContent)
 {
 
 }

@@ -1,20 +1,35 @@
 #include "PlayingState.h"
 
-GameState::AbstractGameState* GameState::PlayingState::run()
+GameStates::AbstractGameState* GameStates::PlayingState::run()
 {
     //TODO
     return NULL;
 }
 
-GameState::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-void GameState::PlayingState::AddStates(MenuGameState* MenuState, GamePauseState* PauseState)
+void GameStates::PlayingState::AddStates(MenuGameState* MenuState, GamePauseState* PauseState)
 {
     this->Menu = MenuState;
     this->Pause = PauseState;
 }
+
+void GameStates::PlayingState::ClearContent(Game::GameContent* NewContent)
+{
+    delete ContentOfGame;
+    ContentOfGame = NewContent;
+}
+
+GameStates::PlayingState::~PlayingState()
+{
+    delete ContentOfGame;
+}
+
+
+
+
 
 
 

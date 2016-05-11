@@ -1,6 +1,6 @@
 #ifndef CERVISEMESTRALKA_CLASSNAMES_H
 #define CERVISEMESTRALKA_CLASSNAMES_H
-namespace GameState
+namespace GameStates
 {
     class ChangeLanguageState;
     class EndState;

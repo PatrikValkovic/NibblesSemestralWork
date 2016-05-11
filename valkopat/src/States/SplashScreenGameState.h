@@ -5,7 +5,7 @@
 #include <thread>
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class SplashScreenGameState : public AbstractGameState
     {

@@ -6,7 +6,7 @@
 
 #include "../ViewModels/CONSOLE/GameConsoleViewModel.h"
 
-namespace GameState
+namespace GameStates
 {
     class SingleplayerGameState : public AbstractGameState
     {

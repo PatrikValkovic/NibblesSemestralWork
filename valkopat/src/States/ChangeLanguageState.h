@@ -4,7 +4,7 @@
 #include "AbstractGameState.h"
 
 
-namespace GameState
+namespace GameStates
 {
     class ChangeLanguageState : public AbstractGameState
     {

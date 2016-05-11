@@ -1,10 +1,10 @@
 #include "MenuGameState.h"
 
-GameState::MenuGameState::MenuGameState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::MenuGameState::MenuGameState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-GameState::AbstractGameState* GameState::MenuGameState::run()
+GameStates::AbstractGameState* GameStates::MenuGameState::run()
 {
     using namespace ViewModel;
     MenuAbstractViewModel* MenuRendering = this->RenderingModel->MenuModel();
@@ -14,7 +14,7 @@ GameState::AbstractGameState* GameState::MenuGameState::run()
     return Actions.at(Choosed);
 }
 
-void GameState::MenuGameState::AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single,
+void GameStates::MenuGameState::AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single,
                                          NetGameState* OverNet, EndState* End, ChangeLanguageState* Language)
 {
     this->Multi = Multi;
@@ -24,7 +24,7 @@ void GameState::MenuGameState::AddStates(MultiplayerGameState* Multi, Singleplay
     this->Language = Language;
 }
 
-map<int,GameState::AbstractGameState*> GameState::MenuGameState::FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu)
+map<int,GameStates::AbstractGameState*> GameStates::MenuGameState::FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu)
 {
     using ViewModel::MenuAbstractViewModel;
     using std::vector;

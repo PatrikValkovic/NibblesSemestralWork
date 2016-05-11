@@ -4,7 +4,7 @@
 #include "../ViewModels/Abstract/BaseViewModel.h"
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class MenuGameState : public AbstractGameState
     {

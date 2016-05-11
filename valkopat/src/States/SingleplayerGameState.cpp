@@ -1,6 +1,6 @@
 #include "SingleplayerGameState.h"
 
-GameState::AbstractGameState* GameState::SingleplayerGameState::run()
+GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
 {
     using namespace Game;
     using ViewModel::SingleplayerMenuAbstractViewModel;
@@ -44,11 +44,11 @@ GameState::AbstractGameState* GameState::SingleplayerGameState::run()
     return NULL;
 }
 
-GameState::SingleplayerGameState::SingleplayerGameState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::SingleplayerGameState::SingleplayerGameState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-void GameState::SingleplayerGameState::AddStates(PlayingState* GameState, MenuGameState* MenuState)
+void GameStates::SingleplayerGameState::AddStates(PlayingState* GameState, MenuGameState* MenuState)
 {
     this->Play = GameState;
     this->Menu = MenuState;

@@ -1,10 +1,10 @@
 #include "ChangeLanguageState.h"
 
-GameState::ChangeLanguageState::ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::ChangeLanguageState::ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-GameState::AbstractGameState* GameState::ChangeLanguageState::run()
+GameStates::AbstractGameState* GameStates::ChangeLanguageState::run()
 {
     using ViewModel::LanguageAbstractViewModel;
     using namespace std;
@@ -34,7 +34,7 @@ GameState::AbstractGameState* GameState::ChangeLanguageState::run()
     return this->Menu;
 }
 
-void GameState::ChangeLanguageState::AddStates(MenuGameState* MenuState)
+void GameStates::ChangeLanguageState::AddStates(MenuGameState* MenuState)
 {
     this->Menu = MenuState;
 }

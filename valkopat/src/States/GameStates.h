@@ -2,19 +2,16 @@
 #define CERVISEMESTRALKA_GAMESTATES_H
 #include <vector>
 #include "AbstractGameState.h"
-#include "../Game/GameContent.h"
 
-namespace GameState
+namespace GameStates
 {
-    class GameState
+    class GameStates
     {
     public:
-        GameState(ViewModel::BaseViewModel* Model);
-        ~GameState();
+        GameStates(ViewModel::BaseViewModel* Model);
+        ~GameStates();
 
         AbstractGameState* GetFirstState() const;
-
-        void RemoveContent(Game::GameContent* NewContent);
 
     private:
         ViewModel::BaseViewModel* RenderingModel;

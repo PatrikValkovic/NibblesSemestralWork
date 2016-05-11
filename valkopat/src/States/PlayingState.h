@@ -1,21 +1,28 @@
 #ifndef CERVISEMESTRALKA_PLAYINGSTATE_H
 #define CERVISEMESTRALKA_PLAYINGSTATE_H
 #include "AbstractGameState.h"
+#include "../Game/GameContent.h"
 
-namespace GameState
+namespace GameStates
 {
     class PlayingState : public AbstractGameState
     {
     public:
         PlayingState(ViewModel::BaseViewModel* RenderingModel);
 
+        ~PlayingState();
+
         virtual AbstractGameState* run();
 
         void AddStates(MenuGameState* MenuState, GamePauseState* PauseState);
 
+        void ClearContent(Game::GameContent* NewContent);
+
     private:
         MenuGameState* Menu;
         GamePauseState* Pause;
+
+        Game::GameContent* ContentOfGame = NULL;
     };
 }
 

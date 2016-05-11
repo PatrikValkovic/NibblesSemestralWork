@@ -1,6 +1,6 @@
 #include "SplashScreenGameState.h"
 
-GameState::AbstractGameState* GameState::SplashScreenGameState::run()
+GameStates::AbstractGameState* GameStates::SplashScreenGameState::run()
 {
     using namespace std::this_thread; // sleep_for, sleep_until
     using namespace std::chrono; // nanoseconds, system_clock, seconds
@@ -12,11 +12,11 @@ GameState::AbstractGameState* GameState::SplashScreenGameState::run()
     return NextState;
 }
 
-GameState::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-void GameState::SplashScreenGameState::AddStates(MenuGameState* NextState)
+void GameStates::SplashScreenGameState::AddStates(MenuGameState* NextState)
 {
     this->NextState = NextState;
 }

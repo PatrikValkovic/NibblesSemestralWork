@@ -123,11 +123,11 @@ $(TARGET_DIR)/TranslateEngine.o: src/Translation/TranslateEngine.cpp src/Transla
 ##	STATES  ##
 ##############
 
-$(TARGET_DIR)/States.o: $(TARGET_DIR)/GameState.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o $(TARGET_DIR)/SingleplayerGameState.o $(TARGET_DIR)/PlayingState.o $(TARGET_DIR)/NetGameState.o $(TARGET_DIR)/MultiplayerGameState.o $(TARGET_DIR)/ChangeLanguageState.o $(TARGET_DIR)/EndState.o $(TARGET_DIR)/GamePauseState.o
-	$(LINKER) -r -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameState.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o $(TARGET_DIR)/SingleplayerGameState.o $(TARGET_DIR)/PlayingState.o $(TARGET_DIR)/NetGameState.o $(TARGET_DIR)/MultiplayerGameState.o $(TARGET_DIR)/ChangeLanguageState.o $(TARGET_DIR)/EndState.o $(TARGET_DIR)/GamePauseState.o
+$(TARGET_DIR)/States.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o $(TARGET_DIR)/SingleplayerGameState.o $(TARGET_DIR)/PlayingState.o $(TARGET_DIR)/NetGameState.o $(TARGET_DIR)/MultiplayerGameState.o $(TARGET_DIR)/ChangeLanguageState.o $(TARGET_DIR)/EndState.o $(TARGET_DIR)/GamePauseState.o
+	$(LINKER) -r -o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o $(TARGET_DIR)/SingleplayerGameState.o $(TARGET_DIR)/PlayingState.o $(TARGET_DIR)/NetGameState.o $(TARGET_DIR)/MultiplayerGameState.o $(TARGET_DIR)/ChangeLanguageState.o $(TARGET_DIR)/EndState.o $(TARGET_DIR)/GamePauseState.o
 
-$(TARGET_DIR)/GameState.o: src/States/GameState.cpp src/States/GameState.h src/States/AbstractGameState.h src/States/MenuGameState.h src/States/SplashScreenGameState.h
-	$(COMPILER) -c -o $(TARGET_DIR)/GameState.o src/States/GameState.cpp $(COMPILE_FLAGS)
+$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h src/States/MenuGameState.h src/States/SplashScreenGameState.h
+	$(COMPILER) -c -o $(TARGET_DIR)/GameStates.o src/States/GameStates.cpp $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.h src/States/SplashScreenGameState.cpp src/States/AbstractGameState.h
 	$(COMPILER) -c -o $(TARGET_DIR)/SplashScreenGameState.o src/States/SplashScreenGameState.cpp $(COMPILE_FLAGS)

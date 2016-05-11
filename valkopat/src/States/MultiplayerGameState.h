@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_MULTIPLAYERGAMESTATE_H
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class MenuGameState;
 
