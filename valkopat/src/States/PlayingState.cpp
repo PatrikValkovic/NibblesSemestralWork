@@ -8,20 +8,20 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     using Game::Directions;
     ViewModel::GameConsoleViewModel* Rendering = (ViewModel::GameConsoleViewModel*)this->RenderingModel->GameModel();
 
+    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
+    WormsToRender.push_back(this->ContentOfGame->Player);
     while(true)
     {
-        this->WaitToNextTurn();
+        Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
 
-        vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-        WormsToRender.push_back(this->ContentOfGame->Player);
+        this->WaitToNextTurn();
 
         if(!this->ProccessEvents())
             return this->Pause;
         this->MoveWorms();
         this->CheckCollisions();
-
-        Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
     }
+    return NULL;
 }
 
 GameStates::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel)
