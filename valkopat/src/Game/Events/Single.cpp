@@ -38,6 +38,7 @@ void Game::Event::Single::ProccessActions()
 
 void Game::Event::Single::BackMode(termios old)
 {
+    //ZDROJ: http://stackoverflow.com/a/912796/3797407
     old.c_lflag |= ICANON;
     old.c_lflag |= ECHO;
     if (tcsetattr(0, TCSADRAIN, &old) < 0)
@@ -46,6 +47,7 @@ void Game::Event::Single::BackMode(termios old)
 
 termios Game::Event::Single::SetMode()
 {
+    //ZDROJ: http://stackoverflow.com/a/912796/3797407
     struct termios old = {0};
     if (tcgetattr(0, &old) < 0)
         perror("tcsetattr()");
@@ -60,6 +62,7 @@ termios Game::Event::Single::SetMode()
 
 int Game::Event::Single::kbhit()
 {
+    //ZDROJ: http://stackoverflow.com/a/912796/3797407
     int i;
     ioctl(0, FIONREAD, &i);
     return i; /* return a count of chars available to read */
