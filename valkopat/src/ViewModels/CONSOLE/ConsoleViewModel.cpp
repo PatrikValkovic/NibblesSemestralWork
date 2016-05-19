@@ -8,7 +8,7 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
 
 void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    SplashScren = new SplashScreenConsoleViewModel(Translate);
+    SplashScren = new SplashPauseScreenConsoleViewModel(Translate);
     Menu = new MenuConsoleViewModel(Translate);
     Language = new LanguageConsoleViewModel(Translate);
     Multiplayer = new MultiplayerConsoleViewModel(Translate);
@@ -19,7 +19,7 @@ void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Transla
     Quit = new QuitConsoleViewModel(Translate);
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashPauseScreenModel()
 {
     return this->SplashScren;
 }

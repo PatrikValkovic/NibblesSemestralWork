@@ -1,11 +1,11 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENSDLVIEWMODEL_H
 #define CERVISEMESTRALKA_SPLASHSCREENSDLVIEWMODEL_H
 #ifdef USE_SDL
-#include "../Abstract/SplashScreenAbstractViewModel.h"
+#include "../Abstract/SplashPauseScreenAbstractViewModel.h"
 
 namespace ViewModel
 {
-    class SplashScreenSDLViewModel : public SplashScreenAbstractViewModel
+    class SplashScreenSDLViewModel : public SplashPauseScreenAbstractViewModel
     {
     public:
         SplashScreenSDLViewModel(const Translate::TranslateEngine* Translation);

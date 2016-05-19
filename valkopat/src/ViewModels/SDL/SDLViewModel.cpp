@@ -11,7 +11,7 @@ void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
     //TODO
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::SDLViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::SDLViewModel::SplashPauseScreenModel()
 {
     //TODO
     return NULL;
