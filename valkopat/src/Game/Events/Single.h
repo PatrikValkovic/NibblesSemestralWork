@@ -7,10 +7,13 @@
 #include "AbstractEvent.h"
 #include "../Worm.h"
 
-
-
 namespace Game
 {
+    enum Keys
+    {
+        A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+    };
+
     namespace Event
     {
         class Single : public Abstract
