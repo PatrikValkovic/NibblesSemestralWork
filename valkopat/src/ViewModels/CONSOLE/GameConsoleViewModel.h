@@ -2,14 +2,10 @@
 #define CERVISEMESTRALKA_GAMECONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
 #include "../Abstract/GameAbstractViewModel.h"
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "../../Game/Worm.h"
-#include "../../Game/PlayGround.h"
-#include "../../Game/Point.h"
-#include "../../Game/GameContent.h"
+
 
 namespace ViewModel
 {
@@ -18,7 +14,7 @@ namespace ViewModel
     public:
         GameConsoleViewModel(const Translate::TranslateEngine* Translate);
 
-        void RenderGame(Game::GameContent* ContentToRender);
+        virtual void RenderGame(Game::GameContent* ContentToRender);
     };
 }
 

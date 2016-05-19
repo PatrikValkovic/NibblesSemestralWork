@@ -9,6 +9,8 @@ namespace ViewModel
     {
     public:
         GameSDLViewModel(const Translate::TranslateEngine* Translation);
+
+        virtual void RenderGame(Game::GameContent* ContentToRender) = 0;
     };
 }
 
