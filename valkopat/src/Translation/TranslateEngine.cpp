@@ -27,6 +27,8 @@ vector<string> Translate::TranslateEngine::GetTranslateFiles() const
         if (DirEntry->d_type == 0x8)
             Files.push_back(DirEntry->d_name);
 
+    closedir(DataDirectory);
+
     if (Files.size() == 0)
         throw new Exceptions::Exception("No translation file found", __LINE__, __FILE__);
 

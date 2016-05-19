@@ -74,6 +74,7 @@ ViewModel::ConsoleViewModel::~ConsoleViewModel()
     delete Singpleplayer;
     delete Game;
     delete Score;
+    delete Quit;
 }
 
 

@@ -9,6 +9,7 @@ namespace Game
     {
     public:
         NibbleGame(ViewModel::BaseViewModel* RenderingEngine);
+        ~NibbleGame();
         void run();
         void init();
 

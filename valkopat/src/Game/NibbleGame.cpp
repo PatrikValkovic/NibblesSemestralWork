@@ -17,6 +17,13 @@ void Game::NibbleGame::init()
     this->States = new GameStates::GameStates(this->RenderEngine);
 }
 
+Game::NibbleGame::~NibbleGame()
+{
+    delete this->States;
+}
+
+
+
 
 
 

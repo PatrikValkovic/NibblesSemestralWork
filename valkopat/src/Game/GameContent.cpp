@@ -7,6 +7,7 @@ Game::GameContent::~GameContent()
     });
     delete Ground;
     delete Player;
+    Events.DeleteAllEvents();
 
     Ground = NULL;
     Player = NULL;
