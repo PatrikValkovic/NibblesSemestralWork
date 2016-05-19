@@ -95,6 +95,14 @@ $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 $(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+
+
+##############
+##	EVENTS  ##
+##############
+#TODO
+
+
 ##################
 ##	EXCEPTIONS  ##
 ##################
