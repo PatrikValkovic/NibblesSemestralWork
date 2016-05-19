@@ -129,13 +129,16 @@ $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Even
 ##	EXCEPTIONS  ##
 ##################
 
-$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/InvalidArgumentException.o:  src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h $(TARGET_DIR)/Exception.o
+$(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Exception.o: src/Exceptions/Exception.cpp src/Exceptions/Exception.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/Exceptions/OutOfRangeException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #################
