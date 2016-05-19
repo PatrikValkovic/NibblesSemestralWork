@@ -208,7 +208,7 @@ $(TARGET_DIR)/SDLModel.o: $(TARGET_DIR)/SplashScreenSDLViewModel.o $(TARGET_DIR)
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/SDLViewModel.o: src/ViewModels/SDL/SDLViewModel.cpp  src/ViewModels/SDL/SDLViewModel.h src/ViewModels/SDL/GameSDLViewModel.h src/ViewModels/SDL/LanguageSDLViewModel.h src/ViewModels/SDL/MenuSDLViewModel.h src/ViewModels/SDL/MultiplayerSDLViewModel.h src/ViewModels/SDL/NetMenuSDLViewModel.h src/ViewModels/SDL/ScoreSDLViewModel.h src/ViewModels/SDL/SingpleplayerMenuSDLViewModel.h src/ViewModels/SDL/SplashScreenSDLViewModel.h src/ViewModels/SDL/QuitSDLViewModel.h $(__ABSTRACTION_FILES)
-	g++ -c -o $@ #< $(COMPILE_FLAGS)
+	g++ -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/GameSDLViewModel.o: src/ViewModels/SDL/GameSDLViewModel.cpp src/ViewModels/SDL/GameSDLViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h
 	g++ -c -o $@ $< $(COMPILE_FLAGS)
