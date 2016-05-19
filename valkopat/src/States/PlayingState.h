@@ -9,8 +9,6 @@
 #include "../Game/Enums.h"
 #include "../Game/GameContent.h"
 
-#include "../ViewModels/CONSOLE/GameConsoleViewModel.h"
-
 namespace GameStates
 {
     class PlayingState : public AbstractGameState
