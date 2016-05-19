@@ -78,16 +78,15 @@ nibbles.exe: $(TARGET_DIR)/nibbles.exe
 $(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o
 	$(COMPILER) -o $@ $^ $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o
+$(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o $(TARGET_DIR)/Exceptions.o
 	$(LINKER) -r -o $@ $^
 
 ############
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/Exceptions.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o
 	$(LINKER) -r -o $@ $^
-
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
@@ -95,13 +94,36 @@ $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 $(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+$(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o
+	$(LINKER) -r -o $@ $^
 
+$(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Game/Point.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/Point.o: src/Game/Point.cpp src/Game/Point.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h src/Game/Enums.h src/Game/Point.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/GameContent.o: src/Game/GameContent.cpp src/Game/GameContent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##############
 ##	EVENTS  ##
 ##############
-#TODO
 
+$(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o
+	$(LINKER) -r -o $@ $^
+
+$(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/Game/Events/AbstractEvent.h src/Game/Worm.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Events/EventContainer.h src/Game/Events/AbstractEvent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##################
 ##	EXCEPTIONS  ##
