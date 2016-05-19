@@ -9,6 +9,7 @@ namespace ViewModel
     {
     public:
         SplashScreenNCursesViewModel(const Translate::TranslateEngine* Translation);
+
         virtual void ShowSplashScreen();
     };
 }
