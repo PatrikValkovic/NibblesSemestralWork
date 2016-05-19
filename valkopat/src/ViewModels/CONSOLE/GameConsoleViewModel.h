@@ -9,6 +9,7 @@
 #include "../../Game/Worm.h"
 #include "../../Game/PlayGround.h"
 #include "../../Game/Point.h"
+#include "../../Game/GameContent.h"
 
 namespace ViewModel
 {
@@ -17,7 +18,7 @@ namespace ViewModel
     public:
         GameConsoleViewModel(const Translate::TranslateEngine* Translate);
 
-        void RenderGame(Game::PlayGround* Playground,std::vector<Game::Worm*> Worms);
+        void RenderGame(Game::GameContent* ContentToRender);
     };
 }
 

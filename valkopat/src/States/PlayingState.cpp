@@ -12,7 +12,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     WormsToRender.push_back(this->ContentOfGame->Player);
     while(true)
     {
-        Rendering->RenderGame(this->ContentOfGame->Ground,WormsToRender);
+        Rendering->RenderGame(this->ContentOfGame);
 
         this->WaitToNextTurn();
 
