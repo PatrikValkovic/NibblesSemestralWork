@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "../Abstract/BaseViewModel.h"
-#include "SplashScreenConsoleViewModel.h"
+#include "SplashPauseScreenConsoleViewModel.h"
 #include "MenuConsoleViewModel.h"
 #include "LanguageConsoleViewModel.h"
 #include "MultiplayerConsoleViewModel.h"
@@ -23,7 +23,7 @@ namespace ViewModel
         virtual const char* GetNameofViewModel();
         virtual void init(const Translate::TranslateEngine* Translate);
 
-        virtual SplashScreenAbstractViewModel* SplashScreenModel();
+        virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
         virtual LanguageAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
@@ -33,7 +33,7 @@ namespace ViewModel
         virtual ScoreAbstractViewModel* ScoreModel();
         virtual QuitAbstractViewModel* QuitModel();
     private:
-        SplashScreenAbstractViewModel* SplashScren;
+        SplashPauseScreenAbstractViewModel* SplashScren;
         MenuAbstractViewModel* Menu;
         LanguageAbstractViewModel* Language;
         MultiplayerMenuAbstractViewModel* Multiplayer;

@@ -4,7 +4,7 @@
 #include <cstring>
 
 #include "../../Translation/TranslateEngine.h"
-#include "SplashScreenAbstractViewModel.h"
+#include "SplashPauseScreenAbstractViewModel.h"
 #include "MenuAbstractViewModel.h"
 #include "LanguageAbstractViewModel.h"
 #include "MultiplayerAbstractViewModel.h"
@@ -25,7 +25,7 @@ namespace ViewModel
         virtual const char* GetNameofViewModel() = 0;
         virtual void init(const Translate::TranslateEngine* Translate) = 0;
 
-        virtual SplashScreenAbstractViewModel* SplashScreenModel() = 0;
+        virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel() = 0;
         virtual MenuAbstractViewModel* MenuModel() = 0;
         virtual LanguageAbstractViewModel* LanguageModel() = 0;
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel() = 0;

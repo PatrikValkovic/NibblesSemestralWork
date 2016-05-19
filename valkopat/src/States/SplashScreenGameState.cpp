@@ -6,7 +6,7 @@ GameStates::AbstractGameState* GameStates::SplashScreenGameState::run()
     using namespace std::chrono; // nanoseconds, system_clock, seconds
     time_point<system_clock> BeginOfMethod = system_clock::now();
 
-    this->RenderingModel->SplashScreenModel()->ShowSplashScreen();
+    this->RenderingModel->SplashPauseScreenModel()->ShowSplashScreen();
 
     sleep_until(BeginOfMethod + seconds(this->SleepForSecond));
     return NextState;

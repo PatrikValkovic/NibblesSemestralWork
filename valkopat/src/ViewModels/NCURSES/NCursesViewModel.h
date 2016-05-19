@@ -21,7 +21,7 @@ namespace ViewModel
         virtual const char* GetNameofViewModel();
         virtual void init(const Translate::TranslateEngine* Translate);
 
-        virtual SplashScreenAbstractViewModel* SplashScreenModel();
+        virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
         virtual LanguageAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();

@@ -11,7 +11,7 @@ void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Transla
     //TODO
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashPauseScreenModel()
 {
     //TODO
     return NULL;

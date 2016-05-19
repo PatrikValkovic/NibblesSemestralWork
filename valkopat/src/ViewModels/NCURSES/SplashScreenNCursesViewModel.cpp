@@ -7,7 +7,7 @@ void ViewModel::SplashScreenNCursesViewModel::ShowSplashScreen()
 }
 
 ViewModel::SplashScreenNCursesViewModel::SplashScreenNCursesViewModel(const Translate::TranslateEngine* Translation)
-        : SplashScreenAbstractViewModel(Translation)
+        : SplashPauseScreenAbstractViewModel(Translation)
 { }
 
 

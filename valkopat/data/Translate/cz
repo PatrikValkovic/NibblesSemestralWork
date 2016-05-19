@@ -24,3 +24,6 @@ BorderedMap:Ohraničená mapa
 MaxCount:Maximální počet je
 ScoreOf:Bodů hráče
 WormDead:Vyřazen
+ReturnToGamePauseEntry:Návrat do hry
+ReturnToMenuPauseEntry:Ukončit hru a vrátit se to menu
+PauseHeading:Hra pozastavena

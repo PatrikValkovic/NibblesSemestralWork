@@ -1,5 +1,8 @@
 #ifndef CERVISEMESTRALKA_GAMEPAUSESTATE_H
 #define CERVISEMESTRALKA_GAMEPAUSESTATE_H
+#include <map>
+#include <string>
+#include "../ViewModels/Abstract/BaseViewModel.h"
 #include "AbstractGameState.h"
 
 namespace GameStates

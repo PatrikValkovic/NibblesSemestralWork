@@ -1,20 +1,24 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENABSTRACTVIEWMODEL_H
 #define CERVISEMESTRALKA_SPLASHSCREENABSTRACTVIEWMODEL_H
+#include <string>
+#include <map>
 #include "ViewModelDerivatingClass.h"
 
 namespace ViewModel
 {
-    class SplashScreenAbstractViewModel : public ViewModelAbstractClass
+    class SplashPauseScreenAbstractViewModel : public ViewModelAbstractClass
     {
     public:
-        SplashScreenAbstractViewModel(const Translate::TranslateEngine* Translate)
+        SplashPauseScreenAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 
-        virtual ~SplashScreenAbstractViewModel()
+        virtual ~SplashPauseScreenAbstractViewModel()
         { }
 
         virtual void ShowSplashScreen() = 0;
+
+        virtual int ShowPauseWithMenu(std::map<int,string> MenuEntry) = 0;
     };
 }
 
