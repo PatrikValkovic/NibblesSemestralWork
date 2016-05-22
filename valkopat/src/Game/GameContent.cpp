@@ -69,7 +69,7 @@ void Game::GameContent::GenerateGrub()
         {
             if (IndexOfNewGrub == 0 && Canvas[a][b] == 0)
             {
-                Grub = Point(a, b);
+                Grub = Point(b, a);
                 Cycling = false;
             }
             else if (Canvas[a][b] == 0)

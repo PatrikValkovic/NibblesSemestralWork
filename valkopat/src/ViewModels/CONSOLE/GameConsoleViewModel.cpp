@@ -28,6 +28,9 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
     for (; Moving != End; Moving++)
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
+    //TODO DEBUG
+    cout << "GrubPos: " << ContentToRender->GetGrub().GetPositionY() << ':'
+         << ContentToRender->GetGrub().GetPositionX() << endl;
     //prepare grub
     Canvas[ContentToRender->GetGrub().GetPositionY()][ContentToRender->GetGrub().GetPositionX()] = '$';
 
