@@ -38,6 +38,7 @@ void GameStates::PlayingState::ClearContent(Game::GameContent* NewContent)
 {
     delete ContentOfGame;
     ContentOfGame = NewContent;
+    ContentOfGame->GenerateGrub();
 }
 
 GameStates::PlayingState::~PlayingState()

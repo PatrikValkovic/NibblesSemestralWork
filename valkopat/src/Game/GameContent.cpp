@@ -23,7 +23,6 @@ Game::Point Game::GameContent::GetGrub() const
 {
     return this->Grub;
 }
-
 void Game::GameContent::GenerateGrub()
 {
     using std::vector;

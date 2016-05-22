@@ -28,6 +28,9 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
     for (; Moving != End; Moving++)
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
+    //prepare grub
+    Canvas[ContentToRender->GetGrub().GetPositionY()][ContentToRender->GetGrub().GetPositionX()] = '$';
+
     //prepare worms
     vector<Worm*> WormsToRender(ContentToRender->Worms.begin(),ContentToRender->Worms.end());
     WormsToRender.push_back(ContentToRender->Player);
@@ -38,7 +41,6 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
         Game::Worm* RenderingWorm = *MovingWorm;
         if(!RenderingWorm->IsPlaying())
             continue;
-
         vector<Game::Worm::Segment> Segments = RenderingWorm->GetSegment();
         for (int a = (int)Segments.size()-1; a >= 0; a--)
         {
@@ -47,7 +49,6 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
             else
                 Canvas[Segments[a].GetPositionY()][Segments[a].GetPositionX()] = '+';
         }
-
     }
 
     //render it
