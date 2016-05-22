@@ -19,7 +19,7 @@ Game::GameContent::GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Pla
     this->Worms = Worms;
 }
 
-Point Game::GameContent::GetPoint() const
+Point Game::GameContent::GetGrub() const
 {
     return this->Grub;
 }

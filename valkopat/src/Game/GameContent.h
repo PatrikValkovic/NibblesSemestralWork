@@ -29,7 +29,7 @@ namespace Game
         Worm* Player;
         EventContainer Events;
 
-        Point GetPoint() const;
+        Point GetGrub() const;
         void GeneratePoint();
     };
 }

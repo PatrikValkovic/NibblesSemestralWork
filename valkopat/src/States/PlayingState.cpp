@@ -114,12 +114,17 @@ void GameStates::PlayingState::CheckCollisions()
     });
 
     //fill grub
-    //TODO
+    Canvas[this->ContentOfGame->GetGrub().GetPositionY()]
+          [this->ContentOfGame->GetGrub().GetPositionX()] = 'G';
 
     //check heads
     for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
         Worm::Segment HeadSegment = Snake->GetSegment().at(0);
-        if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
+        if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]=='G')
+        {
+            
+        }
+        else if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
             Snake->StopPlaying();
         else
             Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] = 'H';
