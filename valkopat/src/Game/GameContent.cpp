@@ -19,12 +19,12 @@ Game::GameContent::GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Pla
     this->Worms = Worms;
 }
 
-Point Game::GameContent::GetGrub() const
+Game::Point Game::GameContent::GetGrub() const
 {
     return this->Grub;
 }
 
-void Game::GameContent::GeneratePoint()
+void Game::GameContent::GenerateGrub()
 {
     using std::vector;
     using Game::Point;

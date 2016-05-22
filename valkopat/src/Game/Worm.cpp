@@ -100,6 +100,24 @@ void Game::Worm::StopPlaying()
     this->Playing = false;
 }
 
+void Game::Worm::IncrementSize()
+{
+    using std::vector;
+    vector<Segment>::iterator SegmentsIter =  this->Segments.end();
+    Segment LastSegment = *(--SegmentsIter);
+    Segment LastButOneSegment = *(--SegmentsIter);
+
+    int MoveRight = LastButOneSegment.GetPositionX() - LastButOneSegment.GetPositionX();
+    int MoveDown = LastButOneSegment.GetPositionY() - LastButOneSegment.GetPositionY();
+    Segment CreatedSegment = LastSegment;
+    LastSegment.SetPositionX(LastSegment.GetPositionX()-MoveRight);
+    LastSegment.SetPositionY(LastSegment.GetPositionY()-MoveDown);
+
+    this->Segments.push_back(CreatedSegment);
+}
+
+
+
 
 
 

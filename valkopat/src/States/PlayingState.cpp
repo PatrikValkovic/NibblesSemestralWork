@@ -118,11 +118,13 @@ void GameStates::PlayingState::CheckCollisions()
           [this->ContentOfGame->GetGrub().GetPositionX()] = 'G';
 
     //check heads
-    for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
+    for_each(Worms.begin(),Worms.end(),[&Canvas,this](Worm* Snake){
         Worm::Segment HeadSegment = Snake->GetSegment().at(0);
         if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]=='G')
         {
-            
+            Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] = 'H';
+            Snake->IncrementSize();
+            this->ContentOfGame->GenerateGrub();
         }
         else if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
             Snake->StopPlaying();

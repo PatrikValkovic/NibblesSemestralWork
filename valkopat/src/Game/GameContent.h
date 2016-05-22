@@ -30,7 +30,7 @@ namespace Game
         EventContainer Events;
 
         Point GetGrub() const;
-        void GeneratePoint();
+        void GenerateGrub();
     };
 }
 
