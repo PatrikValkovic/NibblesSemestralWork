@@ -5,7 +5,6 @@
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
 
-
 int main()
 {
     try

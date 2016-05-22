@@ -27,3 +27,8 @@ int Game::PlayGround::CountOfStartPositions() const
 {
     return (int)StartingPositions.size();
 }
+
+
+
+
+

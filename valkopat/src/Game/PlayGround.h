@@ -25,6 +25,7 @@ namespace Game
         std::vector<Point> Walls;
         std::vector<StartPosition> StartingPositions;
         int StartPositionIndex = 0;
+        Point Grub;
     public:
 
         std::vector<Point> GetWalls() const;

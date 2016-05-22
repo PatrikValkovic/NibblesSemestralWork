@@ -17,6 +17,8 @@ namespace Game
 {
     class GameContent
     {
+    private:
+        Point Grub;
     public:
         GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Playground);
         ~GameContent();
@@ -26,6 +28,9 @@ namespace Game
         map<Worm*,Directions> MovingDirections;
         Worm* Player;
         EventContainer Events;
+
+        Point GetPoint() const;
+        void GeneratePoint();
     };
 }
 
