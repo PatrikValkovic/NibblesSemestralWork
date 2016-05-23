@@ -28,10 +28,7 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
     for (; Moving != End; Moving++)
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
-    //TODO DEBUG
-    cout << "GrubPos: " << ContentToRender->GetFood().GetPositionY() << ':'
-         << ContentToRender->GetFood().GetPositionX() << endl;
-    //prepare grub
+    //prepare food
     Canvas[ContentToRender->GetFood().GetPositionY()][ContentToRender->GetFood().GetPositionX()] = '$';
 
     //prepare worms
