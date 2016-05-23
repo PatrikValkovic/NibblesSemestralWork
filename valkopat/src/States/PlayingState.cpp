@@ -1,7 +1,5 @@
 #include "PlayingState.h"
 
-const int GameStates::PlayingState::WaitingTimeInMiliseconds = 1500;
-
 GameStates::AbstractGameState* GameStates::PlayingState::run()
 {
     using Game::Worm;
@@ -13,8 +11,6 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     while(true)
     {
         Rendering->RenderGame(this->ContentOfGame);
-
-        this->WaitToNextTurn();
 
         if(!this->ProccessEvents())
             return this->Pause;
@@ -56,15 +52,6 @@ void GameStates::PlayingState::ValidatePositionsOfWorms()
     for(;Moving!=End;Moving++)
         (*Moving)->ValidatePosition(this->ContentOfGame->Ground->GetWidth(),
                                     this->ContentOfGame->Ground->GetHeight());
-}
-
-void GameStates::PlayingState::WaitToNextTurn()
-{
-    using namespace std::this_thread; // sleep_for, sleep_until
-    using namespace std::chrono; // nanoseconds, system_clock, seconds
-    time_point<system_clock> BeginOfMethod = system_clock::now();
-
-    sleep_until(BeginOfMethod + milliseconds(WaitingTimeInMiliseconds));
 }
 
 void GameStates::PlayingState::MoveWorms()

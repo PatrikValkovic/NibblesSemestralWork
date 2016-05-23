@@ -3,7 +3,6 @@
 #include <map>
 #include <algorithm>
 #include <cstdint>
-#include <chrono>
 #include <vector>
 #include "AbstractGameState.h"
 #include "../Game/Enums.h"
@@ -27,11 +26,9 @@ namespace GameStates
         void ValidatePositionsOfWorms();
 
     private:
-        static const int WaitingTimeInMiliseconds;
         MenuGameState* Menu;
         GamePauseState* Pause;
         Game::GameContent* ContentOfGame = NULL;
-        void WaitToNextTurn();
         void MoveWorms();
         bool ProccessEvents();
         void CheckCollisions();
