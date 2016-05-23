@@ -8,7 +8,7 @@ namespace Game
 {
     namespace Task
     {
-        class WaitingTask : BaseTask
+        class WaitingTask : public BaseTask
         {
         private:
             static const int WaitingTimeInMiliseconds;

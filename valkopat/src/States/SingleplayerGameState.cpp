@@ -6,6 +6,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using ViewModel::SingleplayerMenuAbstractViewModel;
     using ViewModel::GameAbstractViewModel;
     using Game::Event::Single;
+    using Game::Task::WaitingTask;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -44,6 +45,10 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     //create events
     Single* SingleEvent = new Single(Player);
     NewContent->Events.AddEvent(SingleEvent);
+
+    //create Tasks
+    WaitingTask* WaitTask = new WaitingTask();
+    NewContent->Tasks.push_back(WaitTask);
 
     this->Play->ClearContent(NewContent);
 
