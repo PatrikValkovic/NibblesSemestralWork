@@ -18,8 +18,8 @@ LINKER = ld
 .PHONY: doc			#implemented TODO
 
 #Custom
-.PHONY: debug		#not implemented
-.PHONY: tests		#not implemented
+.PHONY: debug		#implemented
+.PHONY: tests		#implemented
 .PHONY: release		#implemented
 
 
@@ -94,7 +94,7 @@ $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 $(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o
+$(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o $(TARGET_DIR)/Settings.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Game/Point.h
@@ -110,6 +110,9 @@ $(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h src/Ga
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/GameContent.o: src/Game/GameContent.cpp src/Game/GameContent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h src/Game/Enums.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##############
