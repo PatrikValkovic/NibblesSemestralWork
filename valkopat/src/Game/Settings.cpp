@@ -7,10 +7,13 @@ Game::Settings::Settings()
 
 Game::Settings* Game::Settings::GetInstance()
 {
-    return nullptr;
+    if(Instance==NULL)
+        Instance = new Settings();
+    return Instance;
 }
 
 Game::Settings::~Settings()
 {
-
+    delete Instance;
+    Instance = NULL;
 }

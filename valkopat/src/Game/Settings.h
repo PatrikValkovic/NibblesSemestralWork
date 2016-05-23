@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_SETTINGS_H
 #define CERVISEMESTRALKA_SETTINGS_H
+#include <cstdlib>
 
 namespace Game
 {
@@ -7,11 +8,11 @@ namespace Game
     {
     private:
         Settings();
-        Settings* Instance;
+        static Settings* Instance;
     public:
         Settings(const Settings&) = delete;
         Settings& operator=(const Settings& second) = delete;
-        Settings* GetInstance();
+        static Settings* GetInstance();
         ~Settings();
     };
 }
