@@ -23,6 +23,7 @@ namespace Game
         KeyH,
         KeyI,
         KeyJ,
+        KeyK,
         KeyL,
         KeyM,
         KeyN,

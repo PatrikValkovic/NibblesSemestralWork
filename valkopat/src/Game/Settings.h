@@ -9,9 +9,18 @@ namespace Game
 {
     class Settings
     {
+    //singleton
     private:
         Settings();
         static Settings* Instance;
+    public:
+        Settings(const Settings&) = delete;
+        Settings& operator=(const Settings& second) = delete;
+        static Settings* GetInstance();
+        ~Settings();
+
+    //implementation
+    private:
         struct PlayerSetting
         {
             int Playerindex;
@@ -19,11 +28,6 @@ namespace Game
         };
         std::vector<PlayerSetting> IndividualSetting;
     public:
-        Settings(const Settings&) = delete;
-        Settings& operator=(const Settings& second) = delete;
-        static Settings* GetInstance();
-        ~Settings();
-
         void GetAction(Keys Key,int& Player,Directions& Direction);
     };
 }
