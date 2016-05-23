@@ -2,7 +2,11 @@
 
 Game::GameContent::~GameContent()
 {
+    using Game::Task::BaseTask;
     std::for_each(Worms.begin(), Worms.end(), [](Worm* X) {
+        delete X;
+    });
+    std::for_each(Tasks.begin(), Tasks.end(), [](BaseTask* X) {
         delete X;
     });
     delete Ground;
@@ -19,12 +23,12 @@ Game::GameContent::GameContent(vector<Worm*> Worms, Worm* Player, PlayGround* Pl
     this->Worms = Worms;
 }
 
-Game::Point Game::GameContent::GetGrub() const
+Game::Point Game::GameContent::GetFood() const
 {
-    return this->Grub;
+    return this->Food;
 }
 
-void Game::GameContent::GenerateGrub()
+void Game::GameContent::GenerateFood()
 {
     using std::vector;
     using Game::Point;
@@ -69,7 +73,7 @@ void Game::GameContent::GenerateGrub()
         {
             if (IndexOfNewGrub == 0 && Canvas[a][b] == 0)
             {
-                Grub = Point(b, a);
+                Food = Point(b, a);
                 Cycling = false;
             }
             else if (Canvas[a][b] == 0)

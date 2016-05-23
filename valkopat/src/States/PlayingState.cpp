@@ -12,6 +12,8 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     {
         Rendering->RenderGame(this->ContentOfGame);
 
+        this->RunTasks();
+
         if(!this->ProccessEvents())
             return this->Pause;
         this->MoveWorms();
@@ -34,7 +36,7 @@ void GameStates::PlayingState::ClearContent(Game::GameContent* NewContent)
 {
     delete ContentOfGame;
     ContentOfGame = NewContent;
-    ContentOfGame->GenerateGrub();
+    ContentOfGame->GenerateFood();
 }
 
 GameStates::PlayingState::~PlayingState()
@@ -102,8 +104,8 @@ void GameStates::PlayingState::CheckCollisions()
     });
 
     //fill grub
-    Canvas[this->ContentOfGame->GetGrub().GetPositionY()]
-          [this->ContentOfGame->GetGrub().GetPositionX()] = 'G';
+    Canvas[this->ContentOfGame->GetFood().GetPositionY()]
+          [this->ContentOfGame->GetFood().GetPositionX()] = 'G';
 
     //check heads
     for_each(Worms.begin(),Worms.end(),[&Canvas,this](Worm* Snake){
@@ -112,7 +114,7 @@ void GameStates::PlayingState::CheckCollisions()
         {
             Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] = 'H';
             Snake->IncrementSize();
-            this->ContentOfGame->GenerateGrub();
+            this->ContentOfGame->GenerateFood();
         }
         else if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
             Snake->StopPlaying();
@@ -124,6 +126,14 @@ void GameStates::PlayingState::CheckCollisions()
     for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
         delete [] Canvas[a];
     delete [] Canvas;
+}
+
+void GameStates::PlayingState::RunTasks()
+{
+    using Game::Task::BaseTask;
+    for_each(this->ContentOfGame->Tasks.begin(),this->ContentOfGame->Tasks.end(),[](BaseTask* X){
+        X->run();
+    });
 }
 
 

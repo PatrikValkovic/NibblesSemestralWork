@@ -6,6 +6,7 @@
 #include "Worm.h"
 #include "PlayGround.h"
 #include "Events/EventContainer.h"
+#include "Tasks/BaseTask.h"
 
 using std::vector;
 using std::map;
@@ -18,7 +19,7 @@ namespace Game
     class GameContent
     {
     private:
-        Point Grub;
+        Point Food;
     public:
         GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Playground);
         ~GameContent();
@@ -28,9 +29,10 @@ namespace Game
         map<Worm*,Directions> MovingDirections;
         Worm* Player;
         EventContainer Events;
+        vector<Game::Task::BaseTask*> Tasks;
 
-        Point GetGrub() const;
-        void GenerateGrub();
+        Point GetFood() const;
+        void GenerateFood();
     };
 }
 

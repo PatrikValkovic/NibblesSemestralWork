@@ -29,10 +29,10 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
         Canvas[Moving->GetPositionY()][Moving->GetPositionX()] = '#';
 
     //TODO DEBUG
-    cout << "GrubPos: " << ContentToRender->GetGrub().GetPositionY() << ':'
-         << ContentToRender->GetGrub().GetPositionX() << endl;
+    cout << "GrubPos: " << ContentToRender->GetFood().GetPositionY() << ':'
+         << ContentToRender->GetFood().GetPositionX() << endl;
     //prepare grub
-    Canvas[ContentToRender->GetGrub().GetPositionY()][ContentToRender->GetGrub().GetPositionX()] = '$';
+    Canvas[ContentToRender->GetFood().GetPositionY()][ContentToRender->GetFood().GetPositionX()] = '$';
 
     //prepare worms
     vector<Worm*> WormsToRender(ContentToRender->Worms.begin(),ContentToRender->Worms.end());

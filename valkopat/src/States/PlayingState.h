@@ -32,6 +32,7 @@ namespace GameStates
         void MoveWorms();
         bool ProccessEvents();
         void CheckCollisions();
+        void RunTasks();
     };
 }
 
