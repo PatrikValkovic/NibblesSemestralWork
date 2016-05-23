@@ -85,7 +85,7 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o $(TARGET_DIR)/Exceptions.o
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
@@ -123,6 +123,19 @@ $(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Events/EventContainer.h src/Game/Events/AbstractEvent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+#############
+##	TASKS  ##
+#############
+
+$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o
+	$(LINKER) -r -o $@ $^
+
+$(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/WaitingTask.h src/Game/Tasks/BaseTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##################
