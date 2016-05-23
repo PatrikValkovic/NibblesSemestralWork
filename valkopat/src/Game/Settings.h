@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_SETTINGS_H
 #define CERVISEMESTRALKA_SETTINGS_H
 #include <cstdlib>
+#include "Enums.h"
 
 namespace Game
 {
