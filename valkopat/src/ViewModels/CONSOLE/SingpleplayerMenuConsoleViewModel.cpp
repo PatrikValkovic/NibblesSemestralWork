@@ -48,7 +48,15 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
     {
         cout << Translation->GetTranslation("AviableLevels") << endl;
         for_each(Levels.begin(),Levels.end(),[this](pair<int,string> i){
-            cout << i.first << ": " << Translation->GetTranslation(i.second) << endl;
+            try
+            {
+                cout << i.first << ": " << Translation->GetTranslation(i.second) << endl;
+            }
+            catch(Exceptions::InvalidArgumentException* e)
+            {
+                delete e;
+                cout << i.first << ": " << i.second << endl;
+            }
         });
         cout << Translation->GetTranslation("LevelChoose") << ':';
         cin >> this->LevelIndex;
