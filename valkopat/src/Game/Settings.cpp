@@ -1,5 +1,7 @@
 #include "Settings.h"
 
+Game::Settings* Game::Settings::Instance = NULL;
+
 Game::Settings::Settings()
 {
     using std::pair;
@@ -35,18 +37,35 @@ Game::Settings::Settings()
 
 Game::Settings* Game::Settings::GetInstance()
 {
-    if(Instance==NULL)
-        Instance = new Settings();
-    return Instance;
+    if(Game::Settings::Instance==NULL)
+        Game::Settings::Instance = new Settings();
+    return Game::Settings::Instance;
 }
 
 Game::Settings::~Settings()
 {
-    delete Instance;
-    Instance = NULL;
+    delete Game::Settings::Instance;
+    Game::Settings::Instance = NULL;
 }
 
-void Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Directions& Direction)
+bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Directions& Direction) const
 {
+    using std::for_each;
+    using Game::Keys;
+    using Game::Directions;
+    using std::map;
+    using std::pair;
 
+    bool Finded = false;
+    for_each(IndividualSetting.begin(),IndividualSetting.end(),[&](PlayerSetting WorkingSetting){
+        map<Keys,Directions>::iterator Finding = WorkingSetting.Actions.find(Key);
+        if(Finding!=WorkingSetting.Actions.end())
+        {
+            Finded = true;
+            Player = WorkingSetting.Playerindex;
+            Direction = Finding->second;
+        }
+    });
+
+    return Finded;
 }

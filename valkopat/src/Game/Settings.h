@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <map>
+#include <algorithm>
 #include "Enums.h"
 
 namespace Game
@@ -14,9 +15,9 @@ namespace Game
         Settings();
         static Settings* Instance;
     public:
+        static Settings* GetInstance();
         Settings(const Settings&) = delete;
         Settings& operator=(const Settings& second) = delete;
-        static Settings* GetInstance();
         ~Settings();
 
     //implementation
@@ -28,7 +29,7 @@ namespace Game
         };
         std::vector<PlayerSetting> IndividualSetting;
     public:
-        void GetAction(Keys Key,int& Player,Directions& Direction);
+        bool GetAction(Keys Key,int& Player,Directions& Direction) const;
     };
 }
 
