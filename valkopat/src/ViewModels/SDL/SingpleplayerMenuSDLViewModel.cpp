@@ -17,7 +17,7 @@ int ViewModel::SingpleplayerMenuSDLViewModel::CountOfAI()
     return 0;
 }
 
-int ViewModel::SingpleplayerMenuSDLViewModel::Level()
+string ViewModel::SingpleplayerMenuSDLViewModel::Level()
 {
     //TODO
     return 0;

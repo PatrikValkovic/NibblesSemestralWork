@@ -40,7 +40,7 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
     return this->Name;
 }
 
-int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
+string ViewModel::SingpleplayerMenuConsoleViewModel::Level()
 {
     using namespace std;
     const map<int, string> Levels = Game::PlaygroundFactory::GetAviableLevels();
@@ -67,7 +67,7 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
         }
         break;
     }
-    return this->LevelIndex;
+    return Levels.at(this->LevelIndex);
 }
 
 #endif

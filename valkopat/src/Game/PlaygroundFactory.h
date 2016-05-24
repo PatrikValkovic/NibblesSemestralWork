@@ -15,7 +15,7 @@ namespace Game
     class PlaygroundFactory
     {
     public:
-        static PlayGround* GetLevel(int Level);
+        static PlayGround* GetLevel(string Level);
         static map<int,string> GetAviableLevels();
     private:
         static PlayGround* FirstLevel();

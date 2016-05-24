@@ -11,7 +11,7 @@ namespace ViewModel
 
         virtual std::string NameOfPlayer();
         virtual int CountOfAI();
-        virtual int Level() ;
+        virtual string Level() ;
     };
 }
 #endif
