@@ -53,13 +53,32 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
     return Area;
 }
 
-map<int,string> Game::PlaygroundFactory::GetCountOfAviableLevels()
+map<int,string> Game::PlaygroundFactory::GetAviableLevels()
 {
     map<int,string> Levels;
     Levels.insert(pair<int,string>(1,"ClearMap"));
     Levels.insert(pair<int,string>(2,"BorderedMap"));
     return Levels;
 }
+
+vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
+{
+    DIR* DataDirectory = opendir("./data/Levels");
+    if (DataDirectory == NULL)
+        throw new Exceptions::Exception("Directory for translation not found", __LINE__, __FILE__);
+
+    vector<string> Files;
+    struct dirent* DirEntry;
+    while ((DirEntry = readdir(DataDirectory)) != NULL)
+        if (DirEntry->d_type == 0x8)
+            Files.push_back(DirEntry->d_name);
+
+    closedir(DataDirectory);
+
+    return Files;
+}
+
+
 
 
 

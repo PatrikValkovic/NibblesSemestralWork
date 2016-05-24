@@ -43,7 +43,7 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
 int ViewModel::SingpleplayerMenuConsoleViewModel::Level()
 {
     using namespace std;
-    const map<int, string> Levels = Game::PlaygroundFactory::GetCountOfAviableLevels();
+    const map<int, string> Levels = Game::PlaygroundFactory::GetAviableLevels();
     while(true)
     {
         cout << Translation->GetTranslation("AviableLevels") << endl;

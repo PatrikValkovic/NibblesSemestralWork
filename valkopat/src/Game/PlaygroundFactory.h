@@ -1,8 +1,10 @@
 #ifndef CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
 #define CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
+#include <cstdio>
 #include <vector>
 #include <map>
 #include <string>
+#include <dirent.h>
 #include "../Exceptions/OutOfRangeException.h"
 #include "PlayGround.h"
 
@@ -14,10 +16,12 @@ namespace Game
     {
     public:
         static PlayGround* GetLevel(int Level);
-        static map<int,string> GetCountOfAviableLevels();
+        static map<int,string> GetAviableLevels();
     private:
         static PlayGround* FirstLevel();
         static PlayGround* SecondLevel();
+
+        static vector<string> GetLevelsFileNames();
     };
 }
 
