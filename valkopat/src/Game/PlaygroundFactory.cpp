@@ -95,7 +95,7 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
     return NameOfLevel;
 }
 
-PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
+Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
     using Game::PlayGround;
 
@@ -111,7 +111,7 @@ PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
     return CreatedPlayground;
 }
 
-PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
+Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
 {
     return NULL;
 }
