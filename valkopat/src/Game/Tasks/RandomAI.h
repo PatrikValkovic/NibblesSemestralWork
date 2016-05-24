@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_RANDOMAI_H
 #define CERVISEMESTRALKA_RANDOMAI_H
+#include <set>
 #include "BaseTask.h"
 #include "../GameContent.h"
 #include "../Worm.h"
