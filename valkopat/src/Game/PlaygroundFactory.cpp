@@ -2,13 +2,14 @@
 
 Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 {
+    PlayGround* Playlevel = NULL;
     if (Level == "ClearMap")
-        return FirstLevel();
+        Playlevel =  FirstLevel();
     else if (Level == "BorderedMap")
-        return SecondLevel();
+        Playlevel = SecondLevel();
     else
-        throw new Exceptions::OutOfRangeException();
-    return NULL;
+        Playlevel = CreateLevelFromFile(Level);
+    return Playlevel;
 }
 
 Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
@@ -89,6 +90,13 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
     File.close();
     return NameOfLevel;
 }
+
+PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
+{
+    return NULL;
+}
+
+
 
 
 

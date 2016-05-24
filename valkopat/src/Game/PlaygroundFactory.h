@@ -25,6 +25,7 @@ namespace Game
 
         static vector<string> GetLevelsFileNames();
         static string LoadNameOfLevel(string Filename);
+        static PlayGround* CreateLevelFromFile(string LevelName);
     };
 }
 
