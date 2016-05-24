@@ -26,7 +26,8 @@ void Game::Task::BFSAI::run()
         Canvas[S.GetPositionY()][S.GetPositionX()] = numeric_limits::max();
     });
 
-    
+    Directions NewMove = this->BFS(Canvas, (Point) this->ControlledWorm->GetSegment().at(0), this->ContentOfGame->GetFood());
+    this->ControlledWorm->SetMoveDirection(NewMove);
 
     //delete
     for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
@@ -37,3 +38,10 @@ void Game::Task::BFSAI::run()
 Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
         : ControlledWorm(AIWorm), ContentOfGame(Content)
 { }
+
+Directions Game::Task::BFSAI::BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint) const
+{
+    return Down;
+}
+
+

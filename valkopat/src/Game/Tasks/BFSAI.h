@@ -18,6 +18,8 @@ namespace Game
         private:
             Worm* ControlledWorm;
             GameContent* ContentOfGame;
+
+            Directions BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint) const;
         };
     }
 }
