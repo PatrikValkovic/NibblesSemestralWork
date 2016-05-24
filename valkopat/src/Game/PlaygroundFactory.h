@@ -8,6 +8,7 @@
 #include <dirent.h>
 #include <algorithm>
 #include "../Exceptions/OutOfRangeException.h"
+#include "../Exceptions/InvalidArgumentException.h"
 #include "PlayGround.h"
 
 using namespace std;
@@ -26,6 +27,7 @@ namespace Game
         static vector<string> GetLevelsFileNames();
         static string LoadNameOfLevel(string Filename);
         static PlayGround* CreateLevelFromFile(string LevelName);
+        static PlayGround* ParseLevelFromFile(string FileName);
     };
 }
 

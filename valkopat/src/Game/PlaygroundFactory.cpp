@@ -9,6 +9,10 @@ Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
         Playlevel = SecondLevel();
     else
         Playlevel = CreateLevelFromFile(Level);
+
+    if(Playlevel==NULL)
+        throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists",__LINE__,__FILE__);
+
     return Playlevel;
 }
 
@@ -93,8 +97,26 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 
 PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
+    using Game::PlayGround;
+
+    PlayGround* CreatedPlayground = NULL;
+
+    vector<string> Files = GetLevelsFileNames();
+    for_each(Files.begin(),Files.end(),[&LevelName,&CreatedPlayground](string FileName){
+        if(LoadNameOfLevel(FileName)==LevelName && CreatedPlayground==NULL)
+            CreatedPlayground = ParseLevelFromFile(FileName);
+    });
+
+
+    return CreatedPlayground;
+}
+
+PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
+{
     return NULL;
 }
+
+
 
 
 
