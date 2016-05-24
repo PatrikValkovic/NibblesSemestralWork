@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_BFSAI_H
 #define CERVISEMESTRALKA_BFSAI_H
+#include <climits>
 #include <set>
 #include "BaseTask.h"
 #include "../GameContent.h"
