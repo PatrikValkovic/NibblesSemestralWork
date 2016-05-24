@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <dirent.h>
+#include <algorithm>
 #include "../Exceptions/OutOfRangeException.h"
 #include "PlayGround.h"
 
@@ -16,7 +17,7 @@ namespace Game
     {
     public:
         static PlayGround* GetLevel(string Level);
-        static map<int,string> GetAviableLevels();
+        static vector<string> GetAviableLevels();
     private:
         static PlayGround* FirstLevel();
         static PlayGround* SecondLevel();

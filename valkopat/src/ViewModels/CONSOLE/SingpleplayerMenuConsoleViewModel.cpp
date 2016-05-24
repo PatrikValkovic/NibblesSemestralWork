@@ -43,31 +43,33 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
 string ViewModel::SingpleplayerMenuConsoleViewModel::Level()
 {
     using namespace std;
-    const map<int, string> Levels = Game::PlaygroundFactory::GetAviableLevels();
+    const vector<string> Levels = Game::PlaygroundFactory::GetAviableLevels();
     while(true)
     {
         cout << Translation->GetTranslation("AviableLevels") << endl;
-        for_each(Levels.begin(),Levels.end(),[this](pair<int,string> i){
+        int index = 1;
+        for_each(Levels.begin(),Levels.end(),[&index,this](string i){
             try
             {
-                cout << i.first << ": " << Translation->GetTranslation(i.second) << endl;
+                cout << index << ": " << Translation->GetTranslation(i) << endl;
             }
             catch(Exceptions::InvalidArgumentException* e)
             {
                 delete e;
-                cout << i.first << ": " << i.second << endl;
+                cout << index << ": " << i << endl;
             }
+            index++;
         });
         cout << Translation->GetTranslation("LevelChoose") << ':';
         cin >> this->LevelIndex;
-        if(cin.fail() || Levels.find(this->LevelIndex)==Levels.end())
+        if(cin.fail() || this->LevelIndex<1 || this->LevelIndex>(int)Levels.size())
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
             continue;
         }
         break;
     }
-    return Levels.at(this->LevelIndex);
+    return Levels.at(this->LevelIndex-1);
 }
 
 #endif
