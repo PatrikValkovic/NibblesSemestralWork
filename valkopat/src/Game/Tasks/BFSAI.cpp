@@ -46,21 +46,27 @@ Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Gam
     using std::set;
 
     queue<Point> Searching;
-    set<Point> Closed;
 
     Searching.push(BeginOfSearch);
 
+    //construct BFS tree
     while(!Searching.empty())
     {
         Point WorkingPoint = Searching.front();
         Searching.pop;
 
-        if(Closed.find(WorkingPoint)==Closed.end())
-            continue;
         if(WorkingPoint == EndPoint)
             break;
 
         set<Point> PointsAround = GeneratePointsAround(WorkingPoint);
+        for_each(PointsAround.begin(),PointsAround.end(),[&map,&WorkingPoint,&Searching](Point P){
+            if(map[P.GetPositionY()][P.GetPositionX()]==0)
+            {
+                map[P.GetPositionY()][P.GetPositionX()] =
+                        map[WorkingPoint.GetPositionY()][WorkingPoint.GetPositionX()] + 1;
+                Searching.push(P);
+            }
+        });
     }
 
     return Down;
