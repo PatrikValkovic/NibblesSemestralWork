@@ -40,11 +40,12 @@ Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
         : ControlledWorm(AIWorm), ContentOfGame(Content)
 { }
 
-Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint) const
+Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint)
 {
     using Game::Point;
     using std::queue;
     using std::set;
+    using std::vector;
 
     queue<Point> Searching;
 
@@ -54,12 +55,12 @@ Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Gam
     while (!Searching.empty())
     {
         Point WorkingPoint = Searching.front();
-        Searching.pop;
+        Searching.pop();
 
         if (WorkingPoint == EndPoint)
             break;
 
-        set<Point> PointsAround = GeneratePointsAround(WorkingPoint);
+        vector<Point> PointsAround = GeneratePointsAround(WorkingPoint);
         for_each(PointsAround.begin(), PointsAround.end(), [&map, &WorkingPoint, &Searching](Point P) {
             if (map[P.GetPositionY()][P.GetPositionX()] == 0)
             {
@@ -73,7 +74,7 @@ Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Gam
     Point Working = EndPoint;
     while (map[Working.GetPositionY()][Working.GetPositionX()] != 1)
     {
-        set<Point> PointsAround = GeneratePointsAround(Working);
+        vector<Point> PointsAround = GeneratePointsAround(Working);
         for_each(PointsAround.begin(), PointsAround.end(), [&map, &Working](Point P) {
             if (map[P.GetPositionY()][P.GetPositionX()] == map[Working.GetPositionY()][Working.GetPositionX()] - 1)
                 Working = P;
@@ -83,30 +84,34 @@ Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Gam
     return this->ResolveDirection(BeginOfSearch, Working);
 }
 
-set<Point> Game::Task::BFSAI::GeneratePointsAround(Point AroundToGenerate) const
+std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point AroundToGenerate)
 {
-    set<Point> Points{
+    using std::set;
+    using Game::Point;
+    using std::vector;
+
+    vector<Point> Points{
             Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1),
             Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() + 1),
             Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY()),
             Point(AroundToGenerate.GetPositionX() + 1, AroundToGenerate.GetPositionY())
     };
 
-    set<Point>::iterator Moving = Points.begin();
-    set<Point>::iterator End = Points.end();
+    vector<Point>::iterator Moving = Points.begin();
+    vector<Point>::iterator End = Points.end();
     for (; Moving != End; Moving++)
     {
         Moving->SetPositionY(Moving->GetPositionY() < 0 ?
-                             this->ContentOfGame->Ground->GetHeight() - 1 :
+                             ContentOfGame->Ground->GetHeight() - 1 :
                              Moving->GetPositionY());
         Moving->SetPositionX(Moving->GetPositionX() < 0 ?
-                             this->ContentOfGame->Ground->GetWidth() - 1 :
+                             ContentOfGame->Ground->GetWidth() - 1 :
                              Moving->GetPositionX());
     }
     return Points;
 }
 
-Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To) const
+Game::Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
 {
     if (From.GetPositionX() == To.GetPositionX()+1 &&
         From.GetPositionY() == To.GetPositionY())
