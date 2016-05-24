@@ -17,13 +17,13 @@ void Game::Task::BFSAI::run()
     //fill walls
     vector<Point> Walls = this->ContentOfGame->Ground->GetWalls();
     for_each(Walls.begin(), Walls.end(), [&Canvas](Point W) {
-        Canvas[W.GetPositionY()][W.GetPositionX()] = numeric_limits::max();
+        Canvas[W.GetPositionY()][W.GetPositionX()] = numeric_limits<uint32_t>::max();
     });
 
     //fill self
     vector<Worm::Segment> Segments = this->ControlledWorm->GetSegment();
     for_each(++Segments.begin(), Segments.end(), [&Canvas](Worm::Segment S) {
-        Canvas[S.GetPositionY()][S.GetPositionX()] = numeric_limits::max();
+        Canvas[S.GetPositionY()][S.GetPositionX()] = numeric_limits<uint32_t>::max();
     });
 
     Directions NewMove = this->BFS(Canvas, (Point) this->ControlledWorm->GetSegment().at(0), this->ContentOfGame->GetFood());
@@ -66,6 +66,16 @@ Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Gam
                         map[WorkingPoint.GetPositionY()][WorkingPoint.GetPositionX()] + 1;
                 Searching.push(P);
             }
+        });
+    }
+
+    Point Working = EndPoint;
+    while(map[Working.GetPositionY()][Working.GetPositionX()]!=1)
+    {
+        set<Point> PointsAround = GeneratePointsAround(Working);
+        for_each(PointsAround.begin(),PointsAround.end(),[&map,&Working](Point P){
+            if(map[P.GetPositionY()][P.GetPositionX()]==map[Working.GetPositionY()][Working.GetPositionX()]-1)
+                Working = P;
         });
     }
 
