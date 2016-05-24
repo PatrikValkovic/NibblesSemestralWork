@@ -31,5 +31,10 @@ namespace Game
         SetPositionY(Y);
     }
 
+    bool Point::operator==(const Point& Second) const
+    {
+        return PositionY==Second.PositionY && PositionX==Second.PositionX;
+    }
+
 
 }

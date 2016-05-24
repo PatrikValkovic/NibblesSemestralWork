@@ -39,9 +39,56 @@ Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
         : ControlledWorm(AIWorm), ContentOfGame(Content)
 { }
 
-Directions Game::Task::BFSAI::BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint) const
+Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint) const
 {
+    using Game::Point;
+    using std::queue;
+    using std::set;
+
+    queue<Point> Searching;
+    set<Point> Closed;
+
+    Searching.push(BeginOfSearch);
+
+    while(!Searching.empty())
+    {
+        Point WorkingPoint = Searching.front();
+        Searching.pop;
+
+        if(Closed.find(WorkingPoint)==Closed.end())
+            continue;
+        if(WorkingPoint == EndPoint)
+            break;
+
+        set<Point> PointsAround = GeneratePointsAround(WorkingPoint);
+    }
+
     return Down;
 }
+
+set<Point> Game::Task::BFSAI::GeneratePointsAround(Point AroundToGenerate) const
+{
+    set<Point> Points{
+            Point(AroundToGenerate.GetPositionX(),AroundToGenerate.GetPositionY()-1),
+            Point(AroundToGenerate.GetPositionX(),AroundToGenerate.GetPositionY()+1),
+            Point(AroundToGenerate.GetPositionX()-1,AroundToGenerate.GetPositionY()),
+            Point(AroundToGenerate.GetPositionX()+1,AroundToGenerate.GetPositionY())
+    };
+
+    set<Point>::iterator Moving = Points.begin();
+    set<Point>::iterator End = Points.end();
+    for(;Moving!=End;Moving++)
+    {
+        Moving->SetPositionY(Moving->GetPositionY() < 0 ?
+                             this->ContentOfGame->Ground->GetHeight() - 1 :
+                             Moving->GetPositionY());
+        Moving->SetPositionX(Moving->GetPositionX() < 0 ?
+                             this->ContentOfGame->Ground->GetWidth() - 1 :
+                             Moving->GetPositionX());
+    }
+    return Points;
+}
+
+
 
 

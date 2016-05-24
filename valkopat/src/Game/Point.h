@@ -14,6 +14,7 @@ namespace Game
         void SetPositionY(int Y);
         Point();
         Point(int X, int Y);
+        bool operator ==(const Point& Second) const;
     };
 
 }
