@@ -34,13 +34,7 @@ void Game::GameContent::GenerateFood()
     using Game::Point;
     using Game::Worm;
     //prepare collision map
-    char** Canvas = new char* [this->Ground->GetHeight()];
-    for (int a = 0; a < this->Ground->GetHeight(); a++)
-    {
-        Canvas[a] = new char[this->Ground->GetWidth()];
-        for (int b = 0; b < this->Ground->GetWidth(); b++)
-            Canvas[a][b] = 0;
-    }
+    char** Canvas = this->CreateArrayForGame();
 
     //fill it with walls
     vector<Point> Walls = this->Ground->GetWalls();
@@ -79,6 +73,8 @@ void Game::GameContent::GenerateFood()
             else if (Canvas[a][b] == 0)
                 IndexOfNewGrub--;
         }
+
+    this->DeleteArrayForGame(Canvas);
     return;
 }
 
