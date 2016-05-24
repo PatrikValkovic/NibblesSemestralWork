@@ -1,6 +1,9 @@
 #ifndef CERVISEMESTRALKA_BFSAI_H
 #define CERVISEMESTRALKA_BFSAI_H
+#include <set>
 #include "BaseTask.h"
+#include "../GameContent.h"
+#include "../Worm.h"
 
 namespace Game
 {
@@ -8,7 +11,12 @@ namespace Game
     {
         class BFSAI : public BaseTask
         {
-
+        public:
+            BFSAI(Worm* AIWorm,GameContent* Content);
+            virtual void run();
+        private:
+            Worm* ControlledWorm;
+            GameContent* ContentOfGame;
         };
     }
 }
