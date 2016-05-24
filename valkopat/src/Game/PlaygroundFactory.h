@@ -4,9 +4,11 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <set>
 #include <string>
 #include <dirent.h>
 #include <algorithm>
+#include <limits>
 #include "../Exceptions/OutOfRangeException.h"
 #include "../Exceptions/InvalidArgumentException.h"
 #include "../Exceptions/InvalidFormatException.h"
@@ -29,6 +31,7 @@ namespace Game
         static string LoadNameOfLevel(string Filename);
         static PlayGround* CreateLevelFromFile(string LevelName);
         static PlayGround* ParseLevelFromFile(string FileName);
+        static void AddElementIntoPlayground(PlayGround* Playground,char Readed,int YPosition,int XPosition);
     };
 }
 
