@@ -7,29 +7,34 @@ void Game::Task::RandomAI::run()
     char** Canvas = this->ContentOfGame->CreateArrayForGame();
 
     vector<Point> Walls = this->ContentOfGame->Ground->GetWalls();
-    for_each(Walls.begin(),Walls.end(),[&Canvas](Point W){
+    for_each(Walls.begin(), Walls.end(), [&Canvas](Point W) {
         Canvas[W.GetPositionY()][W.GetPositionX()] = 'W';
     });
 
     vector<Worm::Segment> Segments = this->ControlledWorm->GetSegment();
-    for_each(++Segments.begin(),Segments.end(),[&Canvas](Worm::Segment S){
-       Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
+    for_each(++Segments.begin(), Segments.end(), [&Canvas](Worm::Segment S) {
+        Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
     });
 
     set<Directions> AviableDirections = {Directions::Up, Directions::Down, Directions::Left, Directions::Right};
     Worm::Segment HeadSegment = this->ControlledWorm->GetSegment().at(0);
-    while(true)
+    while (true)
     {
-        int NextMove = rand() % AviableDirections.size();
+        int NextMove = rand() % (int) AviableDirections.size();
         set<Directions>::iterator MoveIter = AviableDirections.begin();
-        for(int a=0;a<NextMove;a++)
+        for (int a = 0; a < NextMove; a++)
             MoveIter++;
 
         int DownMove;
         int RightMove;
-        this->ControlledWorm->DecideDirection(*MoveIter,DownMove,RightMove);
+        this->ControlledWorm->DecideDirection(*MoveIter, DownMove, RightMove);
 
-        if(Canvas[HeadSegment.GetPositionY()+DownMove][HeadSegment.GetPositionX()+RightMove]==0)
+        int NewYPosition = (HeadSegment.GetPositionY() + DownMove) % this->ContentOfGame->Ground->GetHeight();
+        NewYPosition = NewYPosition < 0 ? this->ContentOfGame->Ground->GetHeight() - 1 : NewYPosition;
+        int NewXPosition = (HeadSegment.GetPositionX() + RightMove) % this->ContentOfGame->Ground->GetWidth();
+        NewXPosition = NewXPosition < 0 ? this->ContentOfGame->Ground->GetWidth() - 1 : NewXPosition;
+
+        if (Canvas[NewYPosition][NewXPosition] == 0)
         {
             this->ControlledWorm->SetMoveDirection(*MoveIter);
             break;
