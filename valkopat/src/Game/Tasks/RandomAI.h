@@ -9,7 +9,7 @@ namespace Game
 {
     namespace Task
     {
-        class RandomAI
+        class RandomAI : public BaseTask
         {
         public:
             RandomAI(Worm* AIWorm,GameContent* Content);
