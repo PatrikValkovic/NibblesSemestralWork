@@ -4,6 +4,7 @@
 #include <set>
 #include <queue>
 #include "BaseTask.h"
+#include "../../Exceptions/InvalidArgumentException.h"
 #include "../GameContent.h"
 #include "../Worm.h"
 
@@ -22,6 +23,7 @@ namespace Game
 
             Directions BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint) const;
             set<Point> GeneratePointsAround(Point AroundToGenerate) const;
+            Directions ResolveDirection(Point From, Point To) const;
         };
     }
 }
