@@ -30,6 +30,7 @@ namespace Game
         std::vector<PlayerSetting> IndividualSetting;
     public:
         bool GetAction(Keys Key,int& Player,Directions& Direction) const;
+        bool SetAction(Keys NewKey, int Player, Directions NewDirection);
     };
 }
 

@@ -56,16 +56,46 @@ bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Directions& Di
     using std::map;
     using std::pair;
 
-    bool Finded = false;
+    bool Found = false;
     for_each(IndividualSetting.begin(),IndividualSetting.end(),[&](PlayerSetting WorkingSetting){
         map<Keys,Directions>::iterator Finding = WorkingSetting.Actions.find(Key);
         if(Finding!=WorkingSetting.Actions.end())
         {
-            Finded = true;
+            Found = true;
             Player = WorkingSetting.Playerindex;
             Direction = Finding->second;
         }
     });
 
-    return Finded;
+    return Found;
 }
+
+bool Game::Settings::SetAction(Keys NewKey, int Player, Directions NewDirection)
+{
+    int PlayerIndex;
+    Directions Direct;
+    if(GetAction(NewKey,PlayerIndex,Direct))
+        return false;
+
+    using std::for_each;
+    using std::pair;
+    using std::map;
+
+    bool Changed = false;
+    for_each(IndividualSetting.begin(),IndividualSetting.end(),[&NewKey,&Player,&NewDirection,&Changed]
+    (PlayerSetting X){
+        if(X.Playerindex==Player)
+        {
+            Changed = true;
+            map<Keys,Directions>::iterator Moving = X.Actions.begin();
+            map<Keys,Directions>::iterator End = X.Actions.end();
+            for(;Moving!=End;Moving++)
+                if(Moving->second==NewDirection)
+                    Moving->first = NewKey;
+        }
+    });
+
+    return Changed;
+}
+
+
