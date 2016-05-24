@@ -4,14 +4,14 @@ Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 {
     PlayGround* Playlevel = NULL;
     if (Level == "ClearMap")
-        Playlevel =  FirstLevel();
+        Playlevel = FirstLevel();
     else if (Level == "BorderedMap")
         Playlevel = SecondLevel();
     else
         Playlevel = CreateLevelFromFile(Level);
 
-    if(Playlevel==NULL)
-        throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists",__LINE__,__FILE__);
+    if (Playlevel == NULL)
+        throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists", __LINE__, __FILE__);
 
     return Playlevel;
 }
@@ -62,7 +62,7 @@ vector<string> Game::PlaygroundFactory::GetAviableLevels()
     Levels.push_back("BorderedMap");
 
     vector<string> FilesWithLevels = GetLevelsFileNames();
-    for_each(FilesWithLevels.begin(),FilesWithLevels.end(),[&Levels](string NameOfFile){
+    for_each(FilesWithLevels.begin(), FilesWithLevels.end(), [&Levels](string NameOfFile) {
         Levels.push_back(LoadNameOfLevel(NameOfFile));
     });
 
@@ -88,7 +88,7 @@ vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
 
 string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 {
-    ifstream File("data/Levels/"+Filename);
+    ifstream File("data/Levels/" + Filename);
     string NameOfLevel;
     File >> NameOfLevel;
     File.close();
@@ -102,8 +102,8 @@ Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
     PlayGround* CreatedPlayground = NULL;
 
     vector<string> Files = GetLevelsFileNames();
-    for_each(Files.begin(),Files.end(),[&LevelName,&CreatedPlayground](string FileName){
-        if(LoadNameOfLevel(FileName)==LevelName && CreatedPlayground==NULL)
+    for_each(Files.begin(), Files.end(), [&LevelName, &CreatedPlayground](string FileName) {
+        if (LoadNameOfLevel(FileName) == LevelName && CreatedPlayground == NULL)
             CreatedPlayground = ParseLevelFromFile(FileName);
     });
 
@@ -117,45 +117,68 @@ Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
 
     PlayGround* Created = new PlayGround();
     ifstream File("data/Levels/" + FileName);
-    set<char> ValidCharacters = {' ','W','U','D','L','R'};
+    set<char> ValidCharacters = {'-', 'W', 'U', 'D', 'L', 'R'};
 
     try
     {
-        File.ignore(numeric_limits<streamsize>::max(),'\n');    //ignore name of level
-        if(!(File >> Created->Height >> Created->Width))        //read height and width
-            throw new Exception("Wrong size",__LINE__,__FILE__);
-        File.ignore(numeric_limits<streamsize>::max(),'\n');    //ignore to enter
+        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore name of level
+        if (!(File >> Created->Height >> Created->Width))        //read height and width
+            throw new Exception("Wrong size", __LINE__, __FILE__);
+        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         //read level
-        for(int a=0;a<Created->Height;a++)
+        for (int a = 0; a < Created->Height; a++)
         {
             for (int b = 0; b < Created->Width; b++)
             {
                 char Readed;
-                if(!File.get(Readed))
-                    throw new Exception("Nothing readed",__LINE__,__FILE__);
-                if(ValidCharacters.find(Readed)==ValidCharacters.end())
-                    throw new Exception("Wrong character",__LINE__,__FILE__);
+                if (!File.get(Readed))
+                    throw new Exception("Nothing readed", __LINE__, __FILE__);
+                if (ValidCharacters.find(Readed) == ValidCharacters.end())
+                    throw new Exception("Wrong character", __LINE__, __FILE__);
 
-                AddElementIntoPlayground(Created,Readed,a,b);
+                AddElementIntoPlayground(Created, Readed, a, b);
             }
-            File.ignore(numeric_limits<streamsize>::max(),'\n');    //ignore to enter
+            File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         }
     }
-    catch(Exceptions::Exception* e)
+    catch (Exceptions::Exception* e)
     {
         delete Created;
         Created = NULL;
         File.close();
-        throw new Exceptions::InvalidFormatException("File " + FileName + " have wrong format.",__LINE__,__FILE__,e);
+
+        throw new Exceptions::InvalidFormatException("File " + FileName + " have wrong format.", __LINE__, __FILE__, e);
     }
     File.close();
     return Created;
 }
 
-void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, char Readed, int YPosition,
-                                                       int XPosition)
+void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, char Readed,
+                                                       int YPosition, int XPosition)
 {
+    using Game::PlayGround;
+    if(Readed=='-')
+        return;
+    if(Readed=='W')
+    {
+        Playground->Walls.push_back(Point(XPosition, YPosition));
+        return;
+    }
 
+    PlayGround::StartPosition Starting;
+    Starting.Position = Point(XPosition,YPosition);
+
+    if(Readed=='L')
+        Starting.Direction = Directions::Left;
+    else if(Readed=='R')
+        Starting.Direction = Directions::Right;
+    else if(Readed=='U')
+        Starting.Direction = Directions::Up;
+    else if(Readed=='D')
+        Starting.Direction = Directions::Down;
+
+    Playground->StartingPositions.push_back(Starting);
+    return;
 }
 
 
