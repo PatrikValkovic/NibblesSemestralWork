@@ -82,18 +82,22 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Directions NewDirection)
     using std::map;
 
     bool Changed = false;
-    for_each(IndividualSetting.begin(),IndividualSetting.end(),[&NewKey,&Player,&NewDirection,&Changed]
-    (PlayerSetting X){
-        if(X.Playerindex==Player)
+    for(int a=0;a<(int)IndividualSetting.size();a++)
+    {
+        PlayerSetting WorkingPlayerSettings = IndividualSetting[a];
+        if(WorkingPlayerSettings.Playerindex==Player)
         {
             Changed = true;
-            map<Keys,Directions>::iterator Moving = X.Actions.begin();
-            map<Keys,Directions>::iterator End = X.Actions.end();
-            for(;Moving!=End;Moving++)
-                if(Moving->second==NewDirection)
-                    Moving->first = NewKey;
+            Keys OldKey = Keys::Key1;
+            for_each(WorkingPlayerSettings.Actions.begin(),WorkingPlayerSettings.Actions.end(),
+                [&NewDirection,&OldKey](pair<Keys,Directions> X){
+                    if(X.second==NewDirection)
+                        OldKey = X.first;
+                });
+            WorkingPlayerSettings.Actions.erase(OldKey);
+            WorkingPlayerSettings.Actions.insert(pair<Keys,Directions>(NewKey,NewDirection));
         }
-    });
+    };
 
     return Changed;
 }
