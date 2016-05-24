@@ -7,7 +7,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using ViewModel::GameAbstractViewModel;
     using Game::Event::Single;
     using Game::Task::WaitingTask;
-    using Game::Task::RandomAI;
+    using Game::Task::BFSAI;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -52,7 +52,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     NewContent->Tasks.push_back(WaitTask);
     for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
     {
-        RandomAI* AITask = new RandomAI(*Moving,NewContent);
+        BFSAI* AITask = new BFSAI(*Moving,NewContent);
         NewContent->Tasks.push_back(AITask);
     };
 

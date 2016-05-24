@@ -28,6 +28,7 @@ void Game::Task::BFSAI::run()
 
     Directions NewMove = this->BFS(Canvas, (Point) this->ControlledWorm->GetSegment().at(0),
                                    this->ContentOfGame->GetFood());
+
     this->ControlledWorm->SetMoveDirection(NewMove);
 
     //delete
@@ -39,6 +40,8 @@ void Game::Task::BFSAI::run()
 Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
         : ControlledWorm(AIWorm), ContentOfGame(Content)
 { }
+
+#include <iostream>
 
 Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint)
 {
@@ -71,14 +74,17 @@ Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearc
         });
     }
 
+    //find path back
     Point Working = EndPoint;
     while (map[Working.GetPositionY()][Working.GetPositionX()] != 1)
     {
+        Point temp;
         vector<Point> PointsAround = GeneratePointsAround(Working);
-        for_each(PointsAround.begin(), PointsAround.end(), [&map, &Working](Point P) {
-            if (map[P.GetPositionY()][P.GetPositionX()] == map[Working.GetPositionY()][Working.GetPositionX()] - 1)
-                Working = P;
+        for_each(PointsAround.begin(), PointsAround.end(), [&map, &temp,&Working](Point P) {
+            if (map[P.GetPositionY()][P.GetPositionX()] == map[Working.GetPositionY()][Working.GetPositionX()]-1)
+                temp = P;
         });
+        Working = temp;
     }
 
     return this->ResolveDirection(BeginOfSearch, Working);
@@ -92,9 +98,11 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
 
     vector<Point> Points{
             Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1),
-            Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() + 1),
+            Point(AroundToGenerate.GetPositionX(),
+                  (AroundToGenerate.GetPositionY() + 1) % ContentOfGame->Ground->GetHeight()),
             Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY()),
-            Point(AroundToGenerate.GetPositionX() + 1, AroundToGenerate.GetPositionY())
+            Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
+                  AroundToGenerate.GetPositionY())
     };
 
     vector<Point>::iterator Moving = Points.begin();
@@ -113,19 +121,22 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
 
 Game::Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
 {
-    if (From.GetPositionX() == To.GetPositionX()+1 &&
+    if (From.GetPositionX() == To.GetPositionX() + 1 &&
         From.GetPositionY() == To.GetPositionY())
         return Directions::Left;
-    else if (From.GetPositionX() == To.GetPositionX()-1 &&
+    else if (From.GetPositionX() == To.GetPositionX() - 1 &&
              From.GetPositionY() == To.GetPositionY())
         return Directions::Right;
     else if (From.GetPositionX() == To.GetPositionX() &&
-             From.GetPositionY() == To.GetPositionY()+1)
+             From.GetPositionY() == To.GetPositionY() + 1)
         return Directions::Up;
     else if (From.GetPositionX() == To.GetPositionX() &&
-             From.GetPositionY() == To.GetPositionY()-1)
+             From.GetPositionY() == To.GetPositionY() - 1)
         return Directions::Down;
-    throw new Exceptions::InvalidArgumentException("Points are non-adjacent", __LINE__, __FILE__);
+
+    //TODO Specific case, where are Points on the other side of map
+
+    return Directions::Left;
 }
 
 
