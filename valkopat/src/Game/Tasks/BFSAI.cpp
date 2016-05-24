@@ -80,8 +80,8 @@ Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearc
     {
         Point temp;
         vector<Point> PointsAround = GeneratePointsAround(Working);
-        for_each(PointsAround.begin(), PointsAround.end(), [&map, &temp,&Working](Point P) {
-            if (map[P.GetPositionY()][P.GetPositionX()] == map[Working.GetPositionY()][Working.GetPositionX()]-1)
+        for_each(PointsAround.begin(), PointsAround.end(), [&map, &temp, &Working](Point P) {
+            if (map[P.GetPositionY()][P.GetPositionX()] == map[Working.GetPositionY()][Working.GetPositionX()] - 1)
                 temp = P;
         });
         Working = temp;
@@ -96,14 +96,14 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
     using Game::Point;
     using std::vector;
 
-    vector<Point> Points{
-            Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1),
-            Point(AroundToGenerate.GetPositionX(),
-                  (AroundToGenerate.GetPositionY() + 1) % ContentOfGame->Ground->GetHeight()),
-            Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY()),
-            Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
-                  AroundToGenerate.GetPositionY())
-    };
+    vector<Point> Points;
+    Points.resize(4);
+    Points[Directions::Down] = Point(AroundToGenerate.GetPositionX(),
+                                     (AroundToGenerate.GetPositionY() + 1) % ContentOfGame->Ground->GetHeight());
+    Points[Directions::Up] = Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1);
+    Points[Directions::Left] = Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY());
+    Points[Directions::Right] = Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
+                                      AroundToGenerate.GetPositionY());
 
     vector<Point>::iterator Moving = Points.begin();
     vector<Point>::iterator End = Points.end();
@@ -121,22 +121,12 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
 
 Game::Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
 {
-    if (From.GetPositionX() == To.GetPositionX() + 1 &&
-        From.GetPositionY() == To.GetPositionY())
-        return Directions::Left;
-    else if (From.GetPositionX() == To.GetPositionX() - 1 &&
-             From.GetPositionY() == To.GetPositionY())
-        return Directions::Right;
-    else if (From.GetPositionX() == To.GetPositionX() &&
-             From.GetPositionY() == To.GetPositionY() + 1)
-        return Directions::Up;
-    else if (From.GetPositionX() == To.GetPositionX() &&
-             From.GetPositionY() == To.GetPositionY() - 1)
-        return Directions::Down;
+    vector<Point> Around = GeneratePointsAround(From);
+    for(int a=0;a<(int)Around.size();a++)
+        if(Around[a]==To)
+            return (Directions)a;
 
-    //TODO Specific case, where are Points on the other side of map
-
-    return Directions::Left;
+    throw new Exceptions::Exception("Something incredible happened",__LINE__,__FILE__);
 }
 
 
