@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
 #define CERVISEMESTRALKA_PLAYGROUNDFACTORY_H
 #include <cstdio>
+#include <fstream>
 #include <vector>
 #include <map>
 #include <string>

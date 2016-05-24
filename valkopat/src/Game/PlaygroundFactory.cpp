@@ -83,8 +83,11 @@ vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
 
 string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 {
-    //TODO
-    return "";
+    ifstream File("data/Levels/"+Filename);
+    string NameOfLevel;
+    File >> NameOfLevel;
+    File.close();
+    return NameOfLevel;
 }
 
 
