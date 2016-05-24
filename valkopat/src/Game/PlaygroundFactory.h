@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "../Exceptions/OutOfRangeException.h"
 #include "../Exceptions/InvalidArgumentException.h"
+#include "../Exceptions/InvalidFormatException.h"
 #include "PlayGround.h"
 
 using namespace std;

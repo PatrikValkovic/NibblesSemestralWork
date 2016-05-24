@@ -113,7 +113,21 @@ Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 
 Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
 {
-    return NULL;
+    using Game::PlayGround;
+
+    PlayGround* Created = new PlayGround();
+
+    try
+    {
+
+    }
+    catch(Exceptions::Exception* e)
+    {
+        delete Created;
+        Created = NULL;
+        throw new Exceptions::InvalidFormatException("File " + FileName + " have wrong format.",__LINE__,__FILE__,e);
+    }
+    return Created;
 }
 
 
