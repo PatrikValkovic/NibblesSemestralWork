@@ -6,9 +6,8 @@ void Game::Task::RandomAI::run()
 }
 
 Game::Task::RandomAI::RandomAI(Worm* AIWorm, GameContent* Content)
-{
-
-}
+        : ControlledWorm(AIWorm), ContentOfGame(Content)
+{ }
 
 
 

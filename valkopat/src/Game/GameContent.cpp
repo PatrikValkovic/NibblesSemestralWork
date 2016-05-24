@@ -82,6 +82,30 @@ void Game::GameContent::GenerateFood()
     return;
 }
 
+char** Game::GameContent::CreateArrayForGame()
+{
+    char** Array = new char*[this->Ground->GetHeight()];
+    for(int a=0;a<this->Ground->GetHeight();a++)
+    {
+        Array[a] = new char[this->Ground->GetWidth()];
+        for(int b=0;b<this->Ground->GetWidth();b++)
+            Array[a][b] = 0;
+    }
+    return Array;
+}
+
+void Game::GameContent::DeleteArrayForGame(char**& Array)
+{
+    for(int a=0;a<this->Ground->GetHeight();a++)
+        delete [] Array[a];
+    delete [] Array;
+    Array = NULL;
+}
+
+
+
+
+
 
 
 
