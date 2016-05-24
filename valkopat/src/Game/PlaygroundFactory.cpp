@@ -56,7 +56,10 @@ vector<string> Game::PlaygroundFactory::GetAviableLevels()
     Levels.push_back("ClearMap");
     Levels.push_back("BorderedMap");
 
-    vector<string> LevelsFromFiles = GetLevelsFileNames();
+    vector<string> FilesWithLevels = GetLevelsFileNames();
+    for_each(FilesWithLevels.begin(),FilesWithLevels.end(),[&Levels](string NameOfFile){
+        Levels.push_back(LoadNameOfLevel(NameOfFile));
+    });
 
     return Levels;
 }
@@ -77,6 +80,14 @@ vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
 
     return Files;
 }
+
+string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
+{
+    //TODO
+    return "";
+}
+
+
 
 
 

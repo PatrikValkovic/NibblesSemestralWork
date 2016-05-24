@@ -23,6 +23,7 @@ namespace Game
         static PlayGround* SecondLevel();
 
         static vector<string> GetLevelsFileNames();
+        static string LoadNameOfLevel(string Filename);
     };
 }
 
