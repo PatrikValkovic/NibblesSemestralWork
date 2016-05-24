@@ -13,7 +13,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
 
     string NameOfUser = View->NameOfPlayer();
 
-    int Level = View->Level();
+    string Level = View->Level();
     PlayGround* Round = PlaygroundFactory::GetLevel(Level);
 
     int CountOfAI = View->CountOfAI(Round->CountOfStartPositions() - 1);

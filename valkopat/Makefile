@@ -103,7 +103,7 @@ $(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Gam
 $(TARGET_DIR)/Point.o: src/Game/Point.cpp src/Game/Point.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h
+$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h src/Exceptions/InvalidFormatException.h src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h src/Game/Enums.h src/Game/Point.h
@@ -145,7 +145,7 @@ $(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/Waiti
 ##	EXCEPTIONS  ##
 ##################
 
-$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
@@ -155,6 +155,9 @@ $(TARGET_DIR)/Exception.o: src/Exceptions/Exception.cpp src/Exceptions/Exception
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/Exceptions/OutOfRangeException.h src/Exceptions/Exception.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #################

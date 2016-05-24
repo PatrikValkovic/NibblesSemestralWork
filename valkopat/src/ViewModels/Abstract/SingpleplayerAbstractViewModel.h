@@ -22,7 +22,7 @@ namespace ViewModel
 
         virtual std::string NameOfPlayer() = 0;
         virtual int CountOfAI(int Max) = 0;
-        virtual int Level() = 0;
+        virtual string Level() = 0;
     };
 }
 

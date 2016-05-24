@@ -1,5 +1,4 @@
 #include "TranslateEngine.h"
-#include <iostream>
 
 Translate::TranslateEngine::TranslateEngine(string DefaultLanguage)
 {
