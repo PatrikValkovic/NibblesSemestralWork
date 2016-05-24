@@ -15,7 +15,7 @@ LINKER = ld
 .PHONY: compile		#implemented
 .PHONY: run			#implemented
 .PHONY: clean		#implemented
-.PHONY: doc			#implemented TODO
+.PHONY: doc			#implemented
 
 #Custom
 .PHONY: debug		#implemented
@@ -132,13 +132,19 @@ $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Even
 ##	TASKS  ##
 #############
 
-$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o
+$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o $(TARGET_DIR)/RandomAI.o $(TARGET_DIR)/BFSAI.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/WaitingTask.h src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/RandomAI.o: src/Game/Tasks/RandomAI.cpp src/Game/Tasks/RandomAI.h src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/BFSAI.o: src/Game/Tasks/BFSAI.cpp src/Game/Tasks/BFSAI.h src/Game/Tasks/BaseTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##################

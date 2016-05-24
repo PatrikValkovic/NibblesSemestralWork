@@ -7,6 +7,7 @@
 #include "../Game/GameContent.h"
 #include "../Game/Events/Single.h"
 #include "../Game/Tasks/WaitingTask.h"
+#include "../Game/Tasks/BFSAI.h"
 
 namespace GameStates
 {
