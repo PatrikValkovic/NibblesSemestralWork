@@ -55,7 +55,7 @@ int ViewModel::MultiplayerConsoleViewModel::CountOfPlayers(int Max)
     return CountOfPlayers;
 }
 
-string ViewModel::MultiplayerConsoleViewModel::SettingOfPlayer(int Index)
+string ViewModel::MultiplayerConsoleViewModel::NameOfPlayer(int Index)
 {
     stringstream Stream;
     Stream << "NamePlayer" << Index;

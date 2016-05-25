@@ -16,7 +16,7 @@ namespace ViewModel
 
         virtual string Level();
         virtual int CountOfPlayers(int Max);
-        virtual string SettingOfPlayer(int Index);
+        virtual string NameOfPlayer(int Index);
     };
 }
 

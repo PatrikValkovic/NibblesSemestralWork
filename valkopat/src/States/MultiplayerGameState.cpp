@@ -12,16 +12,20 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     using Game::Task::BaseAITask;
     using Game::Task::DiscardingInput;
 
-    MultiplayerConsoleViewModel* Rendering = (MultiplayerConsoleViewModel*)this->RenderingModel->MultiplayerModel();
+    MultiplayerConsoleViewModel* Rendering = (MultiplayerConsoleViewModel*) this->RenderingModel->MultiplayerModel();
     string Level = Rendering->Level();
     PlayGround* NewPlayground = PlaygroundFactory::GetLevel(Level);
 
-    int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(),3));
-    for(int a=0;a<CountOfPlayer;a++)
+    int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(), 3));
+    vector<Worm*> Players;
+    for (int a = 0; a < CountOfPlayer; a++)
     {
-        string Name = Rendering->SettingOfPlayer(a);
+        PlayGround::StartPosition StartPositionForPlayer = NewPlayground->GetNextStartPosition();
+        Worm* WorkingPlayer = new Worm(StartPositionForPlayer.Position.GetPositionX(),
+                                       StartPositionForPlayer.Position.GetPositionY(),
+                                       StartPositionForPlayer.Direction);
+        WorkingPlayer->SetName(Rendering->NameOfPlayer(a));
     }
-
 
 
     return this->PlayState;
