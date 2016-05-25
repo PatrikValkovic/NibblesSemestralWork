@@ -33,7 +33,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
                                   Starting.Position.GetPositionY(),
                                   Starting.Direction);
         char Name[6];
-        sprintf(Name,"AI %d",a);
+        sprintf(Name, "AI %d", a);
         TempWorm->SetName(string(Name));
         TempWorm->SetName(Name);
 
@@ -49,6 +49,17 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     //create Tasks
     WaitingTask* WaitTask = new WaitingTask();
     NewContent->Tasks.push_back(WaitTask);
+    int AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
+                                                   pair<int, string>(1,"BFSAI")});
+    switch(AILevel)
+    {
+        case 0:
+            break;
+        case 1:
+            break;
+        default:
+            break;
+    }
 
     this->Play->ClearContent(NewContent);
 

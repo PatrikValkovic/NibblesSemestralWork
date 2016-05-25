@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_SINGPLEPLAYERABSTRACTVIEWMODEL_H
 #define CERVISEMESTRALKA_SINGPLEPLAYERABSTRACTVIEWMODEL_H
 #include <string>
+#include <map>
 #include "ViewModelDerivatingClass.h"
 
 
@@ -23,6 +24,7 @@ namespace ViewModel
         virtual std::string NameOfPlayer() = 0;
         virtual int CountOfAI(int Max) = 0;
         virtual int Level() = 0;
+        virtual int LevelOfAI(std::map<int, string> MenuEntries) = 0;
     };
 }
 
