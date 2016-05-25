@@ -22,20 +22,33 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     vector<Worm*> Players;
     for (int a = 0; a < CountOfPlayer; a++)
     {
+        //create player
         PlayGround::StartPosition StartPositionForPlayer = NewPlayground->GetNextStartPosition();
         Worm* WorkingPlayer = new Worm(StartPositionForPlayer.Position.GetPositionX(),
                                        StartPositionForPlayer.Position.GetPositionY(),
                                        StartPositionForPlayer.Direction);
         WorkingPlayer->SetName(Rendering->NameOfPlayer(a));
+        //create events
+        Single* WorkingEvent = new Single(WorkingPlayer,
+                                          this->RenderingModel->InputModel(),
+                                          a,
+                                          Settings::GetInstance());
+        NewGameContent->Events.AddEvent(WorkingEvent);
+        NewGameContent->Players.push_back(WorkingPlayer);
     }
 
-    this->PlayState->ClearContent(NewGameContent);
+    //create tasks
+    WaitingTask* Wait = new WaitingTask();
+    DiscardingInput* Disc = new DiscardingInput(this->RenderingModel->InputModel());
+    NewGameContent->Tasks.push_back(Wait);
+    NewGameContent->Tasks.push_back(Disc);
 
+    this->PlayState->ClearContent(NewGameContent);
     return this->PlayState;
 }
 
 GameStates::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel)
-        : AbstractGameState(RenderingModel)
+        : GameStates::AbstractGameState(RenderingModel)
 { }
 
 void GameStates::MultiplayerGameState::AddStates(PlayingState* PlayState, MenuGameState* MenuState)
