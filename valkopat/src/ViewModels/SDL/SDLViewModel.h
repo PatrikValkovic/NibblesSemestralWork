@@ -1,6 +1,6 @@
-#ifdef USE_SDL
 #ifndef CERVISEMESTRALKA_SDLVIEWMODEL_H
 #define CERVISEMESTRALKA_SDLVIEWMODEL_H
+#ifdef USE_SDL
 #include <SDL2/SDL.h>
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenSDLViewModel.h"
@@ -35,5 +35,6 @@ namespace ViewModel
     };
 }
 
-#endif //CERVISEMESTRALKA_SDLVIEWMODEL_H
+
 #endif
+#endif //CERVISEMESTRALKA_SDLVIEWMODEL_H

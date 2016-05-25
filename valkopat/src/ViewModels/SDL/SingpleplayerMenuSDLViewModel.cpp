@@ -1,5 +1,6 @@
-#include "SingpleplayerMenuSDLViewModel.h"
 #ifdef USE_SDL
+#include "SingpleplayerMenuSDLViewModel.h"
+
 
 ViewModel::SingpleplayerMenuSDLViewModel::SingpleplayerMenuSDLViewModel(const Translate::TranslateEngine* Translation)
         : SingleplayerMenuAbstractViewModel(Translation)

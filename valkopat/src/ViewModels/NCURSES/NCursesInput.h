@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_NCURSESINPUT_H
 #define CERVISEMESTRALKA_NCURSESINPUT_H
+#ifdef USE_NCURSES
 #include "../Abstract/AbstractInput.h"
 
 namespace ViewModel
@@ -18,5 +19,5 @@ namespace ViewModel
 }
 
 
-
+#endif
 #endif //CERVISEMESTRALKA_NCURSESINPUT_H

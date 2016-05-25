@@ -1,3 +1,4 @@
+#ifdef USE_SDL
 #include "SDLInput.h"
 
 ViewModel::SDLInput::SDLInput()
@@ -19,6 +20,9 @@ void ViewModel::SDLInput::StartAgain()
 {
 
 }
+
+
+#endif
 
 
 

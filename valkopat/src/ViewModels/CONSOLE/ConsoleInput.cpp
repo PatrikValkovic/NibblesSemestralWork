@@ -1,3 +1,4 @@
+#ifdef USE_CONSOLE
 #include "ConsoleInput.h"
 
 ViewModel::ConsoleInput::ConsoleInput()
@@ -51,6 +52,8 @@ int ViewModel::ConsoleInput::kbhit()
     ioctl(0, FIONREAD, &i);
     return i; /* return a count of chars available to read */
 }
+
+#endif
 
 
 

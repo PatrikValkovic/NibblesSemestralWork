@@ -18,7 +18,7 @@ namespace ViewModel
         virtual map<string,string> GetAviablesLanguages() const;
     };
 }
+
+
 #endif
-
-
 #endif //CERVISEMESTRALKA_LANGUAGENCOURSESVIEWMODEL_H

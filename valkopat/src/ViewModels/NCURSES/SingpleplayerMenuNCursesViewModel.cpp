@@ -1,5 +1,6 @@
-#include "SingpleplayerMenuNCursesViewModel.h"
 #ifdef USE_NCURSES
+#include "SingpleplayerMenuNCursesViewModel.h"
+
 
 ViewModel::SingpleplayerMenuNCursesViewModel::SingpleplayerMenuNCursesViewModel(
         const Translate::TranslateEngine* Translation)

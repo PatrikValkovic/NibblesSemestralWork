@@ -1,5 +1,6 @@
 #ifndef CERVISEMESTRALKA_CONSOLEINPUT_H
 #define CERVISEMESTRALKA_CONSOLEINPUT_H
+#ifdef USE_CONSOLE
 #include <vector>
 #include <termios.h>
 #include <sys/ioctl.h>
@@ -28,5 +29,5 @@ namespace ViewModel
     };
 }
 
-
+#endif
 #endif //CERVISEMESTRALKA_CONSOLEINPUT_H

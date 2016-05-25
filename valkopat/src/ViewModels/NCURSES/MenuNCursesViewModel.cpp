@@ -1,5 +1,6 @@
-#include "MenuNCursesViewModel.h"
 #ifdef USE_NCURSES
+#include "MenuNCursesViewModel.h"
+
 
 int ViewModel::MenuNCursesViewModel::ShowMenu(std::vector<ViewModel::MenuAbstractViewModel::MenuEntry>)
 {

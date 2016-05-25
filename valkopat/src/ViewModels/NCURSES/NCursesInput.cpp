@@ -1,3 +1,4 @@
+#ifdef USE_NCURSES
 #include "NCursesInput.h"
 
 ViewModel::NCursesInput::NCursesInput()
@@ -19,6 +20,9 @@ void ViewModel::NCursesInput::StartAgain()
 {
 
 }
+
+
+#endif
 
 
 
