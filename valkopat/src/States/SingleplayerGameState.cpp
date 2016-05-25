@@ -7,13 +7,15 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using ViewModel::GameAbstractViewModel;
     using Game::Event::Single;
     using Game::Task::WaitingTask;
+    using Game::AIFactory;
+    using Game::Task::BaseAITask;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
 
     string NameOfUser = View->NameOfPlayer();
 
-    int Level = View->Level();
+    string Level = View->Level();
     PlayGround* Round = PlaygroundFactory::GetLevel(Level);
 
     int CountOfAI = View->CountOfAI(Round->CountOfStartPositions() - 1);
@@ -33,7 +35,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
                                   Starting.Position.GetPositionY(),
                                   Starting.Direction);
         char Name[6];
-        sprintf(Name,"AI %d",a);
+        sprintf(Name, "AI %d", a);
         TempWorm->SetName(string(Name));
         TempWorm->SetName(Name);
 
@@ -49,7 +51,16 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     //create Tasks
     WaitingTask* WaitTask = new WaitingTask();
     NewContent->Tasks.push_back(WaitTask);
+    //create tasks for AI
+    string AILevel = View->LevelOfAI(AIFactory::GetInstance()->GetNamesOfAILevels());
+    vector<BaseAITask*> Tasks = AIFactory::GetInstance()->CreatesTaskForWorms(NewContent->Worms,
+                                                                              NewContent,
+                                                                              AILevel);
+    for_each(Tasks.begin(), Tasks.end(), [&NewContent](BaseAITask* T) {
+        NewContent->Tasks.push_back(T);
+    });
 
+    //fill it to game
     this->Play->ClearContent(NewContent);
 
     return this->Play;

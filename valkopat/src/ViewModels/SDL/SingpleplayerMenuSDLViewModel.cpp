@@ -17,9 +17,14 @@ int ViewModel::SingpleplayerMenuSDLViewModel::CountOfAI()
     return 0;
 }
 
-int ViewModel::SingpleplayerMenuSDLViewModel::Level()
+string ViewModel::SingpleplayerMenuSDLViewModel::Level()
 {
     //TODO
+    return 0;
+}
+
+string ViewModel::SingpleplayerMenuSDLViewModel::LevelOfAI(vector<string> MenuEntries)
+{
     return 0;
 }
 

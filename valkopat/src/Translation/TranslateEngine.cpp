@@ -1,5 +1,4 @@
 #include "TranslateEngine.h"
-#include <iostream>
 
 Translate::TranslateEngine::TranslateEngine(string DefaultLanguage)
 {
@@ -12,7 +11,8 @@ string Translate::TranslateEngine::GetTranslation(string OriginalName) const
 {
     const map<string, string>::const_iterator iterator = this->TranslationForCurrentLanguage.find(OriginalName);
     if (iterator == TranslationForCurrentLanguage.end())
-        throw new Exceptions::InvalidArgumentException("Translation not found", __LINE__, __FILE__);
+        throw new Exceptions::InvalidArgumentException("Translation not found for " + OriginalName,
+                                                       __LINE__, __FILE__);
     return iterator->second;
 }
 

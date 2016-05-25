@@ -10,7 +10,8 @@ namespace ViewModel
         SingpleplayerMenuSDLViewModel(const Translate::TranslateEngine* Translation);
         virtual std::string NameOfPlayer();
         virtual int CountOfAI();
-        virtual int Level();
+        virtual string Level();
+        virtual string LevelOfAI(vector<string> MenuEntries);
     };
 }
 #endif
