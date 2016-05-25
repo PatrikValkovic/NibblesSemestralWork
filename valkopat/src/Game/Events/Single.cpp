@@ -12,6 +12,8 @@ bool Game::Event::Single::ProccessActions()
     int PlayerI;
     Actions Act;
 
+    this->InputClass->StartAgain();
+
     while ((Key = InputClass->GetNextStroke()) != Keys::NONE)
         if(this->ActualSetting->GetAction(Key,PlayerI,Act))
         {
