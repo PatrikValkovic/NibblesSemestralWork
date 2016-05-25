@@ -17,7 +17,7 @@ namespace GameStates
 
     private:
         MenuGameState* NextState;
-        const uint32_t SleepForSecond = 0; //TODO replace by 1
+        const uint32_t SleepForSecond;
     };
 }
 

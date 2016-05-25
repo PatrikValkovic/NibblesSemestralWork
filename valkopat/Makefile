@@ -15,7 +15,7 @@ LINKER = ld
 .PHONY: compile		#implemented
 .PHONY: run			#implemented
 .PHONY: clean		#implemented
-.PHONY: doc			#implemented TODO
+.PHONY: doc			#implemented
 
 #Custom
 .PHONY: debug		#implemented
