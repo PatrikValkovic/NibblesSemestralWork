@@ -7,8 +7,8 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using ViewModel::GameAbstractViewModel;
     using Game::Event::Single;
     using Game::Task::WaitingTask;
-    using Game::Task::BFSAI;
-    using Game::Task::RandomAI;
+    using Game::AIFactory;
+    using Game::Task::BaseAITask;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -51,36 +51,16 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     //create Tasks
     WaitingTask* WaitTask = new WaitingTask();
     NewContent->Tasks.push_back(WaitTask);
+    //create tasks for AI
+    string AILevel = View->LevelOfAI(AIFactory::GetInstance()->GetNamesOfAILevels());
+    vector<BaseAITask*> Tasks = AIFactory::GetInstance()->CreatesTaskForWorms(NewContent->Worms,
+                                                                              NewContent,
+                                                                              AILevel);
+    for_each(Tasks.begin(), Tasks.end(), [&NewContent](BaseAITask* T) {
+        NewContent->Tasks.push_back(T);
+    });
 
-    //TODO refactor
-    string AILevel = View->LevelOfAI(vector<string>{"RandomAI","BFSAI"});
-    /*
-    switch(AILevel)
-    {
-        case 0:
-            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
-            {
-                RandomAI* AITask = new RandomAI(*Moving,NewContent);
-                NewContent->Tasks.push_back(AITask);
-            };
-            break;
-        case 1:
-            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
-            {
-                BFSAI* AITask = new BFSAI(*Moving,NewContent);
-                NewContent->Tasks.push_back(AITask);
-            };
-            break;
-        default:
-            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
-            {
-                RandomAI* AITask = new RandomAI(*Moving,NewContent);
-                NewContent->Tasks.push_back(AITask);
-            };
-            break;
-    }*/
-
-
+    //fill it to game
     this->Play->ClearContent(NewContent);
 
     return this->Play;

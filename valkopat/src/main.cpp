@@ -26,8 +26,6 @@ int main()
         delete game;
         delete RenderEngine;
         delete Translation;
-        delete AIFactory::GetInstance();
-        delete Settings::GetInstance();
 
         return 0;
     }

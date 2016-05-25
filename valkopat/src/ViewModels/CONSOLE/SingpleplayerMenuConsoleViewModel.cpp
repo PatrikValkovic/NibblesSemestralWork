@@ -78,7 +78,7 @@ string ViewModel::SingpleplayerMenuConsoleViewModel::LevelOfAI(std::vector<strin
     {
         for (int a = 0; a < (int) MenuEntries.size(); a++)
             cout << a+1 << ": " << Translation->GetTranslation(MenuEntries[a]) << endl;
-        cout << Translation->GetTranslation("ChooseAILevel") << endl;
+        cout << Translation->GetTranslation("ChooseAILevel") << ':';
         cin >> AIIndex;
         if (cin.fail() || AIIndex<1 || AIIndex>(int)MenuEntries.size())
             cout << Translation->GetTranslation("WrongEntry") << endl;
