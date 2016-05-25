@@ -21,7 +21,7 @@ namespace ViewModel
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
         virtual QuitAbstractViewModel* QuitModel();
-        virtual Input* InputModel();
+        virtual AbstractInput* InputModel();
     };
 }
 

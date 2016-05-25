@@ -13,7 +13,7 @@
 #include "GameAbstractViewModel.h"
 #include "ScoreAbstractViewModel.h"
 #include "QuitAbstractViewModel.h"
-#include "Input.h"
+#include "AbstractInput.h"
 
 namespace ViewModel
 {
@@ -35,7 +35,7 @@ namespace ViewModel
         virtual GameAbstractViewModel* GameModel() = 0;
         virtual ScoreAbstractViewModel* ScoreModel() = 0;
         virtual QuitAbstractViewModel* QuitModel() = 0;
-        virtual Input* InputModel() = 0;
+        virtual AbstractInput* InputModel() = 0;
     };
 
 }

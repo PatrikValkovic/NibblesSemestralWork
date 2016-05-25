@@ -4,10 +4,10 @@
 
 namespace ViewModel
 {
-    class Input
+    class AbstractInput
     {
     public:
-        virtual ~Input()
+        virtual ~AbstractInput()
         {}
 
         virtual void DiscardBuffer() = 0;
