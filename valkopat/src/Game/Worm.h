@@ -45,21 +45,21 @@ namespace Game
 
         std::string name;
         std::vector<Segment> Segments;
-        Directions MoveDirection;
+        Actions MoveDirection;
         bool Playing = true;
     public:
-        Worm(int PositionX, int PositionY, Directions Direction);
+        Worm(int PositionX, int PositionY, Actions Direction);
 
         std::string GetName() const;
         void SetName(std::string NewName);
-        Directions GetMoveDirection() const;
-        void SetMoveDirection(Directions Direction);
+        Actions GetMoveDirection() const;
+        void SetMoveDirection(Actions Direction);
         bool IsPlaying();
         void StopPlaying();
-        void DecideDirection(Directions Direction, int& Down, int& Right) const;
+        void DecideDirection(Actions Direction, int& Down, int& Right) const;
 
         std::vector<Segment> GetSegment() const;
-        void Move(Directions Direction);
+        void Move(Actions Direction);
         void ValidatePosition(int MaxWidth, int MaxHeight);
         void IncrementSize();
     };

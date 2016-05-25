@@ -3,6 +3,8 @@
 #include <map>
 #include "AbstractEvent.h"
 #include "../Worm.h"
+#include "../../ViewModels/Abstract/AbstractInput.h"
+#include "../Settings.h"
 
 namespace Game
 {
@@ -11,7 +13,7 @@ namespace Game
         class Single : public Abstract
         {
         public:
-            Single(Worm* Player);
+            Single(Worm* Player,ViewModel::AbstractInput* InputMethod, int IndexOfPlayer, Settings* Set);
 
             virtual bool HasActions();
 
@@ -19,6 +21,9 @@ namespace Game
 
         private:
             Worm* Player;
+            int PlayerIndex;
+            ViewModel::AbstractInput* InputClass;
+            Settings* ActualSetting;
         };
     }
 }

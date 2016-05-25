@@ -25,12 +25,12 @@ namespace Game
         struct PlayerSetting
         {
             int Playerindex;
-            std::map<Keys,Directions> Actions;
+            std::map<Keys,Actions> Actions;
         };
         std::vector<PlayerSetting> IndividualSetting;
     public:
-        bool GetAction(Keys Key,int& Player,Directions& Direction) const;
-        bool SetAction(Keys NewKey, int Player, Directions NewDirection);
+        bool GetAction(Keys Key,int& Player,Actions& Direction) const;
+        bool SetAction(Keys NewKey, int Player, Actions NewDirection);
     };
 }
 

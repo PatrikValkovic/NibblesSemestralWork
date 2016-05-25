@@ -18,7 +18,7 @@ namespace Game
         {
         public:
             Point Position;
-            Directions Direction;
+            Actions Direction;
         };
 
     private:

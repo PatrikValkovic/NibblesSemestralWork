@@ -5,7 +5,7 @@ std::vector<Game::Worm::Segment> Game::Worm::GetSegment() const
     return this->Segments;
 }
 
-Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
+Game::Worm::Worm(int PositionX, int PositionY, Actions Direction)
     : Segments(), MoveDirection(Direction)
 {
     int RightAdding = 0;
@@ -19,7 +19,7 @@ Game::Worm::Worm(int PositionX, int PositionY, Directions Direction)
 }
 
 #include <iostream>
-void Game::Worm::Move(Directions Direction)
+void Game::Worm::Move(Actions Direction)
 {
     if(!IsPlaying())
         return;
@@ -39,17 +39,17 @@ void Game::Worm::Move(Directions Direction)
 
 }
 
-void Game::Worm::DecideDirection(Directions Direction, int& Down, int& Right) const
+void Game::Worm::DecideDirection(Actions Direction, int& Down, int& Right) const
 {
     Down = 0;
     Right = 0;
-    if(Direction==Directions::Left)
+    if(Direction==Actions::MoveLeft)
         Right = -1;
-    else if (Direction==Directions::Right)
+    else if (Direction==Actions::moveRight)
         Right = 1;
-    else if (Direction == Directions::Up)
+    else if (Direction == Actions::MoveUp)
         Down = -1;
-    else if (Direction == Directions::Down)
+    else if (Direction == Actions::MoveDown)
         Down = 1;
 }
 
@@ -80,12 +80,12 @@ void Game::Worm::ValidatePosition(int MaxWidth, int MaxHeight)
         this->Segments[0].SetPositionY(0);
 }
 
-void Game::Worm::SetMoveDirection(Game::Directions Direction)
+void Game::Worm::SetMoveDirection(Game::Actions Direction)
 {
     this->MoveDirection = Direction;
 }
 
-Game::Directions Game::Worm::GetMoveDirection() const
+Game::Actions Game::Worm::GetMoveDirection() const
 {
     return this->MoveDirection;
 }

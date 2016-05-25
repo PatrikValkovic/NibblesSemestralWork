@@ -3,12 +3,13 @@
 
 namespace Game
 {
-    enum Directions
+    enum Actions
     {
-        Up,
-        Right,
-        Down,
-        Left
+        MoveUp,
+        moveRight,
+        MoveDown,
+        MoveLeft,
+        Pause
     };
 
     enum Keys

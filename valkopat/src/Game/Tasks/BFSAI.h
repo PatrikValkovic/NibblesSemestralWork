@@ -18,9 +18,9 @@ namespace Game
             virtual void run();
             virtual BaseAITask* CreateInstance(Worm* WormToControl,GameContent* Game);
         private:
-            Directions BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint);
+            Actions BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint);
             vector<Point> GeneratePointsAround(Point AroundToGenerate);
-            Directions ResolveDirection(Point From, Point To);
+            Actions ResolveDirection(Point From, Point To);
         };
     }
 }

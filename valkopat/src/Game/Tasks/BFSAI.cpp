@@ -26,7 +26,7 @@ void Game::Task::BFSAI::run()
         Canvas[S.GetPositionY()][S.GetPositionX()] = numeric_limits<uint32_t>::max();
     });
 
-    Directions NewMove = this->BFS(Canvas, (Point) this->ControlledWorm->GetSegment().at(0),
+    Actions NewMove = this->BFS(Canvas, (Point) this->ControlledWorm->GetSegment().at(0),
                                    this->ContentOfGame->GetFood());
 
     this->ControlledWorm->SetMoveDirection(NewMove);
@@ -41,7 +41,7 @@ Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
         : BaseAITask(AIWorm,Content)
 { }
 
-Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint)
+Game::Actions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint)
 {
     using Game::Point;
     using std::queue;
@@ -96,11 +96,11 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
 
     vector<Point> Points;
     Points.resize(4);
-    Points[Directions::Down] = Point(AroundToGenerate.GetPositionX(),
+    Points[Actions::MoveDown] = Point(AroundToGenerate.GetPositionX(),
                                      (AroundToGenerate.GetPositionY() + 1) % ContentOfGame->Ground->GetHeight());
-    Points[Directions::Up] = Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1);
-    Points[Directions::Left] = Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY());
-    Points[Directions::Right] = Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
+    Points[Actions::MoveUp] = Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1);
+    Points[Actions::MoveLeft] = Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY());
+    Points[Actions::moveRight] = Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
                                       AroundToGenerate.GetPositionY());
 
     vector<Point>::iterator Moving = Points.begin();
@@ -117,12 +117,12 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
     return Points;
 }
 
-Game::Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
+Game::Actions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
 {
     vector<Point> Around = GeneratePointsAround(From);
     for(int a=0;a<(int)Around.size();a++)
         if(Around[a]==To)
-            return (Directions)a;
+            return (Actions)a;
 
     throw new Exceptions::Exception("Something incredible happened",__LINE__,__FILE__);
 }

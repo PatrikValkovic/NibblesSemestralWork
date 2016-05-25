@@ -16,12 +16,12 @@ void Game::Task::RandomAI::run()
         Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
     });
 
-    set<Directions> AviableDirections = {Directions::Up, Directions::Down, Directions::Left, Directions::Right};
+    set<Actions> AviableDirections = {Actions::MoveUp, Actions::MoveDown, Actions::MoveLeft, Actions::moveRight};
     Worm::Segment HeadSegment = this->ControlledWorm->GetSegment().at(0);
     while (true)
     {
         int NextMove = rand() % (int) AviableDirections.size();
-        set<Directions>::iterator MoveIter = AviableDirections.begin();
+        set<Actions>::iterator MoveIter = AviableDirections.begin();
         for (int a = 0; a < NextMove; a++)
             MoveIter++;
 
