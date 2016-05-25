@@ -36,6 +36,17 @@ namespace ViewModel
         virtual ScoreAbstractViewModel* ScoreModel() = 0;
         virtual QuitAbstractViewModel* QuitModel() = 0;
         virtual AbstractInput* InputModel() = 0;
+    protected:
+        SplashPauseScreenAbstractViewModel* SplashScren;
+        MenuAbstractViewModel* Menu;
+        LanguageAbstractViewModel* Language;
+        MultiplayerMenuAbstractViewModel* Multiplayer;
+        NetMenuAbstractViewModel* NetMenu;
+        SingleplayerMenuAbstractViewModel* Singpleplayer;
+        GameAbstractViewModel* Game;
+        ScoreAbstractViewModel* Score;
+        QuitAbstractViewModel* Quit;
+        AbstractInput* Input;
     };
 
 }

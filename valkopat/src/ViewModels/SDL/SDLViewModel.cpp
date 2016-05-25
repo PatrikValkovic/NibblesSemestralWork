@@ -65,7 +65,7 @@ ViewModel::QuitAbstractViewModel* ViewModel::SDLViewModel::QuitModel()
     return NULL;
 }
 
-AbstractInput* ViewModel::SDLViewModel::InputModel()
+ViewModel::AbstractInput* ViewModel::SDLViewModel::InputModel()
 {
     //TODO
     return NULL;

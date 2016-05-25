@@ -17,6 +17,7 @@ void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Transla
     Game = new GameConsoleViewModel(Translate);
     Score = new ScoreConsoleViewModel(Translate);
     Quit = new QuitConsoleViewModel(Translate);
+    Input = new ConsoleInput();
 }
 
 ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashPauseScreenModel()
@@ -64,6 +65,11 @@ ViewModel::QuitAbstractViewModel* ViewModel::ConsoleViewModel::QuitModel()
     return this->Quit;
 }
 
+ViewModel::AbstractInput* ViewModel::ConsoleViewModel::InputModel()
+{
+    return Input;
+}
+
 ViewModel::ConsoleViewModel::~ConsoleViewModel()
 {
     delete SplashScren;
@@ -75,13 +81,9 @@ ViewModel::ConsoleViewModel::~ConsoleViewModel()
     delete Game;
     delete Score;
     delete Quit;
+    delete Input;
 }
 
-AbstractInput* ViewModel::ConsoleViewModel::InputModel()
-{
-    //TODO
-    return nullptr;
-}
 
 
 #endif

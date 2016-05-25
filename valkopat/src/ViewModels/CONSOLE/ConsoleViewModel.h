@@ -13,6 +13,7 @@
 #include "GameConsoleViewModel.h"
 #include "ScoreConsoleViewModel.h"
 #include "QuitConsoleViewModel.h"
+#include "ConsoleInput.h"
 
 namespace ViewModel
 {
@@ -33,16 +34,6 @@ namespace ViewModel
         virtual ScoreAbstractViewModel* ScoreModel();
         virtual QuitAbstractViewModel* QuitModel();
         virtual AbstractInput* InputModel();
-    private:
-        SplashPauseScreenAbstractViewModel* SplashScren;
-        MenuAbstractViewModel* Menu;
-        LanguageAbstractViewModel* Language;
-        MultiplayerMenuAbstractViewModel* Multiplayer;
-        NetMenuAbstractViewModel* NetMenu;
-        SingleplayerMenuAbstractViewModel* Singpleplayer;
-        GameAbstractViewModel* Game;
-        ScoreAbstractViewModel* Score;
-        QuitAbstractViewModel* Quit;
     };
 }
 
