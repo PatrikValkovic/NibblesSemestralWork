@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
 #include <iostream>
+#include <sstream>
 #include "../Abstract/MultiplayerAbstractViewModel.h"
 #include "../../Game/PlaygroundFactory.h"
 
@@ -15,6 +16,7 @@ namespace ViewModel
 
         virtual string Level();
         virtual int CountOfPlayers(int Max);
+        virtual string SettingOfPlayer(int Index);
     };
 }
 

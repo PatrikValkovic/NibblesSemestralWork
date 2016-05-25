@@ -43,7 +43,7 @@ int ViewModel::MultiplayerConsoleViewModel::CountOfPlayers(int Max)
     while (true)
     {
         cout << Translation->GetTranslation("CountOfPlayers") << ':';
-        cin >> this->CountOfPlayers;
+        cin >> CountOfPlayers;
         if (cin.fail() || CountOfPlayers > Max || CountOfPlayers < 0)
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
@@ -53,6 +53,26 @@ int ViewModel::MultiplayerConsoleViewModel::CountOfPlayers(int Max)
         break;
     }
     return CountOfPlayers;
+}
+
+string ViewModel::MultiplayerConsoleViewModel::SettingOfPlayer(int Index)
+{
+    stringstream Stream;
+    Stream << "NamePlayer" << Index;
+    using namespace std;
+    string Name;
+    while (true)
+    {
+        cout << Translation->GetTranslation(Stream.str()) << ':';
+        cin >> Name;
+        if (cin.fail() || Name.length() == 0)
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            continue;
+        }
+        break;
+    }
+    return Name;
 }
 
 

@@ -17,12 +17,13 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     PlayGround* NewPlayground = PlaygroundFactory::GetLevel(Level);
 
     int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(),3));
+    for(int a=0;a<CountOfPlayer;a++)
+    {
+        string Name = Rendering->SettingOfPlayer(a);
+    }
 
 
 
-    GameContent* NewContent = new GameContent();
-
-    this->PlayState->ClearContent(NewContent);
     return this->PlayState;
 }
 
@@ -35,9 +36,3 @@ void GameStates::MultiplayerGameState::AddStates(PlayingState* PlayState, MenuGa
     this->PlayState = PlayState;
     this->Menu = MenuState;
 }
-
-
-
-
-
-)
