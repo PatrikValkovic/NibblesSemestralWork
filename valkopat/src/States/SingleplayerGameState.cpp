@@ -8,6 +8,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using Game::Event::Single;
     using Game::Task::WaitingTask;
     using Game::Task::BFSAI;
+    using Game::Task::RandomAI;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -56,18 +57,27 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     switch(AILevel)
     {
         case 0:
+            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
+            {
+                RandomAI* AITask = new RandomAI(*Moving,NewContent);
+                NewContent->Tasks.push_back(AITask);
+            };
             break;
         case 1:
+            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
+            {
+                BFSAI* AITask = new BFSAI(*Moving,NewContent);
+                NewContent->Tasks.push_back(AITask);
+            };
             break;
         default:
+            for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
+            {
+                RandomAI* AITask = new RandomAI(*Moving,NewContent);
+                NewContent->Tasks.push_back(AITask);
+            };
             break;
     }
-
-    for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
-    {
-        BFSAI* AITask = new BFSAI(*Moving,NewContent);
-        NewContent->Tasks.push_back(AITask);
-    };
 
 
     this->Play->ClearContent(NewContent);
