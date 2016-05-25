@@ -85,7 +85,7 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o $(TARGET_DIR)/Exceptions.o
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o $(TARGET_DIR)/AIFactory.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
@@ -113,6 +113,9 @@ $(TARGET_DIR)/GameContent.o: src/Game/GameContent.cpp src/Game/GameContent.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h src/Game/Enums.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/AIFactory.o: src/Game/AIFactory.cpp src/Game/AIFactory.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##############

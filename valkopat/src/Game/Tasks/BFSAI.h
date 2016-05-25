@@ -4,7 +4,7 @@
 #include <set>
 #include <queue>
 #include <vector>
-#include "BaseTask.h"
+#include "BaseAITask.h"
 #include "../../Exceptions/InvalidArgumentException.h"
 #include "../GameContent.h"
 #include "../Worm.h"
@@ -13,7 +13,7 @@ namespace Game
 {
     namespace Task
     {
-        class BFSAI : public BaseTask
+        class BFSAI : public BaseAITask
         {
         public:
             BFSAI(Worm* AIWorm,GameContent* Content);

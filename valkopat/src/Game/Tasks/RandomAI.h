@@ -1,7 +1,7 @@
 #ifndef CERVISEMESTRALKA_RANDOMAI_H
 #define CERVISEMESTRALKA_RANDOMAI_H
 #include <set>
-#include "BaseTask.h"
+#include "BaseAITask.h"
 #include "../GameContent.h"
 #include "../Worm.h"
 
@@ -9,7 +9,7 @@ namespace Game
 {
     namespace Task
     {
-        class RandomAI : public BaseTask
+        class RandomAI : public BaseAITask
         {
         public:
             RandomAI(Worm* AIWorm,GameContent* Content);
