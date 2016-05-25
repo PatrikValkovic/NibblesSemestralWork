@@ -13,6 +13,7 @@ namespace Game
 
     enum Keys
     {
+        NONE,
         KeyA,
         KeyB,
         KeyC,
