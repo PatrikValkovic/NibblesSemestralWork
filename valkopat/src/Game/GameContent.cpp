@@ -16,7 +16,6 @@ Game::GameContent::~GameContent()
     Events.DeleteAllEvents();
 
     Ground = NULL;
-    Players = NULL;
 }
 
 Game::GameContent::GameContent(vector<Worm*> Worms, Worm* Player, PlayGround* Playground)

@@ -6,15 +6,16 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     using Game::Actions;
     ViewModel::GameAbstractViewModel* Rendering = this->RenderingModel->GameModel();
 
-    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    WormsToRender.push_back(this->ContentOfGame->Players);
-    while(true)
+    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end());
+    WormsToRender.insert(WormsToRender.begin(), this->ContentOfGame->Players.begin(),
+                         this->ContentOfGame->Players.end());
+    while (true)
     {
         Rendering->RenderGame(this->ContentOfGame);
 
         this->RunTasks();
 
-        if(!this->ProccessEvents())
+        if (!this->ProccessEvents())
             return this->Pause;
         this->MoveWorms();
         this->CheckCollisions();
@@ -46,21 +47,24 @@ GameStates::PlayingState::~PlayingState()
 
 void GameStates::PlayingState::ValidatePositionsOfWorms()
 {
-    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    WormsToRender.push_back(this->ContentOfGame->Players);
+    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end());
+    WormsToRender.insert(WormsToRender.begin(),
+                         this->ContentOfGame->Players.begin(),
+                         this->ContentOfGame->Players.end());
 
     vector<Worm*>::iterator Moving = WormsToRender.begin();
     vector<Worm*>::iterator End = WormsToRender.end();
-    for(;Moving!=End;Moving++)
+    for (; Moving != End; Moving++)
         (*Moving)->ValidatePosition(this->ContentOfGame->Ground->GetWidth(),
                                     this->ContentOfGame->Ground->GetHeight());
 }
 
 void GameStates::PlayingState::MoveWorms()
 {
-    this->ContentOfGame->Players->Move(this->ContentOfGame->Players->GetMoveDirection());
-    for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[](Worm* W)
-    {
+    for_each(this->ContentOfGame->Players.begin(), this->ContentOfGame->Players.end(), [](Worm* W) {
+        W->Move(W->GetMoveDirection());
+    });
+    for_each(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end(), [](Worm* W) {
         W->Move(W->GetMoveDirection());
     });
 
@@ -82,35 +86,35 @@ void GameStates::PlayingState::CheckCollisions()
 
     //fill it with walls
     vector<Point> Walls = this->ContentOfGame->Ground->GetWalls();
-    for_each(Walls.begin(),Walls.end(),[&Canvas](Point W){
+    for_each(Walls.begin(), Walls.end(), [&Canvas](Point W) {
         Canvas[W.GetPositionY()][W.GetPositionX()] = 'W';
     });
     //fill it with snake's tails
-    vector<Worm*> Worms(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    Worms.push_back(this->ContentOfGame->Players);
-    for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
-        if(!Snake->IsPlaying())
+    vector<Worm*> Worms(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end());
+    Worms.insert(Worms.begin(),this->ContentOfGame->Players.begin(),this->ContentOfGame->Players.end());
+    for_each(Worms.begin(), Worms.end(), [&Canvas](Worm* Snake) {
+        if (!Snake->IsPlaying())
             return;
         vector<Worm::Segment> Segments = Snake->GetSegment();
-        for_each(++(Segments.begin()),Segments.end(),[&Canvas](Worm::Segment S) {
+        for_each(++(Segments.begin()), Segments.end(), [&Canvas](Worm::Segment S) {
             Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
         });
     });
 
     //fill grub
     Canvas[this->ContentOfGame->GetFood().GetPositionY()]
-          [this->ContentOfGame->GetFood().GetPositionX()] = 'G';
+    [this->ContentOfGame->GetFood().GetPositionX()] = 'G';
 
     //check heads
-    for_each(Worms.begin(),Worms.end(),[&Canvas,this](Worm* Snake){
+    for_each(Worms.begin(), Worms.end(), [&Canvas, this](Worm* Snake) {
         Worm::Segment HeadSegment = Snake->GetSegment().at(0);
-        if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]=='G')
+        if (Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] == 'G')
         {
             Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] = 'H';
             Snake->IncrementSize();
             this->ContentOfGame->GenerateFood();
         }
-        else if(Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()]!=0)
+        else if (Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] != 0)
             Snake->StopPlaying();
         else
             Canvas[HeadSegment.GetPositionY()][HeadSegment.GetPositionX()] = 'H';
@@ -123,7 +127,7 @@ void GameStates::PlayingState::CheckCollisions()
 void GameStates::PlayingState::RunTasks()
 {
     using Game::Task::BaseTask;
-    for_each(this->ContentOfGame->Tasks.begin(),this->ContentOfGame->Tasks.end(),[](BaseTask* X){
+    for_each(this->ContentOfGame->Tasks.begin(), this->ContentOfGame->Tasks.end(), [](BaseTask* X) {
         X->run();
     });
 }
