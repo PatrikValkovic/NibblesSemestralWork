@@ -38,7 +38,21 @@ string ViewModel::MultiplayerConsoleViewModel::Level()
 
 int ViewModel::MultiplayerConsoleViewModel::CountOfPlayers(int Max)
 {
-    return 0;
+    using namespace std;
+    int CountOfPlayers = 1;
+    while (true)
+    {
+        cout << Translation->GetTranslation("CountOfPlayers") << ':';
+        cin >> this->CountOfPlayers;
+        if (cin.fail() || CountOfPlayers > Max || CountOfPlayers < 0)
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            cout << Translation->GetTranslation("MaxCount") << " " << Max << endl;
+            continue;
+        }
+        break;
+    }
+    return CountOfPlayers;
 }
 
 

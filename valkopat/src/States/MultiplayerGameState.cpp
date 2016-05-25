@@ -14,8 +14,15 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
 
     MultiplayerConsoleViewModel* Rendering = (MultiplayerConsoleViewModel*)this->RenderingModel->MultiplayerModel();
     string Level = Rendering->Level();
+    PlayGround* NewPlayground = PlaygroundFactory::GetLevel(Level);
+
+    int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(),3));
 
 
+
+    GameContent* NewContent = new GameContent();
+
+    this->PlayState->ClearContent(NewContent);
     return this->PlayState;
 }
 
@@ -33,3 +40,4 @@ void GameStates::MultiplayerGameState::AddStates(PlayingState* PlayState, MenuGa
 
 
 
+)
