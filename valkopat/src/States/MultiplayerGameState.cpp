@@ -17,6 +17,7 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     PlayGround* NewPlayground = PlaygroundFactory::GetLevel(Level);
 
     GameContent* NewGameContent = new GameContent();
+    NewGameContent->Ground = NewPlayground;
 
     int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(), 3));
     vector<Worm*> Players;

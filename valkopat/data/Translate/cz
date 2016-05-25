@@ -31,6 +31,6 @@ ChooseAILevel:Vyberte si obtížnost počítače
 RandomAI:Náhodný pohyb
 BFSAI:Hledání nejkratší cesty
 CountOfPlayers:Počet hráčů
-NamePlayer1:Jméno prvního hráče
-NamePlayer2:Jméno druhého hráče
-NamePlayer3:Jméno třetího hráče
+NamePlayer0:Jméno prvního hráče
+NamePlayer1:Jméno druhého hráče
+NamePlayer2:Jméno třetího hráče
