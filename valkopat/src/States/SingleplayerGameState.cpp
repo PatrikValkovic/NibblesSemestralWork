@@ -53,8 +53,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     NewContent->Tasks.push_back(WaitTask);
 
     //TODO refactor
-    string AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
-                                                   pair<int, string>(1,"BFSAI")});
+    string AILevel = View->LevelOfAI(vector<string>{"RandomAI","BFSAI"});
     /*
     switch(AILevel)
     {
