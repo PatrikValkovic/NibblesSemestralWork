@@ -40,6 +40,7 @@ namespace Game
         KeyX,
         KeyY,
         KeyZ,
+        Key0,
         Key1,
         Key2,
         Key3,

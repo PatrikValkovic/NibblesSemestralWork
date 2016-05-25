@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_CONSOLEINPUT_H
 #define CERVISEMESTRALKA_CONSOLEINPUT_H
 #ifdef USE_CONSOLE
+#include <map>
 #include <vector>
 #include <termios.h>
 #include <sys/ioctl.h>
@@ -23,9 +24,12 @@ namespace ViewModel
     private:
         std::vector<Game::Keys> Buffer;
 
+        static const std::map<char,Game::Keys> KeyTranslate;
+
         void BackMode(termios old);
         termios SetMode();
         int kbhit();
+        int Index;
     };
 }
 
