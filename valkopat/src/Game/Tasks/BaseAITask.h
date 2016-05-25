@@ -15,6 +15,7 @@ namespace Game
             GameContent* ContentOfGame;
         public:
             BaseAITask(Worm* WormToControl,GameContent* Game);
+            virtual BaseAITask* CreateInstance(Worm* WormToControl,GameContent* Game) = 0;
         };
     }
 }

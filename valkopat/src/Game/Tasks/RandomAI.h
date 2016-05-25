@@ -12,6 +12,7 @@ namespace Game
         public:
             RandomAI(Worm* AIWorm,GameContent* Content);
             virtual void run();
+            virtual BaseAITask* CreateInstance(Worm* WormToControl,GameContent* Game);
         };
     }
 }

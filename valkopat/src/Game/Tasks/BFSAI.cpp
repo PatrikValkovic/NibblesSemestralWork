@@ -127,6 +127,13 @@ Game::Directions Game::Task::BFSAI::ResolveDirection(Point From, Point To)
     throw new Exceptions::Exception("Something incredible happened",__LINE__,__FILE__);
 }
 
+BaseAITask* Game::Task::BFSAI::CreateInstance(Worm* WormToControl, GameContent* Game)
+{
+    return new BFSAI(WormToControl,Game);
+}
+
+
+
 
 
 
