@@ -21,13 +21,14 @@ namespace Game
     private:
         Point Food;
     public:
+        GameContent();
         GameContent(vector<Worm*> Worms,Worm* Player, PlayGround* Playground);
         ~GameContent();
 
         PlayGround* Ground;
         vector<Worm*> Worms;
         map<Worm*,Actions> MovingDirections;
-        Worm* Player;
+        vector<Worm*> Players;
         EventContainer Events;
         vector<Game::Task::BaseTask*> Tasks;
 

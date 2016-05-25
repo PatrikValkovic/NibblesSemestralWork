@@ -7,7 +7,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     ViewModel::GameAbstractViewModel* Rendering = this->RenderingModel->GameModel();
 
     vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    WormsToRender.push_back(this->ContentOfGame->Player);
+    WormsToRender.push_back(this->ContentOfGame->Players);
     while(true)
     {
         Rendering->RenderGame(this->ContentOfGame);
@@ -47,7 +47,7 @@ GameStates::PlayingState::~PlayingState()
 void GameStates::PlayingState::ValidatePositionsOfWorms()
 {
     vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    WormsToRender.push_back(this->ContentOfGame->Player);
+    WormsToRender.push_back(this->ContentOfGame->Players);
 
     vector<Worm*>::iterator Moving = WormsToRender.begin();
     vector<Worm*>::iterator End = WormsToRender.end();
@@ -58,7 +58,7 @@ void GameStates::PlayingState::ValidatePositionsOfWorms()
 
 void GameStates::PlayingState::MoveWorms()
 {
-    this->ContentOfGame->Player->Move(this->ContentOfGame->Player->GetMoveDirection());
+    this->ContentOfGame->Players->Move(this->ContentOfGame->Players->GetMoveDirection());
     for_each(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end(),[](Worm* W)
     {
         W->Move(W->GetMoveDirection());
@@ -87,7 +87,7 @@ void GameStates::PlayingState::CheckCollisions()
     });
     //fill it with snake's tails
     vector<Worm*> Worms(this->ContentOfGame->Worms.begin(),this->ContentOfGame->Worms.end());
-    Worms.push_back(this->ContentOfGame->Player);
+    Worms.push_back(this->ContentOfGame->Players);
     for_each(Worms.begin(),Worms.end(),[&Canvas](Worm* Snake){
         if(!Snake->IsPlaying())
             return;

@@ -16,6 +16,8 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     string Level = Rendering->Level();
     PlayGround* NewPlayground = PlaygroundFactory::GetLevel(Level);
 
+    GameContent* NewGameContent = new GameContent();
+
     int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(), 3));
     vector<Worm*> Players;
     for (int a = 0; a < CountOfPlayer; a++)
@@ -27,6 +29,7 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
         WorkingPlayer->SetName(Rendering->NameOfPlayer(a));
     }
 
+    this->PlayState->ClearContent(NewGameContent);
 
     return this->PlayState;
 }

@@ -33,7 +33,7 @@ void ViewModel::GameConsoleViewModel::RenderGame(Game::GameContent* ContentToRen
 
     //prepare worms
     vector<Worm*> WormsToRender(ContentToRender->Worms.begin(),ContentToRender->Worms.end());
-    WormsToRender.push_back(ContentToRender->Player);
+    WormsToRender.push_back(ContentToRender->Players);
     vector<Worm*>::iterator MovingWorm = WormsToRender.begin();
     vector<Worm*>::iterator EndWorms = WormsToRender.end();
     for (; MovingWorm != EndWorms; MovingWorm++)

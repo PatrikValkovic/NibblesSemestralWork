@@ -9,18 +9,21 @@ Game::GameContent::~GameContent()
     std::for_each(Tasks.begin(), Tasks.end(), [](BaseTask* X) {
         delete X;
     });
+    std::for_each(Players.begin(), Players.end(), [](Worm* X) {
+        delete X;
+    });
     delete Ground;
-    delete Player;
     Events.DeleteAllEvents();
 
     Ground = NULL;
-    Player = NULL;
+    Players = NULL;
 }
 
 Game::GameContent::GameContent(vector<Worm*> Worms, Worm* Player, PlayGround* Playground)
-        : Ground(Playground), Player(Player)
+        : Ground(Playground)
 {
     this->Worms = Worms;
+    this->Players.push_back(Player);
 }
 
 Game::Point Game::GameContent::GetFood() const
@@ -44,7 +47,7 @@ void Game::GameContent::GenerateFood()
 
     //fill it with snakes
     vector<Worm*> Worms(this->Worms.begin(), this->Worms.end());
-    Worms.push_back(this->Player);
+    Worms.insert(Worms.begin(),this->Players.begin(),this->Players.end());
     for_each(Worms.begin(), Worms.end(), [&Canvas](Worm* Snake) {
         if (!Snake->IsPlaying())
             return;
@@ -80,11 +83,11 @@ void Game::GameContent::GenerateFood()
 
 char** Game::GameContent::CreateArrayForGame()
 {
-    char** Array = new char*[this->Ground->GetHeight()];
-    for(int a=0;a<this->Ground->GetHeight();a++)
+    char** Array = new char* [this->Ground->GetHeight()];
+    for (int a = 0; a < this->Ground->GetHeight(); a++)
     {
         Array[a] = new char[this->Ground->GetWidth()];
-        for(int b=0;b<this->Ground->GetWidth();b++)
+        for (int b = 0; b < this->Ground->GetWidth(); b++)
             Array[a][b] = 0;
     }
     return Array;
@@ -92,11 +95,16 @@ char** Game::GameContent::CreateArrayForGame()
 
 void Game::GameContent::DeleteArrayForGame(char**& Array)
 {
-    for(int a=0;a<this->Ground->GetHeight();a++)
-        delete [] Array[a];
-    delete [] Array;
+    for (int a = 0; a < this->Ground->GetHeight(); a++)
+        delete[] Array[a];
+    delete[] Array;
     Array = NULL;
 }
+
+Game::GameContent::GameContent() : Ground(NULL)
+{ }
+
+
 
 
 
