@@ -10,7 +10,7 @@ namespace ViewModel
     public:
         GameNCursesViewModel(const Translate::TranslateEngine* Translation);
 
-        virtual void RenderGame(Game::GameContent* ContentToRender) = 0;
+        virtual void RenderGame(Game::GameContent* ContentToRender);
     };
 }
 

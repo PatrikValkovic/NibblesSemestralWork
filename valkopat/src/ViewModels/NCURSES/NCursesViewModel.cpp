@@ -8,7 +8,16 @@ const char* ViewModel::NCursesViewModel::GetNameofViewModel()
 
 void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    //TODO
+    SplashScren = new SplashScreenNCursesViewModel(Translate);
+    Menu = new MenuNCursesViewModel(Translate);
+    Language = new LanguageNCursesViewModel(Translate);
+    Multiplayer = new MultiplayerNCursesViewModel(Translate);
+    NetMenu = new NetMenuNCursesVIewModel(Translate);
+    Singpleplayer = new SingpleplayerMenuNCursesViewModel(Translate);
+    Game = new GameNCursesViewModel(Translate);
+    Score = new ScoreNCursesViewModel(Translate);
+    Quit = new QuitNCursesViewModel(Translate);
+    Input = new NCursesInput();
 }
 
 ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashPauseScreenModel()

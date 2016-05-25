@@ -4,7 +4,7 @@
 
 namespace ViewModel
 {
-    class SDLInput
+    class SDLInput : public AbstractInput
     {
     public:
         SDLInput();

@@ -8,7 +8,16 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
 
 void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    //TODO
+    SplashScren = new SplashScreenSDLViewModel(Translate);
+    Menu = new MenuSDLViewModel(Translate);
+    Language = new LanguageSDLViewModel(Translate);
+    Multiplayer = new MultiplayerSDLViewModel(Translate);
+    NetMenu = new NetMenuSDLViewModel(Translate);
+    Singpleplayer = new SingpleplayerMenuSDLViewModel(Translate);
+    Game = new GameSDLViewModel(Translate);
+    Score = new ScoreSDLViewModel(Translate);
+    Quit = new QuitSDLViewModel(Translate);
+    Input = new SDLInput();
 }
 
 ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::SDLViewModel::SplashPauseScreenModel()

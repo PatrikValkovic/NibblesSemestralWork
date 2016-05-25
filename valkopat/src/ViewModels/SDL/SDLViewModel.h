@@ -3,6 +3,16 @@
 #define CERVISEMESTRALKA_SDLVIEWMODEL_H
 #include <SDL2/SDL.h>
 #include "../Abstract/BaseViewModel.h"
+#include "SplashScreenSDLViewModel.h"
+#include "SingpleplayerMenuSDLViewModel.h"
+#include "SDLInput.h"
+#include "ScoreSDLViewModel.h"
+#include "QuitSDLViewModel.h"
+#include "NetMenuSDLViewModel.h"
+#include "MultiplayerSDLViewModel.h"
+#include "MenuSDLViewModel.h"
+#include "LanguageSDLViewModel.h"
+#include "GameSDLViewModel.h"
 
 namespace ViewModel
 {

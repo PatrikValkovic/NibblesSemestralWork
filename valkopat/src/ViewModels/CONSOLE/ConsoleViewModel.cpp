@@ -70,20 +70,6 @@ ViewModel::AbstractInput* ViewModel::ConsoleViewModel::InputModel()
     return Input;
 }
 
-ViewModel::ConsoleViewModel::~ConsoleViewModel()
-{
-    delete SplashScren;
-    delete Menu;
-    delete Language;
-    delete Multiplayer;
-    delete NetMenu;
-    delete Singpleplayer;
-    delete Game;
-    delete Score;
-    delete Quit;
-    delete Input;
-}
-
 
 
 #endif

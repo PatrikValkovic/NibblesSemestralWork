@@ -12,6 +12,8 @@
 #include "SingpleplayerMenuNCursesViewModel.h"
 #include "GameNCursesViewModel.h"
 #include "ScoreNCursesViewModel.h"
+#include "QuitNCursesViewModel.h"
+#include "NCursesInput.h"
 
 namespace ViewModel
 {

@@ -5,5 +5,11 @@ ViewModel::GameSDLViewModel::GameSDLViewModel(const Translate::TranslateEngine* 
         : GameAbstractViewModel(Translation)
 { }
 
+void ViewModel::GameSDLViewModel::RenderGame(Game::GameContent* ContentToRender)
+{
+
+}
+
+
 #endif
 
