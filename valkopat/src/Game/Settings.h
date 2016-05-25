@@ -25,7 +25,7 @@ namespace Game
         struct PlayerSetting
         {
             int Playerindex;
-            std::map<Keys,Actions> Actions;
+            std::map<Keys,Actions> Action;
         };
         std::vector<PlayerSetting> IndividualSetting;
     public:

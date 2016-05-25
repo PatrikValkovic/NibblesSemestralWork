@@ -45,7 +45,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     GameContent* NewContent = new GameContent(AI, Player, Round);
 
     //create events
-    Single* SingleEvent = new Single(Player);
+    Single* SingleEvent = new Single(Player,this->RenderingModel->InputModel(),0,Settings::GetInstance());
     NewContent->Events.AddEvent(SingleEvent);
 
     //create Tasks

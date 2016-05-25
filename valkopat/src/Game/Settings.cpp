@@ -8,26 +8,29 @@ Game::Settings::Settings()
     //first player
     PlayerSetting First;
     First.Playerindex = 0;
-    First.Actions.insert(pair<Keys,Actions>(KeyW,MoveUp));
-    First.Actions.insert(pair<Keys,Actions>(KeyS,MoveDown));
-    First.Actions.insert(pair<Keys,Actions>(KeyD,moveRight));
-    First.Actions.insert(pair<Keys,Actions>(KeyA,MoveLeft));
+    First.Action.insert(pair<Keys,Actions>(KeyW,MoveUp));
+    First.Action.insert(pair<Keys,Actions>(KeyS,MoveDown));
+    First.Action.insert(pair<Keys,Actions>(KeyD,moveRight));
+    First.Action.insert(pair<Keys,Actions>(KeyA,MoveLeft));
+    First.Action.insert(pair<Keys,Actions>(KeyQ,Pause));
 
     //second player
     PlayerSetting Second;
-    First.Playerindex = 1;
-    First.Actions.insert(pair<Keys,Actions>(KeyI,MoveUp));
-    First.Actions.insert(pair<Keys,Actions>(KeyK,MoveDown));
-    First.Actions.insert(pair<Keys,Actions>(KeyL,moveRight));
-    First.Actions.insert(pair<Keys,Actions>(KeyJ,MoveLeft));
+    Second.Playerindex = 1;
+    Second.Action.insert(pair<Keys,Actions>(KeyI,MoveUp));
+    Second.Action.insert(pair<Keys,Actions>(KeyK,MoveDown));
+    Second.Action.insert(pair<Keys,Actions>(KeyL,moveRight));
+    Second.Action.insert(pair<Keys,Actions>(KeyJ,MoveLeft));
+    Second.Action.insert(pair<Keys,Actions>(KeyU,Pause));
 
     //third player
     PlayerSetting Third;
-    First.Playerindex = 2;
-    First.Actions.insert(pair<Keys,Actions>(Key8,MoveUp));
-    First.Actions.insert(pair<Keys,Actions>(Key5,MoveDown));
-    First.Actions.insert(pair<Keys,Actions>(Key6,moveRight));
-    First.Actions.insert(pair<Keys,Actions>(Key4,MoveLeft));
+    Third.Playerindex = 2;
+    Third.Action.insert(pair<Keys,Actions>(Key8,MoveUp));
+    Third.Action.insert(pair<Keys,Actions>(Key5,MoveDown));
+    Third.Action.insert(pair<Keys,Actions>(Key6,moveRight));
+    Third.Action.insert(pair<Keys,Actions>(Key4,MoveLeft));
+    Third.Action.insert(pair<Keys,Actions>(Key0,Pause));
 
     //store it
     this->IndividualSetting.push_back(First);
@@ -58,8 +61,8 @@ bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Actions& Direc
 
     bool Found = false;
     for_each(IndividualSetting.begin(),IndividualSetting.end(),[&](PlayerSetting WorkingSetting){
-        map<Keys,Actions>::iterator Finding = WorkingSetting.Actions.find(Key);
-        if(Finding!=WorkingSetting.Actions.end())
+        map<Keys,Actions>::iterator Finding = WorkingSetting.Action.find(Key);
+        if(Finding!=WorkingSetting.Action.end())
         {
             Found = true;
             Player = WorkingSetting.Playerindex;
@@ -89,13 +92,13 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
         {
             Changed = true;
             Keys OldKey = Keys::Key1;
-            for_each(WorkingPlayerSettings.Actions.begin(),WorkingPlayerSettings.Actions.end(),
+            for_each(WorkingPlayerSettings.Action.begin(),WorkingPlayerSettings.Action.end(),
                 [&NewDirection,&OldKey](pair<Keys,Actions> X){
                     if(X.second==NewDirection)
                         OldKey = X.first;
                 });
-            WorkingPlayerSettings.Actions.erase(OldKey);
-            WorkingPlayerSettings.Actions.insert(pair<Keys,Actions>(NewKey,NewDirection));
+            WorkingPlayerSettings.Action.erase(OldKey);
+            WorkingPlayerSettings.Action.insert(pair<Keys,Actions>(NewKey,NewDirection));
         }
     };
 
