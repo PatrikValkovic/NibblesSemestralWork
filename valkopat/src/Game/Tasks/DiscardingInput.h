@@ -7,7 +7,7 @@ namespace Game
 {
     namespace Task
     {
-        class DiscardingInput
+        class DiscardingInput : public BaseTask
         {
         public:
             DiscardingInput(ViewModel::AbstractInput* Input);

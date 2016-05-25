@@ -5,10 +5,11 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using namespace Game;
     using ViewModel::SingleplayerMenuAbstractViewModel;
     using ViewModel::GameAbstractViewModel;
+    using Game::AIFactory;
     using Game::Event::Single;
     using Game::Task::WaitingTask;
-    using Game::AIFactory;
     using Game::Task::BaseAITask;
+    using Game::Task::DiscardingInput;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
@@ -50,7 +51,9 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
 
     //create Tasks
     WaitingTask* WaitTask = new WaitingTask();
+    DiscardingInput* DiscardingInputTask = new DiscardingInput(this->RenderingModel->InputModel());
     NewContent->Tasks.push_back(WaitTask);
+    NewContent->Tasks.push_back(DiscardingInputTask);
     //create tasks for AI
     string AILevel = View->LevelOfAI(AIFactory::GetInstance()->GetNamesOfAILevels());
     vector<BaseAITask*> Tasks = AIFactory::GetInstance()->CreatesTaskForWorms(NewContent->Worms,
