@@ -18,7 +18,7 @@ int ViewModel::SingpleplayerMenuNCursesViewModel::CountOfAI()
     return 0;
 }
 
-int ViewModel::SingpleplayerMenuNCursesViewModel::Level()
+string ViewModel::SingpleplayerMenuNCursesViewModel::Level()
 {
     //TODO
     return 0;

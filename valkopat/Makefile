@@ -15,11 +15,11 @@ LINKER = ld
 .PHONY: compile		#implemented
 .PHONY: run			#implemented
 .PHONY: clean		#implemented
-.PHONY: doc			#implemented TODO
+.PHONY: doc			#implemented
 
 #Custom
-.PHONY: debug		#not implemented
-.PHONY: tests		#not implemented
+.PHONY: debug		#implemented
+.PHONY: tests		#implemented
 .PHONY: release		#implemented
 
 
@@ -94,7 +94,7 @@ $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 $(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o
+$(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o $(TARGET_DIR)/Settings.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Game/Point.h
@@ -103,13 +103,16 @@ $(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Gam
 $(TARGET_DIR)/Point.o: src/Game/Point.cpp src/Game/Point.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h
+$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h src/Exceptions/InvalidFormatException.h src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h src/Game/Enums.h src/Game/Point.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/GameContent.o: src/Game/GameContent.cpp src/Game/GameContent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h src/Game/Enums.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 ##############
@@ -129,7 +132,7 @@ $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Even
 ##	TASKS  ##
 #############
 
-$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o
+$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o $(TARGET_DIR)/RandomAI.o $(TARGET_DIR)/BFSAI.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
@@ -138,11 +141,17 @@ $(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
 $(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/WaitingTask.h src/Game/Tasks/BaseTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+$(TARGET_DIR)/RandomAI.o: src/Game/Tasks/RandomAI.cpp src/Game/Tasks/RandomAI.h src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/BFSAI.o: src/Game/Tasks/BFSAI.cpp src/Game/Tasks/BFSAI.h src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
 ##################
 ##	EXCEPTIONS  ##
 ##################
 
-$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
@@ -152,6 +161,9 @@ $(TARGET_DIR)/Exception.o: src/Exceptions/Exception.cpp src/Exceptions/Exception
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/Exceptions/OutOfRangeException.h src/Exceptions/Exception.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #################

@@ -78,13 +78,7 @@ void GameStates::PlayingState::CheckCollisions()
     using Game::Point;
     using Game::Worm;
     //prepare collision map
-    char** Canvas = new char*[this->ContentOfGame->Ground->GetHeight()];
-    for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
-    {
-        Canvas[a] = new char[this->ContentOfGame->Ground->GetWidth()];
-        for(int b=0;b<this->ContentOfGame->Ground->GetWidth();b++)
-            Canvas[a][b] = 0;
-    }
+    char** Canvas = this->ContentOfGame->CreateArrayForGame();
 
     //fill it with walls
     vector<Point> Walls = this->ContentOfGame->Ground->GetWalls();
@@ -123,9 +117,7 @@ void GameStates::PlayingState::CheckCollisions()
     });
 
     //delete collision map
-    for(int a=0;a<this->ContentOfGame->Ground->GetHeight();a++)
-        delete [] Canvas[a];
-    delete [] Canvas;
+    this->ContentOfGame->DeleteArrayForGame(Canvas);
 }
 
 void GameStates::PlayingState::RunTasks()

@@ -23,7 +23,7 @@ Exceptions::Exception::Exception(string Message, int Line, Exception* InnerExcep
 { }
 
 Exceptions::Exception::Exception(string ErrorMessage, int LineNumber, string File, Exception* InnerException)
-        : Message(ErrorMessage), Line(LineNumber), FileName(File), InException(InnerException)
+        : Message(ErrorMessage), Line(LineNumber), InException(InnerException), FileName(File)
 { }
 
 

@@ -7,13 +7,14 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     using ViewModel::GameAbstractViewModel;
     using Game::Event::Single;
     using Game::Task::WaitingTask;
+    using Game::Task::BFSAI;
 
 
     SingleplayerMenuAbstractViewModel* View = this->RenderingModel->SingleplayerModel();
 
     string NameOfUser = View->NameOfPlayer();
 
-    int Level = View->Level();
+    string Level = View->Level();
     PlayGround* Round = PlaygroundFactory::GetLevel(Level);
 
     int CountOfAI = View->CountOfAI(Round->CountOfStartPositions() - 1);
@@ -49,6 +50,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     //create Tasks
     WaitingTask* WaitTask = new WaitingTask();
     NewContent->Tasks.push_back(WaitTask);
+
     int AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
                                                    pair<int, string>(1,"BFSAI")});
     switch(AILevel)
@@ -60,6 +62,13 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
         default:
             break;
     }
+
+    for(auto Moving = NewContent->Worms.begin();Moving!=NewContent->Worms.end();Moving++)
+    {
+        BFSAI* AITask = new BFSAI(*Moving,NewContent);
+        NewContent->Tasks.push_back(AITask);
+    };
+
 
     this->Play->ClearContent(NewContent);
 

@@ -34,6 +34,10 @@ namespace Game
 
             void SetPositionY(int Y)
             { Coords.SetPositionY(Y); }
+
+            explicit operator Point()
+            { return Coords; }
+
         };
 
     private:
@@ -41,7 +45,6 @@ namespace Game
 
         std::string name;
         std::vector<Segment> Segments;
-        void DecideDirection(Directions Direction, int& Down, int& Right) const;
         Directions MoveDirection;
         bool Playing = true;
     public:
@@ -53,10 +56,11 @@ namespace Game
         void SetMoveDirection(Directions Direction);
         bool IsPlaying();
         void StopPlaying();
+        void DecideDirection(Directions Direction, int& Down, int& Right) const;
 
         std::vector<Segment> GetSegment() const;
         void Move(Directions Direction);
-        void ValidatePosition(int MaxWidth,int MaxHeight);
+        void ValidatePosition(int MaxWidth, int MaxHeight);
         void IncrementSize();
     };
 }
