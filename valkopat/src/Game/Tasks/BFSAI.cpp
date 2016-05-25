@@ -38,10 +38,8 @@ void Game::Task::BFSAI::run()
 }
 
 Game::Task::BFSAI::BFSAI(Worm* AIWorm, GameContent* Content)
-        : ControlledWorm(AIWorm), ContentOfGame(Content)
+        : BaseAITask(AIWorm,Content)
 { }
-
-#include <iostream>
 
 Game::Directions Game::Task::BFSAI::BFS(uint32_t** map, Game::Point BeginOfSearch, Game::Point EndPoint)
 {

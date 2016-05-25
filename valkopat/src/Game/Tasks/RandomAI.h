@@ -2,8 +2,6 @@
 #define CERVISEMESTRALKA_RANDOMAI_H
 #include <set>
 #include "BaseAITask.h"
-#include "../GameContent.h"
-#include "../Worm.h"
 
 namespace Game
 {
@@ -14,9 +12,6 @@ namespace Game
         public:
             RandomAI(Worm* AIWorm,GameContent* Content);
             virtual void run();
-        private:
-            Worm* ControlledWorm;
-            GameContent* ContentOfGame;
         };
     }
 }

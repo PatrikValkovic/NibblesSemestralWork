@@ -6,8 +6,6 @@
 #include <vector>
 #include "BaseAITask.h"
 #include "../../Exceptions/InvalidArgumentException.h"
-#include "../GameContent.h"
-#include "../Worm.h"
 
 namespace Game
 {
@@ -19,9 +17,6 @@ namespace Game
             BFSAI(Worm* AIWorm,GameContent* Content);
             virtual void run();
         private:
-            Worm* ControlledWorm;
-            GameContent* ContentOfGame;
-
             Directions BFS(uint32_t** map, Point BeginOfSearch, Point EndPoint);
             vector<Point> GeneratePointsAround(Point AroundToGenerate);
             Directions ResolveDirection(Point From, Point To);
