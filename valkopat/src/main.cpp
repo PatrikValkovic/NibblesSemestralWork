@@ -4,12 +4,15 @@
 #include "Translation/TranslateEngine.h"
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
+#include "Game/AIFactory.h"
+#include "Game/Settings.h"
 
 int main()
 {
     try
     {
         using namespace ViewModel;
+        using namespace Game;
         ViewModelChooser* ChoosingOfViewModel = new ViewModelChooser();
         BaseViewModel* RenderEngine = ChoosingOfViewModel->ChooseViewModel();
         delete ChoosingOfViewModel;
@@ -23,6 +26,8 @@ int main()
         delete game;
         delete RenderEngine;
         delete Translation;
+        delete AIFactory::GetInstance();
+        delete Settings::GetInstance();
 
         return 0;
     }
