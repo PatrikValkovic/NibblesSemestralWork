@@ -1,7 +1,9 @@
 #ifndef CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <iostream>
 #include "../Abstract/MultiplayerAbstractViewModel.h"
+#include "../../Game/PlaygroundFactory.h"
 
 
 namespace ViewModel
@@ -10,6 +12,9 @@ namespace ViewModel
     {
     public:
         MultiplayerConsoleViewModel(const Translate::TranslateEngine* Translate);
+
+        virtual string Level();
+        virtual int CountOfPlayers(int Max);
     };
 }
 

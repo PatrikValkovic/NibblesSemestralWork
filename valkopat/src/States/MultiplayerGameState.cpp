@@ -13,6 +13,8 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     using Game::Task::DiscardingInput;
 
     MultiplayerConsoleViewModel* Rendering = (MultiplayerConsoleViewModel*)this->RenderingModel->MultiplayerModel();
+    string Level = Rendering->Level();
+
 
     return this->PlayState;
 }
