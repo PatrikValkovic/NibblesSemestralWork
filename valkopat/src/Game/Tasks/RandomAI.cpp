@@ -48,7 +48,7 @@ Game::Task::RandomAI::RandomAI(Worm* AIWorm, GameContent* Content)
         : BaseAITask(AIWorm,Content)
 { }
 
-BaseAITask* Game::Task::RandomAI::CreateInstance(Worm* WormToControl, GameContent* Game)
+Game::Task::BaseAITask* Game::Task::RandomAI::CreateInstance(Worm* WormToControl, GameContent* Game)
 {
     return new RandomAI(WormToControl,Game);
 }

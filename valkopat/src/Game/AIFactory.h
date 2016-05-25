@@ -4,14 +4,16 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include "../Exceptions/InvalidArgumentException.h"
 #include "Tasks/RandomAI.h"
 #include "Tasks/BFSAI.h"
+
 
 namespace Game
 {
     class AIFactory
     {
-    //singleton implementation
+        //singleton implementation
     private:
         static AIFactory* Instance;
         AIFactory();
@@ -21,12 +23,14 @@ namespace Game
         AIFactory& operator=(const AIFactory& Second) = delete;
         ~AIFactory();
 
-    //implementation
+        //implementation
     protected:
-        std::map<string,Game::Task::BaseAITask*> Tasks;
+        std::map<string, Game::Task::BaseAITask*> Tasks;
     public:
         std::vector<string> GetNamesOfAILevels();
-        std::vector<Game::Task::BaseAITask*> CreatesTaskForWorms(std::vector<Worm*> Worms,GameContent* Game);
+        std::vector<Game::Task::BaseAITask*> CreatesTaskForWorms(std::vector<Worm*> Worms,
+                                                                 GameContent* Game,
+                                                                 string NameOfLevel);
     };
 }
 
