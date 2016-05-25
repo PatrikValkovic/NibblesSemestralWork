@@ -65,6 +65,12 @@ ViewModel::QuitAbstractViewModel* ViewModel::NCursesViewModel::QuitModel()
     return NULL;
 }
 
+Input* ViewModel::NCursesViewModel::InputModel()
+{
+    //TODO
+    return NULL;
+}
+
 
 #endif
 

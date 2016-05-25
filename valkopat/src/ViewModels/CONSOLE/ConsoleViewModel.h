@@ -32,6 +32,7 @@ namespace ViewModel
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
         virtual QuitAbstractViewModel* QuitModel();
+        virtual Input* InputModel();
     private:
         SplashPauseScreenAbstractViewModel* SplashScren;
         MenuAbstractViewModel* Menu;

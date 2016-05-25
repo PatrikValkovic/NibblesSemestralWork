@@ -77,7 +77,11 @@ ViewModel::ConsoleViewModel::~ConsoleViewModel()
     delete Quit;
 }
 
-
+Input* ViewModel::ConsoleViewModel::InputModel()
+{
+    //TODO
+    return nullptr;
+}
 
 
 #endif
