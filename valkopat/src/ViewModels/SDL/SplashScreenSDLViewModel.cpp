@@ -10,6 +10,11 @@ ViewModel::SplashScreenSDLViewModel::SplashScreenSDLViewModel(const Translate::T
     : SplashPauseScreenAbstractViewModel(Translation)
 {}
 
+int ViewModel::SplashScreenSDLViewModel::ShowPauseWithMenu(std::map<int, string> MenuEntry)
+{
+    return 0;
+}
+
 
 #endif
 

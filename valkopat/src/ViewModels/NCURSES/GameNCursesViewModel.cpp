@@ -8,3 +8,10 @@ ViewModel::GameNCursesViewModel::GameNCursesViewModel(const Translate::Translate
         : GameAbstractViewModel(Translation)
 { }
 
+void ViewModel::GameNCursesViewModel::RenderGame(Game::GameContent* ContentToRender)
+{
+
+}
+
+
+

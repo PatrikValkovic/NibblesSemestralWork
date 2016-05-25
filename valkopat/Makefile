@@ -227,10 +227,13 @@ src/States/AbstractGameState.h : src/States/StatesNames.h
 ##################
 __ABSTRACTION_FILES = src/ViewModels/Abstract/SplashPauseScreenAbstractViewModel.h src/ViewModels/Abstract/MenuAbstractViewModel.h src/ViewModels/Abstract/LanguageAbstractViewModel.h src/ViewModels/Abstract/MultiplayerAbstractViewModel.h src/ViewModels/Abstract/NetMenuAbstractViewModel.h src/ViewModels/Abstract/SingpleplayerAbstractViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h src/ViewModels/Abstract/ScoreAbstractViewModel.h src/ViewModels/Abstract/QuitAbstractViewModel.h src/ViewModels/Abstract/AbstractInput.h
 
-$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o $(TARGET_DIR)/Translate.o
+$(TARGET_DIR)/ViewModels.o: $(TARGET_DIR)/ViewModelChooser.o $(TARGET_DIR)/ConsoleModel.o $(TARGET_DIR)/SDLModel.o $(TARGET_DIR)/NCursesModel.o $(TARGET_DIR)/Translate.o $(TARGET_DIR)/BaseViewModel.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/ViewModelChooser.o: src/ViewModels/ViewModelChooser.cpp src/ViewModels/ViewModelChooser.h
+	$(COMPILER) -o $@ -c $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/BaseViewModel.o: src/ViewModels/Abstract/BaseViewModel.cpp src/ViewModels/Abstract/BaseViewModel.h
 	$(COMPILER) -o $@ -c $< $(COMPILE_FLAGS)
 
 ## NCURSES

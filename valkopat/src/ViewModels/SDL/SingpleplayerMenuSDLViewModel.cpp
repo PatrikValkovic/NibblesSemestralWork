@@ -11,7 +11,7 @@ std::string ViewModel::SingpleplayerMenuSDLViewModel::NameOfPlayer()
     return "";
 }
 
-int ViewModel::SingpleplayerMenuSDLViewModel::CountOfAI()
+int ViewModel::SingpleplayerMenuSDLViewModel::CountOfAI(int Max)
 {
     //TODO
     return 0;

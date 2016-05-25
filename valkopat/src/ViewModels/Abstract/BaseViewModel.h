@@ -20,19 +20,7 @@ namespace ViewModel
     class BaseViewModel
     {
     public:
-        virtual ~BaseViewModel()
-        {
-            delete SplashScren;
-            delete Menu;
-            delete Language;
-            delete Multiplayer;
-            delete NetMenu;
-            delete Singpleplayer;
-            delete Game;
-            delete Score;
-            delete Quit;
-            delete Input;
-        }
+        virtual ~BaseViewModel();
 
         virtual const char* GetNameofViewModel() = 0;
         virtual void init(const Translate::TranslateEngine* Translate) = 0;

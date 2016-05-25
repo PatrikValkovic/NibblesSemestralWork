@@ -11,6 +11,8 @@ namespace ViewModel
         SplashScreenNCursesViewModel(const Translate::TranslateEngine* Translation);
 
         virtual void ShowSplashScreen();
+
+        virtual int ShowPauseWithMenu(std::map<int,string> MenuEntry);
     };
 }
 

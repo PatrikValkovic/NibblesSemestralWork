@@ -12,7 +12,7 @@ std::string ViewModel::SingpleplayerMenuNCursesViewModel::NameOfPlayer()
     return "";
 }
 
-int ViewModel::SingpleplayerMenuNCursesViewModel::CountOfAI()
+int ViewModel::SingpleplayerMenuNCursesViewModel::CountOfAI(int Max)
 {
     //TODO
     return 0;

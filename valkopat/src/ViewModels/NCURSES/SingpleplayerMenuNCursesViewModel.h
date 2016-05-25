@@ -10,7 +10,7 @@ namespace ViewModel
         SingpleplayerMenuNCursesViewModel(const Translate::TranslateEngine* Translation);
 
         virtual std::string NameOfPlayer();
-        virtual int CountOfAI();
+        virtual int CountOfAI(int Max);
         virtual string Level() ;
         virtual string LevelOfAI(std::vector<string> MenuEntries);
     };
