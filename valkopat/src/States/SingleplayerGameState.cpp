@@ -4,7 +4,6 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
 {
     using namespace Game;
     using ViewModel::SingleplayerMenuAbstractViewModel;
-    using ViewModel::GameAbstractViewModel;
     using Game::AIFactory;
     using Game::Event::Single;
     using Game::Task::WaitingTask;

@@ -1,9 +1,20 @@
 #include "MultiplayerGameState.h"
+//TODO remove
+#include "../ViewModels/CONSOLE/MultiplayerConsoleViewModel.h"
 
 GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
 {
-    //TODO
-    return NULL;
+    using namespace Game;
+    using ViewModel::MultiplayerConsoleViewModel;
+    using Game::AIFactory;
+    using Game::Event::Single;
+    using Game::Task::WaitingTask;
+    using Game::Task::BaseAITask;
+    using Game::Task::DiscardingInput;
+
+    MultiplayerConsoleViewModel* Rendering = (MultiplayerConsoleViewModel*)this->RenderingModel->MultiplayerModel();
+
+    return this->PlayState;
 }
 
 GameStates::MultiplayerGameState::MultiplayerGameState(ViewModel::BaseViewModel* RenderingModel)
