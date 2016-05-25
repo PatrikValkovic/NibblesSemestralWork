@@ -72,6 +72,12 @@ string ViewModel::SingpleplayerMenuConsoleViewModel::Level()
     return Levels.at(this->LevelIndex-1);
 }
 
+int ViewModel::SingpleplayerMenuConsoleViewModel::LevelOfAI(std::map<int, string> MenuEntries)
+{
+    return 0;
+}
+
+
 #endif
 
 

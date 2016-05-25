@@ -52,6 +52,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     WaitingTask* WaitTask = new WaitingTask();
     NewContent->Tasks.push_back(WaitTask);
 
+    //TODO refactor
     int AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
                                                    pair<int, string>(1,"BFSAI")});
     switch(AILevel)

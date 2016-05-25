@@ -24,6 +24,11 @@ string ViewModel::SingpleplayerMenuNCursesViewModel::Level()
     return 0;
 }
 
+int ViewModel::SingpleplayerMenuNCursesViewModel::LevelOfAI(std::map<int, string> MenuEntries)
+{
+    return 0;
+}
+
 
 #endif
 
