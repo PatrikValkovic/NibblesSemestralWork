@@ -12,7 +12,7 @@ namespace ViewModel
         virtual std::string NameOfPlayer();
         virtual int CountOfAI();
         virtual string Level() ;
-        virtual int LevelOfAI(std::map<int, string> MenuEntries);
+        virtual string LevelOfAI(std::vector<string> MenuEntries);
     };
 }
 #endif

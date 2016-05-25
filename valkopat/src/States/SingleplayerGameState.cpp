@@ -53,8 +53,9 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     NewContent->Tasks.push_back(WaitTask);
 
     //TODO refactor
-    int AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
+    string AILevel = View->LevelOfAI(map<int, string>{pair<int, string>(0,"RandomAI"),
                                                    pair<int, string>(1,"BFSAI")});
+    /*
     switch(AILevel)
     {
         case 0:
@@ -78,7 +79,7 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
                 NewContent->Tasks.push_back(AITask);
             };
             break;
-    }
+    }*/
 
 
     this->Play->ClearContent(NewContent);

@@ -25,7 +25,7 @@ namespace ViewModel
         virtual int CountOfAI(int Max) = 0;
 
         virtual string Level() = 0;
-        virtual int LevelOfAI(std::map<int, string> MenuEntries) = 0;
+        virtual string LevelOfAI(std::map<int, string> MenuEntries) = 0;
 
 
     };

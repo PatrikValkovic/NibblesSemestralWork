@@ -23,7 +23,7 @@ string ViewModel::SingpleplayerMenuSDLViewModel::Level()
     return 0;
 }
 
-int ViewModel::SingpleplayerMenuSDLViewModel::LevelOfAI(std::map<int, string> MenuEntries)
+string ViewModel::SingpleplayerMenuSDLViewModel::LevelOfAI(vector<string> MenuEntries)
 {
     return 0;
 }
