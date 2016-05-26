@@ -1,10 +1,10 @@
 #include "NetGameState.h"
-#include <iostream>
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
     using ViewModel::NetMenuConsoleViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
+    using Game::Event::ServerSide;
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*)this->RenderingModel->NetModel();
 
@@ -23,7 +23,9 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
             else
                 Rendering->ServerCreated();
         }
-        //TODO run in separate thread
+
+        ServerSide* Server = new ServerSide(ServerSock,CountOfPlayers,NewPlayGround);
+        Server->StartServer();
     }
     else
     {
@@ -54,7 +56,7 @@ int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, 
 
     if ( getaddrinfo ( IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai ) != 0 )
     {
-        printf ( "getaddrinfo\n" );
+        //printf ( "getaddrinfo\n" );
         return -1;
     }
 
@@ -62,7 +64,7 @@ int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, 
     if ( s == -1 )
     {
         freeaddrinfo ( ai );
-        printf ( "socket\n" );
+        //printf ( "socket\n" );
         return -1;
     }
 
@@ -70,7 +72,7 @@ int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, 
     {
         close ( s );
         freeaddrinfo ( ai );
-        printf ( "bind\n" );
+        //printf ( "bind\n" );
         return -1;
     }
 
@@ -78,7 +80,7 @@ int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, 
     {
         close ( s );
         freeaddrinfo ( ai );
-        printf ( "listen\n" );
+        //printf ( "listen\n" );
         return -1;
     }
     freeaddrinfo ( ai );
