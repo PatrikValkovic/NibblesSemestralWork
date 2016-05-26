@@ -110,5 +110,14 @@ void ViewModel::SettingsConsoleViewModel::ShowKeySettings() const
     }
 }
 
+map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSetting()
+{
+    using namespace std;
+    using namespace Game;
+    cout << "Probiha nastavovani" << endl;
+
+    return map<Keys,Actions>();
+}
+
 
 #endif

@@ -13,6 +13,7 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
     map<string, string> Languages = Render->GetAviablesLanguages();
     map<int, SettingsAbstractViewModel::LanguageOverwiew> LanguagesEntries;
     map<int, string> AnotherEntries;
+    map<int, int> MenuEntryAnPlayerIndex;
     int Index = 0;
     int Choose = 0;
 
@@ -23,7 +24,10 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
                                         (Index++,
                                          SettingsAbstractViewModel::LanguageOverwiew{Moving->first, Moving->second}));
     for (int a = 0; a < Game::Settings::GetInstance()->MaxCountOfPlayers(); a++)
-        AnotherEntries.insert(pair<int, string>(Index++, "ChangeSettingForPlayer" + to_string(a + 1)));
+    {
+        AnotherEntries.insert(pair<int, string>(Index, "ChangeSettingForPlayer" + to_string(a + 1)));
+        MenuEntryAnPlayerIndex.insert(pair<int, int>(Index++, a));
+    }
     AnotherEntries.insert(pair<int, string>(999, "FromLanguageBackToMenu"));
 
 
@@ -32,8 +36,18 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
         Render->ShowActualLanguage();
         Render->ShowKeySettings();
         Choose = Render->ShowMenu(LanguagesEntries, AnotherEntries);
-        if (Choose != 999)
+        if (LanguagesEntries.find(Choose) != LanguagesEntries.end())
             Render->SetLanguage(LanguagesEntries.at(Choose).Shortcut);
+        if (AnotherEntries.find(Choose) != AnotherEntries.end() && Choose != 999)
+        {
+            map<Game::Keys, Game::Actions> NewSetting = Render->CreateNewSetting();
+            for_each(NewSetting.begin(), NewSetting.end(), [&Choose, MenuEntryAnPlayerIndex]
+                    (pair<Game::Keys, Game::Actions> P) {
+                Game::Settings::GetInstance()->SetAction(P.first,
+                                                         MenuEntryAnPlayerIndex.at(Choose),
+                                                         P.second);
+            });
+        }
     }
     return this->Menu;
 }
