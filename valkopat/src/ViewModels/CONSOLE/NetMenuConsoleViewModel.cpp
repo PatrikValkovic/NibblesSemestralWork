@@ -36,6 +36,35 @@ string ViewModel::NetMenuConsoleViewModel::Level()
     return Levels.at((unsigned long) LevelIndex - 1);
 }
 
+int ViewModel::NetMenuConsoleViewModel::CountOfPlayers(int Max)
+{
+    using namespace std;
+    int CountOfPlayers = 1;
+    while (true)
+    {
+        cout << Translation->GetTranslation("CountOfPlayers") << ':';
+        cin >> CountOfPlayers;
+        if (cin.fail() || CountOfPlayers > Max || CountOfPlayers < 0)
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            cout << Translation->GetTranslation("MaxCount") << " " << Max << endl;
+            continue;
+        }
+        break;
+    }
+    return CountOfPlayers;
+}
+
+pair<string, string> ViewModel::NetMenuConsoleViewModel::GetServerPort()
+{
+    return std::pair<std::__cxx11::string, std::__cxx11::string>();
+}
+
+bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
+{
+    return true;
+}
+
 
 #endif
 

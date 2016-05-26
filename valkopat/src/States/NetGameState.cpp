@@ -10,7 +10,12 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
 
     string LevelName = Rendering->Level();
     PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
-    
+    int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
+    if(Rendering->CreateNewServer())
+    {
+
+    }
+
     return NULL;
 }
 
