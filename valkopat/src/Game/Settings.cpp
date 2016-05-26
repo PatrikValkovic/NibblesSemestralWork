@@ -100,7 +100,8 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
             WorkingPlayerSettings.Action.erase(OldKey);
             WorkingPlayerSettings.Action.insert(pair<Keys,Actions>(NewKey,NewDirection));
         }
-    };
+        IndividualSetting[a] = WorkingPlayerSettings;
+    }
 
     return Changed;
 }
