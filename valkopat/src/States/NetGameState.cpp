@@ -1,5 +1,5 @@
 #include "NetGameState.h"
-
+#include <iostream>
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
     using ViewModel::NetMenuConsoleViewModel;
@@ -14,6 +14,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
         int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
         pair<string,string> ServerIPWithPort = Rendering->GetServerIPAndPort();
+        int ServerSock = this->CreateServer(ServerIPWithPort,CountOfPlayers);
     }
 
 
@@ -31,6 +32,46 @@ void GameStates::NetGameState::AddStates(PlayingState* GameState, MenuGameState*
     this->PlayState = GameState;
     this->Menu = MenuState;
 }
+
+int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, int CountOfPlayers)
+{
+    //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
+    struct addrinfo * ai;
+
+    if ( getaddrinfo ( IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai ) != 0 )
+    {
+        printf ( "getaddrinfo\n" );
+        return -1;
+    }
+
+    int s = socket ( ai -> ai_family, SOCK_STREAM, 0 );
+    if ( s == -1 )
+    {
+        freeaddrinfo ( ai );
+        printf ( "socket\n" );
+        return -1;
+    }
+
+    if ( bind ( s, ai -> ai_addr, ai -> ai_addrlen ) != 0 )
+    {
+        close ( s );
+        freeaddrinfo ( ai );
+        printf ( "bind\n" );
+        return -1;
+    }
+
+    if ( listen ( s, CountOfPlayers ) != 0 )
+    {
+        close ( s );
+        freeaddrinfo ( ai );
+        printf ( "listen\n" );
+        return -1;
+    }
+    freeaddrinfo ( ai );
+    return s;
+}
+
+
 
 
 
