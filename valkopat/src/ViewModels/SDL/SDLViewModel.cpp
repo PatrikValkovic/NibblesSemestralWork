@@ -10,7 +10,7 @@ void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
 {
     SplashScren = new SplashScreenSDLViewModel(Translate);
     Menu = new MenuSDLViewModel(Translate);
-    Language = new LanguageSDLViewModel(Translate);
+    Language = new SettingsSDLViewModel(Translate);
     Multiplayer = new MultiplayerSDLViewModel(Translate);
     NetMenu = new NetMenuSDLViewModel(Translate);
     Singpleplayer = new SingpleplayerMenuSDLViewModel(Translate);
@@ -32,7 +32,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::SDLViewModel::MenuModel()
     return NULL;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
 {
     //TODO
     return NULL;

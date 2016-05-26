@@ -4,15 +4,15 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "../Abstract/LanguageAbstractViewModel.h"
+#include "../Abstract/SettingsAbstractViewModel.h"
 
 
 namespace ViewModel
 {
-    class LanguageConsoleViewModel : public LanguageAbstractViewModel
+    class SettingsConsoleViewModel : public SettingsAbstractViewModel
     {
     public:
-        LanguageConsoleViewModel(const Translate::TranslateEngine* Translate);
+        SettingsConsoleViewModel(const Translate::TranslateEngine* Translate);
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const;
         virtual void ShowInfo() const;
     };

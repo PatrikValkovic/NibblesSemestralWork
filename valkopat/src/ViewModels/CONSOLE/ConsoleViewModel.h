@@ -6,7 +6,7 @@
 #include "../Abstract/BaseViewModel.h"
 #include "SplashPauseScreenConsoleViewModel.h"
 #include "MenuConsoleViewModel.h"
-#include "LanguageConsoleViewModel.h"
+#include "SettingsConsoleViewModel.h"
 #include "MultiplayerConsoleViewModel.h"
 #include "NetMenuConsoleViewModel.h"
 #include "SingpleplayerMenuConsoleViewModel.h"
@@ -25,7 +25,7 @@ namespace ViewModel
 
         virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
-        virtual LanguageAbstractViewModel* LanguageModel();
+        virtual SettingsAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
         virtual NetMenuAbstractViewModel* NetModel();
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();

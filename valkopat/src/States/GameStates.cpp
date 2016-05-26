@@ -3,7 +3,7 @@
 GameStates::GameStates::GameStates(ViewModel::BaseViewModel* Model)
     :RenderingModel(Model)
 {
-    ChangeLanguageState* LanguageScreen = new ChangeLanguageState(this->RenderingModel);
+    SettingsState* LanguageScreen = new SettingsState(this->RenderingModel);
     EndState* EndScreen = new EndState(this->RenderingModel);
     GamePauseState* PauseScreen = new GamePauseState(this->RenderingModel);
     MenuGameState* MenuScreen = new MenuGameState(this->RenderingModel);

@@ -1,7 +1,7 @@
-#include "LanguageConsoleViewModel.h"
+#include "SettingsConsoleViewModel.h"
 #ifdef USE_CONSOLE
 
-int ViewModel::LanguageConsoleViewModel::ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const
+int ViewModel::SettingsConsoleViewModel::ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const
 {
     using namespace std;
     while(true)
@@ -35,11 +35,11 @@ int ViewModel::LanguageConsoleViewModel::ShowMenu(std::map<int,LanguageOverwiew>
     }
 }
 
-ViewModel::LanguageConsoleViewModel::LanguageConsoleViewModel(const Translate::TranslateEngine* Translate)
-        : LanguageAbstractViewModel(Translate)
+ViewModel::SettingsConsoleViewModel::SettingsConsoleViewModel(const Translate::TranslateEngine* Translate)
+        : SettingsAbstractViewModel(Translate)
 { }
 
-void ViewModel::LanguageConsoleViewModel::ShowInfo() const
+void ViewModel::SettingsConsoleViewModel::ShowInfo() const
 {
     using namespace std;
     cout << Translation->GetTranslation("LabelActualActivatedLanguage") << ": " << Translation->GetActualLanguage() << endl;

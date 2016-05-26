@@ -6,10 +6,10 @@
 
 namespace GameStates
 {
-    class ChangeLanguageState : public AbstractGameState
+    class SettingsState : public AbstractGameState
     {
     public:
-        ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel);
+        SettingsState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
 

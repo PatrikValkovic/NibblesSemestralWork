@@ -1,16 +1,16 @@
-#include "ChangeLanguageState.h"
+#include "SettingsState.h"
 
-GameStates::ChangeLanguageState::ChangeLanguageState(ViewModel::BaseViewModel* RenderingModel)
+GameStates::SettingsState::SettingsState(ViewModel::BaseViewModel* RenderingModel)
         : AbstractGameState(RenderingModel)
 { }
 
-GameStates::AbstractGameState* GameStates::ChangeLanguageState::run()
+GameStates::AbstractGameState* GameStates::SettingsState::run()
 {
-    using ViewModel::LanguageAbstractViewModel;
+    using ViewModel::SettingsAbstractViewModel;
     using namespace std;
-    LanguageAbstractViewModel* Render = this->RenderingModel->LanguageModel();
+    SettingsAbstractViewModel* Render = this->RenderingModel->LanguageModel();
     map<string, string> Languages = Render->GetAviablesLanguages();
-    map<int, LanguageAbstractViewModel::LanguageOverwiew> LanguagesEntries;
+    map<int, SettingsAbstractViewModel::LanguageOverwiew> LanguagesEntries;
     map<int, string> AnotherEntries;
     int Index = 0;
     int Choose = 0;
@@ -18,8 +18,8 @@ GameStates::AbstractGameState* GameStates::ChangeLanguageState::run()
     auto Moving = Languages.begin();
     auto End = Languages.end();
     for(;Moving!=End;Moving++)
-        LanguagesEntries.insert(pair<int,LanguageAbstractViewModel::LanguageOverwiew>
-                        (Index++,LanguageAbstractViewModel::LanguageOverwiew{Moving->first,Moving->second}));
+        LanguagesEntries.insert(pair<int,SettingsAbstractViewModel::LanguageOverwiew>
+                        (Index++,SettingsAbstractViewModel::LanguageOverwiew{Moving->first,Moving->second}));
     AnotherEntries.insert(pair<int, string>(-1, "FromLanguageBackToMenu"));
 
 
@@ -34,7 +34,7 @@ GameStates::AbstractGameState* GameStates::ChangeLanguageState::run()
     return this->Menu;
 }
 
-void GameStates::ChangeLanguageState::AddStates(MenuGameState* MenuState)
+void GameStates::SettingsState::AddStates(MenuGameState* MenuState)
 {
     this->Menu = MenuState;
 }

@@ -10,7 +10,7 @@ void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Transla
 {
     SplashScren = new SplashScreenNCursesViewModel(Translate);
     Menu = new MenuNCursesViewModel(Translate);
-    Language = new LanguageNCursesViewModel(Translate);
+    Language = new SettingsNCursesViewModel(Translate);
     Multiplayer = new MultiplayerNCursesViewModel(Translate);
     NetMenu = new NetMenuNCursesVIewModel(Translate);
     Singpleplayer = new SingpleplayerMenuNCursesViewModel(Translate);
@@ -32,7 +32,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::NCursesViewModel::MenuModel()
     return NULL;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
 {
     //TODO
     return NULL;
