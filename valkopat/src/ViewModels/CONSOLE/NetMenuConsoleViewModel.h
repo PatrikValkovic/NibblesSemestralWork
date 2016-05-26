@@ -19,6 +19,8 @@ namespace ViewModel
         virtual int CountOfPlayers(int Max);
         virtual pair<string,string> GetServerIPAndPort();
         virtual bool CreateNewServer();
+        virtual void ServerCreated();
+        virtual void ServerNotCreated();
     };
 }
 

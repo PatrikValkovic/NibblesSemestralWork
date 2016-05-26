@@ -13,12 +13,26 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         string LevelName = Rendering->Level();
         PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
         int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
-        pair<string,string> ServerIPWithPort = Rendering->GetServerIPAndPort();
-        int ServerSock = this->CreateServer(ServerIPWithPort,CountOfPlayers);
+        int ServerSock = -1;
+        while(ServerSock==-1)
+        {
+            pair<string, string> ServerIPWithPort = Rendering->GetServerIPAndPort();
+            ServerSock = this->CreateServer(ServerIPWithPort, CountOfPlayers);
+            if(ServerSock==-1)
+                Rendering->ServerNotCreated();
+            else
+                Rendering->ServerCreated();
+        }
+        //TODO run in separate thread
+    }
+    else
+    {
+        //TODO ask for IP to connect
     }
 
+    //connect to server
 
-
+    //create tasks and events
 
     return NULL;
 }

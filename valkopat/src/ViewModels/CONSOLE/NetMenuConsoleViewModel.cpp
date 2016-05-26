@@ -96,6 +96,16 @@ bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
     }
 }
 
+void ViewModel::NetMenuConsoleViewModel::ServerCreated()
+{
+    cout << Translation->GetTranslation("ServerCreated") << endl;
+}
+
+void ViewModel::NetMenuConsoleViewModel::ServerNotCreated()
+{
+    cout << Translation->GetTranslation("ServerNotCreated") << endl;
+}
+
 
 #endif
 
