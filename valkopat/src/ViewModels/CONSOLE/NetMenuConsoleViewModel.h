@@ -1,7 +1,11 @@
 #ifndef CERVISEMESTRALKA_NETMENUCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_NETMENUCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <iostream>
+#include <algorithm>
 #include "../Abstract/NetMenuAbstractViewModel.h"
+#include "../../Game/PlaygroundFactory.h"
+
 
 namespace ViewModel
 {
@@ -9,6 +13,8 @@ namespace ViewModel
     {
     public:
         NetMenuConsoleViewModel(const Translate::TranslateEngine* Translate);
+
+        virtual string Level();
     };
 }
 

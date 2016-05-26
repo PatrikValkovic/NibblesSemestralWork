@@ -2,7 +2,15 @@
 
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
-    //TODO
+    using ViewModel::NetMenuConsoleViewModel;
+    using Game::PlayGround;
+    using Game::PlaygroundFactory;
+
+    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*)this->RenderingModel->NetModel();
+
+    string LevelName = Rendering->Level();
+    PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
+    
     return NULL;
 }
 
