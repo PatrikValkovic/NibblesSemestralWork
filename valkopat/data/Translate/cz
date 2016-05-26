@@ -39,3 +39,5 @@ Pause:pozastavit hru
 ChangeSettingForPlayer1:Změnit nastavení prvního hráče
 ChangeSettingForPlayer2:Změnit nastavení druhého hráče
 ChangeSettingForPlayer3:Změnit nastavení třetího hráče
+PushKeyToChange:Stiskněte klávesu, kterou chcete použit pro
+EnterToDontChange:(enter pokud chcete zanechat původní nastavení)
