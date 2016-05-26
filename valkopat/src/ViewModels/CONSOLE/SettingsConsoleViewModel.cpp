@@ -45,5 +45,10 @@ void ViewModel::SettingsConsoleViewModel::ShowActualLanguage() const
     cout << Translation->GetTranslation("LabelActualActivatedLanguage") << ": " << Translation->GetActualLanguage() << endl;
 }
 
+void ViewModel::SettingsConsoleViewModel::ShowKeySettings() const
+{
+    using namespace std;
+}
+
 
 #endif

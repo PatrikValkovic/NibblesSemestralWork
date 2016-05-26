@@ -105,4 +105,20 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
     return Changed;
 }
 
+std::map<Keys, Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer)
+{
+    using Exceptions::InvalidArgumentException;
+    using namespace std;
+    if(IndexOfPlayer<1 || IndexOfPlayer>3)
+        throw new InvalidArgumentException("Player with index " + to_string(IndexOfPlayer) + " dont exists",__LINE__,__FILE__);
+    map<Keys,Actions> ToReturn;
+    for_each(IndividualSetting.begin(),IndividualSetting.end(),[&ToReturn,&IndexOfPlayer](PlayerSetting S){
+        if(S.Playerindex==IndexOfPlayer)
+            ToReturn = S.Action;
+    });
+    return ToReturn;
+}
+
+
+
 

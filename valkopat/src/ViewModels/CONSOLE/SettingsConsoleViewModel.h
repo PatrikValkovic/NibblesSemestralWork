@@ -15,6 +15,7 @@ namespace ViewModel
         SettingsConsoleViewModel(const Translate::TranslateEngine* Translate);
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const;
         virtual void ShowActualLanguage() const;
+        virtual void ShowKeySettings() const;
     };
 }
 

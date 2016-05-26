@@ -5,6 +5,7 @@
 #include <map>
 #include <algorithm>
 #include "Enums.h"
+#include "../Exceptions/InvalidArgumentException.h"
 
 namespace Game
 {
@@ -31,6 +32,7 @@ namespace Game
     public:
         bool GetAction(Keys Key,int& Player,Actions& Direction) const;
         bool SetAction(Keys NewKey, int Player, Actions NewDirection);
+        std::map<Keys,Actions> GetSettingForPlayer(int IndexOfPlayer);
     };
 }
 

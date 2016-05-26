@@ -27,6 +27,7 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
     while (Choose != -1)
     {
         Render->ShowActualLanguage();
+        Render->ShowKeySettings();
         int Choose = Render->ShowMenu(LanguagesEntries, AnotherEntries);
         if (Choose == -1)
             break;
