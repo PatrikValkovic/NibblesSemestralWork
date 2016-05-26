@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenSDLViewModel.h"
-#include "SingpleplayerMenuSDLViewModel.h"
+#include "SingleplayerMenuSDLViewModel.h"
 #include "SDLInput.h"
 #include "ScoreSDLViewModel.h"
 #include "QuitSDLViewModel.h"

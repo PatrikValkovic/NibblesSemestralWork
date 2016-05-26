@@ -13,7 +13,7 @@ void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Transla
     Language = new SettingsConsoleViewModel(Translate);
     Multiplayer = new MultiplayerConsoleViewModel(Translate);
     NetMenu = new NetMenuConsoleViewModel(Translate);
-    Singpleplayer = new SingpleplayerMenuConsoleViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuConsoleViewModel(Translate);
     Game = new GameConsoleViewModel(Translate);
     Score = new ScoreConsoleViewModel(Translate);
     Quit = new QuitConsoleViewModel(Translate);

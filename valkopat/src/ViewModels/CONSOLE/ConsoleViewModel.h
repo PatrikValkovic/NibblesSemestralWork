@@ -9,7 +9,7 @@
 #include "SettingsConsoleViewModel.h"
 #include "MultiplayerConsoleViewModel.h"
 #include "NetMenuConsoleViewModel.h"
-#include "SingpleplayerMenuConsoleViewModel.h"
+#include "SingleplayerMenuConsoleViewModel.h"
 #include "GameConsoleViewModel.h"
 #include "ScoreConsoleViewModel.h"
 #include "QuitConsoleViewModel.h"

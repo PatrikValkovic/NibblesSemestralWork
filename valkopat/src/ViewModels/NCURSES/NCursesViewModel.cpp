@@ -13,7 +13,7 @@ void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Transla
     Language = new SettingsNCursesViewModel(Translate);
     Multiplayer = new MultiplayerNCursesViewModel(Translate);
     NetMenu = new NetMenuNCursesVIewModel(Translate);
-    Singpleplayer = new SingpleplayerMenuNCursesViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuNCursesViewModel(Translate);
     Game = new GameNCursesViewModel(Translate);
     Score = new ScoreNCursesViewModel(Translate);
     Quit = new QuitNCursesViewModel(Translate);

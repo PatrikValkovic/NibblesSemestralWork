@@ -9,7 +9,7 @@
 #include "SettingsAbstractViewModel.h"
 #include "MultiplayerAbstractViewModel.h"
 #include "NetMenuAbstractViewModel.h"
-#include "SingpleplayerAbstractViewModel.h"
+#include "SingleplayerMenuAbstractViewModel.h"
 #include "GameAbstractViewModel.h"
 #include "ScoreAbstractViewModel.h"
 #include "QuitAbstractViewModel.h"

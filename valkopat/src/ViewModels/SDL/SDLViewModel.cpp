@@ -13,7 +13,7 @@ void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
     Language = new SettingsSDLViewModel(Translate);
     Multiplayer = new MultiplayerSDLViewModel(Translate);
     NetMenu = new NetMenuSDLViewModel(Translate);
-    Singpleplayer = new SingpleplayerMenuSDLViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuSDLViewModel(Translate);
     Game = new GameSDLViewModel(Translate);
     Score = new ScoreSDLViewModel(Translate);
     Quit = new QuitSDLViewModel(Translate);
