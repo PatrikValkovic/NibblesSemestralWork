@@ -13,14 +13,14 @@ namespace GameStates
         virtual AbstractGameState* run();
 
         void AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single, NetGameState* OverNet,
-                       EndState* End, SettingsState* Language);
+                       EndState* End, SettingsState* Settting);
 
     private:
         MultiplayerGameState* Multi;
         SingleplayerGameState* Single;
         NetGameState* Net;
         EndState* End;
-        SettingsState* Language;
+        SettingsState* Settings;
 
         map<int,AbstractGameState*> FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu);
     };
