@@ -9,7 +9,7 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
     using ViewModel::SettingsAbstractViewModel;
     using ViewModel::SettingsConsoleViewModel;
     using namespace std;
-    SettingsConsoleViewModel* Render = (SettingsConsoleViewModel*)this->RenderingModel->LanguageModel();
+    SettingsConsoleViewModel* Render = (SettingsConsoleViewModel*) this->RenderingModel->LanguageModel();
     map<string, string> Languages = Render->GetAviablesLanguages();
     map<int, SettingsAbstractViewModel::LanguageOverwiew> LanguagesEntries;
     map<int, string> AnotherEntries;
@@ -18,20 +18,22 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
 
     auto Moving = Languages.begin();
     auto End = Languages.end();
-    for(;Moving!=End;Moving++)
-        LanguagesEntries.insert(pair<int,SettingsAbstractViewModel::LanguageOverwiew>
-                        (Index++,SettingsAbstractViewModel::LanguageOverwiew{Moving->first,Moving->second}));
-    AnotherEntries.insert(pair<int, string>(-1, "FromLanguageBackToMenu"));
+    for (; Moving != End; Moving++)
+        LanguagesEntries.insert(pair<int, SettingsAbstractViewModel::LanguageOverwiew>
+                                        (Index++,
+                                         SettingsAbstractViewModel::LanguageOverwiew{Moving->first, Moving->second}));
+    for (int a = 0; a < Game::Settings::GetInstance()->MaxCountOfPlayers(); a++)
+        AnotherEntries.insert(pair<int, string>(Index++, "ChangeSettingForPlayer" + to_string(a + 1)));
+    AnotherEntries.insert(pair<int, string>(999, "FromLanguageBackToMenu"));
 
 
-    while (Choose != -1)
+    while (Choose != 999)
     {
         Render->ShowActualLanguage();
         Render->ShowKeySettings();
-        int Choose = Render->ShowMenu(LanguagesEntries, AnotherEntries);
-        if (Choose == -1)
-            break;
-        Render->SetLanguage(LanguagesEntries.at(Choose).Shortcut);
+        Choose = Render->ShowMenu(LanguagesEntries, AnotherEntries);
+        if (Choose != 999)
+            Render->SetLanguage(LanguagesEntries.at(Choose).Shortcut);
     }
     return this->Menu;
 }
