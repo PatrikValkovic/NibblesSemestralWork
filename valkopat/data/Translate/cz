@@ -37,3 +37,4 @@ NamePlayer2:Jméno třetího hráče
 ChooseMode:Co chcete udělat?
 CreateNewServer:Vytvořit nový server
 ConnectToServer:Připojit se na server
+ServerIPPort:Zadejte IP adresu a port server ve formátu IP:Port

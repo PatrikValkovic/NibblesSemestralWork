@@ -8,13 +8,16 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*)this->RenderingModel->NetModel();
 
-    string LevelName = Rendering->Level();
-    PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
-    int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
     if(Rendering->CreateNewServer())
     {
-
+        string LevelName = Rendering->Level();
+        PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
+        int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
+        pair<string,string> ServerIPWithPort = Rendering->GetServerIPAndPort();
     }
+
+
+
 
     return NULL;
 }

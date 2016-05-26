@@ -55,14 +55,31 @@ int ViewModel::NetMenuConsoleViewModel::CountOfPlayers(int Max)
     return CountOfPlayers;
 }
 
-pair<string, string> ViewModel::NetMenuConsoleViewModel::GetServerPort()
+pair<string, string> ViewModel::NetMenuConsoleViewModel::GetServerIPAndPort()
 {
-    return pair<string,string>("","");
+    using namespace std;
+    pair<string,string> Attrs;
+    while (true)
+    {
+        cout << Translation->GetTranslation("ServerIPPort") << endl;
+        string Text;
+        cin >> Text;
+        if (cin.fail())
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            continue;
+        }
+
+        unsigned long LastIndexOfColon = Text.find_last_of(':');
+        Attrs.first = Text.substr(0,LastIndexOfColon);
+        Attrs.second = Text.substr(LastIndexOfColon+1);
+        return Attrs;
+    }
 }
 
 bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
 {
-    while(true)
+    while (true)
     {
         cout << Translation->GetTranslation("ChooseMode") << endl;
         cout << "1:" << Translation->GetTranslation("CreateNewServer") << endl;
@@ -70,12 +87,12 @@ bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
         cout << Translation->GetTranslation("ChoiceFromUser") << ':';
         int Choice;
         cin >> Choice;
-        if (cin.fail() || Choice<1 || Choice>2 )
+        if (cin.fail() || Choice < 1 || Choice > 2)
         {
             cout << Translation->GetTranslation("WrongEntry") << endl;
             continue;
         }
-        return Choice==1;
+        return Choice == 1;
     }
 }
 
