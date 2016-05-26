@@ -45,7 +45,7 @@ void Game::Worm::DecideDirection(Actions Direction, int& Down, int& Right) const
     Right = 0;
     if(Direction==Actions::MoveLeft)
         Right = -1;
-    else if (Direction==Actions::moveRight)
+    else if (Direction==Actions::MoveRight)
         Right = 1;
     else if (Direction == Actions::MoveUp)
         Down = -1;

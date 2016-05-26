@@ -16,7 +16,7 @@ void Game::Task::RandomAI::run()
         Canvas[S.GetPositionY()][S.GetPositionX()] = 'S';
     });
 
-    set<Actions> AviableDirections = {Actions::MoveUp, Actions::MoveDown, Actions::MoveLeft, Actions::moveRight};
+    set<Actions> AviableDirections = {Actions::MoveUp, Actions::MoveDown, Actions::MoveLeft, Actions::MoveRight};
     Worm::Segment HeadSegment = this->ControlledWorm->GetSegment().at(0);
     while (true)
     {

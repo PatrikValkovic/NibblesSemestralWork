@@ -2,9 +2,11 @@
 #define CERVISEMESTRALKA_LANGUAGECONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
 #include <iostream>
+#include <map>
 #include <vector>
 #include <algorithm>
 #include "../Abstract/SettingsAbstractViewModel.h"
+#include "../../Game/Settings.h"
 
 
 namespace ViewModel

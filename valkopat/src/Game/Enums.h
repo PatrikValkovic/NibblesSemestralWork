@@ -6,7 +6,7 @@ namespace Game
     enum Actions
     {
         MoveUp,
-        moveRight,
+        MoveRight,
         MoveDown,
         MoveLeft,
         Pause

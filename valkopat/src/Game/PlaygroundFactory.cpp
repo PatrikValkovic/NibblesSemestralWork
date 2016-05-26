@@ -21,10 +21,10 @@ Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
     PlayGround* Area = new PlayGround();
     Area->Height = 11;
     Area->Width = 15;
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::moveRight});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::MoveRight});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10, 8), Actions::MoveLeft});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10, 2), Actions::MoveLeft});
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 8), Actions::moveRight});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 8), Actions::MoveRight});
 
     return Area;
 }
@@ -35,10 +35,10 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
     Area->Height = 11;
     Area->Width = 15;
 
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::moveRight});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::MoveRight});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10, 8), Actions::MoveLeft});
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(10, 2), Actions::MoveLeft});
-    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 8), Actions::moveRight});
+    Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 8), Actions::MoveRight});
 
 
     for (int a = 0; a < Area->Width; a++)
@@ -171,7 +171,7 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
     if(Readed=='L')
         Starting.Direction = Actions::MoveLeft;
     else if(Readed=='R')
-        Starting.Direction = Actions::moveRight;
+        Starting.Direction = Actions::MoveRight;
     else if(Readed=='U')
         Starting.Direction = Actions::MoveUp;
     else if(Readed=='D')

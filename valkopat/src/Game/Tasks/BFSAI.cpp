@@ -100,7 +100,7 @@ std::vector<Game::Point> Game::Task::BFSAI::GeneratePointsAround(Game::Point Aro
                                      (AroundToGenerate.GetPositionY() + 1) % ContentOfGame->Ground->GetHeight());
     Points[Actions::MoveUp] = Point(AroundToGenerate.GetPositionX(), AroundToGenerate.GetPositionY() - 1);
     Points[Actions::MoveLeft] = Point(AroundToGenerate.GetPositionX() - 1, AroundToGenerate.GetPositionY());
-    Points[Actions::moveRight] = Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
+    Points[Actions::MoveRight] = Point((AroundToGenerate.GetPositionX() + 1) % ContentOfGame->Ground->GetWidth(),
                                       AroundToGenerate.GetPositionY());
 
     vector<Point>::iterator Moving = Points.begin();

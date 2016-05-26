@@ -10,7 +10,7 @@ Game::Settings::Settings()
     First.Playerindex = 0;
     First.Action.insert(pair<Keys,Actions>(KeyW,MoveUp));
     First.Action.insert(pair<Keys,Actions>(KeyS,MoveDown));
-    First.Action.insert(pair<Keys,Actions>(KeyD,moveRight));
+    First.Action.insert(pair<Keys,Actions>(KeyD,MoveRight));
     First.Action.insert(pair<Keys,Actions>(KeyA,MoveLeft));
     First.Action.insert(pair<Keys,Actions>(KeyQ,Pause));
 
@@ -19,7 +19,7 @@ Game::Settings::Settings()
     Second.Playerindex = 1;
     Second.Action.insert(pair<Keys,Actions>(KeyI,MoveUp));
     Second.Action.insert(pair<Keys,Actions>(KeyK,MoveDown));
-    Second.Action.insert(pair<Keys,Actions>(KeyL,moveRight));
+    Second.Action.insert(pair<Keys,Actions>(KeyL,MoveRight));
     Second.Action.insert(pair<Keys,Actions>(KeyJ,MoveLeft));
     Second.Action.insert(pair<Keys,Actions>(KeyU,Pause));
 
@@ -28,7 +28,7 @@ Game::Settings::Settings()
     Third.Playerindex = 2;
     Third.Action.insert(pair<Keys,Actions>(Key8,MoveUp));
     Third.Action.insert(pair<Keys,Actions>(Key5,MoveDown));
-    Third.Action.insert(pair<Keys,Actions>(Key6,moveRight));
+    Third.Action.insert(pair<Keys,Actions>(Key6,MoveRight));
     Third.Action.insert(pair<Keys,Actions>(Key4,MoveLeft));
     Third.Action.insert(pair<Keys,Actions>(Key0,Pause));
 
@@ -118,6 +118,13 @@ std::map<Keys, Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer)
     });
     return ToReturn;
 }
+
+int Game::Settings::MaxCountOfPlayers() const
+{
+    return 3;
+}
+
+
 
 
 
