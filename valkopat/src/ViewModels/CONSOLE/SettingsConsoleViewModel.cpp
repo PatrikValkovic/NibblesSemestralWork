@@ -119,6 +119,8 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
     map<Keys,Actions> ToReturn;
     vector<Actions> ActionsToChange{MoveUp, MoveDown, MoveLeft, MoveRight, Pause};
 
+    this->ClearInput();
+
     for (int a = 0; a < (int) ActionsToChange.size(); a++)
         while(true)
         {
@@ -147,8 +149,18 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
             break;
         }
 
+    return ToReturn;
+}
 
-    return map<Keys, Actions>();
+void ViewModel::SettingsConsoleViewModel::ClearInput()
+{
+    //TODO something better
+    cin.get();
+}
+
+void ViewModel::SettingsConsoleViewModel::NotAbleToSetSettings(Game::Keys K)
+{
+    cout << Translation->GetTranslation("NotAbleToApplySetting") << " " << KeyTranslate.at(K) << endl;
 }
 
 

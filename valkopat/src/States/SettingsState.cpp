@@ -41,12 +41,13 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
         if (AnotherEntries.find(Choose) != AnotherEntries.end() && Choose != 999)
         {
             map<Game::Keys, Game::Actions> NewSetting = Render->CreateNewSetting();
-            for_each(NewSetting.begin(), NewSetting.end(), [&Choose, MenuEntryAnPlayerIndex]
-                    (pair<Game::Keys, Game::Actions> P) {
-                Game::Settings::GetInstance()->SetAction(P.first,
-                                                         MenuEntryAnPlayerIndex.at(Choose),
-                                                         P.second);
-            });
+            for_each(NewSetting.begin(), NewSetting.end(),
+                     [&Choose, &MenuEntryAnPlayerIndex,&Render](pair<Game::Keys, Game::Actions> P) {
+                         if (!Game::Settings::GetInstance()->SetAction(P.first,
+                                                                       MenuEntryAnPlayerIndex.at(Choose),
+                                                                       P.second))
+                             Render->NotAbleToSetSettings(P.first);
+                     });
         }
     }
     return this->Menu;

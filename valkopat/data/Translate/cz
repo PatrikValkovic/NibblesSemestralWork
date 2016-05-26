@@ -41,3 +41,4 @@ ChangeSettingForPlayer2:Změnit nastavení druhého hráče
 ChangeSettingForPlayer3:Změnit nastavení třetího hráče
 PushKeyToChange:Stiskněte klávesu, kterou chcete použit pro
 EnterToDontChange:(enter pokud chcete zanechat původní nastavení)
+NotAbleToApplySetting:Nepodařilo se aplikovat nastavení pro klávesu
