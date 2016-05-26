@@ -57,12 +57,26 @@ int ViewModel::NetMenuConsoleViewModel::CountOfPlayers(int Max)
 
 pair<string, string> ViewModel::NetMenuConsoleViewModel::GetServerPort()
 {
-    return std::pair<std::__cxx11::string, std::__cxx11::string>();
+    return pair<string,string>("","");
 }
 
 bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
 {
-    return true;
+    while(true)
+    {
+        cout << Translation->GetTranslation("ChooseMode") << endl;
+        cout << "1:" << Translation->GetTranslation("CreateNewServer") << endl;
+        cout << "2:" << Translation->GetTranslation("ConnectToServer") << endl;
+        cout << Translation->GetTranslation("ChoiceFromUser") << ':';
+        int Choice;
+        cin >> Choice;
+        if (cin.fail() || Choice<1 || Choice>2 )
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            continue;
+        }
+        return Choice==1;
+    }
 }
 
 

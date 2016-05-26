@@ -34,3 +34,6 @@ CountOfPlayers:Počet hráčů
 NamePlayer0:Jméno prvního hráče
 NamePlayer1:Jméno druhého hráče
 NamePlayer2:Jméno třetího hráče
+ChooseMode:Co chcete udělat?
+CreateNewServer:Vytvořit nový server
+ConnectToServer:Připojit se na server
