@@ -40,3 +40,4 @@ ConnectToServer:Připojit se na server
 ServerIPPort:Zadejte IP adresu a port server ve formátu IP:Port
 ServerCreated:Server byl úspěšně vytvořen
 ServerNotCreated:Server se bohužel nepodařilo vytvořit
+ErrorWhenCreatingAndConnectiong:Z neznámého důvodu se nepodařilo připojit na server, návrat do menu

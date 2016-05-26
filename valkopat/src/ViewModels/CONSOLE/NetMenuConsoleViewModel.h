@@ -21,6 +21,7 @@ namespace ViewModel
         virtual bool CreateNewServer();
         virtual void ServerCreated();
         virtual void ServerNotCreated();
+        virtual void CreatingAndConnectingError();
     };
 }
 

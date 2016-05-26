@@ -27,6 +27,7 @@ namespace GameStates
         MenuGameState* Menu;
 
         int CreateServer(std::pair<string,string> IPAndPort,int CountOfPlayers);
+        int ConnectToServer(std::pair<string,string> IPAndPort);
     };
 }
 

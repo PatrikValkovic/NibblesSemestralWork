@@ -106,6 +106,11 @@ void ViewModel::NetMenuConsoleViewModel::ServerNotCreated()
     cout << Translation->GetTranslation("ServerNotCreated") << endl;
 }
 
+void ViewModel::NetMenuConsoleViewModel::CreatingAndConnectingError()
+{
+    cout << Translation->GetTranslation("ErrorWhenCreatingAndConnectiong") << endl;
+}
+
 
 #endif
 
