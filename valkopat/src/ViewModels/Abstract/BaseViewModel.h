@@ -6,10 +6,10 @@
 #include "../../Translation/TranslateEngine.h"
 #include "SplashPauseScreenAbstractViewModel.h"
 #include "MenuAbstractViewModel.h"
-#include "LanguageAbstractViewModel.h"
+#include "SettingsAbstractViewModel.h"
 #include "MultiplayerAbstractViewModel.h"
 #include "NetMenuAbstractViewModel.h"
-#include "SingpleplayerAbstractViewModel.h"
+#include "SingleplayerMenuAbstractViewModel.h"
 #include "GameAbstractViewModel.h"
 #include "ScoreAbstractViewModel.h"
 #include "QuitAbstractViewModel.h"
@@ -27,7 +27,7 @@ namespace ViewModel
 
         virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel() = 0;
         virtual MenuAbstractViewModel* MenuModel() = 0;
-        virtual LanguageAbstractViewModel* LanguageModel() = 0;
+        virtual SettingsAbstractViewModel* LanguageModel() = 0;
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel() = 0;
         virtual NetMenuAbstractViewModel* NetModel() = 0;
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel() = 0;
@@ -38,7 +38,7 @@ namespace ViewModel
     protected:
         SplashPauseScreenAbstractViewModel* SplashScren;
         MenuAbstractViewModel* Menu;
-        LanguageAbstractViewModel* Language;
+        SettingsAbstractViewModel* Language;
         MultiplayerMenuAbstractViewModel* Multiplayer;
         NetMenuAbstractViewModel* NetMenu;
         SingleplayerMenuAbstractViewModel* Singpleplayer;

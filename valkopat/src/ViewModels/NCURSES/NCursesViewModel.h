@@ -6,10 +6,10 @@
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenNCursesViewModel.h"
 #include "MenuNCursesViewModel.h"
-#include "LanguageNCursesViewModel.h"
+#include "SettingsNCursesViewModel.h"
 #include "MultiplayerNCursesViewModel.h"
 #include "NetMenuNCursesViewModel.h"
-#include "SingpleplayerMenuNCursesViewModel.h"
+#include "SingleplayerMenuNCursesViewModel.h"
 #include "GameNCursesViewModel.h"
 #include "ScoreNCursesViewModel.h"
 #include "QuitNCursesViewModel.h"
@@ -25,7 +25,7 @@ namespace ViewModel
 
         virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
-        virtual LanguageAbstractViewModel* LanguageModel();
+        virtual SettingsAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
         virtual NetMenuAbstractViewModel* NetModel();
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();

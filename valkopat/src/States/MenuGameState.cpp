@@ -15,13 +15,13 @@ GameStates::AbstractGameState* GameStates::MenuGameState::run()
 }
 
 void GameStates::MenuGameState::AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single,
-                                         NetGameState* OverNet, EndState* End, ChangeLanguageState* Language)
+                                         NetGameState* OverNet, EndState* End, SettingsState* Settting)
 {
     this->Multi = Multi;
     this->Single = Single;
     this->Net = OverNet;
     this->End = End;
-    this->Language = Language;
+    this->Settings = Settting;
 }
 
 map<int,GameStates::AbstractGameState*> GameStates::MenuGameState::FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu)
@@ -30,14 +30,14 @@ map<int,GameStates::AbstractGameState*> GameStates::MenuGameState::FillMenu(vect
     using std::vector;
     using std::map;
 
-    MenuAbstractViewModel::MenuEntry LanguageChange = {0,"ChangeLangaugeMenuEntry"};
+    MenuAbstractViewModel::MenuEntry LanguageChange = {0,"SettingsMenuEntry"};
     MenuAbstractViewModel::MenuEntry Singleplayer = {1,"SingleplayerMenuEntry"};
     MenuAbstractViewModel::MenuEntry Multiplayer = {2,"MultiplayerMenuEntry"};
     MenuAbstractViewModel::MenuEntry Net = {3,"NetGameMenuEntry"};
     MenuAbstractViewModel::MenuEntry EndEntry = {4,"EndMenuEntry"};
 
     map<int,AbstractGameState*> MapWithStates;
-    MapWithStates.insert(pair<int,AbstractGameState*>(0,this->Language));
+    MapWithStates.insert(pair<int,AbstractGameState*>(0,this->Settings));
     MapWithStates.insert(pair<int,AbstractGameState*>(1,this->Single));
     MapWithStates.insert(pair<int,AbstractGameState*>(2,this->Multi));
     MapWithStates.insert(pair<int,AbstractGameState*>(3,this->Net));

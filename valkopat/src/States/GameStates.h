@@ -21,7 +21,7 @@ namespace GameStates
 }
 
 
-#include "ChangeLanguageState.h"
+#include "SettingsState.h"
 #include "EndState.h"
 #include "GamePauseState.h"
 #include "MenuGameState.h"

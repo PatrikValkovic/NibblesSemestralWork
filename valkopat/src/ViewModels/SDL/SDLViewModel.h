@@ -4,14 +4,14 @@
 #include <SDL2/SDL.h>
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenSDLViewModel.h"
-#include "SingpleplayerMenuSDLViewModel.h"
+#include "SingleplayerMenuSDLViewModel.h"
 #include "SDLInput.h"
 #include "ScoreSDLViewModel.h"
 #include "QuitSDLViewModel.h"
 #include "NetMenuSDLViewModel.h"
 #include "MultiplayerSDLViewModel.h"
 #include "MenuSDLViewModel.h"
-#include "LanguageSDLViewModel.h"
+#include "SettingsSDLViewModel.h"
 #include "GameSDLViewModel.h"
 
 namespace ViewModel
@@ -24,7 +24,7 @@ namespace ViewModel
 
         virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
-        virtual LanguageAbstractViewModel* LanguageModel();
+        virtual SettingsAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
         virtual NetMenuAbstractViewModel* NetModel();
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();

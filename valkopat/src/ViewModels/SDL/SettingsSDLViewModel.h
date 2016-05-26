@@ -2,19 +2,19 @@
 #define CERVISEMESTRALKA_LANGUAGESDLVIEWMODEL_H
 #ifdef USE_SDL
 #include <vector>
-#include "../Abstract/LanguageAbstractViewModel.h"
+#include "../Abstract/SettingsAbstractViewModel.h"
 
 
 namespace ViewModel
 {
-    class LanguageSDLViewModel : public LanguageAbstractViewModel
+    class SettingsSDLViewModel : public SettingsAbstractViewModel
     {
     public:
-        LanguageSDLViewModel(const Translate::TranslateEngine* Translation);
+        SettingsSDLViewModel(const Translate::TranslateEngine* Translation);
 
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const;
 
-        virtual void ShowInfo() const;
+        virtual void ShowActualLanguage() const;
     };
 }
 #endif

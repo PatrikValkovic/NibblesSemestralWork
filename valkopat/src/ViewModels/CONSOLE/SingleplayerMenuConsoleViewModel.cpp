@@ -1,12 +1,12 @@
 #ifdef USE_CONSOLE
-#include "SingpleplayerMenuConsoleViewModel.h"
+#include "SingleplayerMenuConsoleViewModel.h"
 
-ViewModel::SingpleplayerMenuConsoleViewModel::SingpleplayerMenuConsoleViewModel(
+ViewModel::SingleplayerMenuConsoleViewModel::SingleplayerMenuConsoleViewModel(
         const Translate::TranslateEngine* Translate)
         : SingleplayerMenuAbstractViewModel(Translate)
 { }
 
-int ViewModel::SingpleplayerMenuConsoleViewModel::CountOfAI(int Max)
+int ViewModel::SingleplayerMenuConsoleViewModel::CountOfAI(int Max)
 {
     using namespace std;
     while (true)
@@ -24,7 +24,7 @@ int ViewModel::SingpleplayerMenuConsoleViewModel::CountOfAI(int Max)
     return this->CountOfAIInGame;
 }
 
-std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
+std::string ViewModel::SingleplayerMenuConsoleViewModel::NameOfPlayer()
 {
     using namespace std;
     while (true)
@@ -41,7 +41,7 @@ std::string ViewModel::SingpleplayerMenuConsoleViewModel::NameOfPlayer()
     return this->Name;
 }
 
-string ViewModel::SingpleplayerMenuConsoleViewModel::Level()
+string ViewModel::SingleplayerMenuConsoleViewModel::Level()
 {
     using namespace std;
     const vector<string> Levels = Game::PlaygroundFactory::GetAviableLevels();
@@ -71,7 +71,7 @@ string ViewModel::SingpleplayerMenuConsoleViewModel::Level()
     return Levels.at((unsigned long)this->LevelIndex - 1);
 }
 
-string ViewModel::SingpleplayerMenuConsoleViewModel::LevelOfAI(std::vector<string> MenuEntries)
+string ViewModel::SingleplayerMenuConsoleViewModel::LevelOfAI(std::vector<string> MenuEntries)
 {
     int AIIndex;
     while (true)

@@ -13,14 +13,14 @@ namespace GameStates
         virtual AbstractGameState* run();
 
         void AddStates(MultiplayerGameState* Multi, SingleplayerGameState* Single, NetGameState* OverNet,
-                       EndState* End, ChangeLanguageState* Language);
+                       EndState* End, SettingsState* Settting);
 
     private:
         MultiplayerGameState* Multi;
         SingleplayerGameState* Single;
         NetGameState* Net;
         EndState* End;
-        ChangeLanguageState* Language;
+        SettingsState* Settings;
 
         map<int,AbstractGameState*> FillMenu(vector<ViewModel::MenuAbstractViewModel::MenuEntry>& VectorWithMenu);
     };
@@ -30,5 +30,5 @@ namespace GameStates
 #include "SingleplayerGameState.h"
 #include "NetGameState.h"
 #include "EndState.h"
-#include "ChangeLanguageState.h"
+#include "SettingsState.h"
 #endif //CERVISEMESTRALKA_MENUGAMESTATE_H

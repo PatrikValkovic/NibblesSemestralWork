@@ -3,15 +3,15 @@
 #ifdef USE_CONSOLE
 #include <iostream>
 #include <algorithm>
-#include "../Abstract/SingpleplayerAbstractViewModel.h"
+#include "../Abstract/SingleplayerMenuAbstractViewModel.h"
 #include "../../Game/PlaygroundFactory.h"
 
 namespace ViewModel
 {
-    class SingpleplayerMenuConsoleViewModel : public SingleplayerMenuAbstractViewModel
+    class SingleplayerMenuConsoleViewModel : public SingleplayerMenuAbstractViewModel
     {
     public:
-        SingpleplayerMenuConsoleViewModel(const Translate::TranslateEngine* Translate);
+        SingleplayerMenuConsoleViewModel(const Translate::TranslateEngine* Translate);
 
         virtual std::string NameOfPlayer();
         virtual int CountOfAI(int Max);

@@ -10,10 +10,10 @@ void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Transla
 {
     SplashScren = new SplashPauseScreenConsoleViewModel(Translate);
     Menu = new MenuConsoleViewModel(Translate);
-    Language = new LanguageConsoleViewModel(Translate);
+    Language = new SettingsConsoleViewModel(Translate);
     Multiplayer = new MultiplayerConsoleViewModel(Translate);
     NetMenu = new NetMenuConsoleViewModel(Translate);
-    Singpleplayer = new SingpleplayerMenuConsoleViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuConsoleViewModel(Translate);
     Game = new GameConsoleViewModel(Translate);
     Score = new ScoreConsoleViewModel(Translate);
     Quit = new QuitConsoleViewModel(Translate);
@@ -30,7 +30,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
     return this->Menu;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
 {
     return this->Language;
 }

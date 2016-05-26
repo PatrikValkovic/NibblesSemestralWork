@@ -1,13 +1,13 @@
 #ifndef CERVISEMESTRALKA_SINGPLEPLAYERMENUNCURSESVIEWMODEL_H
 #define CERVISEMESTRALKA_SINGPLEPLAYERMENUNCURSESVIEWMODEL_H
 #ifdef USE_NCURSES
-#include "../Abstract/SingpleplayerAbstractViewModel.h"
+#include "../Abstract/SingleplayerMenuAbstractViewModel.h"
 namespace ViewModel
 {
-    class SingpleplayerMenuNCursesViewModel : public SingleplayerMenuAbstractViewModel
+    class SingleplayerMenuNCursesViewModel : public SingleplayerMenuAbstractViewModel
     {
     public:
-        SingpleplayerMenuNCursesViewModel(const Translate::TranslateEngine* Translation);
+        SingleplayerMenuNCursesViewModel(const Translate::TranslateEngine* Translation);
 
         virtual std::string NameOfPlayer();
         virtual int CountOfAI(int Max);

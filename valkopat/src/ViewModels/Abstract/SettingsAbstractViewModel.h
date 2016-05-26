@@ -6,7 +6,7 @@
 
 namespace ViewModel
 {
-    class LanguageAbstractViewModel : public ViewModelAbstractClass
+    class SettingsAbstractViewModel : public ViewModelAbstractClass
     {
     public:
         struct LanguageOverwiew
@@ -15,17 +15,17 @@ namespace ViewModel
             string Name;
         };
 
-        LanguageAbstractViewModel(const Translate::TranslateEngine* Translate)
+        SettingsAbstractViewModel(const Translate::TranslateEngine* Translate)
                 : ViewModelAbstractClass(Translate)
         { }
 
 
-        virtual ~LanguageAbstractViewModel()
+        virtual ~SettingsAbstractViewModel()
         { }
 
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const = 0;
 
-        virtual void ShowInfo() const = 0;
+        virtual void ShowActualLanguage() const = 0;
 
         inline map<string,string> GetAviablesLanguages() const
         {

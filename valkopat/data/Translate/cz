@@ -3,7 +3,7 @@ WhoMakeIt:Vytvořeno Patrikem Valkovičem
 DateOfCreation:letní semestr 2016
 HightSchool:České vysoké učení technické v Praze
 Faculty:Fakulta informačních technologií
-ChangeLangaugeMenuEntry:Změna jazyka
+SettingsMenuEntry:Nastavení
 NetGameMenuEntry:Začít hrát po síti
 SingleplayerMenuEntry:Hrát proti počítači
 MultiplayerMenuEntry:Hra více hráčů
@@ -34,3 +34,15 @@ CountOfPlayers:Počet hráčů
 NamePlayer0:Jméno prvního hráče
 NamePlayer1:Jméno druhého hráče
 NamePlayer2:Jméno třetího hráče
+SettingsForPlayer:Nastavení pro hráče
+Up:nahoru
+Down:dolu
+Left:vlevo
+Right:vpravo
+Pause:pozastavit hru
+ChangeSettingForPlayer1:Změnit nastavení prvního hráče
+ChangeSettingForPlayer2:Změnit nastavení druhého hráče
+ChangeSettingForPlayer3:Změnit nastavení třetího hráče
+PushKeyToChange:Stiskněte klávesu, kterou chcete použit pro
+EnterToDontChange:(enter pokud chcete zanechat původní nastavení)
+NotAbleToApplySetting:Nepodařilo se aplikovat nastavení pro klávesu
