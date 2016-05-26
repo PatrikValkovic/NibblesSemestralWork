@@ -17,11 +17,12 @@ namespace ViewModel
 
         virtual string Level();
         virtual int CountOfPlayers(int Max);
-        virtual pair<string,string> GetServerIPAndPort();
+        virtual pair<string,string> GetIPAndPort();
         virtual bool CreateNewServer();
         virtual void ServerCreated();
         virtual void ServerNotCreated();
         virtual void CreatingAndConnectingError();
+        virtual void CannotConnect();
     };
 }
 

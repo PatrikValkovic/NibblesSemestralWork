@@ -55,7 +55,7 @@ int ViewModel::NetMenuConsoleViewModel::CountOfPlayers(int Max)
     return CountOfPlayers;
 }
 
-pair<string, string> ViewModel::NetMenuConsoleViewModel::GetServerIPAndPort()
+pair<string, string> ViewModel::NetMenuConsoleViewModel::GetIPAndPort()
 {
     using namespace std;
     pair<string,string> Attrs;
@@ -109,6 +109,11 @@ void ViewModel::NetMenuConsoleViewModel::ServerNotCreated()
 void ViewModel::NetMenuConsoleViewModel::CreatingAndConnectingError()
 {
     cout << Translation->GetTranslation("ErrorWhenCreatingAndConnectiong") << endl;
+}
+
+void ViewModel::NetMenuConsoleViewModel::CannotConnect()
+{
+    cout << Translation->GetTranslation("CannotConnect") << endl;
 }
 
 

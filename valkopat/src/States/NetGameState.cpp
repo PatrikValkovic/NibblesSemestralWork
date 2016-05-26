@@ -1,4 +1,5 @@
 #include "NetGameState.h"
+
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
     using ViewModel::NetMenuConsoleViewModel;
@@ -6,10 +7,10 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::PlaygroundFactory;
     using Game::Event::ServerSide;
 
-    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*)this->RenderingModel->NetModel();
+    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
-    int ClientSock;
-    if(Rendering->CreateNewServer())
+    int ClientSock = -1;
+    if (Rendering->CreateNewServer())
     {
         //create server
         string LevelName = Rendering->Level();
@@ -17,21 +18,21 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
         int ServerSock = -1;
         pair<string, string> ServerIPWithPort;
-        while(ServerSock==-1)
+        while (ServerSock == -1)
         {
-            ServerIPWithPort = Rendering->GetServerIPAndPort();
+            ServerIPWithPort = Rendering->GetIPAndPort();
             ServerSock = this->CreateServer(ServerIPWithPort, CountOfPlayers);
-            if(ServerSock==-1)
+            if (ServerSock == -1)
                 Rendering->ServerNotCreated();
             else
                 Rendering->ServerCreated();
         }
 
-        ServerSide* Server = new ServerSide(ServerSock,CountOfPlayers,NewPlayGround);
+        ServerSide* Server = new ServerSide(ServerSock, CountOfPlayers, NewPlayGround);
 
         //connect to it
         ClientSock = ConnectToServer(ServerIPWithPort);
-        if(ClientSock==-1)
+        if (ClientSock == -1)
         {
             delete Server;
             Rendering->CreatingAndConnectingError();
@@ -41,9 +42,16 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         Server->StartServer();
     }
     else
-    {
-        //TODO ask for IP to connect
-    }
+        while (ClientSock == -1)
+        {
+            pair<string, string> ServerIPWithPort = Rendering->GetIPAndPort();
+            ClientSock = ConnectToServer(ServerIPWithPort);
+            if(ClientSock==-1)
+            {
+                Rendering->CannotConnect();
+                continue;
+            }
+        }
 
     //run base connections
     //create tasks and events
@@ -64,68 +72,68 @@ void GameStates::NetGameState::AddStates(PlayingState* GameState, MenuGameState*
 int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, int CountOfPlayers)
 {
     //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
-    struct addrinfo * ai;
+    struct addrinfo* ai;
 
-    if ( getaddrinfo ( IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai ) != 0 )
+    if (getaddrinfo(IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai) != 0)
     {
         //printf ( "getaddrinfo\n" );
         return -1;
     }
 
-    int s = socket ( ai -> ai_family, SOCK_STREAM, 0 );
-    if ( s == -1 )
+    int s = socket(ai->ai_family, SOCK_STREAM, 0);
+    if (s == -1)
     {
-        freeaddrinfo ( ai );
+        freeaddrinfo(ai);
         //printf ( "socket\n" );
         return -1;
     }
 
-    if ( bind ( s, ai -> ai_addr, ai -> ai_addrlen ) != 0 )
+    if (bind(s, ai->ai_addr, ai->ai_addrlen) != 0)
     {
-        close ( s );
-        freeaddrinfo ( ai );
+        close(s);
+        freeaddrinfo(ai);
         //printf ( "bind\n" );
         return -1;
     }
 
-    if ( listen ( s, CountOfPlayers ) != 0 )
+    if (listen(s, CountOfPlayers) != 0)
     {
-        close ( s );
-        freeaddrinfo ( ai );
+        close(s);
+        freeaddrinfo(ai);
         //printf ( "listen\n" );
         return -1;
     }
-    freeaddrinfo ( ai );
+    freeaddrinfo(ai);
     return s;
 }
 
 int GameStates::NetGameState::ConnectToServer(std::pair<string, string> IPAndPort)
 {
     //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
-    struct addrinfo * ai;
+    struct addrinfo* ai;
 
-    if ( getaddrinfo ( IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai ) != 0 )
+    if (getaddrinfo(IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai) != 0)
     {
         //printf ( "getaddrinfo" );
         return -1;
     }
 
-    int s = socket ( ai -> ai_family, SOCK_STREAM, 0 );
-    if ( s == -1 )
+    int s = socket(ai->ai_family, SOCK_STREAM, 0);
+    if (s == -1)
     {
-        freeaddrinfo ( ai );
+        freeaddrinfo(ai);
         //printf ( "socket" );
         return -1;
     }
 
-    if ( connect ( s, ai -> ai_addr, ai -> ai_addrlen ) != 0 )
+    if (connect(s, ai->ai_addr, ai->ai_addrlen) != 0)
     {
-        close ( s );
-        freeaddrinfo ( ai );
+        close(s);
+        freeaddrinfo(ai);
         //printf ( "connect" );
         return -1;
     }
-    freeaddrinfo ( ai );
+    freeaddrinfo(ai);
     return s;
 }
 
