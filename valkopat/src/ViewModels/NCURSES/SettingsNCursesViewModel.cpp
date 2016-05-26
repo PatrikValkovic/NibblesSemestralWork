@@ -11,16 +11,11 @@ ViewModel::SettingsNCursesViewModel::SettingsNCursesViewModel(const Translate::T
         : SettingsAbstractViewModel(Translation)
 { }
 
-void ViewModel::SettingsNCursesViewModel::ShowInfo() const
+void ViewModel::SettingsNCursesViewModel::ShowActualLanguage() const
 {
     //TODO
 }
 
-map<string, string> ViewModel::SettingsNCursesViewModel::GetAviablesLanguages() const
-{
-    //TODO
-    return std::map<std::__cxx11::string, std::__cxx11::string>();
-}
 
 
 #endif

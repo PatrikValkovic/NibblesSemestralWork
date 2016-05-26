@@ -11,7 +11,7 @@ ViewModel::SettingsSDLViewModel::SettingsSDLViewModel(const Translate::Translate
         : SettingsAbstractViewModel(Translation)
 { }
 
-void ViewModel::SettingsSDLViewModel::ShowInfo() const
+void ViewModel::SettingsSDLViewModel::ShowActualLanguage() const
 {
     //TODO
 }

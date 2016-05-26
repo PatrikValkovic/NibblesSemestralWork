@@ -13,9 +13,8 @@ namespace ViewModel
         SettingsNCursesViewModel(const Translate::TranslateEngine* Translation);
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const;
 
-        virtual void ShowInfo() const;
+        virtual void ShowActualLanguage() const;
 
-        virtual map<string,string> GetAviablesLanguages() const;
     };
 }
 

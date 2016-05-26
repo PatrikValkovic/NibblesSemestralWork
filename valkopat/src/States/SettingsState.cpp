@@ -7,8 +7,9 @@ GameStates::SettingsState::SettingsState(ViewModel::BaseViewModel* RenderingMode
 GameStates::AbstractGameState* GameStates::SettingsState::run()
 {
     using ViewModel::SettingsAbstractViewModel;
+    using ViewModel::SettingsConsoleViewModel;
     using namespace std;
-    SettingsAbstractViewModel* Render = this->RenderingModel->LanguageModel();
+    SettingsConsoleViewModel* Render = (SettingsConsoleViewModel*)this->RenderingModel->LanguageModel();
     map<string, string> Languages = Render->GetAviablesLanguages();
     map<int, SettingsAbstractViewModel::LanguageOverwiew> LanguagesEntries;
     map<int, string> AnotherEntries;
@@ -25,7 +26,7 @@ GameStates::AbstractGameState* GameStates::SettingsState::run()
 
     while (Choose != -1)
     {
-        Render->ShowInfo();
+        Render->ShowActualLanguage();
         int Choose = Render->ShowMenu(LanguagesEntries, AnotherEntries);
         if (Choose == -1)
             break;

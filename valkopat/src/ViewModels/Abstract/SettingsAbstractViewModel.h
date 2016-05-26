@@ -25,7 +25,7 @@ namespace ViewModel
 
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const = 0;
 
-        virtual void ShowInfo() const = 0;
+        virtual void ShowActualLanguage() const = 0;
 
         inline map<string,string> GetAviablesLanguages() const
         {

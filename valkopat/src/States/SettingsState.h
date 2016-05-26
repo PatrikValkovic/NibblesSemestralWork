@@ -2,7 +2,8 @@
 #define CERVISEMESTRALKA_CHANGELANGUAGESTATE_H
 #include <algorithm>
 #include "AbstractGameState.h"
-
+//TODO REMOVE
+#include "../ViewModels/CONSOLE/SettingsConsoleViewModel.h"
 
 namespace GameStates
 {
