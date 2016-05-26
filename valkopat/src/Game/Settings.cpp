@@ -105,11 +105,11 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
     return Changed;
 }
 
-std::map<Keys, Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer)
+std::map<Game::Keys, Game::Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer)
 {
     using Exceptions::InvalidArgumentException;
     using namespace std;
-    if(IndexOfPlayer<1 || IndexOfPlayer>3)
+    if(IndexOfPlayer<0 || IndexOfPlayer>2)
         throw new InvalidArgumentException("Player with index " + to_string(IndexOfPlayer) + " dont exists",__LINE__,__FILE__);
     map<Keys,Actions> ToReturn;
     for_each(IndividualSetting.begin(),IndividualSetting.end(),[&ToReturn,&IndexOfPlayer](PlayerSetting S){
@@ -123,6 +123,8 @@ int Game::Settings::MaxCountOfPlayers() const
 {
     return 3;
 }
+
+
 
 
 

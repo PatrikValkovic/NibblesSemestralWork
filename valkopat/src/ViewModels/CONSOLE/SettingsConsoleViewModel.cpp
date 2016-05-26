@@ -100,8 +100,8 @@ void ViewModel::SettingsConsoleViewModel::ShowKeySettings() const
     for (int a = 0; a < Settings::GetInstance()->MaxCountOfPlayers(); a++)
     {
         map<Keys, Actions> SettingForPlayer = Settings::GetInstance()->GetSettingForPlayer(a);
-        cout << Translation->GetTranslation("SettingsForPlayer") << ' ' << a << endl;
-        for_each(SettingForPlayer.begin(), SettingForPlayer.end(), [this, &TranslateActions, &KeyTranslate]
+        cout << Translation->GetTranslation("SettingsForPlayer") << ' ' << a+1 << endl;
+        for_each(SettingForPlayer.begin(), SettingForPlayer.end(), [this]
                 (pair<Keys, Actions> P)
         {
             cout << '\t' << Translation->GetTranslation(TranslateActions.at(P.second))

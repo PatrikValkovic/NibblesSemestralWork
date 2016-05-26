@@ -31,8 +31,8 @@ ChooseAILevel:Vyberte si obtížnost počítače
 RandomAI:Náhodný pohyb
 BFSAI:Hledání nejkratší cesty
 SettingsForPlayer:Nastavení pro hráče
-Up:Nahoru
-Down:Dolu
+Up:nahoru
+Down:dolu
 Left:vlevo
 Right:vpravo
-Pause:Pozastavit hru
+Pause:pozastavit hru
