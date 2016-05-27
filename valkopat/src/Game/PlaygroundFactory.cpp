@@ -80,6 +80,7 @@ vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
 
 string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 {
+    //cout << "PlaygroundFactory.LoadNameOfLevel" << endl;
     ifstream File("data/Levels/" + Filename);
     string NameOfLevel;
     File >> NameOfLevel;
@@ -89,12 +90,14 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 
 Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
+    //cout << "PlaygroundFactory.CreateLevelFromFile" << endl;
     stringstream LevelContent(GetLevelInString(LevelName));
     return ParseLevelFromFile(LevelContent);
 }
-#include <iostream>
+
 Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(istream &LevelContent)
 {
+    //cout << "PlaygroundFactory.ParseLevelFromFile" << endl;
     using Game::PlayGround;
     using Exceptions::Exception;
 
@@ -104,11 +107,12 @@ Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(istream &LevelCont
     try
     {
         string LevelName;
-        cin >> LevelName;
+        LevelContent >> LevelName;
         Created = new PlayGround(LevelName);
         LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         if (!(LevelContent >> Created->Height >> Created->Width))        //read height and width
             throw new Exception("Wrong size", __LINE__, __FILE__);
+
         LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         //read level
         for (int a = 0; a < Created->Height; a++)
@@ -166,6 +170,7 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
 
 string Game::PlaygroundFactory::GetLevelInString(string Level)
 {
+    //cout << "PlaygroundFactory.GetLevelInString" << endl;
     using namespace std;
 
     string NameOfFile = GetNameOfFileForLevel(Level);
@@ -180,6 +185,7 @@ string Game::PlaygroundFactory::GetLevelInString(string Level)
 
 string Game::PlaygroundFactory::LoadFromStream(istream &StreamWithLevel)
 {
+    //cout << "PlaygroundFactory.LoadFromStream" << endl;
     const int SizeOfBuffer = 16;
     char Buffer[SizeOfBuffer];
     using namespace std;
@@ -195,6 +201,7 @@ string Game::PlaygroundFactory::LoadFromStream(istream &StreamWithLevel)
 
 string Game::PlaygroundFactory::GetNameOfFileForLevel(string Level)
 {
+    //cout << "PlaygroundFactory.GetNameOfFileForLevel" << endl;
     using namespace std;
     string FileToReturn;
     vector<string> Files = GetLevelsFileNames();
