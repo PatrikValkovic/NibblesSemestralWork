@@ -122,7 +122,7 @@ $(TARGET_DIR)/AIFactory.o: src/Game/AIFactory.cpp src/Game/AIFactory.h
 ##	EVENTS  ##
 ##############
 
-$(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o $(TARGET_DIR)/ServerSide.o
+$(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o $(TARGET_DIR)/ServerSide.o $(TARGET_DIR)/ClientSide.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/Game/Events/AbstractEvent.h src/Game/Worm.h
@@ -132,6 +132,9 @@ $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Even
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/ServerSide.o: src/Game/Events/ServerSide.cpp src/Game/Events/ServerSide.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/ClientSide.o: src/Game/Events/ClientSide.cpp src/Game/Events/ClientSide.h src/Game/Events/AbstractEvent.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #############
