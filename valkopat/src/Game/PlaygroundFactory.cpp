@@ -92,12 +92,12 @@ Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
     //cout << "PlaygroundFactory.CreateLevelFromFile" << endl;
     stringstream LevelContent(GetLevelInString(LevelName));
-    return ParseLevelFromFile(LevelContent);
+    return ParseLevelFromStream(LevelContent);
 }
 
-Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(istream &LevelContent)
+Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromStream(istream& LevelContent)
 {
-    //cout << "PlaygroundFactory.ParseLevelFromFile" << endl;
+    //cout << "PlaygroundFactory.ParseLevelFromStream" << endl;
     using Game::PlayGround;
     using Exceptions::Exception;
 
@@ -168,14 +168,14 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
     return;
 }
 
-string Game::PlaygroundFactory::GetLevelInString(string Level)
+string Game::PlaygroundFactory::GetLevelInString(string LevelName)
 {
     //cout << "PlaygroundFactory.GetLevelInString" << endl;
     using namespace std;
 
-    string NameOfFile = GetNameOfFileForLevel(Level);
+    string NameOfFile = GetNameOfFileForLevel(LevelName);
     if (NameOfFile.empty())
-        throw new Exceptions::InvalidArgumentException("Level with name " + Level + " dont exists");
+        throw new Exceptions::InvalidArgumentException("LevelName with name " + LevelName + " dont exists");
 
     ifstream FileWithLevel("data/Levels/" + NameOfFile);
     string Lev = LoadFromStream(FileWithLevel);

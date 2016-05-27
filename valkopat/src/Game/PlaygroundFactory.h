@@ -25,16 +25,16 @@ namespace Game
     {
     public:
         static PlayGround* GetLevel(string Level);
-        static string GetLevelInString(string Level);
+        static string GetLevelInString(string LevelName);
         static vector<string> GetAviableLevels();
+        static PlayGround* CreateLevelFromFile(string LevelName);
+        static PlayGround* ParseLevelFromStream(istream& LevelContent);
     private:
         static PlayGround* FirstLevel();
         static PlayGround* SecondLevel();
 
         static vector<string> GetLevelsFileNames();
         static string LoadNameOfLevel(string Filename);
-        static PlayGround* CreateLevelFromFile(string LevelName);
-        static PlayGround* ParseLevelFromFile(istream &LevelContent);
         static string LoadFromStream(istream &StreamWithLevel);
         static string GetNameOfFileForLevel(string Level);
         static void AddElementIntoPlayground(PlayGround* Playground,char Readed,int YPosition,int XPosition);

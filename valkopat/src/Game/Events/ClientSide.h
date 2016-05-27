@@ -27,6 +27,7 @@ namespace Game
             virtual bool ProccessActions();
 
             bool SendHello();
+            string AskToLevel(bool Have);
 
             std::pair<std::string,size_t> LevelInfo();
 

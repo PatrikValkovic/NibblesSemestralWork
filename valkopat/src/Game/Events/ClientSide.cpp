@@ -53,6 +53,20 @@ std::pair<std::string,size_t> Game::Event::ClientSide::LevelInfo()
     return Data;
 }
 
+string Game::Event::ClientSide::AskToLevel(bool Have)
+{
+    ServerActions Action = ServerActions::MapTransfer;
+    send(SocketId,&Action,sizeof(ServerActions),0);
+    send(SocketId,&Have,sizeof(bool),0);
+
+    if(Have)
+        return "";
+
+    //TODO wait for map
+}
+
+
+
 
 
 

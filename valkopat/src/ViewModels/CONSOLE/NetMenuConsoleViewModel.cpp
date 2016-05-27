@@ -131,6 +131,14 @@ void ViewModel::NetMenuConsoleViewModel::LevelToUse(string NameOfLevel)
     cout << Translation->GetTranslation("LevelToBeUse") << " " << NameOfLevel << endl;
 }
 
+void ViewModel::NetMenuConsoleViewModel::HaveMap(bool Have)
+{
+    if(Have)
+        cout << Translation->GetTranslation("MapExists") << endl;
+    else
+        cout << Translation->GetTranslation("MapDontExists") << endl;
+}
+
 
 #endif
 

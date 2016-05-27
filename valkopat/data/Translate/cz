@@ -45,3 +45,5 @@ CannotConnect:Nepodařilo se připojit na server, prosím opakujte akci
 ServerNotRespond:Server neodpovídá
 ServerRespond:Server odpovídá
 LevelToBeUse:Bude použit level
+MapExists:Mapa byla načtena
+MapDontExists:Mapa bude stažena

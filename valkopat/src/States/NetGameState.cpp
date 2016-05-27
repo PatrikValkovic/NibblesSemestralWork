@@ -12,19 +12,20 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
     int ClientSock = CreateSocket();
-    if(ClientSock==-1)
+    if (ClientSock == -1)
         return this->Menu;
 
     ClientSide* ClientSideEvent = new ClientSide(ClientSock);
-    if(!ClientSideEvent->SendHello())
+    if (!ClientSideEvent->SendHello())
     {
         delete ClientSideEvent;
         Rendering->ServerNotRespond();
         return this->Menu;
     }
     Rendering->ServerRespond();
-    pair<string,size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
-    PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength,ClientSideEvent);
+    pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
+
+    PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength, ClientSideEvent);
 
     return NULL;
 }
@@ -107,15 +108,32 @@ int GameStates::NetGameState::ConnectToServer(std::pair<string, string> IPAndPor
     return s;
 }
 
-PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
-                                                       Game::Event::ClientSide* Client)
+Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
+                                                             Game::Event::ClientSide* Client)
 {
     using ViewModel::NetMenuConsoleViewModel;
+    using Game::PlayGround;
+    using Game::PlaygroundFactory;
+
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
     Rendering->LevelToUse(NameOfLevel.first);
 
+    try
+    {
+        stringstream Stream(PlaygroundFactory::GetLevelInString(NameOfLevel.first));
+        Rendering->HaveMap(true);
+        Client->AskToLevel(true);
+        return PlaygroundFactory::ParseLevelFromStream(Stream);
+    }
+    catch(Exceptions::InvalidArgumentException* e)
+    {
+        delete e;
+    }
 
-    return nullptr;
+    Rendering->HaveMap(false);
+    string Level = Client->AskToLevel(false);
+    cout << "here3" << endl;
+    return PlaygroundFactory::CreateLevelFromFile(Level);
 }
 
 int GameStates::NetGameState::CreateSocket()
@@ -165,7 +183,7 @@ int GameStates::NetGameState::CreateSocket()
         {
             pair<string, string> ServerIPWithPort = Rendering->GetIPAndPort();
             ClientSock = ConnectToServer(ServerIPWithPort);
-            if(ClientSock==-1)
+            if (ClientSock == -1)
             {
                 Rendering->CannotConnect();
                 continue;
