@@ -7,6 +7,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
+#include "../Enums.h"
 #include "AbstractEvent.h"
 
 namespace Game
