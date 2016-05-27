@@ -136,8 +136,8 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t
 
     Rendering->HaveMap(false);
     string Level = Client->AskToLevel(false);
-    cout << "here3" << endl;
-    return PlaygroundFactory::CreateLevelFromFile(Level);
+    stringstream Stream(Level);
+    return PlaygroundFactory::ParseLevelFromStream(Stream);
 }
 
 int GameStates::NetGameState::CreateSocket()
