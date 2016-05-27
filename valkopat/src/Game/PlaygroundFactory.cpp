@@ -186,14 +186,17 @@ string Game::PlaygroundFactory::GetLevelInString(string Level)
 string Game::PlaygroundFactory::LoadFromStream(istream &StreamWithLevel)
 {
     //cout << "PlaygroundFactory.LoadFromStream" << endl;
-    const int SizeOfBuffer = 16;
+    const int SizeOfBuffer = 1024;
     char Buffer[SizeOfBuffer];
     using namespace std;
     stringbuf ContentOfGame;
     while(StreamWithLevel.good())
     {
-        StreamWithLevel.read(Buffer,SizeOfBuffer);
-        ContentOfGame.sputn(Buffer,SizeOfBuffer);
+        StreamWithLevel.get(Buffer,SizeOfBuffer,EOF);
+        size_t Readed = strlen(Buffer);
+        ContentOfGame.sputn(Buffer,Readed);
+        if(Readed!=SizeOfBuffer-1)
+            break;
     }
 
     return ContentOfGame.str();
