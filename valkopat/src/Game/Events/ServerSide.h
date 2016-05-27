@@ -11,6 +11,7 @@
 #include <thread>
 #include <vector>
 #include <functional>
+#include <cstring>
 #include "AbstractEvent.h"
 #include "../PlayGround.h"
 #include "../PlaygroundFactory.h"

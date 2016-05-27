@@ -62,7 +62,14 @@ string Game::Event::ClientSide::AskToLevel(bool Have)
     if(Have)
         return "";
 
-    //TODO wait for map
+    size_t LengthOfData;
+    recv(SocketId,&Action,sizeof(ServerActions),0);
+    recv(SocketId,&LengthOfData,sizeof(size_t),0);
+    char* data = (char*)calloc(LengthOfData+1,1);
+    recv(SocketId,data,LengthOfData,0);
+    string Geted(data);
+    free(data);
+    return Geted;
 }
 
 
