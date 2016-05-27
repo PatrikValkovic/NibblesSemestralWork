@@ -120,12 +120,16 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t
 
     try
     {
-        stringstream Stream(PlaygroundFactory::GetLevelInString(NameOfLevel.first));
+        string LevelContent = PlaygroundFactory::GetLevelInString(NameOfLevel.first);
+        std::hash<std::string> HashFn;
+        if(HashFn(LevelContent)!=NameOfLevel.second)
+            throw new Exceptions::Exception("Hash of maps are not equal");
+        stringstream Stream(LevelContent);
         Rendering->HaveMap(true);
         Client->AskToLevel(true);
         return PlaygroundFactory::ParseLevelFromStream(Stream);
     }
-    catch(Exceptions::InvalidArgumentException* e)
+    catch(Exceptions::Exception* e)
     {
         delete e;
     }
