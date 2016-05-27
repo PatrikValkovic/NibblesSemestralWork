@@ -166,7 +166,7 @@ $(TARGET_DIR)/DiscardingInput.o: src/Game/Tasks/DiscardingInput.cpp src/Game/Tas
 ##	EXCEPTIONS  ##
 ##################
 
-$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o $(TARGET_DIR)/ServerException.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
@@ -179,6 +179,9 @@ $(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h src/Exceptions/Exception.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/ServerException.o: src/Exceptions/ServerException.cpp src/Exceptions/ServerException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #################
