@@ -65,7 +65,8 @@ namespace Game
         StartGame = 89360,
         KeyStroke = 70410,
         Wait = 29377,
-        QuitGame = 22333
+        QuitGame = 22333,
+        InvalidRequest = 24569
     };
 }
 
