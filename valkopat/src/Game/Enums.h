@@ -52,6 +52,21 @@ namespace Game
         Key8,
         Key9
     };
+
+    enum ServerActions
+    {
+        Hello = 88926,
+        RequiredMap = 46722,
+        MapTransfer = 38719,
+        NameSending = 55216,
+        InitSetting = 92397,
+        PlayerTransfer = 69886,
+        PlayerConnected = 37330,
+        StartGame = 89360,
+        KeyStroke = 70410,
+        Wait = 29377,
+        QuitGame = 22333
+    };
 }
 
 #endif //CERVISEMESTRALKA_ENUMS_H
