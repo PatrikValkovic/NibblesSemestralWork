@@ -9,6 +9,8 @@
 #include <dirent.h>
 #include <algorithm>
 #include <limits>
+#include <sstream>
+#include <streambuf>
 #include "../Exceptions/OutOfRangeException.h"
 #include "../Exceptions/InvalidArgumentException.h"
 #include "../Exceptions/InvalidFormatException.h"
@@ -22,6 +24,7 @@ namespace Game
     {
     public:
         static PlayGround* GetLevel(string Level);
+        static string GetLevelInString(string Level);
         static vector<string> GetAviableLevels();
     private:
         static PlayGround* FirstLevel();
@@ -30,7 +33,9 @@ namespace Game
         static vector<string> GetLevelsFileNames();
         static string LoadNameOfLevel(string Filename);
         static PlayGround* CreateLevelFromFile(string LevelName);
-        static PlayGround* ParseLevelFromFile(string FileName);
+        static PlayGround* ParseLevelFromFile(istream &LevelContent);
+        static string LoadFromStream(istream &StreamWithLevel);
+        static string GetNameOfFileForLevel(string Level);
         static void AddElementIntoPlayground(PlayGround* Playground,char Readed,int YPosition,int XPosition);
     };
 }

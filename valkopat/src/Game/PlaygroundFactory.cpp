@@ -2,13 +2,7 @@
 
 Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 {
-    PlayGround* Playlevel = NULL;
-    if (Level == "ClearMap")
-        Playlevel = FirstLevel();
-    else if (Level == "BorderedMap")
-        Playlevel = SecondLevel();
-    else
-        Playlevel = CreateLevelFromFile(Level);
+    PlayGround* Playlevel = CreateLevelFromFile(Level);
 
     if (Playlevel == NULL)
         throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists", __LINE__, __FILE__);
@@ -58,8 +52,6 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
 vector<string> Game::PlaygroundFactory::GetAviableLevels()
 {
     vector<string> Levels;
-    Levels.push_back("ClearMap");
-    Levels.push_back("BorderedMap");
 
     vector<string> FilesWithLevels = GetLevelsFileNames();
     for_each(FilesWithLevels.begin(), FilesWithLevels.end(), [&Levels](string NameOfFile) {
@@ -97,59 +89,47 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 
 Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
-    using Game::PlayGround;
-
-    PlayGround* CreatedPlayground = NULL;
-
-    vector<string> Files = GetLevelsFileNames();
-    for_each(Files.begin(), Files.end(), [&LevelName, &CreatedPlayground](string FileName) {
-        if (LoadNameOfLevel(FileName) == LevelName && CreatedPlayground == NULL)
-            CreatedPlayground = ParseLevelFromFile(FileName);
-    });
-
-    return CreatedPlayground;
+    stringstream LevelContent(GetLevelInString(LevelName));
+    return ParseLevelFromFile(LevelContent);
 }
-
-Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
+#include <iostream>
+Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(istream &LevelContent)
 {
     using Game::PlayGround;
     using Exceptions::Exception;
 
     PlayGround* Created = new PlayGround();
-    ifstream File("data/Levels/" + FileName);
     set<char> ValidCharacters = {'-', 'W', 'U', 'D', 'L', 'R'};
 
     try
     {
-        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore name of level
-        if (!(File >> Created->Height >> Created->Width))        //read height and width
+        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore name of level
+        if (!(LevelContent >> Created->Height >> Created->Width))        //read height and width
             throw new Exception("Wrong size", __LINE__, __FILE__);
-        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
+        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         //read level
         for (int a = 0; a < Created->Height; a++)
         {
             for (int b = 0; b < Created->Width; b++)
             {
                 char Readed;
-                if (!File.get(Readed))
+                if (!LevelContent.get(Readed))
                     throw new Exception("Nothing readed", __LINE__, __FILE__);
                 if (ValidCharacters.find(Readed) == ValidCharacters.end())
                     throw new Exception("Wrong character", __LINE__, __FILE__);
 
                 AddElementIntoPlayground(Created, Readed, a, b);
             }
-            File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
+            LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         }
     }
     catch (Exceptions::Exception* e)
     {
         delete Created;
         Created = NULL;
-        File.close();
 
-        throw new Exceptions::InvalidFormatException("File " + FileName + " have wrong format.", __LINE__, __FILE__, e);
+        throw new Exceptions::InvalidFormatException("Wrong format of level", __LINE__, __FILE__, e);
     }
-    File.close();
     return Created;
 }
 
@@ -157,29 +137,76 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
                                                        int YPosition, int XPosition)
 {
     using Game::PlayGround;
-    if(Readed=='-')
+    if (Readed == '-')
         return;
-    if(Readed=='W')
+    if (Readed == 'W')
     {
         Playground->Walls.push_back(Point(XPosition, YPosition));
         return;
     }
 
     PlayGround::StartPosition Starting;
-    Starting.Position = Point(XPosition,YPosition);
+    Starting.Position = Point(XPosition, YPosition);
 
-    if(Readed=='L')
+    if (Readed == 'L')
         Starting.Direction = Actions::MoveLeft;
-    else if(Readed=='R')
+    else if (Readed == 'R')
         Starting.Direction = Actions::moveRight;
-    else if(Readed=='U')
+    else if (Readed == 'U')
         Starting.Direction = Actions::MoveUp;
-    else if(Readed=='D')
+    else if (Readed == 'D')
         Starting.Direction = Actions::MoveDown;
 
     Playground->StartingPositions.push_back(Starting);
     return;
 }
+
+string Game::PlaygroundFactory::GetLevelInString(string Level)
+{
+    using namespace std;
+
+    string NameOfFile = GetNameOfFileForLevel(Level);
+    if (NameOfFile.empty())
+        throw new Exceptions::InvalidArgumentException("Level with name " + Level + " dont exists");
+
+    ifstream FileWithLevel("data/Levels/" + NameOfFile);
+    string Lev = LoadFromStream(FileWithLevel);
+    FileWithLevel.close();
+    return Lev;
+}
+
+string Game::PlaygroundFactory::LoadFromStream(istream &StreamWithLevel)
+{
+    const int SizeOfBuffer = 16;
+    char Buffer[SizeOfBuffer];
+    using namespace std;
+    stringbuf ContentOfGame;
+    while(StreamWithLevel.good())
+    {
+        StreamWithLevel.read(Buffer,SizeOfBuffer);
+        ContentOfGame.sputn(Buffer,SizeOfBuffer);
+    }
+
+    return ContentOfGame.str();
+}
+
+string Game::PlaygroundFactory::GetNameOfFileForLevel(string Level)
+{
+    using namespace std;
+    string FileToReturn;
+    vector<string> Files = GetLevelsFileNames();
+    for_each(Files.begin(), Files.end(), [&Level, &FileToReturn](string FileName) {
+        if (LoadNameOfLevel(FileName) == Level && FileToReturn.empty())
+            FileToReturn = FileName;
+    });
+    return FileToReturn;
+}
+
+
+
+
+
+
 
 
 
