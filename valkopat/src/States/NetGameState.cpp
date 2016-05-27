@@ -11,49 +11,9 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
-    int ClientSock = -1;
-    if (Rendering->CreateNewServer())
-    {
-        //create server
-        string LevelName = Rendering->Level();
-        PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
-        int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
-        int ServerSock = -1;
-        pair<string, string> ServerIPWithPort;
-        while (ServerSock == -1)
-        {
-            ServerIPWithPort = Rendering->GetIPAndPort();
-            ServerSock = this->CreateServer(ServerIPWithPort, CountOfPlayers);
-            if (ServerSock == -1)
-                Rendering->ServerNotCreated();
-            else
-                Rendering->ServerCreated();
-        }
-
-        ServerSide* Server = new ServerSide(ServerSock, CountOfPlayers, NewPlayGround);
-
-        //connect to it
-        ClientSock = ConnectToServer(ServerIPWithPort);
-        if (ClientSock == -1)
-        {
-            delete Server;
-            Rendering->CreatingAndConnectingError();
-            return this->Menu;
-        }
-
-        Server->StartServer();
-    }
-    else
-        while (ClientSock == -1)
-        {
-            pair<string, string> ServerIPWithPort = Rendering->GetIPAndPort();
-            ClientSock = ConnectToServer(ServerIPWithPort);
-            if(ClientSock==-1)
-            {
-                Rendering->CannotConnect();
-                continue;
-            }
-        }
+    int ClientSock = CreateSocket();
+    if(ClientSock==-1)
+        return this->Menu;
 
     ClientSide* ClientSideEvent = new ClientSide(ClientSock);
     if(!ClientSideEvent->SendHello())
@@ -64,10 +24,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     }
     Rendering->ServerRespond();
     pair<string,size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
-    Rendering->LevelToUse(LevelNameAndLength.first);
-
-    //run base connections
-    //create tasks and events
+    PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength,ClientSideEvent);
 
     return NULL;
 }
@@ -149,6 +106,78 @@ int GameStates::NetGameState::ConnectToServer(std::pair<string, string> IPAndPor
     freeaddrinfo(ai);
     return s;
 }
+
+PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
+                                                       Game::Event::ClientSide* Client)
+{
+    using ViewModel::NetMenuConsoleViewModel;
+    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
+    Rendering->LevelToUse(NameOfLevel.first);
+
+
+    return nullptr;
+}
+
+int GameStates::NetGameState::CreateSocket()
+{
+    using ViewModel::NetMenuConsoleViewModel;
+    using Game::PlayGround;
+    using Game::PlaygroundFactory;
+    using Game::Event::ServerSide;
+    using Game::Event::ClientSide;
+
+    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
+
+    int ClientSock = -1;
+    if (Rendering->CreateNewServer())
+    {
+        //create server
+        string LevelName = Rendering->Level();
+        PlayGround* NewPlayGround = PlaygroundFactory::GetLevel(LevelName);
+        int CountOfPlayers = Rendering->CountOfPlayers(NewPlayGround->CountOfStartPositions());
+        int ServerSock = -1;
+        pair<string, string> ServerIPWithPort;
+        while (ServerSock == -1)
+        {
+            ServerIPWithPort = Rendering->GetIPAndPort();
+            ServerSock = this->CreateServer(ServerIPWithPort, CountOfPlayers);
+            if (ServerSock == -1)
+                Rendering->ServerNotCreated();
+            else
+                Rendering->ServerCreated();
+        }
+
+        ServerSide* Server = new ServerSide(ServerSock, CountOfPlayers, NewPlayGround);
+
+        //connect to it
+        ClientSock = ConnectToServer(ServerIPWithPort);
+        if (ClientSock == -1)
+        {
+            delete Server;
+            Rendering->CreatingAndConnectingError();
+            return -1;
+        }
+
+        Server->StartServer();
+    }
+    else
+        while (ClientSock == -1)
+        {
+            pair<string, string> ServerIPWithPort = Rendering->GetIPAndPort();
+            ClientSock = ConnectToServer(ServerIPWithPort);
+            if(ClientSock==-1)
+            {
+                Rendering->CannotConnect();
+                continue;
+            }
+        }
+
+    return ClientSock;
+}
+
+
+
+
 
 
 

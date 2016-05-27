@@ -10,6 +10,7 @@
 #include "../Game/Events/ServerSide.h"
 //TODO replace
 #include "../ViewModels/CONSOLE/NetMenuConsoleViewModel.h"
+#include "../Game/Events/ClientSide.h"
 
 namespace GameStates
 {
@@ -28,6 +29,8 @@ namespace GameStates
 
         int CreateServer(std::pair<string,string> IPAndPort,int CountOfPlayers);
         int ConnectToServer(std::pair<string,string> IPAndPort);
+        PlayGround* CreatePlayground(pair<string,size_t> NameOfLevel,Game::Event::ClientSide* Client);
+        int CreateSocket();
     };
 }
 
