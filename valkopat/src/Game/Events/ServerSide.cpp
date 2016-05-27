@@ -25,6 +25,7 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         if ((NewPlayer = S->NewUserSocket()) == -1)
             continue;
         S->SendInfoAboutMap(NewPlayer);
+        S->ProccessUserMapRequest(NewPlayer);
     }
 }
 
@@ -58,6 +59,33 @@ void Game::Event::ServerSide::SendInfoAboutMap(int ClientSock)
     size_t LengthOfFile = HashFn(PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel));
     send(ClientSock,&LengthOfFile,sizeof(size_t),0);
 }
+
+void Game::Event::ServerSide::ProccessUserMapRequest(int ClientSock)
+{
+    ServerActions ToTransfer = ServerActions::MapTransfer;
+    recv(ClientSock,&ToTransfer,sizeof(ServerActions),0);
+    if(ToTransfer!=ServerActions::MapTransfer)
+    {
+        ToTransfer = ServerActions::InvalidRequest;
+        send(ClientSock,&ToTransfer,sizeof(ServerActions),0);
+        throw new Exceptions::Exception("Invalid header",__LINE__,__FILE__);
+    }
+
+    bool HaveMap;
+    recv(ClientSock,&HaveMap,sizeof(bool),0);
+    if(HaveMap)
+        return;
+
+    string Level = PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel);
+    size_t CountOfCharacters = Level.size();
+    send(ClientSock,&ToTransfer,sizeof(ServerActions),0);
+    send(ClientSock,&CountOfCharacters,sizeof(size_t),0);
+    send(ClientSock,Level.c_str(),CountOfCharacters,0);
+}
+
+
+
+
 
 
 

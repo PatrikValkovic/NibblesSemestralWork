@@ -35,6 +35,7 @@ namespace Game
             static void ThreadRun(ServerSide* S);
             int NewUserSocket();
             void SendInfoAboutMap(int ClientSock);
+            void ProccessUserMapRequest(int ClientSock);
         };
     }
 }
