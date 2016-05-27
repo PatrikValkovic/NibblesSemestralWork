@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_SERVERSIDE_H
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
+#include <string>
 #include <cctype>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <thread>
 #include <vector>
+#include <functional>
 #include "AbstractEvent.h"
 #include "../PlayGround.h"
 #include "../PlaygroundFactory.h"

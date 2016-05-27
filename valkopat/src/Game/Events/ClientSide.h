@@ -28,7 +28,7 @@ namespace Game
 
             bool SendHello();
 
-            std::pair<std::string,int> LevelInfo();
+            std::pair<std::string,size_t> LevelInfo();
 
         private:
             int SocketId;

@@ -63,7 +63,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         return this->Menu;
     }
     Rendering->ServerRespond();
-    pair<string,int> LevelNameAndLength = ClientSideEvent->LevelInfo();
+    pair<string,size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
     Rendering->LevelToUse(LevelNameAndLength.first);
 
     //run base connections

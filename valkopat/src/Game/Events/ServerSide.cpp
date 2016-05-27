@@ -54,8 +54,9 @@ void Game::Event::ServerSide::SendInfoAboutMap(int ClientSock)
     int LengthOfName = (int)this->Ground->NameOfLevel.size();
     send(ClientSock,&LengthOfName,sizeof(int),0);
     send(ClientSock, this->Ground->NameOfLevel.c_str(), this->Ground->NameOfLevel.size(), 0);
-    int LengthOfFile = (int)PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel).size();
-    send(ClientSock,&LengthOfFile,sizeof(int),0);
+    std::hash<std::string> HashFn;
+    size_t LengthOfFile = HashFn(PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel));
+    send(ClientSock,&LengthOfFile,sizeof(size_t),0);
 }
 
 
