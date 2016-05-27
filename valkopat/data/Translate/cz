@@ -44,3 +44,4 @@ ErrorWhenCreatingAndConnectiong:Z neznámého důvodu se nepodařilo připojit n
 CannotConnect:Nepodařilo se připojit na server, prosím opakujte akci
 ServerNotRespond:Server neodpovídá
 ServerRespond:Server odpovídá
+LevelToBeUse:Bude použit level

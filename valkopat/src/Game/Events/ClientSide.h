@@ -2,13 +2,15 @@
 #define CERVISEMESTRALKA_CLIENTSIDE_H
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
+#include <string>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
 #include "../Enums.h"
+#include "../../Exceptions/ServerException.h"
 #include "AbstractEvent.h"
+
 
 namespace Game
 {
@@ -25,6 +27,8 @@ namespace Game
             virtual bool ProccessActions();
 
             bool SendHello();
+
+            std::pair<std::string,int> LevelInfo();
 
         private:
             int SocketId;

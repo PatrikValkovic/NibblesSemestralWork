@@ -25,6 +25,7 @@ namespace ViewModel
         virtual void CannotConnect();
         virtual void ServerNotRespond();
         virtual void ServerRespond();
+        virtual void LevelToUse(string NameOfLevel);
     };
 }
 

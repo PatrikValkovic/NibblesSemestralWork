@@ -126,6 +126,11 @@ void ViewModel::NetMenuConsoleViewModel::ServerRespond()
     cout << Translation->GetTranslation("ServerRespond") << endl;
 }
 
+void ViewModel::NetMenuConsoleViewModel::LevelToUse(string NameOfLevel)
+{
+    cout << Translation->GetTranslation("LevelToBeUse") << " " << NameOfLevel << endl;
+}
+
 
 #endif
 

@@ -28,6 +28,28 @@ Game::Event::ClientSide::~ClientSide()
     close(SocketId);
 }
 
+std::pair<std::string,int> Game::Event::ClientSide::LevelInfo()
+{
+    using namespace std;
+
+    ServerActions RecivedAction;
+    recv(SocketId,&RecivedAction,sizeof(ServerActions),0);
+    if(RecivedAction!=ServerActions::RequiredMap)
+        throw new Exceptions::ServerException("Invalid header of packet",__LINE__,__FILE__);
+
+    int Length;
+    recv(SocketId,&Length,sizeof(int),0);
+    char* NameOfLevel = new char[Length];
+    recv(SocketId,NameOfLevel,Length,0);
+    recv(SocketId,&Length,sizeof(int),0);
+
+    pair<string,int> Data(string(NameOfLevel),Length);
+    delete [] NameOfLevel;
+    return Data;
+}
+
+
+
 
 
 
