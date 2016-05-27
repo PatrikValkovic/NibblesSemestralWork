@@ -116,6 +116,16 @@ void ViewModel::NetMenuConsoleViewModel::CannotConnect()
     cout << Translation->GetTranslation("CannotConnect") << endl;
 }
 
+void ViewModel::NetMenuConsoleViewModel::ServerNotRespond()
+{
+    cout << Translation->GetTranslation("ServerNotRespond") << endl;
+}
+
+void ViewModel::NetMenuConsoleViewModel::ServerRespond()
+{
+    cout << Translation->GetTranslation("ServerRespond") << endl;
+}
+
 
 #endif
 

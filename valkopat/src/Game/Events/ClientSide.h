@@ -1,5 +1,12 @@
 #ifndef CERVISEMESTRALKA_CLIENTSIDE_H
 #define CERVISEMESTRALKA_CLIENTSIDE_H
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <unistd.h>
 #include "AbstractEvent.h"
 
 namespace Game
@@ -9,11 +16,17 @@ namespace Game
         class ClientSide : public Abstract
         {
         public:
-            ClientSide();
+            ClientSide(int SocketId);
+            virtual ~ClientSide();
 
             virtual bool HasActions();
 
             virtual bool ProccessActions();
+
+            bool SendHello();
+
+        private:
+            int SocketId;
         };
     }
 }

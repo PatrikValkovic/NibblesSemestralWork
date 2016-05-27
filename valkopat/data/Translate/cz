@@ -42,3 +42,5 @@ ServerCreated:Server byl úspěšně vytvořen
 ServerNotCreated:Server se bohužel nepodařilo vytvořit
 ErrorWhenCreatingAndConnectiong:Z neznámého důvodu se nepodařilo připojit na server, návrat do menu
 CannotConnect:Nepodařilo se připojit na server, prosím opakujte akci
+ServerNotRespond:Server neodpovídá
+ServerRespond:Server odpovídá

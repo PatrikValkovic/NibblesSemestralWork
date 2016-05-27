@@ -23,6 +23,8 @@ namespace ViewModel
         virtual void ServerNotCreated();
         virtual void CreatingAndConnectingError();
         virtual void CannotConnect();
+        virtual void ServerNotRespond();
+        virtual void ServerRespond();
     };
 }
 

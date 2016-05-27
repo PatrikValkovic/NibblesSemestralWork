@@ -1,4 +1,5 @@
 #include "NetGameState.h"
+#include "../Game/Events/ClientSide.h"
 
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
@@ -6,6 +7,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::PlayGround;
     using Game::PlaygroundFactory;
     using Game::Event::ServerSide;
+    using Game::Event::ClientSide;
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
@@ -52,6 +54,15 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
                 continue;
             }
         }
+
+    ClientSide* ClientSideEvent = new ClientSide(ClientSock);
+    if(!ClientSideEvent->SendHello())
+    {
+        delete ClientSideEvent;
+        Rendering->ServerNotRespond();
+        return this->Menu;
+    }
+    Rendering->ServerRespond();
 
     //run base connections
     //create tasks and events
