@@ -12,7 +12,7 @@ Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 
 Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
 {
-    PlayGround* Area = new PlayGround();
+    PlayGround* Area = new PlayGround("ClearMap");
     Area->Height = 11;
     Area->Width = 15;
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::moveRight});
@@ -25,7 +25,7 @@ Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
 
 Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
 {
-    PlayGround* Area = new PlayGround();
+    PlayGround* Area = new PlayGround("BorderedMap");
     Area->Height = 11;
     Area->Width = 15;
 
@@ -98,12 +98,15 @@ Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(istream &LevelCont
     using Game::PlayGround;
     using Exceptions::Exception;
 
-    PlayGround* Created = new PlayGround();
+    PlayGround* Created = NULL;
     set<char> ValidCharacters = {'-', 'W', 'U', 'D', 'L', 'R'};
 
     try
     {
-        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore name of level
+        string LevelName;
+        cin >> LevelName;
+        Created = new PlayGround(LevelName);
+        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         if (!(LevelContent >> Created->Height >> Created->Width))        //read height and width
             throw new Exception("Wrong size", __LINE__, __FILE__);
         LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter

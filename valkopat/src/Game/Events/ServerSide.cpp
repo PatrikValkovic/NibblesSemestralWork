@@ -24,6 +24,7 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         int NewPlayer;
         if ((NewPlayer = S->NewUserSocket()) == -1)
             continue;
+        S->SendInfoAboutMap(NewPlayer);
     }
 }
 
@@ -45,6 +46,17 @@ int Game::Event::ServerSide::NewUserSocket()
     send(NewPlayer,&ActionToSend,sizeof(ServerActions),0);
     return NewPlayer;
 }
+
+void Game::Event::ServerSide::SendInfoAboutMap(int ClientSock)
+{
+    ServerActions ToSend = ServerActions::RequiredMap;
+    send(ClientSock,&ToSend,sizeof(ServerActions),0);
+    send(ClientSock, this->Ground->NameOfLevel.c_str(), this->Ground->NameOfLevel.size(), 0);
+    int LengthOfFile = (int)PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel).size();
+    send(ClientSock,&LengthOfFile,sizeof(int),0);
+}
+
+
 
 
 

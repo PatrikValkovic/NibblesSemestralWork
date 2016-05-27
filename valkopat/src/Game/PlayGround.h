@@ -27,6 +27,9 @@ namespace Game
         int StartPositionIndex = 0;
         Point Grub;
     public:
+        PlayGround(string LevelName);
+
+        const std::string NameOfLevel;
 
         std::vector<Point> GetWalls() const;
 

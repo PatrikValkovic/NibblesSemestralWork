@@ -12,6 +12,7 @@
 #include <vector>
 #include "AbstractEvent.h"
 #include "../PlayGround.h"
+#include "../PlaygroundFactory.h"
 
 //TODO remove
 #include <iostream>
@@ -32,6 +33,7 @@ namespace Game
             PlayGround* Ground;
             static void ThreadRun(ServerSide* S);
             int NewUserSocket();
+            void SendInfoAboutMap(int ClientSock);
         };
     }
 }
