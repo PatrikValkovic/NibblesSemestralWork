@@ -55,18 +55,18 @@ namespace Game
 
     enum ServerActions
     {
-        Hello = 88926,
-        RequiredMap = 46722,
-        MapTransfer = 38719,
-        NameSending = 55216,
-        InitSetting = 92397,
-        PlayerTransfer = 69886,
-        PlayerConnected = 37330,
-        StartGame = 89360,
-        KeyStroke = 70410,
-        Wait = 29377,
-        QuitGame = 22333,
-        InvalidRequest = 24569
+        Hello = 0x12121212,
+        RequiredMap = 0x24242424,
+        MapTransfer = 0x38383838,
+        NameSending = 0x54545454,
+        InitSetting = 0x58585858,
+        PlayerTransfer = 0x53535353,
+        PlayerConnected = 0x47474747,
+        StartGame = 0x76767676,
+        KeyStroke = 0x39393939,
+        Wait = 0x46464646,
+        QuitGame = 0x23232323,
+        InvalidRequest = 0x59595959
     };
 }
 
