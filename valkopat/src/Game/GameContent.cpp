@@ -9,9 +9,6 @@ Game::GameContent::~GameContent()
     std::for_each(Tasks.begin(), Tasks.end(), [](BaseTask* X) {
         delete X;
     });
-    std::for_each(Players.begin(), Players.end(), [](Worm* X) {
-        delete X;
-    });
     delete Ground;
     Events.DeleteAllEvents();
 
@@ -22,7 +19,7 @@ Game::GameContent::GameContent(vector<Worm*> Worms, Worm* Player, PlayGround* Pl
         : Ground(Playground)
 {
     this->Worms = Worms;
-    this->Players.push_back(Player);
+    this->Worms.push_back(Player);
 }
 
 Game::Point Game::GameContent::GetFood() const
@@ -46,7 +43,6 @@ void Game::GameContent::GenerateFood()
 
     //fill it with snakes
     vector<Worm*> Worms(this->Worms.begin(), this->Worms.end());
-    Worms.insert(Worms.begin(),this->Players.begin(),this->Players.end());
     for_each(Worms.begin(), Worms.end(), [&Canvas](Worm* Snake) {
         if (!Snake->IsPlaying())
             return;

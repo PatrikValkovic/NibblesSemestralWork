@@ -35,7 +35,7 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
                                           a,
                                           Settings::GetInstance());
         NewGameContent->Events.AddEvent(WorkingEvent);
-        NewGameContent->Players.push_back(WorkingPlayer);
+        NewGameContent->Worms.push_back(WorkingPlayer);
     }
 
     //create tasks
