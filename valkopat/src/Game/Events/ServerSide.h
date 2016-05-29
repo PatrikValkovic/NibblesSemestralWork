@@ -42,6 +42,7 @@ namespace Game
             void ProccessUserMapRequest(int ClientSock);
             Worm* GetInfoAboutPlayer(int SocketId,int IndexOfPlayer);
             void SendStartPosition(int ClientSock, Worm* AssignetWorm);
+            void SendInfoAboutNewPlayer(Worm* Player);
         };
     }
 }

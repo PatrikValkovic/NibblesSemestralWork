@@ -29,6 +29,8 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         S->ProccessUserMapRequest(NewPlayer);
         Worm* NewPlayerWorm = S->GetInfoAboutPlayer(NewPlayer, ClientIndex);
         S->SendStartPosition(NewPlayer,NewPlayerWorm);
+        S->SendInfoAboutNewPlayer(NewPlayerWorm);
+        S->Players.insert(pair<int,Worm*>(NewPlayer,NewPlayerWorm));
     }
 }
 
@@ -128,6 +130,30 @@ void Game::Event::ServerSide::SendStartPosition(int ClientSock, Worm* AssignetWo
     send(ClientSock,&BeginDirection,sizeof(Actions),0);
     send(ClientSock,&IndexOfPlayer,sizeof(int),0);
 }
+
+void Game::Event::ServerSide::SendInfoAboutNewPlayer(Worm* Player)
+{
+    using namespace std;
+    for_each(this->Players.begin(),this->Players.end(),[&Player](pair<int,Worm*> P){
+        ServerActions ToSend = ServerActions::PlayerTransfer;
+        size_t LengthOfName = Player->GetName().size();
+        const char* Name = Player->GetName().c_str();
+        int StartX = Player->GetSegment().at(0).GetPositionX();
+        int StartY = Player->GetSegment().at(0).GetPositionY();;
+        Actions StartDirection = Player->GetMoveDirection();
+        int Index = Player->GetId();
+
+        send(P.first,&ToSend,sizeof(ServerActions),0);
+        send(P.first,&LengthOfName,sizeof(size_t),0);
+        send(P.first,Name,LengthOfName,0);
+        send(P.first,&StartX,sizeof(int),0);
+        send(P.first,&StartY,sizeof(int),0);
+        send(P.first,&StartDirection,sizeof(Actions),0);
+        send(P.first,&Index,sizeof(int),0);
+    });
+}
+
+
 
 
 
