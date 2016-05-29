@@ -43,7 +43,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     Rendering->BeginGame();
 
     GameContent* CreatedContent = new GameContent();
-    CreatedContent->Players = Worms;
+    CreatedContent->Worms = Worms;
     CreatedContent->Events.AddEvent(ClientSideEvent);
     CreatedContent->Ground = CreatedPlayground;
 
