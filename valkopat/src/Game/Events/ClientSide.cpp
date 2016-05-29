@@ -109,6 +109,7 @@ Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
     recv(SocketId,&PlayerId,sizeof(int),0);
 
     Worm* PlayerWorm = new Worm(PositionX,PositionY,BeginDirection,PlayerId);
+    PlayerWorm->SetName(NameOfPlayer);
 
     return PlayerWorm;
 }
