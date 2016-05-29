@@ -1,9 +1,8 @@
 #include "NetGameState.h"
-#include "../Game/Events/ClientSide.h"
 
 GameStates::AbstractGameState* GameStates::NetGameState::run()
 {
-    using ViewModel::NetMenuConsoleViewModel;
+    using ViewModel::NetMenuAbstractViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
     using Game::GameContent;
@@ -11,7 +10,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::Event::ClientSide;
     using Game::Task::DiscardingInput;
 
-    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
+    NetMenuAbstractViewModel* Rendering = this->RenderingModel->NetModel();
 
     string NameOfPlayer = Rendering->GetName();
     int ClientSock = CreateSocket();

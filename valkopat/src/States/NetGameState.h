@@ -7,9 +7,8 @@
 #include <unistd.h>
 #include <thread>
 #include "AbstractGameState.h"
+#include "../ViewModels/Abstract/NetMenuAbstractViewModel.h"
 #include "../Game/Events/ServerSide.h"
-//TODO replace
-#include "../ViewModels/CONSOLE/NetMenuConsoleViewModel.h"
 #include "../Game/Events/ClientSide.h"
 #include "../Game/Tasks/DiscardingInput.h"
 #include "../Game/GameContent.h"
