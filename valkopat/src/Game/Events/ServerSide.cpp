@@ -215,7 +215,16 @@ void Game::Event::ServerSide::WaitMethod()
 
 map<Game::Worm*, Game::Actions> Game::Event::ServerSide::GetActionsFromUsers()
 {
-    return std::map<Worm*, Actions>();
+    using namespace std;
+    map<Game::Worm*, Game::Actions> ToReturn;
+    for_each(Players.begin(),Players.end(),[&ToReturn](pair<int,Worm*> P){
+        ServerActions Recived;
+        Actions Final;
+        while(recv(P.first,&Recived,sizeof(Recived),MSG_DONTWAIT)!=-1 && Recived==ServerActions::KeyStroke)
+            recv(P.first,&Final,sizeof(Actions),0);
+        ToReturn.insert(pair<Worm*,Actions>(P.second,Final));
+    });
+    return ToReturn;
 }
 
 void Game::Event::ServerSide::NextFrame()
