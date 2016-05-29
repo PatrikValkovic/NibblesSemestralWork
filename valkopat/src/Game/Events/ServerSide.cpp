@@ -252,7 +252,7 @@ void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
     for_each(Players.begin(),Players.end(),[&ToSend](pair<int,Worm*> P){
         int SendSocket = P.first;
         for_each(ToSend.begin(),ToSend.end(),[&SendSocket](pair<Worm*,Actions> X){
-            ServerActions SendingAction = ServerActions::KeyStroke;
+            ServerActions SendingAction = ServerActions::ActionsSend;
             int IndexOfPlayer = X.first->GetId();
             send(SendSocket,&SendingAction,sizeof(ServerActions),0);
             send(SendSocket,&IndexOfPlayer,sizeof(int),0);

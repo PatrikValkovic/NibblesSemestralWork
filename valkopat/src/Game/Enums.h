@@ -59,7 +59,7 @@ namespace Game
         RequiredMap = 0x24242424,
         MapTransfer = 0x38383838,
         NameSending = 0x54545454,
-        InitSetting = 0x58585858,
+        ActionsSend = 0x58585858,
         PlayerTransfer = 0x53535353,
         PlayerConnected = 0x47474747,
         StartGame = 0x76767676,
