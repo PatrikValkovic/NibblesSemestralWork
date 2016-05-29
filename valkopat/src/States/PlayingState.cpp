@@ -6,7 +6,6 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     using Game::Actions;
     ViewModel::GameAbstractViewModel* Rendering = this->RenderingModel->GameModel();
 
-    vector<Worm*> WormsToRender(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end());
     while (true)
     {
         Rendering->RenderGame(this->ContentOfGame);
