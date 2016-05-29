@@ -10,6 +10,7 @@
 #include "../Enums.h"
 #include "../../Exceptions/ServerException.h"
 #include "../../ViewModels/Abstract/AbstractInput.h"
+#include "../Settings.h"
 #include "AbstractEvent.h"
 #include "../Worm.h"
 
@@ -36,6 +37,8 @@ namespace Game
             Worm* AskToWorm(string NameOfPlayer);
 
             Worm* PlayerConnected();
+
+            void SendInfoAboutKeyStroke(Actions Action);
 
         private:
             int SocketId;

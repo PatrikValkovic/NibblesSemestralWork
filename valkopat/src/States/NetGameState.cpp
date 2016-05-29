@@ -9,6 +9,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::GameContent;
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
+    using Game::Task::DiscardingInput;
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
@@ -17,7 +18,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     if (ClientSock == -1)
         return this->Menu;
 
-    ClientSide* ClientSideEvent = new ClientSide(ClientSock);
+    ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
     if (!ClientSideEvent->SendHello())
     {
         delete ClientSideEvent;
@@ -46,7 +47,8 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     CreatedContent->Events.AddEvent(ClientSideEvent);
     CreatedContent->Ground = CreatedPlayground;
 
-    //TODO tasks
+    DiscardingInput* DiscardTask = new DiscardingInput(this->RenderingModel->InputModel());
+    CreatedContent->Tasks.push_back(DiscardTask);
 
     this->PlayState->ClearContent(CreatedContent);
     return this->PlayState;

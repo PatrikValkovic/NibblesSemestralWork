@@ -6,13 +6,23 @@ Game::Event::ClientSide::ClientSide(int SockedId,ViewModel::AbstractInput* Input
 
 bool Game::Event::ClientSide::HasActions()
 {
-    //TODO
-    return false;
+    return true;
 }
 
 bool Game::Event::ClientSide::ProccessActions()
 {
-    //TODO
+    Keys Key;
+    bool Continue = true;
+    int PlayerI;
+    Actions Act;
+
+    Settings* SettingInstance = Settings::GetInstance();
+
+    while ((Key = this->InputFromUser->GetNextStroke()) != Keys::NONE)
+        if(SettingInstance->GetAction(Key,PlayerI,Act))
+            this->SendInfoAboutKeyStroke(Act);
+
+    return Continue;
 }
 
 bool Game::Event::ClientSide::SendHello()
@@ -133,6 +143,15 @@ Game::Worm* Game::Event::ClientSide::PlayerConnected()
 
     return Created;
 }
+
+void Game::Event::ClientSide::SendInfoAboutKeyStroke(Actions Action)
+{
+    ServerActions ToSend = ServerActions::KeyStroke;
+    send(SocketId,&ToSend,sizeof(Action),0);
+    send(SocketId,&Action,sizeof(Actions),0);
+}
+
+
 
 
 
