@@ -6,6 +6,10 @@ Game::Event::ServerSide::ServerSide(int ServerSock, int CountOfPlayers, Game::Pl
 
 Game::Event::ServerSide::~ServerSide()
 {
+    using namespace std;
+    for_each(Players.begin(),Players.end(),[](pair<int,Worm*> P){
+        delete P.second;
+    });
     delete Ground;
 }
 
@@ -38,9 +42,12 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
     while(S->StillPlay())
     {
         S->WaitMethod();
-        map<Worm*, Actions> Actions = S->GetActionsFromUsers();
-
+        map<Worm*, Actions> ActMap = S->GetActionsFromUsers();
+        S->SendActions(ActMap);
+        S->NextFrame();
     }
+
+    delete S;
 }
 
 int Game::Event::ServerSide::NewUserSocket()
