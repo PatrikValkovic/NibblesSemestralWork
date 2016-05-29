@@ -30,7 +30,9 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength, ClientSideEvent);
     Worm* PlayerWorm = ClientSideEvent->AskToWorm(NameOfPlayer);
     Worms.push_back(PlayerWorm);
+
     Rendering->WaitingForRestOfPlayers();
+
     while((PlayerWorm = ClientSideEvent->PlayerConnected()) != NULL)
     {
         Worms.push_back(PlayerWorm);

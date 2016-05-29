@@ -43,6 +43,7 @@ namespace Game
             Worm* GetInfoAboutPlayer(int SocketId,int IndexOfPlayer);
             void SendStartPosition(int ClientSock, Worm* AssignetWorm);
             void SendInfoAboutNewPlayer(Worm* Player);
+            void SendInfoAboutConnectedPlayers(int ClientSock);
         };
     }
 }
