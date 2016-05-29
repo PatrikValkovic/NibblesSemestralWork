@@ -28,6 +28,7 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         S->SendInfoAboutMap(NewPlayer);
         S->ProccessUserMapRequest(NewPlayer);
         Worm* NewPlayerWorm = S->GetInfoAboutPlayer(NewPlayer, ClientIndex);
+        S->SendStartPosition(NewPlayer,NewPlayerWorm);
     }
 }
 
@@ -112,6 +113,23 @@ Worm* Game::Event::ServerSide::GetInfoAboutPlayer(int SocketId, int IndexOfPlaye
     Created->SetName(NameOfPlayer);
     return Created;
 }
+
+void Game::Event::ServerSide::SendStartPosition(int ClientSock, Worm* AssignetWorm)
+{
+    ServerActions ToSend = ServerActions::PlayerTransfer;
+    send(ClientSock,&ToSend,sizeof(ServerActions),0);
+
+    int PositionX = AssignetWorm->GetSegment().at(0).GetPositionX();
+    int PositionY = AssignetWorm->GetSegment().at(0).GetPositionY();
+    Actions BeginDirection = AssignetWorm->GetMoveDirection();
+    int IndexOfPlayer = AssignetWorm->GetId();
+    send(ClientSock,&PositionX,sizeof(int),0);
+    send(ClientSock,&PositionY,sizeof(int),0);
+    send(ClientSock,&BeginDirection,sizeof(Actions),0);
+    send(ClientSock,&IndexOfPlayer,sizeof(int),0);
+}
+
+
 
 
 
