@@ -12,7 +12,9 @@
 #include <vector>
 #include <functional>
 #include <cstring>
+#include <map>
 #include "AbstractEvent.h"
+#include "../Worm.h"
 #include "../PlayGround.h"
 #include "../PlaygroundFactory.h"
 
@@ -30,6 +32,7 @@ namespace Game
             ~ServerSide();
             void StartServer();
         private:
+            map<int ,Worm*> Players;
             int ServerSock;
             int CountOfPlayers;
             PlayGround* Ground;
@@ -37,6 +40,7 @@ namespace Game
             int NewUserSocket();
             void SendInfoAboutMap(int ClientSock);
             void ProccessUserMapRequest(int ClientSock);
+            Worm* GetInfoAboutPlayer(int SocketId,int IndexOfPlayer);
         };
     }
 }
