@@ -157,6 +157,16 @@ string ViewModel::NetMenuConsoleViewModel::GetName()
     return Name;
 }
 
+void ViewModel::NetMenuConsoleViewModel::PlayerConnected(string NameOfPlayer)
+{
+    cout << Translation->GetTranslation("PlayerConnected") << ' ' << NameOfPlayer << endl;
+}
+
+void ViewModel::NetMenuConsoleViewModel::BeginGame()
+{
+    cout << Translation->GetTranslation("GameBegin") << endl;
+}
+
 
 #endif
 

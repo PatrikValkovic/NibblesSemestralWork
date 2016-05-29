@@ -103,6 +103,13 @@ Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
     return PlayerWorm;
 }
 
+Worm* Game::Event::ClientSide::PlayerConnected()
+{
+    return NULL;
+}
+
+
+
 
 
 

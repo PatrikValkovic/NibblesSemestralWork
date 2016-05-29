@@ -47,3 +47,5 @@ ServerRespond:Server odpovídá
 LevelToBeUse:Bude použit level
 MapExists:Mapa byla načtena
 MapDontExists:Mapa bude stažena
+PlayerConnected:Připojil se hráč
+GameBegin:Hra začíná

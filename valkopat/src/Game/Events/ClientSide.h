@@ -34,6 +34,8 @@ namespace Game
 
             Worm* AskToWorm(string NameOfPlayer);
 
+            Worm* PlayerConnected();
+
         private:
             int SocketId;
         };

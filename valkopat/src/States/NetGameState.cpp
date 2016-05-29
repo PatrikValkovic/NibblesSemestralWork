@@ -26,8 +26,18 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     Rendering->ServerRespond();
     pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
 
+    vector<Worm*> Worms;
     PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength, ClientSideEvent);
     Worm* PlayerWorm = ClientSideEvent->AskToWorm(NameOfPlayer);
+    Worms.push_back(PlayerWorm);
+    while((PlayerWorm = ClientSideEvent->PlayerConnected()) != NULL)
+    {
+        Worms.push_back(PlayerWorm);
+        Rendering->PlayerConnected(PlayerWorm->GetName());
+    }
+    Rendering->BeginGame();
+
+    //TODO game content
 
     return NULL;
 }

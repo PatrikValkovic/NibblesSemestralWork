@@ -28,6 +28,8 @@ namespace ViewModel
         virtual void LevelToUse(string NameOfLevel);
         virtual void HaveMap(bool Have);
         virtual string GetName();
+        virtual void PlayerConnected(string NameOfPlayer);
+        virtual void BeginGame();
     };
 }
 

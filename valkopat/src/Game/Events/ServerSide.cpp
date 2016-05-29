@@ -88,7 +88,7 @@ void Game::Event::ServerSide::ProccessUserMapRequest(int ClientSock)
     send(ClientSock, Level.c_str(), CountOfCharacters, 0);
 }
 
-Worm* Game::Event::ServerSide::GetInfoAboutPlayer(int SocketId, int IndexOfPlayer)
+Game::Worm* Game::Event::ServerSide::GetInfoAboutPlayer(int SocketId, int IndexOfPlayer)
 {
     ServerActions ToRecive;
     recv(SocketId, &ToRecive, sizeof(ServerActions), 0);
