@@ -32,6 +32,7 @@ namespace Game
             ~ServerSide();
             void StartServer();
         private:
+            const int WaitForMiliseconds = 1400;
             map<int ,Worm*> Players;
             int ServerSock;
             int CountOfPlayers;
@@ -45,6 +46,7 @@ namespace Game
             void SendInfoAboutNewPlayer(Worm* Player);
             void SendInfoAboutConnectedPlayers(int ClientSock);
             void StartGame();
+            bool StillPlay();
         };
     }
 }

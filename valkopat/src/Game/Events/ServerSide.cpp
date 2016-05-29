@@ -34,6 +34,8 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         S->Players.insert(pair<int,Worm*>(NewPlayer,NewPlayerWorm));
     }
     S->StartGame();
+
+    while()
 }
 
 int Game::Event::ServerSide::NewUserSocket()
@@ -185,6 +187,19 @@ void Game::Event::ServerSide::StartGame()
         send(P.first,&ToSend,sizeof(ServerActions),0);
     });
 }
+
+bool Game::Event::ServerSide::StillPlay()
+{
+    using namespace std;
+    bool ToReturn = false;
+    for_each(Players.begin(),Players.end(),[&ToReturn](pair<int,Worm*> X){
+        if(X.second->IsPlaying())
+            ToReturn = true;
+    });
+    return ToReturn;
+}
+
+
 
 
 
