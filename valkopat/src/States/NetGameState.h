@@ -11,6 +11,7 @@
 //TODO replace
 #include "../ViewModels/CONSOLE/NetMenuConsoleViewModel.h"
 #include "../Game/Events/ClientSide.h"
+#include "../Game/GameContent.h"
 
 namespace GameStates
 {

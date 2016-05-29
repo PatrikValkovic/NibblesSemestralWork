@@ -6,6 +6,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using ViewModel::NetMenuConsoleViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
+    using Game::GameContent;
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
 
@@ -40,9 +41,15 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     }
     Rendering->BeginGame();
 
-    //TODO game content
+    GameContent* CreatedContent = new GameContent();
+    CreatedContent->Players = Worms;
+    CreatedContent->Events.AddEvent(ClientSideEvent);
 
-    return NULL;
+    //TODO tasks
+
+    this->PlayState->ClearContent(CreatedContent);
+    return this->PlayState;
+
 }
 
 GameStates::NetGameState::NetGameState(ViewModel::BaseViewModel* RenderingModel)
@@ -193,7 +200,7 @@ int GameStates::NetGameState::CreateSocket()
             delete Server;
             Rendering->CreatingAndConnectingError();
             return -1;
-        }
+        }   
 
         Server->StartServer();
     }
