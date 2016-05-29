@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include "../Enums.h"
 #include "../../Exceptions/ServerException.h"
+#include "../../ViewModels/Abstract/AbstractInput.h"
 #include "AbstractEvent.h"
 #include "../Worm.h"
 
@@ -20,7 +21,7 @@ namespace Game
         class ClientSide : public Abstract
         {
         public:
-            ClientSide(int SocketId);
+            ClientSide(int SocketId,ViewModel::AbstractInput* Input);
             virtual ~ClientSide();
 
             virtual bool HasActions();
@@ -38,6 +39,7 @@ namespace Game
 
         private:
             int SocketId;
+            ViewModel::AbstractInput* InputFromUser;
         };
     }
 }

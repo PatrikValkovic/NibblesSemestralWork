@@ -1,7 +1,7 @@
 #include "ClientSide.h"
 
-Game::Event::ClientSide::ClientSide(int SockedId)
-    : SocketId(SockedId)
+Game::Event::ClientSide::ClientSide(int SockedId,ViewModel::AbstractInput* Input)
+    : SocketId(SockedId), InputFromUser(Input)
 {}
 
 bool Game::Event::ClientSide::HasActions()
