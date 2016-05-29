@@ -47,8 +47,9 @@ namespace Game
         std::vector<Segment> Segments;
         Actions MoveDirection;
         bool Playing = true;
+        int Id;
     public:
-        Worm(int PositionX, int PositionY, Actions Direction);
+        Worm(int PositionX, int PositionY, Actions Direction, int Id = 0);
 
         std::string GetName() const;
         void SetName(std::string NewName);
@@ -62,6 +63,8 @@ namespace Game
         void Move(Actions Direction);
         void ValidatePosition(int MaxWidth, int MaxHeight);
         void IncrementSize();
+
+        int GetId();
     };
 }
 

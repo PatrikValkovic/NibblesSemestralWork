@@ -74,7 +74,33 @@ string Game::Event::ClientSide::AskToLevel(bool Have)
 
 Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
 {
-    return nullptr;
+    using Game::Worm;
+    using Game::Actions;
+    //send info
+    ServerActions ToSend = ServerActions::NameSending;
+    send(SocketId,&ToSend,sizeof(ServerActions),0);
+    size_t SizeOfname = NameOfPlayer.size();
+    send(SocketId,&SizeOfname,sizeof(size_t),0);
+    send(SocketId,NameOfPlayer.data(),SizeOfname,0);
+
+    //wait to position
+    ToSend = ServerActions::PlayerTransfer;
+    recv(SocketId,&ToSend,sizeof(ServerActions),0);
+    if(ToSend!=ServerActions::PlayerTransfer)
+        throw new Exceptions::ServerException("Invalid header of packet",__LINE__,__FILE__);
+
+    int PositionX;
+    int PositionY;
+    Actions BeginDirection;
+    int PlayerId;
+    recv(SocketId,&PositionX,sizeof(int),0);
+    recv(SocketId,&PositionY,sizeof(int),0);
+    recv(SocketId,&BeginDirection,sizeof(Actions),0);
+    recv(SocketId,&PlayerId,sizeof(int),0);
+
+    Worm* PlayerWorm = new Worm(PositionX,PositionY,BeginDirection);
+
+    return PlayerWorm;
 }
 
 
