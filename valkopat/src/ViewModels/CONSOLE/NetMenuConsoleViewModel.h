@@ -30,6 +30,7 @@ namespace ViewModel
         virtual string GetName();
         virtual void PlayerConnected(string NameOfPlayer);
         virtual void BeginGame();
+        virtual void WaitingForRestOfPlayers();
     };
 }
 

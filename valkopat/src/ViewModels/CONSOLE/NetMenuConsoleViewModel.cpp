@@ -167,6 +167,11 @@ void ViewModel::NetMenuConsoleViewModel::BeginGame()
     cout << Translation->GetTranslation("GameBegin") << endl;
 }
 
+void ViewModel::NetMenuConsoleViewModel::WaitingForRestOfPlayers()
+{
+    cout << Translation->GetTranslation("WaitingForPlayer") << endl;
+}
+
 
 #endif
 
