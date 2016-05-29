@@ -47,6 +47,10 @@ namespace Game
             void SendInfoAboutConnectedPlayers(int ClientSock);
             void StartGame();
             bool StillPlay();
+            void WaitMethod();
+            map<Worm*,Actions> GetActionsFromUsers();
+            void SendActions(map<Worm*,Actions> ToSend);
+            void NextFrame();
         };
     }
 }

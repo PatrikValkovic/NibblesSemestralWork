@@ -35,7 +35,12 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
     }
     S->StartGame();
 
-    while()
+    while(S->StillPlay())
+    {
+        S->WaitMethod();
+        map<Worm*, Actions> Actions = S->GetActionsFromUsers();
+
+    }
 }
 
 int Game::Event::ServerSide::NewUserSocket()
@@ -198,6 +203,44 @@ bool Game::Event::ServerSide::StillPlay()
     });
     return ToReturn;
 }
+
+void Game::Event::ServerSide::WaitMethod()
+{
+    using namespace std::this_thread; // sleep_for, sleep_until
+    using namespace std::chrono; // nanoseconds, system_clock, seconds
+    time_point<system_clock> BeginOfMethod = system_clock::now();
+
+    sleep_until(BeginOfMethod + milliseconds(this->WaitForMiliseconds));
+}
+
+map<Worm*, Actions> Game::Event::ServerSide::GetActionsFromUsers()
+{
+    return std::map<Worm*, Actions>();
+}
+
+void Game::Event::ServerSide::NextFrame()
+{
+    for_each(Players.begin(),Players.end(),[](pair<int,Worm*> X){
+        if(X.second->IsPlaying())
+        {
+            ServerActions ToSend = ServerActions::Wait;
+            send(X.first,&ToSend,sizeof(ServerActions),0);
+        }
+    });
+}
+
+void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
+{
+
+}
+
+
+
+
+
+
+
+
 
 
 
