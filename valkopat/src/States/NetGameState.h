@@ -11,6 +11,7 @@
 #include "../Game/Events/ServerSide.h"
 #include "../Game/Events/ClientSide.h"
 #include "../Game/Tasks/DiscardingInput.h"
+#include "../Game/Tasks/ServerListener.h"
 #include "../Game/GameContent.h"
 
 namespace GameStates

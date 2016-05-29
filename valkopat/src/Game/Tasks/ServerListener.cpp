@@ -22,7 +22,7 @@ void Game::Task::ServerListener::run()
         vector<Worm*>::iterator Finded = find_if(MovingIter,EndIter,[&PlayerIndex](Worm* W){
             return W->GetId()==PlayerIndex;
         });
-        
+
         if(Finded==EndIter)
             continue;
 

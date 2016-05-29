@@ -9,6 +9,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
     using Game::Task::DiscardingInput;
+    using Game::Task::ServerListener;
 
     NetMenuAbstractViewModel* Rendering = this->RenderingModel->NetModel();
 
@@ -46,7 +47,9 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     CreatedContent->Events.AddEvent(ClientSideEvent);
     CreatedContent->Ground = CreatedPlayground;
 
+    ServerListener* ServerListenTask = new ServerListener(ClientSock,CreatedContent->Worms);
     DiscardingInput* DiscardTask = new DiscardingInput(this->RenderingModel->InputModel());
+    CreatedContent->Tasks.push_back(ServerListenTask);
     CreatedContent->Tasks.push_back(DiscardTask);
 
     this->PlayState->ClearContent(CreatedContent);
