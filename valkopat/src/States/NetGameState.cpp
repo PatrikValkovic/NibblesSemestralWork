@@ -135,11 +135,11 @@ int GameStates::NetGameState::ConnectToServer(std::pair<string, string> IPAndPor
 Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
                                                              Game::Event::ClientSide* Client)
 {
-    using ViewModel::NetMenuConsoleViewModel;
+    using ViewModel::NetMenuAbstractViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
 
-    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
+    NetMenuAbstractViewModel* Rendering = this->RenderingModel->NetModel();
     Rendering->LevelToUse(NameOfLevel.first);
 
     try
@@ -166,13 +166,13 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t
 
 int GameStates::NetGameState::CreateSocket()
 {
-    using ViewModel::NetMenuConsoleViewModel;
+    using ViewModel::NetMenuAbstractViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
 
-    NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
+    NetMenuAbstractViewModel* Rendering = this->RenderingModel->NetModel();
 
     int ClientSock = -1;
     if (Rendering->CreateNewServer())
