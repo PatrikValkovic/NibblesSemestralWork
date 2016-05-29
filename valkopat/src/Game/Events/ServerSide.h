@@ -44,6 +44,7 @@ namespace Game
             void SendStartPosition(int ClientSock, Worm* AssignetWorm);
             void SendInfoAboutNewPlayer(Worm* Player);
             void SendInfoAboutConnectedPlayers(int ClientSock);
+            void StartGame();
         };
     }
 }

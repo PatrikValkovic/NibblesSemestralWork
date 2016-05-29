@@ -20,7 +20,7 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
     using namespace std;
     using namespace Game;
     int ClientIndex = 0;
-    while ((int) S->Players.size() < 4)
+    while ((int) S->Players.size() < S->CountOfPlayers)
     {
         int NewPlayer;
         if ((NewPlayer = S->NewUserSocket()) == -1)
@@ -31,9 +31,9 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         S->SendStartPosition(NewPlayer,NewPlayerWorm);
         S->SendInfoAboutNewPlayer(NewPlayerWorm);
         S->SendInfoAboutConnectedPlayers(NewPlayer);
-        S->SendInfoAboutConnectedPlayers(NewPlayer);
         S->Players.insert(pair<int,Worm*>(NewPlayer,NewPlayerWorm));
     }
+    S->StartGame();
 }
 
 int Game::Event::ServerSide::NewUserSocket()
@@ -176,6 +176,17 @@ void Game::Event::ServerSide::SendInfoAboutConnectedPlayers(int ClientSock)
         send(ClientSock,&Index,sizeof(int),0);
     });
 }
+
+void Game::Event::ServerSide::StartGame()
+{
+    using namespace std;
+    for_each(this->Players.begin(),this->Players.end(),[](pair<int,Worm*> P) {
+        ServerActions ToSend = ServerActions::StartGame;
+        send(P.first,&ToSend,sizeof(ServerActions),0);
+    });
+}
+
+
 
 
 
