@@ -213,13 +213,14 @@ void Game::Event::ServerSide::WaitMethod()
     sleep_until(BeginOfMethod + milliseconds(this->WaitForMiliseconds));
 }
 
-map<Worm*, Actions> Game::Event::ServerSide::GetActionsFromUsers()
+map<Game::Worm*, Game::Actions> Game::Event::ServerSide::GetActionsFromUsers()
 {
     return std::map<Worm*, Actions>();
 }
 
 void Game::Event::ServerSide::NextFrame()
 {
+    using namespace std;
     for_each(Players.begin(),Players.end(),[](pair<int,Worm*> X){
         if(X.second->IsPlaying())
         {
@@ -231,7 +232,17 @@ void Game::Event::ServerSide::NextFrame()
 
 void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
 {
-
+    using namespace std;
+    for_each(Players.begin(),Players.end(),[&ToSend](pair<int,Worm*> P){
+        int SendSocket = P.first;
+        for_each(ToSend.begin(),ToSend.end(),[&SendSocket](pair<Worm*,Actions> X){
+            ServerActions SendingAction = ServerActions::KeyStroke;
+            int IndexOfPlayer = X.first->GetId();
+            send(SendSocket,&SendingAction,sizeof(ServerActions),0);
+            send(SendSocket,&IndexOfPlayer,sizeof(int),0);
+            send(SendSocket,&X.second,sizeof(Actions),0);
+        });
+    });
 }
 
 
