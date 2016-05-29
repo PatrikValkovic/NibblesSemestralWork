@@ -139,6 +139,24 @@ void ViewModel::NetMenuConsoleViewModel::HaveMap(bool Have)
         cout << Translation->GetTranslation("MapDontExists") << endl;
 }
 
+string ViewModel::NetMenuConsoleViewModel::GetName()
+{
+    using namespace std;
+    string Name;
+    while (true)
+    {
+        cout << Translation->GetTranslation("ChooseName") << ':';
+        cin >> Name;
+        if (cin.fail() || Name.length() == 0)
+        {
+            cout << Translation->GetTranslation("WrongEntry") << endl;
+            continue;
+        }
+        break;
+    }
+    return Name;
+}
+
 
 #endif
 

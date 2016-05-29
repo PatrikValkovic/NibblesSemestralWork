@@ -27,6 +27,7 @@ namespace ViewModel
         virtual void ServerRespond();
         virtual void LevelToUse(string NameOfLevel);
         virtual void HaveMap(bool Have);
+        virtual string GetName();
     };
 }
 

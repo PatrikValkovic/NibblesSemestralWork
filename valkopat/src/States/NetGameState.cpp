@@ -11,6 +11,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
 
     NetMenuConsoleViewModel* Rendering = (NetMenuConsoleViewModel*) this->RenderingModel->NetModel();
 
+    string NameOfPlayer = Rendering->GetName();
     int ClientSock = CreateSocket();
     if (ClientSock == -1)
         return this->Menu;
@@ -26,6 +27,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
 
     PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength, ClientSideEvent);
+    Worm* PlayerWorm = ClientSideEvent->AskToWorm(NameOfPlayer);
 
     return NULL;
 }

@@ -10,6 +10,7 @@
 #include "../Enums.h"
 #include "../../Exceptions/ServerException.h"
 #include "AbstractEvent.h"
+#include "../Worm.h"
 
 
 namespace Game
@@ -30,6 +31,8 @@ namespace Game
             string AskToLevel(bool Have);
 
             std::pair<std::string,size_t> LevelInfo();
+
+            Worm* AskToWorm(string NameOfPlayer);
 
         private:
             int SocketId;

@@ -72,6 +72,13 @@ string Game::Event::ClientSide::AskToLevel(bool Have)
     return Geted;
 }
 
+Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
+{
+    return nullptr;
+}
+
+
+
 
 
 
