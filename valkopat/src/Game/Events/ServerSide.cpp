@@ -184,9 +184,9 @@ void Game::Event::ServerSide::SendInfoAboutConnectedPlayers(int ClientSock)
 void Game::Event::ServerSide::StartGame()
 {
     using namespace std;
+    using Game::NetworkCommunication;
     for_each(this->Players.begin(),this->Players.end(),[](pair<int,Worm*> P) {
-        ServerActions ToSend = ServerActions::StartGame;
-        send(P.first,&ToSend,sizeof(ServerActions),0);
+        NetworkCommunication::SendStartGame(P.first);
     });
 }
 
