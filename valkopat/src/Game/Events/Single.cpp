@@ -18,7 +18,10 @@ bool Game::Event::Single::ProccessActions()
         if(this->ActualSetting->GetAction(Key,PlayerI,Act))
         {
             if (Act == Actions::Pause)
+            {
                 Continue = false;
+                continue;
+            }
 
             if(PlayerI==this->PlayerIndex)
                 this->Player->SetMoveDirection(Act);
