@@ -25,6 +25,8 @@ namespace GameStates
 
         void ValidatePositionsOfWorms();
 
+        bool Playing();
+
     private:
         MenuGameState* Menu;
         GamePauseState* Pause;

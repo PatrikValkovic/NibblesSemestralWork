@@ -122,6 +122,18 @@ void GameStates::PlayingState::RunTasks()
     });
 }
 
+bool GameStates::PlayingState::Playing()
+{
+    using namespace std;
+    vector<Worm*>::iterator Moving = ContentOfGame->Worms.begin();
+    vector<Worm*>::iterator End = ContentOfGame->Worms.end();
+    return this->ContentOfGame != NULL && find_if(Moving,End,[](Worm* W){
+        return W->IsPlaying();
+    }) != End;
+}
+
+
+
 
 
 
