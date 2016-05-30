@@ -108,7 +108,7 @@ Game::Worm* Game::Event::ServerSide::GetInfoAboutPlayer(int SocketId, int IndexO
 {
     ServerActions ToRecive;
     recv(SocketId, &ToRecive, sizeof(ServerActions), 0);
-    if (ToRecive != ServerActions::NameSending)
+    if (ToRecive != ServerActions::NameTransfer)
     {
         ToRecive = ServerActions::InvalidRequest;
         send(SocketId, &ToRecive, sizeof(ServerActions), 0);

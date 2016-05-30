@@ -34,6 +34,7 @@ namespace Game
         static void RecvInitForPlayer(int Socket,int& PosX,int PosY,Actions& Direction);
 
         static void SendPlayerConnected(int Socket,string NameOfPlayer,int PosX,int PosY,Actions Direction);
+        static void SendStartGame(int Socket);
         static bool TryRecvPlayerConnected(int Socket,string& NameOfPlayer,int& PosX,int& PosY,Actions& Direction);
 
         static void SendPlayerAction(int Socket,Actions Action);

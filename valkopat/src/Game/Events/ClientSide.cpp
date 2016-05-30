@@ -87,7 +87,7 @@ Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
     using Game::Worm;
     using Game::Actions;
     //send info
-    ServerActions ToSend = ServerActions::NameSending;
+    ServerActions ToSend = ServerActions::NameTransfer;
     send(SocketId,&ToSend,sizeof(ServerActions),0);
     size_t SizeOfname = NameOfPlayer.size();
     send(SocketId,&SizeOfname,sizeof(size_t),0);
