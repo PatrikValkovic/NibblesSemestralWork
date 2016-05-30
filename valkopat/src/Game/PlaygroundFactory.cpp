@@ -2,13 +2,7 @@
 
 Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 {
-    PlayGround* Playlevel = NULL;
-    if (Level == "ClearMap")
-        Playlevel = FirstLevel();
-    else if (Level == "BorderedMap")
-        Playlevel = SecondLevel();
-    else
-        Playlevel = CreateLevelFromFile(Level);
+    PlayGround* Playlevel = CreateLevelFromFile(Level);
 
     if (Playlevel == NULL)
         throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists", __LINE__, __FILE__);
@@ -18,7 +12,7 @@ Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
 
 Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
 {
-    PlayGround* Area = new PlayGround();
+    PlayGround* Area = new PlayGround("ClearMap");
     Area->Height = 11;
     Area->Width = 15;
     Area->StartingPositions.push_back(Game::PlayGround::StartPosition{Point(4, 2), Actions::MoveRight});
@@ -31,7 +25,7 @@ Game::PlayGround* Game::PlaygroundFactory::FirstLevel()
 
 Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
 {
-    PlayGround* Area = new PlayGround();
+    PlayGround* Area = new PlayGround("BorderedMap");
     Area->Height = 11;
     Area->Width = 15;
 
@@ -58,8 +52,6 @@ Game::PlayGround* Game::PlaygroundFactory::SecondLevel()
 vector<string> Game::PlaygroundFactory::GetAviableLevels()
 {
     vector<string> Levels;
-    Levels.push_back("ClearMap");
-    Levels.push_back("BorderedMap");
 
     vector<string> FilesWithLevels = GetLevelsFileNames();
     for_each(FilesWithLevels.begin(), FilesWithLevels.end(), [&Levels](string NameOfFile) {
@@ -88,6 +80,7 @@ vector<string> Game::PlaygroundFactory::GetLevelsFileNames()
 
 string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 {
+    //cout << "PlaygroundFactory.LoadNameOfLevel" << endl;
     ifstream File("data/Levels/" + Filename);
     string NameOfLevel;
     File >> NameOfLevel;
@@ -97,59 +90,53 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
 
 Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
 {
-    using Game::PlayGround;
-
-    PlayGround* CreatedPlayground = NULL;
-
-    vector<string> Files = GetLevelsFileNames();
-    for_each(Files.begin(), Files.end(), [&LevelName, &CreatedPlayground](string FileName) {
-        if (LoadNameOfLevel(FileName) == LevelName && CreatedPlayground == NULL)
-            CreatedPlayground = ParseLevelFromFile(FileName);
-    });
-
-    return CreatedPlayground;
+    //cout << "PlaygroundFactory.CreateLevelFromFile" << endl;
+    stringstream LevelContent(GetLevelInString(LevelName));
+    return ParseLevelFromStream(LevelContent);
 }
 
-Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromFile(string FileName)
+Game::PlayGround* Game::PlaygroundFactory::ParseLevelFromStream(istream& LevelContent)
 {
+    //cout << "PlaygroundFactory.ParseLevelFromStream" << endl;
     using Game::PlayGround;
     using Exceptions::Exception;
 
-    PlayGround* Created = new PlayGround();
-    ifstream File("data/Levels/" + FileName);
+    PlayGround* Created = NULL;
     set<char> ValidCharacters = {'-', 'W', 'U', 'D', 'L', 'R'};
 
     try
     {
-        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore name of level
-        if (!(File >> Created->Height >> Created->Width))        //read height and width
+        string LevelName;
+        LevelContent >> LevelName;
+        Created = new PlayGround(LevelName);
+        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
+        if (!(LevelContent >> Created->Height >> Created->Width))        //read height and width
             throw new Exception("Wrong size", __LINE__, __FILE__);
-        File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
+
+        LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         //read level
         for (int a = 0; a < Created->Height; a++)
         {
             for (int b = 0; b < Created->Width; b++)
             {
                 char Readed;
-                if (!File.get(Readed))
+                if (!LevelContent.get(Readed))
                     throw new Exception("Nothing readed", __LINE__, __FILE__);
                 if (ValidCharacters.find(Readed) == ValidCharacters.end())
                     throw new Exception("Wrong character", __LINE__, __FILE__);
 
                 AddElementIntoPlayground(Created, Readed, a, b);
             }
-            File.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
+            LevelContent.ignore(numeric_limits<streamsize>::max(), '\n');    //ignore to enter
         }
     }
     catch (Exceptions::Exception* e)
     {
         delete Created;
         Created = NULL;
-        File.close();
 
-        throw new Exceptions::InvalidFormatException("File " + FileName + " have wrong format.", __LINE__, __FILE__, e);
+        throw new Exceptions::InvalidFormatException("Wrong format of level", __LINE__, __FILE__, e);
     }
-    File.close();
     return Created;
 }
 
@@ -157,29 +144,82 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
                                                        int YPosition, int XPosition)
 {
     using Game::PlayGround;
-    if(Readed=='-')
+    if (Readed == '-')
         return;
-    if(Readed=='W')
+    if (Readed == 'W')
     {
         Playground->Walls.push_back(Point(XPosition, YPosition));
         return;
     }
 
     PlayGround::StartPosition Starting;
-    Starting.Position = Point(XPosition,YPosition);
+    Starting.Position = Point(XPosition, YPosition);
 
-    if(Readed=='L')
+    if (Readed == 'L')
         Starting.Direction = Actions::MoveLeft;
     else if(Readed=='R')
         Starting.Direction = Actions::MoveRight;
     else if(Readed=='U')
         Starting.Direction = Actions::MoveUp;
-    else if(Readed=='D')
+    else if (Readed == 'D')
         Starting.Direction = Actions::MoveDown;
 
     Playground->StartingPositions.push_back(Starting);
     return;
 }
+
+string Game::PlaygroundFactory::GetLevelInString(string LevelName)
+{
+    //cout << "PlaygroundFactory.GetLevelInString" << endl;
+    using namespace std;
+
+    string NameOfFile = GetNameOfFileForLevel(LevelName);
+    if (NameOfFile.empty())
+        throw new Exceptions::InvalidArgumentException("LevelName with name " + LevelName + " dont exists");
+
+    ifstream FileWithLevel("data/Levels/" + NameOfFile);
+    string Lev = LoadFromStream(FileWithLevel);
+    FileWithLevel.close();
+    return Lev;
+}
+
+string Game::PlaygroundFactory::LoadFromStream(istream &StreamWithLevel)
+{
+    //cout << "PlaygroundFactory.LoadFromStream" << endl;
+    const int SizeOfBuffer = 1024;
+    char Buffer[SizeOfBuffer];
+    using namespace std;
+    stringbuf ContentOfGame;
+    while(StreamWithLevel.good())
+    {
+        StreamWithLevel.get(Buffer,SizeOfBuffer,EOF);
+        size_t Readed = strlen(Buffer);
+        ContentOfGame.sputn(Buffer,Readed);
+        if(Readed!=SizeOfBuffer-1)
+            break;
+    }
+
+    return ContentOfGame.str();
+}
+
+string Game::PlaygroundFactory::GetNameOfFileForLevel(string Level)
+{
+    //cout << "PlaygroundFactory.GetNameOfFileForLevel" << endl;
+    using namespace std;
+    string FileToReturn;
+    vector<string> Files = GetLevelsFileNames();
+    for_each(Files.begin(), Files.end(), [&Level, &FileToReturn](string FileName) {
+        if (LoadNameOfLevel(FileName) == Level && FileToReturn.empty())
+            FileToReturn = FileName;
+    });
+    return FileToReturn;
+}
+
+
+
+
+
+
 
 
 

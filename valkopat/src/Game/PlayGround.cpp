@@ -2,7 +2,7 @@
 
 Game::PlayGround::StartPosition Game::PlayGround::GetNextStartPosition()
 {
-    if((size_t)StartPositionIndex>=StartingPositions.size())
+    if ((size_t) StartPositionIndex >= StartingPositions.size())
         throw new Exceptions::OutOfRangeException();
 
     return StartingPositions[StartPositionIndex++];
@@ -25,8 +25,14 @@ int Game::PlayGround::GetWidth() const
 
 int Game::PlayGround::CountOfStartPositions() const
 {
-    return (int)StartingPositions.size();
+    return (int) StartingPositions.size();
 }
+
+Game::PlayGround::PlayGround(string LevelName)
+        : NameOfLevel(LevelName)
+{ }
+
+
 
 
 

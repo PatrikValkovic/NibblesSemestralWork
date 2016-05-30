@@ -28,7 +28,6 @@ namespace Game
         PlayGround* Ground;
         vector<Worm*> Worms;
         map<Worm*,Actions> MovingDirections;
-        vector<Worm*> Players;
         EventContainer Events;
         vector<Game::Task::BaseTask*> Tasks;
 

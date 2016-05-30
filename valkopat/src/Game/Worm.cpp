@@ -5,8 +5,8 @@ std::vector<Game::Worm::Segment> Game::Worm::GetSegment() const
     return this->Segments;
 }
 
-Game::Worm::Worm(int PositionX, int PositionY, Actions Direction)
-    : Segments(), MoveDirection(Direction)
+Game::Worm::Worm(int PositionX, int PositionY, Actions Direction, int Id)
+    : Segments(), MoveDirection(Direction), Id(Id)
 {
     int RightAdding = 0;
     int DownAdding = 0;
@@ -115,6 +115,13 @@ void Game::Worm::IncrementSize()
 
     this->Segments.push_back(CreatedSegment);
 }
+
+int Game::Worm::GetId()
+{
+    return this->Id;
+}
+
+
 
 
 

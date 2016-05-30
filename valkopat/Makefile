@@ -85,7 +85,7 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o $(TARGET_DIR)/Exceptions.o
 ##	GAME  ##
 ############
 
-$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o $(TARGET_DIR)/AIFactory.o
+$(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o $(TARGET_DIR)/AIFactory.o $(TARGET_DIR)/NetworkCommunication.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
@@ -118,11 +118,14 @@ $(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h src/Game/Enu
 $(TARGET_DIR)/AIFactory.o: src/Game/AIFactory.cpp src/Game/AIFactory.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+$(TARGET_DIR)/NetworkCommunication.o: src/Game/NetworkCommunication.cpp src/Game/NetworkCommunication.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
 ##############
 ##	EVENTS  ##
 ##############
 
-$(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o
+$(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o $(TARGET_DIR)/ServerSide.o $(TARGET_DIR)/ClientSide.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/Game/Events/AbstractEvent.h src/Game/Worm.h
@@ -131,11 +134,17 @@ $(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/
 $(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Events/EventContainer.h src/Game/Events/AbstractEvent.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+$(TARGET_DIR)/ServerSide.o: src/Game/Events/ServerSide.cpp src/Game/Events/ServerSide.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/ClientSide.o: src/Game/Events/ClientSide.cpp src/Game/Events/ClientSide.h src/Game/Events/AbstractEvent.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
 #############
 ##	TASKS  ##
 #############
 
-$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o $(TARGET_DIR)/RandomAI.o $(TARGET_DIR)/BFSAI.o $(TARGET_DIR)/BaseAITask.o $(TARGET_DIR)/DiscardingInput.o
+$(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o $(TARGET_DIR)/RandomAI.o $(TARGET_DIR)/BFSAI.o $(TARGET_DIR)/BaseAITask.o $(TARGET_DIR)/DiscardingInput.o $(TARGET_DIR)/ServerListener.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
@@ -156,11 +165,14 @@ $(TARGET_DIR)/BFSAI.o: src/Game/Tasks/BFSAI.cpp src/Game/Tasks/BFSAI.h src/Game/
 $(TARGET_DIR)/DiscardingInput.o: src/Game/Tasks/DiscardingInput.cpp src/Game/Tasks/DiscardingInput.h src/Game/Tasks/BaseTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
+$(TARGET_DIR)/ServerListener.o: src/Game/Tasks/ServerListener.cpp src/Game/Tasks/ServerListener.h src/Game/Tasks/BaseTask.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
 ##################
 ##	EXCEPTIONS  ##
 ##################
 
-$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o
+$(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o $(TARGET_DIR)/ServerException.o
 	$(LINKER) -r -o $@ $^
 
 $(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
@@ -173,6 +185,9 @@ $(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h src/Exceptions/Exception.h
+	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+$(TARGET_DIR)/ServerException.o: src/Exceptions/ServerException.cpp src/Exceptions/ServerException.h src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 #################

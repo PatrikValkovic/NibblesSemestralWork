@@ -46,3 +46,19 @@ ChangeSettingForPlayer3:Změnit nastavení třetího hráče
 PushKeyToChange:Stiskněte klávesu, kterou chcete použit pro
 EnterToDontChange:(enter pokud chcete zanechat původní nastavení)
 NotAbleToApplySetting:Nepodařilo se aplikovat nastavení pro klávesu
+ChooseMode:Co chcete udělat?
+CreateNewServer:Vytvořit nový server
+ConnectToServer:Připojit se na server
+ServerIPPort:Zadejte IP adresu a port server ve formátu IP:Port
+ServerCreated:Server byl úspěšně vytvořen
+ServerNotCreated:Server se bohužel nepodařilo vytvořit
+ErrorWhenCreatingAndConnectiong:Z neznámého důvodu se nepodařilo připojit na server, návrat do menu
+CannotConnect:Nepodařilo se připojit na server, prosím opakujte akci
+ServerNotRespond:Server neodpovídá
+ServerRespond:Server odpovídá
+LevelToBeUse:Bude použit level
+MapExists:Mapa byla načtena
+MapDontExists:Mapa bude stažena
+PlayerConnected:Připojil se hráč
+GameBegin:Hra začíná
+WaitingForPlayer:Čekám na zbytek hráčů

@@ -45,20 +45,20 @@ GameStates::AbstractGameState* GameStates::SingleplayerGameState::run()
     GameContent* NewContent = new GameContent(AI, Player, Round);
 
     //create events
-    Single* SingleEvent = new Single(Player,this->RenderingModel->InputModel(),0,Settings::GetInstance());
+    Single* SingleEvent = new Single(Player, this->RenderingModel->InputModel(), 0, Settings::GetInstance());
     NewContent->Events.AddEvent(SingleEvent);
 
-    //create Tasks
+    //create TasksForAI
     WaitingTask* WaitTask = new WaitingTask();
     DiscardingInput* DiscardingInputTask = new DiscardingInput(this->RenderingModel->InputModel());
     NewContent->Tasks.push_back(WaitTask);
     NewContent->Tasks.push_back(DiscardingInputTask);
     //create tasks for AI
     string AILevel = View->LevelOfAI(AIFactory::GetInstance()->GetNamesOfAILevels());
-    vector<BaseAITask*> Tasks = AIFactory::GetInstance()->CreatesTaskForWorms(NewContent->Worms,
-                                                                              NewContent,
-                                                                              AILevel);
-    for_each(Tasks.begin(), Tasks.end(), [&NewContent](BaseAITask* T) {
+    vector<BaseAITask*> TasksForAI = AIFactory::GetInstance()->CreatesTaskForWorms(AI,
+                                                               NewContent,
+                                                               AILevel);
+    for_each(TasksForAI.begin(), TasksForAI.end(), [&NewContent](BaseAITask* T) {
         NewContent->Tasks.push_back(T);
     });
 

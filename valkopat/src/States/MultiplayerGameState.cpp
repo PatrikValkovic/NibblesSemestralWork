@@ -35,13 +35,13 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
                                           a,
                                           Settings::GetInstance());
         NewGameContent->Events.AddEvent(WorkingEvent);
-        NewGameContent->Players.push_back(WorkingPlayer);
+        NewGameContent->Worms.push_back(WorkingPlayer);
     }
 
     //create tasks
-    WaitingTask* Wait = new WaitingTask();
+    WaitingTask* WaitTask = new WaitingTask();
     DiscardingInput* Disc = new DiscardingInput(this->RenderingModel->InputModel());
-    NewGameContent->Tasks.push_back(Wait);
+    NewGameContent->Tasks.push_back(WaitTask);
     NewGameContent->Tasks.push_back(Disc);
 
     this->PlayState->ClearContent(NewGameContent);
