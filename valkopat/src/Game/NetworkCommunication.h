@@ -1,7 +1,13 @@
 #ifndef CERVISEMESTRALKA_NETWORKCOMMUNICATION_H
 #define CERVISEMESTRALKA_NETWORKCOMMUNICATION_H
+#include <cstdlib>
 #include <string>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <unistd.h>
 #include "Enums.h"
+#include "../Exceptions/ServerException.h"
 
 using namespace std;
 namespace Game
@@ -12,8 +18,8 @@ namespace Game
         static void SendHello(int Socket);
         static void RecvHello(int Socket);
 
-        static void SendMapRequest(int Socket,string Name,int Hash);
-        static void RecvMapRequest(int Socket,string &Name,int& Hash);
+        static void SendMapRequest(int Socket, string Name, size_t Hash);
+        static void RecvMapRequest(int Socket, string& Name, size_t& Hash);
 
         static void SendMapRequestAnswer(int Socket,bool Have);
         static void RecvMapRequestAnswer(int Socket,bool Have);
