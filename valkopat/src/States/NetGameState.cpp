@@ -184,10 +184,11 @@ Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name
     int PosX;
     int PosY;
     Actions BeginDirection;
-    NetworkCommunication::RecvInitForPlayer(Socket,PosX,PosY,BeginDirection);
+    int PlayerID;
+    NetworkCommunication::RecvInitForPlayer(Socket,PosX,PosY,BeginDirection,PlayerID);
 
     //TODO what about ID?
-    Worm* CreatedWorm = new Worm(PosX,PosY,BeginDirection);
+    Worm* CreatedWorm = new Worm(PosX,PosY,BeginDirection,PlayerID);
     CreatedWorm->SetName(Name);
     return CreatedWorm;
 }

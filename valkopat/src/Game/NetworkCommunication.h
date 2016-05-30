@@ -34,12 +34,12 @@ namespace Game
         static void SendName(int Socket,string Name);
         static void RecvName(int Socket,string& Name);
 
-        static void SendInitForPlayer(int Socket,int PosX,int PosY,Actions Direction);
-        static void RecvInitForPlayer(int Socket,int& PosX,int& PosY,Actions& Direction);
+        static void SendInitForPlayer(int Socket,int PosX,int PosY,Actions Direction,int PlayerID);
+        static void RecvInitForPlayer(int Socket,int& PosX,int& PosY,Actions& Direction,int& PlayerID);
 
-        static void SendPlayerConnected(int Socket,string NameOfPlayer,int PosX,int PosY,Actions Direction);
+        static void SendPlayerConnected(int Socket,string NameOfPlayer,int PosX,int PosY,Actions Direction, int PlayerID);
         static void SendStartGame(int Socket);
-        static bool TryRecvPlayerConnected(int Socket,string& NameOfPlayer,int& PosX,int& PosY,Actions& Direction);
+        static bool TryRecvPlayerConnected(int Socket,string& NameOfPlayer,int& PosX,int& PosY,Actions& Direction,int& PlayerID);
 
         static void SendPlayerAction(int Socket,Actions Action);
         static bool TryRecvPlayerAction(int Socket,Actions& Action);
