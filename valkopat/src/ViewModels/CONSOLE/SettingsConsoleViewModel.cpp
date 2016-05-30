@@ -71,14 +71,12 @@ int ViewModel::SettingsConsoleViewModel::ShowMenu(std::map<int, LanguageOverwiew
         });
 
         cout << Translation->GetTranslation("ChoiceFromUser") << ": ";
+        cin.clear();
+        cin.ignore(cin.rdbuf()->in_avail());
         cin >> UserChoice;
 
         if (!(cin) || Keys.find(UserChoice) == Keys.end())
-        {
-            cin.clear();
-            cin.ignore();
             cout << Translation->GetTranslation("WrongEntry") << endl;
-        }
         else
             return Keys.at(UserChoice);
     }
@@ -91,8 +89,10 @@ ViewModel::SettingsConsoleViewModel::SettingsConsoleViewModel(const Translate::T
 void ViewModel::SettingsConsoleViewModel::ShowActualLanguage() const
 {
     using namespace std;
-    cout << Translation->GetTranslation("LabelActualActivatedLanguage") << ": " << Translation->GetActualLanguage() <<
-    endl;
+    cout << Translation->GetTranslation("LabelActualActivatedLanguage")
+            << ": "
+            << Translation->GetActualLanguage()
+            << endl;
 }
 
 void ViewModel::SettingsConsoleViewModel::ShowKeySettings() const
@@ -116,13 +116,13 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
 {
     using namespace std;
     using namespace Game;
-    map<Keys,Actions> ToReturn;
+    map<Keys, Actions> ToReturn;
     vector<Actions> ActionsToChange{MoveUp, MoveDown, MoveLeft, MoveRight, Pause};
 
     this->ClearInput();
 
     for (int a = 0; a < (int) ActionsToChange.size(); a++)
-        while(true)
+        while (true)
         {
             cout << Translation->GetTranslation("PushKeyToChange")
             << ':'
@@ -131,21 +131,22 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
             << Translation->GetTranslation("EnterToDontChange")
             << ':';
             char Readed;
+            cin.clear();
+            cin.ignore(cin.rdbuf()->in_avail());
             cin.get(Readed);
-            if(Readed=='\n')
+            if (Readed == '\n')
                 break;
 
-            map<Keys,char>::const_iterator Finding = find_if(KeyTranslate.begin(),KeyTranslate.end(),[&Readed]
-                    (pair<Keys,char> P){
-                return P.second==Readed;
+            map<Keys, char>::const_iterator Finding = find_if(KeyTranslate.begin(), KeyTranslate.end(), [&Readed]
+                    (pair<Keys, char> P) {
+                return P.second == Readed;
             });
-            if(Finding==KeyTranslate.end())
+            if (Finding == KeyTranslate.end())
             {
                 cout << Translation->GetTranslation("WrongEntry") << endl;
                 continue;
             }
-            ToReturn.insert(pair<Keys,Actions>(Finding->first,ActionsToChange.at(a)));
-            cin.get();
+            ToReturn.insert(pair<Keys, Actions>(Finding->first, ActionsToChange.at(a)));
             break;
         }
 
@@ -154,8 +155,8 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
 
 void ViewModel::SettingsConsoleViewModel::ClearInput()
 {
-    //TODO something better
-    cin.get();
+    cin.clear();
+    cin.ignore(cin.rdbuf()->in_avail());
 }
 
 void ViewModel::SettingsConsoleViewModel::NotAbleToSetSettings(Game::Keys K)
