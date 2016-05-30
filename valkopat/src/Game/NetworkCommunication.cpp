@@ -213,7 +213,7 @@ bool Game::NetworkCommunication::TryRecvPlayerAction(int Socket, Actions& Action
     return false;
 }
 
-void Game::NetworkCommunication::SendActionsOfPlayer(int Socket, int IDOfPlayer, Actions Action)
+void Game::NetworkCommunication::SendActionsOfPlayer(int Socket, Actions Action)
 {
     SendHeader(Socket, ServerActions::ActionsSend);
     send(Socket, &IDOfPlayer, sizeof(int), 0);

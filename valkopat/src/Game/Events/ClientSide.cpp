@@ -12,17 +12,16 @@ bool Game::Event::ClientSide::HasActions()
 bool Game::Event::ClientSide::ProccessActions()
 {
     Keys Key;
-    bool Continue = true;
-    int PlayerI;
+    int PlayerIndex;
     Actions Act;
 
     Settings* SettingInstance = Settings::GetInstance();
 
     while ((Key = this->InputFromUser->GetNextStroke()) != Keys::NONE)
-        if(SettingInstance->GetAction(Key,PlayerI,Act))
-            ;//TODOthis->SendInfoAboutKeyStroke(Act);
+        if(SettingInstance->GetAction(Key,PlayerIndex,Act) && PlayerIndex==0)
+            NetworkCommunication::SendPlayerAction(this->SocketId,Act);
 
-    return Continue;
+    return true;
 }
 
 Game::Event::ClientSide::~ClientSide()

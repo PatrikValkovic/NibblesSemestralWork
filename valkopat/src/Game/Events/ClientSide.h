@@ -7,12 +7,13 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
-#include "../Enums.h"
+#include "AbstractEvent.h"
 #include "../../Exceptions/ServerException.h"
 #include "../../ViewModels/Abstract/AbstractInput.h"
+#include "../Enums.h"
 #include "../Settings.h"
-#include "AbstractEvent.h"
 #include "../Worm.h"
+#include "../NetworkCommunication.h"
 
 
 namespace Game
