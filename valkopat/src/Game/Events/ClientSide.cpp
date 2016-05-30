@@ -16,6 +16,7 @@ bool Game::Event::ClientSide::ProccessActions()
     Actions Act;
 
     Settings* SettingInstance = Settings::GetInstance();
+    this->InputFromUser->StartAgain();
 
     while ((Key = this->InputFromUser->GetNextStroke()) != Keys::NONE)
         if(SettingInstance->GetAction(Key,PlayerIndex,Act) && PlayerIndex==0)
