@@ -27,8 +27,9 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
     while ((int) S->Players.size() < S->CountOfPlayers)
     {
         int NewPlayer;
-        if ((NewPlayer = S->NewUserSocket()) == -1)
+        if ((NewPlayer = S->NewUserSocket()) == -1 || !NetworkCommunication::RecvHello(NewPlayer))
             continue;
+        NetworkCommunication::SendHello(NewPlayer);
         S->SendInfoAboutMap(NewPlayer);
         S->ProccessUserMapRequest(NewPlayer);
         Worm* NewPlayerWorm = S->GetInfoAboutPlayer(NewPlayer, ClientIndex);
@@ -55,17 +56,6 @@ int Game::Event::ServerSide::NewUserSocket()
     struct sockaddr addr;
     socklen_t addrLen = sizeof(addr);
     int NewPlayer = accept(this->ServerSock, &addr, &addrLen);
-
-    ServerActions ActionToSend;
-    recv(NewPlayer, &ActionToSend, sizeof(ServerActions), 0);
-    if (ActionToSend != ServerActions::Hello)
-    {
-        ActionToSend = ServerActions::InvalidRequest;
-        send(NewPlayer, &ActionToSend, sizeof(ServerActions), 0);
-        return -1;
-    }
-
-    send(NewPlayer, &ActionToSend, sizeof(ServerActions), 0);
     return NewPlayer;
 }
 
