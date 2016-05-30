@@ -33,6 +33,7 @@ namespace GameStates
         PlayGround* CreatePlayground(int Socket);
         int CreateSocket();
         bool SayHello(int Socket);
+        Worm* GetInfoAboutPlayer(int Socket,string Name);
     };
 }
 

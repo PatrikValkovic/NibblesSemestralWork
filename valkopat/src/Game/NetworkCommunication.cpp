@@ -137,7 +137,7 @@ void Game::NetworkCommunication::SendInitForPlayer(int Socket, int PosX, int Pos
     send(Socket, &Direction, sizeof(Actions), 0);
 }
 
-void Game::NetworkCommunication::RecvInitForPlayer(int Socket, int& PosX, int PosY, Actions& Direction)
+void Game::NetworkCommunication::RecvInitForPlayer(int Socket, int& PosX, int& PosY, Actions& Direction)
 {
     if (RecvHeader(Socket) != ServerActions::InitTransfer)
         throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);

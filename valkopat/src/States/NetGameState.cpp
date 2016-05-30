@@ -23,12 +23,11 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         return this->Menu;
 
     PlayGround* CreatedPlayground = this->CreatePlayground(ClientSock);
+    Worm* PlayerWorm = this->GetInfoAboutPlayer(ClientSock,NameOfPlayer);
 
     ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
-    pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
 
     vector<Worm*> Worms;
-    Worm* PlayerWorm = ClientSideEvent->AskToWorm(NameOfPlayer);
     Worms.push_back(PlayerWorm);
 
     Rendering->WaitingForRestOfPlayers();
@@ -175,6 +174,25 @@ bool GameStates::NetGameState::SayHello(int Socket)
     }
     this->RenderingModel->NetModel()->ServerRespond();
 }
+
+Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name)
+{
+    using namespace Game;
+
+    NetworkCommunication::SendName(Socket,Name);
+
+    int PosX;
+    int PosY;
+    Actions BeginDirection;
+    NetworkCommunication::RecvInitForPlayer(Socket,PosX,PosY,BeginDirection);
+
+    //TODO what about ID?
+    Worm* CreatedWorm = new Worm(PosX,PosY,BeginDirection);
+    CreatedWorm->SetName(Name);
+    return CreatedWorm;
+}
+
+
 
 
 

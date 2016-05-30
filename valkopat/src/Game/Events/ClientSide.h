@@ -29,10 +29,6 @@ namespace Game
 
             virtual bool ProccessActions();
 
-            std::pair<std::string,size_t> LevelInfo();
-
-            Worm* AskToWorm(string NameOfPlayer);
-
             Worm* PlayerConnected();
 
             void SendInfoAboutKeyStroke(Actions Action);

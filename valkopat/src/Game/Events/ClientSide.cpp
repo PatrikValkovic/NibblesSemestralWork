@@ -30,63 +30,6 @@ Game::Event::ClientSide::~ClientSide()
     close(SocketId);
 }
 
-
-std::pair<std::string,size_t> Game::Event::ClientSide::LevelInfo()
-{
-    using namespace std;
-
-    ServerActions RecivedAction;
-    recv(SocketId,&RecivedAction,sizeof(ServerActions),0);
-    if(RecivedAction!=ServerActions::RequiredMap)
-        throw new Exceptions::ServerException("Invalid header of packet",__LINE__,__FILE__);
-
-    pair<string,size_t> Data;
-    int Length;
-    recv(SocketId,&Length,sizeof(int),0);
-    char* NameOfLevel = new char[Length];
-    recv(SocketId,NameOfLevel,(size_t)Length,0);
-    Data.first.insert(0,NameOfLevel,(size_t)Length);
-
-    size_t HashOfMap;
-    recv(SocketId,&HashOfMap,sizeof(size_t),0);
-    Data.second = HashOfMap;
-
-    delete [] NameOfLevel;
-    return Data;
-}
-
-Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
-{
-    using Game::Worm;
-    using Game::Actions;
-    //send info
-    ServerActions ToSend = ServerActions::NameTransfer;
-    send(SocketId,&ToSend,sizeof(ServerActions),0);
-    size_t SizeOfname = NameOfPlayer.size();
-    send(SocketId,&SizeOfname,sizeof(size_t),0);
-    send(SocketId,NameOfPlayer.data(),SizeOfname,0);
-
-    //wait to position
-    ToSend = ServerActions::PlayerTransfer;
-    recv(SocketId,&ToSend,sizeof(ServerActions),0);
-    if(ToSend!=ServerActions::PlayerTransfer)
-        throw new Exceptions::ServerException("Invalid header of packet",__LINE__,__FILE__);
-
-    int PositionX;
-    int PositionY;
-    Actions BeginDirection;
-    int PlayerId;
-    recv(SocketId,&PositionX,sizeof(int),0);
-    recv(SocketId,&PositionY,sizeof(int),0);
-    recv(SocketId,&BeginDirection,sizeof(Actions),0);
-    recv(SocketId,&PlayerId,sizeof(int),0);
-
-    Worm* PlayerWorm = new Worm(PositionX,PositionY,BeginDirection,PlayerId);
-    PlayerWorm->SetName(NameOfPlayer);
-
-    return PlayerWorm;
-}
-
 Game::Worm* Game::Event::ClientSide::PlayerConnected()
 {
     ServerActions Receive;
