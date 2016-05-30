@@ -9,7 +9,9 @@ Game::Event::ServerSide::~ServerSide()
     using namespace std;
     for_each(Players.begin(), Players.end(), [](pair<int, Worm*> P) {
         delete P.second;
+        close(P.first);
     });
+    close(ServerSock);
     delete Ground;
 }
 
