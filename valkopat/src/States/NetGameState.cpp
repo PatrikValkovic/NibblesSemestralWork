@@ -31,9 +31,13 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
 
     GameContent* NewContent = new GameContent();
     NewContent->Worms = Worms;
+    NewContent->Ground = CreatedPlayground;
     ClientSide* ClientSideEvent = new ClientSide(ClientSock, this->RenderingModel->InputModel());
+    DiscardingInput* DiscardTask = new DiscardingInput(this->RenderingModel->InputModel());
 
     //TODO event and tasks
+    NewContent->Events.AddEvent(ClientSideEvent);
+    NewContent->Tasks.push_back(DiscardTask);
 
     Rendering->BeginGame();
     this->PlayState->ClearContent(NewContent);
