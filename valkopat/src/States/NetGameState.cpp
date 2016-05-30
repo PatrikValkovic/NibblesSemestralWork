@@ -19,15 +19,10 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     if (ClientSock == -1)
         return this->Menu;
 
-    ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
-    NetworkCommunication::SendHello(ClientSock);
-    if (!NetworkCommunication::RecvHello(ClientSock))
-    {
-        delete ClientSideEvent;
-        Rendering->ServerNotRespond();
+    if (!this->SayHello(ClientSock))
         return this->Menu;
-    }
-    Rendering->ServerRespond();
+
+    ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
     pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
 
     vector<Worm*> Worms;
@@ -158,6 +153,21 @@ int GameStates::NetGameState::CreateSocket()
 
     return ClientSock;
 }
+
+bool GameStates::NetGameState::SayHello(int Socket)
+{
+    using Game::NetworkCommunication;
+
+    NetworkCommunication::SendHello(Socket);
+    if (!NetworkCommunication::RecvHello(Socket))
+    {
+        this->RenderingModel->NetModel()->ServerNotRespond();
+        return false;
+    }
+    this->RenderingModel->NetModel()->ServerRespond();
+}
+
+
 
 
 
