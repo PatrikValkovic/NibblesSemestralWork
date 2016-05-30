@@ -40,8 +40,8 @@ namespace Game
             PlayGround* Ground;
             static void ThreadRun(ServerSide* S);
             int NewUserSocket();
-            void SendInfoAboutMap(int ClientSock);
-            void ProccessUserMapRequest(int ClientSock);
+
+            void ResolveMap(int ClientSock);
             Worm* GetInfoAboutPlayer(int SocketId,int IndexOfPlayer);
             void SendStartPosition(int ClientSock, Worm* AssignetWorm);
             void SendInfoAboutNewPlayer(Worm* Player);

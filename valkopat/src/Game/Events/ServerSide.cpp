@@ -30,8 +30,8 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         if ((NewPlayer = S->NewUserSocket()) == -1 || !NetworkCommunication::RecvHello(NewPlayer))
             continue;
         NetworkCommunication::SendHello(NewPlayer);
-        S->SendInfoAboutMap(NewPlayer);
-        S->ProccessUserMapRequest(NewPlayer);
+        S->ResolveMap(NewPlayer);
+
         Worm* NewPlayerWorm = S->GetInfoAboutPlayer(NewPlayer, ClientIndex);
         S->SendStartPosition(NewPlayer,NewPlayerWorm);
         S->SendInfoAboutNewPlayer(NewPlayerWorm);
@@ -57,41 +57,6 @@ int Game::Event::ServerSide::NewUserSocket()
     socklen_t addrLen = sizeof(addr);
     int NewPlayer = accept(this->ServerSock, &addr, &addrLen);
     return NewPlayer;
-}
-
-void Game::Event::ServerSide::SendInfoAboutMap(int ClientSock)
-{
-    ServerActions ToSend = ServerActions::RequiredMap;
-    send(ClientSock, &ToSend, sizeof(ServerActions), 0);
-    int LengthOfName = (int) this->Ground->NameOfLevel.size();
-    send(ClientSock, &LengthOfName, sizeof(int), 0);
-    send(ClientSock, this->Ground->NameOfLevel.c_str(), this->Ground->NameOfLevel.size(), 0);
-    std::hash<std::string> HashFn;
-    size_t LengthOfFile = HashFn(PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel));
-    send(ClientSock, &LengthOfFile, sizeof(size_t), 0);
-}
-
-void Game::Event::ServerSide::ProccessUserMapRequest(int ClientSock)
-{
-    ServerActions ToTransfer = ServerActions::MapTransfer;
-    recv(ClientSock, &ToTransfer, sizeof(ServerActions), 0);
-    if (ToTransfer != ServerActions::MapTransfer)
-    {
-        ToTransfer = ServerActions::InvalidRequest;
-        send(ClientSock, &ToTransfer, sizeof(ServerActions), 0);
-        throw new Exceptions::Exception("Invalid header", __LINE__, __FILE__);
-    }
-
-    bool HaveMap;
-    recv(ClientSock, &HaveMap, sizeof(bool), 0);
-    if (HaveMap)
-        return;
-
-    string Level = PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel);
-    size_t CountOfCharacters = Level.size();
-    send(ClientSock, &ToTransfer, sizeof(ServerActions), 0);
-    send(ClientSock, &CountOfCharacters, sizeof(size_t), 0);
-    send(ClientSock, Level.c_str(), CountOfCharacters, 0);
 }
 
 Game::Worm* Game::Event::ServerSide::GetInfoAboutPlayer(int SocketId, int IndexOfPlayer)
@@ -250,6 +215,26 @@ void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
         });
     });
 }
+
+void Game::Event::ServerSide::ResolveMap(int ClientSock)
+{
+    using Game::NetworkCommunication;
+    using Game::PlaygroundFactory;
+
+    string ContentOfGame = PlaygroundFactory::GetLevelInString(this->Ground->NameOfLevel);
+    std::hash<std::string> HashFn;
+    size_t Hashed = HashFn(ContentOfGame);
+    NetworkCommunication::SendMapRequest(ClientSock,this->Ground->NameOfLevel,Hashed);
+
+    bool HaveMap;
+    NetworkCommunication::RecvMapRequestAnswer(ClientSock,HaveMap);
+    if(HaveMap)
+        return;
+
+    NetworkCommunication::SendMapTransfer(ClientSock,this->Ground->NameOfLevel,ContentOfGame);
+}
+
+
 
 
 
