@@ -32,9 +32,8 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
         NetworkCommunication::SendHello(NewPlayer);
         S->ResolveMap(NewPlayer);
         Worm* NewPlayerWorm = S->CreateWorm(NewPlayer, ClientIndex++);
-
-
         S->SendInfoAboutConnectedPlayers(NewPlayer);
+        S->SendInfoThatPlayerWasConnected(NewPlayerWorm);
         S->Players.insert(pair<int, Worm*>(NewPlayer, NewPlayerWorm));
     }
     S->StartGame();
@@ -62,22 +61,14 @@ int Game::Event::ServerSide::NewUserSocket()
 void Game::Event::ServerSide::SendInfoAboutConnectedPlayers(int ClientSock)
 {
     using namespace std;
+    using Game::NetworkCommunication;
     for_each(this->Players.begin(), this->Players.end(), [&ClientSock](pair<int, Worm*> P) {
-        ServerActions ToSend = ServerActions::PlayerTransfer;
-        size_t LengthOfName = P.second->GetName().size();
-        const char* Name = P.second->GetName().c_str();
-        int StartX = P.second->GetSegment().at(0).GetPositionX();
-        int StartY = P.second->GetSegment().at(0).GetPositionY();;
-        Actions StartDirection = P.second->GetMoveDirection();
-        int Index = P.second->GetId();
-
-        send(ClientSock, &ToSend, sizeof(ServerActions), 0);
-        send(ClientSock, &LengthOfName, sizeof(size_t), 0);
-        send(ClientSock, Name, LengthOfName, 0);
-        send(ClientSock, &StartX, sizeof(int), 0);
-        send(ClientSock, &StartY, sizeof(int), 0);
-        send(ClientSock, &StartDirection, sizeof(Actions), 0);
-        send(ClientSock, &Index, sizeof(int), 0);
+        NetworkCommunication::SendPlayerConnected(ClientSock,
+                                                  P.second->GetName(),
+                                                  P.second->GetSegment().at(0).GetPositionX(),
+                                                  P.second->GetSegment().at(0).GetPositionY(),
+                                                  P.second->GetMoveDirection(),
+                                                  P.second->GetId());
     });
 }
 
@@ -191,6 +182,22 @@ Worm* Game::Event::ServerSide::CreateWorm(int SocketId, int IndexOfPlayer)
                                             IndexOfPlayer);
     return Created;
 }
+
+void Game::Event::ServerSide::SendInfoThatPlayerWasConnected(Game::Worm* ConnectedPlayer)
+{
+    using namespace std;
+    using Game::NetworkCommunication;
+    for_each(this->Players.begin(), this->Players.end(), [&ConnectedPlayer](pair<int, Worm*> P) {
+        NetworkCommunication::SendPlayerConnected(P.first,
+                                                  ConnectedPlayer->GetName(),
+                                                  ConnectedPlayer->GetSegment().at(0).GetPositionX(),
+                                                  ConnectedPlayer->GetSegment().at(0).GetPositionY(),
+                                                  ConnectedPlayer->GetMoveDirection(),
+                                                  ConnectedPlayer->GetId());
+    });
+}
+
+
 
 
 

@@ -44,9 +44,11 @@ namespace Game
             void ResolveMap(int ClientSock);
             Worm* CreateWorm(int SocketId,int IndexOfPlayer);
             void SendInfoAboutConnectedPlayers(int ClientSock);
+            void SendInfoThatPlayerWasConnected(Worm* ConnectedPlayer);
             void StartGame();
             bool StillPlay();
             void WaitMethod();
+
             map<Worm*,Actions> GetActionsFromUsers();
             void SendActions(map<Worm*,Actions> ToSend);
             void NextFrame();
