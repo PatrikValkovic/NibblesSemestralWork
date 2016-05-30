@@ -20,6 +20,7 @@ void Game::NetworkCommunication::SendHello(int Socket)
 
 void Game::NetworkCommunication::RecvHello(int Socket)
 {
+    //TODO implemented waiting specific time
     if (RecvHeader(Socket) != ServerActions::Hello)
         throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);
 }
@@ -185,6 +186,62 @@ bool Game::NetworkCommunication::TryRecvPlayerConnected(int Socket, string& Name
     recv(Socket, &PosY, sizeof(int), 0);
     recv(Socket, &Direction, sizeof(Actions), 0);
 }
+
+void Game::NetworkCommunication::SendPlayerAction(int Socket, Actions Action)
+{
+    SendHeader(Socket,ServerActions::KeyStroke);
+
+    send(Socket,&Action,sizeof(Actions),0);
+}
+
+bool Game::NetworkCommunication::TryRecvPlayerAction(int Socket, Actions& Action)
+{
+    ServerActions Recived;
+    if(recv(Socket,&Recived,sizeof(ServerActions),MSG_DONTWAIT)!=-1)
+    {
+        if(Recived!=ServerActions::KeyStroke)
+            throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);
+
+        recv(Socket,&Action,sizeof(Actions),0);
+        return true;
+    }
+    return false;
+}
+
+void Game::NetworkCommunication::SendActionsOfPlayer(int Socket, int IDOfPlayer, Actions Action)
+{
+    SendHeader(Socket,ServerActions::ActionsSend);
+    send(Socket,&IDOfPlayer,sizeof(int),0);
+    send(Socket,&Action,sizeof(Action),0);
+}
+
+void Game::NetworkCommunication::SendEndOfWait(int Socket)
+{
+    SendHeader(Socket,ServerActions::Wait);
+}
+
+bool Game::NetworkCommunication::TryRecvActionsOfPlayer(int Socket, int& IDOfPlayer, Actions& Action)
+{
+    ServerActions Obtained = RecvHeader(Socket);
+    if(Obtained == ServerActions::Wait)
+        return false;
+
+    recv(Socket,&IDOfPlayer,sizeof(int),0);
+    recv(Socket,&Action,sizeof(Actions),0);
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
