@@ -103,20 +103,6 @@ void Game::Event::ServerSide::WaitMethod()
     sleep_until(BeginOfMethod + milliseconds(this->WaitForMiliseconds));
 }
 
-map<Game::Worm*, Game::Actions> Game::Event::ServerSide::GetActionsFromUsers()
-{
-    using namespace std;
-    using namespace Game;
-
-    map<Worm*, Actions> ToReturn;
-    for_each(Players.begin(), Players.end(), [&ToReturn](pair<int, Worm*> P) {
-        Actions RecivedAction = P.second->GetMoveDirection();
-        while(NetworkCommunication::TryRecvPlayerAction(P.first,RecivedAction));
-        ToReturn.insert(pair<Worm*,Actions>(P.second,RecivedAction));
-    });
-    return ToReturn;
-}
-
 void Game::Event::ServerSide::NextFrame()
 {
     using namespace std;
@@ -136,6 +122,20 @@ void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
             NetworkCommunication::SendActionsOfPlayer(SendSocket,X.first->GetId(),X.second);
         });
     });
+}
+
+map<Game::Worm*, Game::Actions> Game::Event::ServerSide::GetActionsFromUsers()
+{
+    using namespace std;
+    using namespace Game;
+
+    map<Worm*, Actions> ToReturn;
+    for_each(Players.begin(), Players.end(), [&ToReturn](pair<int, Worm*> P) {
+        Actions RecivedAction = P.second->GetMoveDirection();
+        while(NetworkCommunication::TryRecvPlayerAction(P.first,RecivedAction));
+        ToReturn.insert(pair<Worm*,Actions>(P.second,RecivedAction));
+    });
+    return ToReturn;
 }
 
 void Game::Event::ServerSide::ResolveMap(int ClientSock)

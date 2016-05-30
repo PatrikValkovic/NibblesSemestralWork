@@ -21,7 +21,10 @@ void Game::Task::ServerListener::run()
         });
 
         if(Finded==EndIter)
+        {
+            //TODO this should happend
             continue;
+        }
 
         Worm* Working = *Finded;
         if(RecivedAction==Actions::Pause)
