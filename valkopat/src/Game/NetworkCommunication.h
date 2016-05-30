@@ -22,7 +22,7 @@ namespace Game
         static void RecvMapRequest(int Socket, string& Name, size_t& Hash);
 
         static void SendMapRequestAnswer(int Socket,bool Have);
-        static void RecvMapRequestAnswer(int Socket,bool Have);
+        static void RecvMapRequestAnswer(int Socket,bool& Have);
 
         static void SendMapTransfer(int Socket,string Name,string Data);
         static void RecvMapTransfer(int Socket,string& Name,string& Data);
