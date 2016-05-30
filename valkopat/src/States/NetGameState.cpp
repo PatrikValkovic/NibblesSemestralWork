@@ -160,6 +160,7 @@ bool GameStates::NetGameState::SayHello(int Socket)
         return false;
     }
     this->RenderingModel->NetModel()->ServerRespond();
+    return true;
 }
 
 Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name)

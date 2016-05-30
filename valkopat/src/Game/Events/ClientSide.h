@@ -29,10 +29,6 @@ namespace Game
 
             virtual bool ProccessActions();
 
-            Worm* PlayerConnected();
-
-            void SendInfoAboutKeyStroke(Actions Action);
-
         private:
             int SocketId;
             ViewModel::AbstractInput* InputFromUser;
