@@ -6,7 +6,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
     using Game::Actions;
     ViewModel::GameAbstractViewModel* Rendering = this->RenderingModel->GameModel();
 
-    while (true)
+    while (this->Playing())
     {
         Rendering->RenderGame(this->ContentOfGame);
 

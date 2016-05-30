@@ -13,9 +13,11 @@ GameStates::AbstractGameState* GameStates::GamePauseState::run()
     SplashPauseScreenAbstractViewModel* ViewModel = this->RenderingModel->SplashPauseScreenModel();
 
     map<int,string> MenuEntries = {
-            {0,"ReturnToGamePauseEntry"},
-            {1,"ReturnToMenuPauseEntry"}
+            {0,"ReturnToMenuPauseEntry"}
     };
+    if(this->GameState->Playing())
+        MenuEntries.insert(pair<int,string>(1,"ReturnToGamePauseEntry"));
+
     AbstractGameState* ArrayWithStates[2] = {this->GameState,this->Menu};
 
     int Returned = ViewModel->ShowPauseWithMenu(MenuEntries);
