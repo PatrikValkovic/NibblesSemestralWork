@@ -156,7 +156,7 @@ void Game::Event::ServerSide::ResolveMap(int ClientSock)
     NetworkCommunication::SendMapTransfer(ClientSock, this->Ground->NameOfLevel, ContentOfGame);
 }
 
-Worm* Game::Event::ServerSide::CreateWorm(int SocketId, int IndexOfPlayer)
+Game::Worm* Game::Event::ServerSide::CreateWorm(int SocketId, int IndexOfPlayer)
 {
     using Game::NetworkCommunication;
     using Game::PlayGround;

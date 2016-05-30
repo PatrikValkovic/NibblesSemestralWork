@@ -190,6 +190,8 @@ bool Game::NetworkCommunication::TryRecvPlayerConnected(int Socket, string& Name
     recv(Socket, &PosY, sizeof(int), 0);
     recv(Socket, &Direction, sizeof(Actions), 0);
     recv(Socket, &PlayerID, sizeof(int), 0);
+
+    return true;
 }
 
 void Game::NetworkCommunication::SendPlayerAction(int Socket, Actions Action)

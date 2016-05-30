@@ -60,13 +60,11 @@ namespace Game
         MapTransfer = 0x38383838,
         NameTransfer = 0x54545454,
         InitTransfer = 0x16161616,
-        PlayerTransfer = 0x53535353,
         PlayerConnected = 0x47474747,
         ActionsSend = 0x58585858,
         StartGame = 0x76767676,
         KeyStroke = 0x39393939,
         Wait = 0x46464646,
-        InvalidRequest = 0x59595959
     };
 }
 
