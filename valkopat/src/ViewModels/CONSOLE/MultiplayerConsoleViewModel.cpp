@@ -27,6 +27,8 @@ string ViewModel::MultiplayerConsoleViewModel::Level()
             index++;
         });
         cout << Translation->GetTranslation("LevelChoose") << ':';
+        cin.clear();
+        cin.ignore(cin.rdbuf()->in_avail());
         cin >> LevelIndex;
         if (cin.fail() || LevelIndex < 1 || LevelIndex > (int) Levels.size())
             cout << Translation->GetTranslation("WrongEntry") << endl;
@@ -43,6 +45,8 @@ int ViewModel::MultiplayerConsoleViewModel::CountOfPlayers(int Max)
     while (true)
     {
         cout << Translation->GetTranslation("CountOfPlayers") << ':';
+        cin.clear();
+        cin.ignore(cin.rdbuf()->in_avail());
         cin >> CountOfPlayers;
         if (cin.fail() || CountOfPlayers > Max || CountOfPlayers < 0)
         {
@@ -64,6 +68,8 @@ string ViewModel::MultiplayerConsoleViewModel::NameOfPlayer(int Index)
     while (true)
     {
         cout << Translation->GetTranslation(Stream.str()) << ':';
+        cin.clear();
+        cin.ignore(cin.rdbuf()->in_avail());
         cin >> Name;
         if (cin.fail() || Name.length() == 0)
         {
