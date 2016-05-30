@@ -34,6 +34,7 @@ namespace GameStates
         int CreateSocket();
         bool SayHello(int Socket);
         Worm* GetInfoAboutPlayer(int Socket,string Name);
+        vector<Worm*> WaitToRestOfWorms(int Socket);
     };
 }
 

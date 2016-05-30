@@ -128,17 +128,17 @@ void Game::NetworkCommunication::RecvName(int Socket, string& Name)
     free(Buffer);
 }
 
-void Game::NetworkCommunication::SendInitForPlayer(int Socket, int PosX, int PosY, Actions Direction,int PlayerID)
+void Game::NetworkCommunication::SendInitForPlayer(int Socket, int PosX, int PosY, Actions Direction, int PlayerID)
 {
     SendHeader(Socket, ServerActions::InitTransfer);
 
     send(Socket, &PosX, sizeof(int), 0);
     send(Socket, &PosY, sizeof(int), 0);
     send(Socket, &Direction, sizeof(Actions), 0);
-    send(Socket, &PlayerID,sizeof(int),0);
+    send(Socket, &PlayerID, sizeof(int), 0);
 }
 
-void Game::NetworkCommunication::RecvInitForPlayer(int Socket, int& PosX, int& PosY, Actions& Direction,int& PlayerID)
+void Game::NetworkCommunication::RecvInitForPlayer(int Socket, int& PosX, int& PosY, Actions& Direction, int& PlayerID)
 {
     if (RecvHeader(Socket) != ServerActions::InitTransfer)
         throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);
@@ -146,11 +146,11 @@ void Game::NetworkCommunication::RecvInitForPlayer(int Socket, int& PosX, int& P
     recv(Socket, &PosX, sizeof(int), 0);
     recv(Socket, &PosY, sizeof(int), 0);
     recv(Socket, &Direction, sizeof(Actions), 0);
-    recv(Socket,&PlayerID,sizeof(int),0);
+    recv(Socket, &PlayerID, sizeof(int), 0);
 }
 
 void Game::NetworkCommunication::SendPlayerConnected(int Socket, string NameOfPlayer, int PosX, int PosY,
-                                                     Actions Direction,int PlayerID)
+                                                     Actions Direction, int PlayerID)
 {
     SendHeader(Socket, ServerActions::PlayerConnected);
 
@@ -160,7 +160,7 @@ void Game::NetworkCommunication::SendPlayerConnected(int Socket, string NameOfPl
     send(Socket, &PosX, sizeof(int), 0);
     send(Socket, &PosY, sizeof(int), 0);
     send(Socket, &Direction, sizeof(Actions), 0);
-    send(Socket,&PlayerID,sizeof(int),0);
+    send(Socket, &PlayerID, sizeof(int), 0);
 }
 
 void Game::NetworkCommunication::SendStartGame(int Socket)
@@ -189,25 +189,25 @@ bool Game::NetworkCommunication::TryRecvPlayerConnected(int Socket, string& Name
     recv(Socket, &PosX, sizeof(int), 0);
     recv(Socket, &PosY, sizeof(int), 0);
     recv(Socket, &Direction, sizeof(Actions), 0);
-    recv(Socket,&PlayerID,sizeof(int),0);
+    recv(Socket, &PlayerID, sizeof(int), 0);
 }
 
 void Game::NetworkCommunication::SendPlayerAction(int Socket, Actions Action)
 {
-    SendHeader(Socket,ServerActions::KeyStroke);
+    SendHeader(Socket, ServerActions::KeyStroke);
 
-    send(Socket,&Action,sizeof(Actions),0);
+    send(Socket, &Action, sizeof(Actions), 0);
 }
 
 bool Game::NetworkCommunication::TryRecvPlayerAction(int Socket, Actions& Action)
 {
     ServerActions Recived;
-    if(recv(Socket,&Recived,sizeof(ServerActions),MSG_DONTWAIT)!=-1)
+    if (recv(Socket, &Recived, sizeof(ServerActions), MSG_DONTWAIT) != -1)
     {
-        if(Recived!=ServerActions::KeyStroke)
+        if (Recived != ServerActions::KeyStroke)
             throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);
 
-        recv(Socket,&Action,sizeof(Actions),0);
+        recv(Socket, &Action, sizeof(Actions), 0);
         return true;
     }
     return false;
@@ -215,28 +215,28 @@ bool Game::NetworkCommunication::TryRecvPlayerAction(int Socket, Actions& Action
 
 void Game::NetworkCommunication::SendActionsOfPlayer(int Socket, int IDOfPlayer, Actions Action)
 {
-    SendHeader(Socket,ServerActions::ActionsSend);
-    send(Socket,&IDOfPlayer,sizeof(int),0);
-    send(Socket,&Action,sizeof(Action),0);
+    SendHeader(Socket, ServerActions::ActionsSend);
+    send(Socket, &IDOfPlayer, sizeof(int), 0);
+    send(Socket, &Action, sizeof(Action), 0);
 }
 
 void Game::NetworkCommunication::SendEndOfWait(int Socket)
 {
-    SendHeader(Socket,ServerActions::Wait);
+    SendHeader(Socket, ServerActions::Wait);
 }
 
 bool Game::NetworkCommunication::TryRecvActionsOfPlayer(int Socket, int& IDOfPlayer, Actions& Action)
 {
     ServerActions Obtained = RecvHeader(Socket);
-    if(Obtained == ServerActions::Wait)
+    if (Obtained == ServerActions::Wait)
         return false;
 
-    recv(Socket,&IDOfPlayer,sizeof(int),0);
-    recv(Socket,&Action,sizeof(Actions),0);
+    recv(Socket, &IDOfPlayer, sizeof(int), 0);
+    recv(Socket, &Action, sizeof(Actions), 0);
     return true;
 }
 
-int Game::NetworkCommunication::CreateServerSocket(pair<string, string> IPAndPort,int CountOfPlayers)
+int Game::NetworkCommunication::CreateServerSocket(pair<string, string> IPAndPort, int CountOfPlayers)
 {
     //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
     struct addrinfo* ai;

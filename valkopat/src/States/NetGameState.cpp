@@ -23,33 +23,20 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         return this->Menu;
 
     PlayGround* CreatedPlayground = this->CreatePlayground(ClientSock);
-    Worm* PlayerWorm = this->GetInfoAboutPlayer(ClientSock,NameOfPlayer);
-
-    ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
-
-    vector<Worm*> Worms;
-    Worms.push_back(PlayerWorm);
+    Worm* PlayerWorm = this->GetInfoAboutPlayer(ClientSock, NameOfPlayer);
 
     Rendering->WaitingForRestOfPlayers();
+    vector<Worm*> Worms = this->WaitToRestOfWorms(ClientSock);
+    Worms.push_back(PlayerWorm);
 
-    while((PlayerWorm = ClientSideEvent->PlayerConnected()) != NULL)
-    {
-        Worms.push_back(PlayerWorm);
-        Rendering->PlayerConnected(PlayerWorm->GetName());
-    }
+    GameContent* NewContent = new GameContent();
+    NewContent->Worms = Worms;
+    ClientSide* ClientSideEvent = new ClientSide(ClientSock, this->RenderingModel->InputModel());
+
+    //TODO event and tasks
+
     Rendering->BeginGame();
-
-    GameContent* CreatedContent = new GameContent();
-    CreatedContent->Worms = Worms;
-    CreatedContent->Events.AddEvent(ClientSideEvent);
-    CreatedContent->Ground = CreatedPlayground;
-
-    ServerListener* ServerListenTask = new ServerListener(ClientSock,CreatedContent->Worms);
-    DiscardingInput* DiscardTask = new DiscardingInput(this->RenderingModel->InputModel());
-    CreatedContent->Tasks.push_back(ServerListenTask);
-    CreatedContent->Tasks.push_back(DiscardTask);
-
-    this->PlayState->ClearContent(CreatedContent);
+    this->PlayState->ClearContent(NewContent);
     return this->PlayState;
 
 }
@@ -75,30 +62,30 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(int Socket)
     string NameOfLevel;
     size_t HashOfLevel;
 
-    NetworkCommunication::RecvMapRequest(Socket,NameOfLevel,HashOfLevel);
+    NetworkCommunication::RecvMapRequest(Socket, NameOfLevel, HashOfLevel);
 
     try
     {
         string LevelContent = PlaygroundFactory::GetLevelInString(NameOfLevel);
         std::hash<std::string> HashFn;
-        if(HashFn(LevelContent)!=HashOfLevel)
+        if (HashFn(LevelContent) != HashOfLevel)
             throw new Exceptions::Exception("Hash of maps are not equal");
-        NetworkCommunication::SendMapRequestAnswer(Socket,true);
+        NetworkCommunication::SendMapRequestAnswer(Socket, true);
         Rendering->HaveMap(true);
 
         stringstream Stream(LevelContent);
         return PlaygroundFactory::ParseLevelFromStream(Stream);
     }
-    catch(Exceptions::Exception* e)
+    catch (Exceptions::Exception* e)
     {
         delete e;
     }
 
     Rendering->HaveMap(false);
-    NetworkCommunication::SendMapRequestAnswer(Socket,false);
+    NetworkCommunication::SendMapRequestAnswer(Socket, false);
 
     string LevelContent;
-    NetworkCommunication::RecvMapTransfer(Socket,NameOfLevel,LevelContent);
+    NetworkCommunication::RecvMapTransfer(Socket, NameOfLevel, LevelContent);
     //TODO Save map locally
     stringstream Stream(LevelContent);
     return PlaygroundFactory::ParseLevelFromStream(Stream);
@@ -143,7 +130,7 @@ int GameStates::NetGameState::CreateSocket()
             delete Server;
             Rendering->CreatingAndConnectingError();
             return -1;
-        }   
+        }
 
         Server->StartServer();
     }
@@ -179,19 +166,43 @@ Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name
 {
     using namespace Game;
 
-    NetworkCommunication::SendName(Socket,Name);
+    NetworkCommunication::SendName(Socket, Name);
 
     int PosX;
     int PosY;
     Actions BeginDirection;
     int PlayerID;
-    NetworkCommunication::RecvInitForPlayer(Socket,PosX,PosY,BeginDirection,PlayerID);
+    NetworkCommunication::RecvInitForPlayer(Socket, PosX, PosY, BeginDirection, PlayerID);
 
-    //TODO what about ID?
-    Worm* CreatedWorm = new Worm(PosX,PosY,BeginDirection,PlayerID);
+    Worm* CreatedWorm = new Worm(PosX, PosY, BeginDirection, PlayerID);
     CreatedWorm->SetName(Name);
     return CreatedWorm;
 }
+
+vector<Worm*> GameStates::NetGameState::WaitToRestOfWorms(int Socket)
+{
+    using namespace std;
+    using namespace Game;
+
+    vector<Worm*> WormsToReturn;
+
+    string NameOfPlayer;
+    int PosX;
+    int PosY;
+    Actions BeginDirection;
+    int Index;
+
+    while(NetworkCommunication::TryRecvPlayerConnected(Socket,NameOfPlayer,PosX,PosY,BeginDirection,Index))
+    {
+        Worm* Created = new Worm(PosX,PosY,BeginDirection,Index);
+        Created->SetName(NameOfPlayer);
+        WormsToReturn.push_back(Created);
+        this->RenderingModel->NetModel()->PlayerConnected(NameOfPlayer);
+    }
+    return WormsToReturn;
+}
+
+
 
 
 
