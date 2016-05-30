@@ -20,7 +20,7 @@ namespace Game
         static int CreateClientSocket(pair<string, string> IPAndPort);
 
         static void SendHello(int Socket);
-        static void RecvHello(int Socket);
+        static bool RecvHello(int Socket);
 
         static void SendMapRequest(int Socket, string Name, size_t Hash);
         static void RecvMapRequest(int Socket, string& Name, size_t& Hash);

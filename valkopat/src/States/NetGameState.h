@@ -13,6 +13,7 @@
 #include "../Game/Tasks/DiscardingInput.h"
 #include "../Game/Tasks/ServerListener.h"
 #include "../Game/GameContent.h"
+#include "../Game/NetworkCommunication.h"
 
 namespace GameStates
 {
@@ -29,8 +30,6 @@ namespace GameStates
         PlayingState* PlayState;
         MenuGameState* Menu;
 
-        int CreateServer(std::pair<string,string> IPAndPort,int CountOfPlayers);
-        int ConnectToServer(std::pair<string,string> IPAndPort);
         PlayGround* CreatePlayground(pair<string,size_t> NameOfLevel,Game::Event::ClientSide* Client);
         int CreateSocket();
     };

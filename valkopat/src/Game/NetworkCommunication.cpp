@@ -18,11 +18,12 @@ void Game::NetworkCommunication::SendHello(int Socket)
     SendHeader(Socket, ServerActions::Hello);
 }
 
-void Game::NetworkCommunication::RecvHello(int Socket)
+bool Game::NetworkCommunication::RecvHello(int Socket)
 {
     //TODO implemented waiting specific time
     if (RecvHeader(Socket) != ServerActions::Hello)
         throw new Exceptions::ServerException("Invalid header", __LINE__, __FILE__);
+    return true;
 }
 
 void Game::NetworkCommunication::SendMapRequest(int Socket, string Name, size_t Hash)

@@ -6,6 +6,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     using Game::PlayGround;
     using Game::PlaygroundFactory;
     using Game::GameContent;
+    using Game::NetworkCommunication;
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
     using Game::Task::DiscardingInput;
@@ -19,7 +20,8 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
         return this->Menu;
 
     ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
-    if (!ClientSideEvent->SendHello())
+    NetworkCommunication::SendHello(ClientSock);
+    if (!NetworkCommunication::RecvHello(ClientSock))
     {
         delete ClientSideEvent;
         Rendering->ServerNotRespond();
@@ -67,74 +69,6 @@ void GameStates::NetGameState::AddStates(PlayingState* GameState, MenuGameState*
     this->Menu = MenuState;
 }
 
-int GameStates::NetGameState::CreateServer(std::pair<string, string> IPAndPort, int CountOfPlayers)
-{
-    //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
-    struct addrinfo* ai;
-
-    if (getaddrinfo(IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai) != 0)
-    {
-        //printf ( "getaddrinfo\n" );
-        return -1;
-    }
-
-    int s = socket(ai->ai_family, SOCK_STREAM, 0);
-    if (s == -1)
-    {
-        freeaddrinfo(ai);
-        //printf ( "socket\n" );
-        return -1;
-    }
-
-    if (bind(s, ai->ai_addr, ai->ai_addrlen) != 0)
-    {
-        close(s);
-        freeaddrinfo(ai);
-        //printf ( "bind\n" );
-        return -1;
-    }
-
-    if (listen(s, CountOfPlayers) != 0)
-    {
-        close(s);
-        freeaddrinfo(ai);
-        //printf ( "listen\n" );
-        return -1;
-    }
-    freeaddrinfo(ai);
-    return s;
-}
-
-int GameStates::NetGameState::ConnectToServer(std::pair<string, string> IPAndPort)
-{
-    //ZDROJ: https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
-    struct addrinfo* ai;
-
-    if (getaddrinfo(IPAndPort.first.c_str(), IPAndPort.second.c_str(), NULL, &ai) != 0)
-    {
-        //printf ( "getaddrinfo" );
-        return -1;
-    }
-
-    int s = socket(ai->ai_family, SOCK_STREAM, 0);
-    if (s == -1)
-    {
-        freeaddrinfo(ai);
-        //printf ( "socket" );
-        return -1;
-    }
-
-    if (connect(s, ai->ai_addr, ai->ai_addrlen) != 0)
-    {
-        close(s);
-        freeaddrinfo(ai);
-        //printf ( "connect" );
-        return -1;
-    }
-    freeaddrinfo(ai);
-    return s;
-}
-
 Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
                                                              Game::Event::ClientSide* Client)
 {
@@ -172,6 +106,7 @@ int GameStates::NetGameState::CreateSocket()
     using ViewModel::NetMenuAbstractViewModel;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
+    using Game::NetworkCommunication;
     using Game::Event::ServerSide;
     using Game::Event::ClientSide;
 
@@ -189,7 +124,7 @@ int GameStates::NetGameState::CreateSocket()
         while (ServerSock == -1)
         {
             ServerIPWithPort = Rendering->GetIPAndPort();
-            ServerSock = this->CreateServer(ServerIPWithPort, CountOfPlayers);
+            ServerSock = NetworkCommunication::CreateServerSocket(ServerIPWithPort, CountOfPlayers);
             if (ServerSock == -1)
                 Rendering->ServerNotCreated();
             else
@@ -199,7 +134,7 @@ int GameStates::NetGameState::CreateSocket()
         ServerSide* Server = new ServerSide(ServerSock, CountOfPlayers, NewPlayGround);
 
         //connect to it
-        ClientSock = ConnectToServer(ServerIPWithPort);
+        ClientSock = NetworkCommunication::CreateClientSocket(ServerIPWithPort);
         if (ClientSock == -1)
         {
             delete Server;
@@ -213,7 +148,7 @@ int GameStates::NetGameState::CreateSocket()
         while (ClientSock == -1)
         {
             pair<string, string> ServerIPWithPort = Rendering->GetIPAndPort();
-            ClientSock = ConnectToServer(ServerIPWithPort);
+            ClientSock = NetworkCommunication::CreateClientSocket(ServerIPWithPort);
             if (ClientSock == -1)
             {
                 Rendering->CannotConnect();
