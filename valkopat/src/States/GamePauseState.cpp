@@ -18,7 +18,7 @@ GameStates::AbstractGameState* GameStates::GamePauseState::run()
     if(this->GameState->Playing())
         MenuEntries.insert(pair<int,string>(1,"ReturnToGamePauseEntry"));
 
-    AbstractGameState* ArrayWithStates[2] = {this->GameState,this->Menu};
+    AbstractGameState* ArrayWithStates[2] = {this->Menu,this->GameState};
 
     int Returned = ViewModel->ShowPauseWithMenu(MenuEntries);
 

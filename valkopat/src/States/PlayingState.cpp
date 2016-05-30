@@ -17,7 +17,7 @@ GameStates::AbstractGameState* GameStates::PlayingState::run()
         this->MoveWorms();
         this->CheckCollisions();
     }
-    return NULL;
+    return this->Pause;
 }
 
 GameStates::PlayingState::PlayingState(ViewModel::BaseViewModel* RenderingModel)
