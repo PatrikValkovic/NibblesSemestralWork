@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <utility>
 #include "Enums.h"
 #include "../Exceptions/ServerException.h"
 
@@ -15,6 +16,9 @@ namespace Game
     class NetworkCommunication
     {
     public:
+        static int CreateServerSocket(pair<string, string> IPAndPort,int CountOfPlayers);
+        static int CreateClientSocket(pair<string, string> IPAndPort);
+
         static void SendHello(int Socket);
         static void RecvHello(int Socket);
 
