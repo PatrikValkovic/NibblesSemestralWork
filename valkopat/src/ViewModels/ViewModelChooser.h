@@ -2,6 +2,7 @@
 #define CERVISEMESTRALKA_VIEWMODELCHOOSER_H
 #include <iostream>
 #include <vector>
+#include <climits>
 #include "Abstract/BaseViewModel.h"
 #include "../Translation/TranslateEngine.h"
 #include "../Exceptions/Exception.h"

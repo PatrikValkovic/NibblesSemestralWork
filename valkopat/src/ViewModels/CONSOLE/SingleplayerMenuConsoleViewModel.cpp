@@ -13,7 +13,7 @@ int ViewModel::SingleplayerMenuConsoleViewModel::CountOfAI(int Max)
     {
         cout << Translation->GetTranslation("CountOfAI") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> this->CountOfAIInGame;
         if (cin.fail() || this->CountOfAIInGame > Max || this->CountOfAIInGame < 0)
         {
@@ -33,7 +33,7 @@ std::string ViewModel::SingleplayerMenuConsoleViewModel::NameOfPlayer()
     {
         cout << Translation->GetTranslation("ChooseName") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> this->Name;
         if (cin.fail() || this->Name.length() == 0)
         {
@@ -67,7 +67,7 @@ string ViewModel::SingleplayerMenuConsoleViewModel::Level()
         });
         cout << Translation->GetTranslation("LevelChoose") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> this->LevelIndex;
         if (cin.fail() || this->LevelIndex<1 || this->LevelIndex>(int)Levels.size())
             cout << Translation->GetTranslation("WrongEntry") << endl;
@@ -86,7 +86,7 @@ string ViewModel::SingleplayerMenuConsoleViewModel::LevelOfAI(std::vector<string
             cout << a+1 << ": " << Translation->GetTranslation(MenuEntries[a]) << endl;
         cout << Translation->GetTranslation("ChooseAILevel") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> AIIndex;
         if (cin.fail() || AIIndex<1 || AIIndex>(int)MenuEntries.size())
             cout << Translation->GetTranslation("WrongEntry") << endl;

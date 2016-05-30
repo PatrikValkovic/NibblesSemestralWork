@@ -17,7 +17,7 @@ int ViewModel::MenuConsoleViewModel::ShowMenu(std::vector<ViewModel::MenuAbstrac
             cout << Index++ << ": " << this->Translation->GetTranslation(Moving->Text) << endl;
         cout << this->Translation->GetTranslation("ChoiceFromUser") << ":";
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> Choice;
         try
         {

@@ -35,7 +35,7 @@ int ViewModel::SplashPauseScreenConsoleViewModel::ShowPauseWithMenu(std::map<int
         cout << Translation->GetTranslation("ChoiceFromUser") << ':';
         int Choice;
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> Choice;
         try
         {

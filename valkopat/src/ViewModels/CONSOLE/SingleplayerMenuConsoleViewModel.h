@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_SINGPLEPLAYERMENUCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_SINGPLEPLAYERMENUCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <climits>
 #include <iostream>
 #include <algorithm>
 #include "../Abstract/SingleplayerMenuAbstractViewModel.h"

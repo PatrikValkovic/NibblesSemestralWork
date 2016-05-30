@@ -28,7 +28,7 @@ string ViewModel::NetMenuConsoleViewModel::Level()
         });
         cout << Translation->GetTranslation("LevelChoose") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> LevelIndex;
         if (cin.fail() || LevelIndex < 1 || LevelIndex > (int) Levels.size())
             cout << Translation->GetTranslation("WrongEntry") << endl;
@@ -46,7 +46,7 @@ int ViewModel::NetMenuConsoleViewModel::CountOfPlayers(int Max)
     {
         cout << Translation->GetTranslation("CountOfPlayers") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> CountOfPlayers;
         if (cin.fail() || CountOfPlayers > Max || CountOfPlayers < 0)
         {
@@ -68,7 +68,7 @@ pair<string, string> ViewModel::NetMenuConsoleViewModel::GetIPAndPort()
         cout << Translation->GetTranslation("ServerIPPort") << endl;
         string Text;
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> Text;
         if (cin.fail())
         {
@@ -93,7 +93,7 @@ bool ViewModel::NetMenuConsoleViewModel::CreateNewServer()
         cout << Translation->GetTranslation("ChoiceFromUser") << ':';
         int Choice;
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> Choice;
         if (cin.fail() || Choice < 1 || Choice > 2)
         {
@@ -155,7 +155,7 @@ string ViewModel::NetMenuConsoleViewModel::GetName()
     {
         cout << Translation->GetTranslation("ChooseName") << ':';
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> Name;
         if (cin.fail() || Name.length() == 0)
         {

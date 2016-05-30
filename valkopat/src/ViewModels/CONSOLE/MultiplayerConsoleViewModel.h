@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_MULTIPLAYERCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <climits>
 #include <iostream>
 #include <sstream>
 #include "../Abstract/MultiplayerAbstractViewModel.h"

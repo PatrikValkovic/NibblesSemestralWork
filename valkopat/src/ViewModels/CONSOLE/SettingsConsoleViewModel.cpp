@@ -72,7 +72,7 @@ int ViewModel::SettingsConsoleViewModel::ShowMenu(std::map<int, LanguageOverwiew
 
         cout << Translation->GetTranslation("ChoiceFromUser") << ": ";
         cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
+        cin.ignore(INT_MAX,'\n');
         cin >> UserChoice;
 
         if (!(cin) || Keys.find(UserChoice) == Keys.end())

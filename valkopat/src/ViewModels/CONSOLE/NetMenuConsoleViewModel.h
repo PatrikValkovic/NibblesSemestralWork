@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_NETMENUCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_NETMENUCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <climits>
 #include <map>
 #include <iostream>
 #include <algorithm>

@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_SPLASHSCREENCONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <climits>
 #include <algorithm>
 #include <iostream>
 #include "../Abstract/SplashPauseScreenAbstractViewModel.h"

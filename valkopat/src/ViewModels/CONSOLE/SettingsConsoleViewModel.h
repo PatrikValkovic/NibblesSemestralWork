@@ -1,6 +1,7 @@
 #ifndef CERVISEMESTRALKA_LANGUAGECONSOLEVIEWMODEL_H
 #define CERVISEMESTRALKA_LANGUAGECONSOLEVIEWMODEL_H
 #ifdef USE_CONSOLE
+#include <climits>
 #include <iostream>
 #include <map>
 #include <vector>
