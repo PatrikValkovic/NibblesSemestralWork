@@ -131,9 +131,13 @@ map<Game::Worm*, Game::Actions> Game::Event::ServerSide::GetActionsFromUsers()
 
     map<Worm*, Actions> ToReturn;
     for_each(Players.begin(), Players.end(), [&ToReturn](pair<int, Worm*> P) {
-        Actions RecivedAction = P.second->GetMoveDirection();
-        while(NetworkCommunication::TryRecvPlayerAction(P.first,RecivedAction));
-        ToReturn.insert(pair<Worm*,Actions>(P.second,RecivedAction));
+        Actions RecivedAction;
+        bool SetDirection = false;
+        while(NetworkCommunication::TryRecvPlayerAction(P.first,RecivedAction))
+            SetDirection = true;
+
+        if(SetDirection)
+            ToReturn.insert(pair<Worm*,Actions>(P.second,RecivedAction));
     });
     return ToReturn;
 }
