@@ -2,25 +2,22 @@
 
 void Game::Task::ServerListener::run()
 {
-    ServerActions Recived;
-    while(true)
+    using namespace Game;
+
+    int IdOfPlayer;
+    Actions RecivedAction;
+    while(NetworkCommunication::TryRecvActionsOfPlayer(this->CliSocket,IdOfPlayer,RecivedAction))
     {
-        recv(CliSocket,&Recived,sizeof(ServerActions),0);
-        if(Recived == ServerActions::Wait)
-            return;
+        if(RecivedAction==Actions::Pause)
+        {
+            //TODO delete all if is current player
+        }
 
-        if(Recived != ServerActions::ActionsSend)
-            throw "Fuck"; //TODO
-
-        int PlayerIndex;
-        Actions RecivedAction;
-        recv(CliSocket,&PlayerIndex,sizeof(int),0);
-        recv(CliSocket,&RecivedAction,sizeof(Actions),0);
 
         vector<Worm*>::iterator MovingIter = InGameWorms.begin();
         vector<Worm*>::iterator EndIter = InGameWorms.end();
-        vector<Worm*>::iterator Finded = find_if(MovingIter,EndIter,[&PlayerIndex](Worm* W){
-            return W->GetId()==PlayerIndex;
+        vector<Worm*>::iterator Finded = find_if(MovingIter,EndIter,[&IdOfPlayer](Worm* W){
+            return W->GetId()==IdOfPlayer;
         });
 
         if(Finded==EndIter)

@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include "BaseTask.h"
 #include "../Worm.h"
+#include "../NetworkCommunication.h"
 
 using namespace std;
 namespace Game
