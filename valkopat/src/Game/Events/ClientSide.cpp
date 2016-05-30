@@ -55,25 +55,6 @@ std::pair<std::string,size_t> Game::Event::ClientSide::LevelInfo()
     return Data;
 }
 
-string Game::Event::ClientSide::AskToLevel(bool Have)
-{
-    ServerActions Action = ServerActions::MapTransfer;
-    send(SocketId,&Action,sizeof(ServerActions),0);
-    send(SocketId,&Have,sizeof(bool),0);
-
-    if(Have)
-        return "";
-
-    size_t LengthOfData;
-    recv(SocketId,&Action,sizeof(ServerActions),0);
-    recv(SocketId,&LengthOfData,sizeof(size_t),0);
-    char* data = (char*)calloc(LengthOfData+1,1);
-    recv(SocketId,data,LengthOfData,0);
-    string Geted(data);
-    free(data);
-    return Geted;
-}
-
 Game::Worm* Game::Event::ClientSide::AskToWorm(string NameOfPlayer)
 {
     using Game::Worm;

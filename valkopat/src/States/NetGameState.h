@@ -30,7 +30,7 @@ namespace GameStates
         PlayingState* PlayState;
         MenuGameState* Menu;
 
-        PlayGround* CreatePlayground(pair<string,size_t> NameOfLevel,Game::Event::ClientSide* Client);
+        PlayGround* CreatePlayground(int Socket);
         int CreateSocket();
         bool SayHello(int Socket);
     };

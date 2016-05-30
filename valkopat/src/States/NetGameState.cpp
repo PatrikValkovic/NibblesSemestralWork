@@ -22,11 +22,12 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     if (!this->SayHello(ClientSock))
         return this->Menu;
 
+    PlayGround* CreatedPlayground = this->CreatePlayground(ClientSock);
+
     ClientSide* ClientSideEvent = new ClientSide(ClientSock,this->RenderingModel->InputModel());
     pair<string, size_t> LevelNameAndLength = ClientSideEvent->LevelInfo();
 
     vector<Worm*> Worms;
-    PlayGround* CreatedPlayground = this->CreatePlayground(LevelNameAndLength, ClientSideEvent);
     Worm* PlayerWorm = ClientSideEvent->AskToWorm(NameOfPlayer);
     Worms.push_back(PlayerWorm);
 
@@ -64,25 +65,29 @@ void GameStates::NetGameState::AddStates(PlayingState* GameState, MenuGameState*
     this->Menu = MenuState;
 }
 
-Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t> NameOfLevel,
-                                                             Game::Event::ClientSide* Client)
+Game::PlayGround* GameStates::NetGameState::CreatePlayground(int Socket)
 {
     using ViewModel::NetMenuAbstractViewModel;
+    using Game::NetworkCommunication;
     using Game::PlayGround;
     using Game::PlaygroundFactory;
 
     NetMenuAbstractViewModel* Rendering = this->RenderingModel->NetModel();
-    Rendering->LevelToUse(NameOfLevel.first);
+    string NameOfLevel;
+    size_t HashOfLevel;
+
+    NetworkCommunication::RecvMapRequest(Socket,NameOfLevel,HashOfLevel);
 
     try
     {
-        string LevelContent = PlaygroundFactory::GetLevelInString(NameOfLevel.first);
+        string LevelContent = PlaygroundFactory::GetLevelInString(NameOfLevel);
         std::hash<std::string> HashFn;
-        if(HashFn(LevelContent)!=NameOfLevel.second)
+        if(HashFn(LevelContent)!=HashOfLevel)
             throw new Exceptions::Exception("Hash of maps are not equal");
-        stringstream Stream(LevelContent);
+        NetworkCommunication::SendMapRequestAnswer(Socket,true);
         Rendering->HaveMap(true);
-        Client->AskToLevel(true);
+
+        stringstream Stream(LevelContent);
         return PlaygroundFactory::ParseLevelFromStream(Stream);
     }
     catch(Exceptions::Exception* e)
@@ -91,8 +96,12 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(pair<string, size_t
     }
 
     Rendering->HaveMap(false);
-    string Level = Client->AskToLevel(false);
-    stringstream Stream(Level);
+    NetworkCommunication::SendMapRequestAnswer(Socket,false);
+
+    string LevelContent;
+    NetworkCommunication::RecvMapTransfer(Socket,NameOfLevel,LevelContent);
+    //TODO Save map locally
+    stringstream Stream(LevelContent);
     return PlaygroundFactory::ParseLevelFromStream(Stream);
 }
 

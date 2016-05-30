@@ -29,8 +29,6 @@ namespace Game
 
             virtual bool ProccessActions();
 
-            string AskToLevel(bool Have);
-
             std::pair<std::string,size_t> LevelInfo();
 
             Worm* AskToWorm(string NameOfPlayer);
