@@ -42,9 +42,7 @@ namespace Game
             int NewUserSocket();
 
             void ResolveMap(int ClientSock);
-            Worm* GetInfoAboutPlayer(int SocketId,int IndexOfPlayer);
-            void SendStartPosition(int ClientSock, Worm* AssignetWorm);
-            void SendInfoAboutNewPlayer(Worm* Player);
+            Worm* CreateWorm(int SocketId,int IndexOfPlayer);
             void SendInfoAboutConnectedPlayers(int ClientSock);
             void StartGame();
             bool StillPlay();
