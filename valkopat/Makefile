@@ -208,34 +208,34 @@ $(TARGET_DIR)/TranslateEngine.o: src/Translation/TranslateEngine.cpp src/Transla
 $(TARGET_DIR)/States.o: $(TARGET_DIR)/GameStates.o $(TARGET_DIR)/SplashScreenGameState.o $(TARGET_DIR)/MenuGameState.o $(TARGET_DIR)/SingleplayerGameState.o $(TARGET_DIR)/PlayingState.o $(TARGET_DIR)/NetGameState.o $(TARGET_DIR)/MultiplayerGameState.o $(TARGET_DIR)/SettingsState.o $(TARGET_DIR)/EndState.o $(TARGET_DIR)/GamePauseState.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h src/States/AbstractGameState.h src/States/MenuGameState.h src/States/SplashScreenGameState.h
+$(TARGET_DIR)/GameStates.o: src/States/GameStates.cpp src/States/GameStates.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.cpp src/States/SplashScreenGameState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/SplashScreenGameState.o: src/States/SplashScreenGameState.cpp src/States/SplashScreenGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/MenuGameState.o: src/States/MenuGameState.cpp src/States/MenuGameState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/MenuGameState.o: src/States/MenuGameState.cpp src/States/MenuGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/SingleplayerGameState.o: src/States/SingleplayerGameState.cpp src/States/SingleplayerGameState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/SingleplayerGameState.o: src/States/SingleplayerGameState.cpp src/States/SingleplayerGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/PlayingState.o: src/States/PlayingState.cpp src/States/PlayingState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/PlayingState.o: src/States/PlayingState.cpp src/States/PlayingState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/NetGameState.o: src/States/NetGameState.cpp src/States/NetGameState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/NetGameState.o: src/States/NetGameState.cpp src/States/NetGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/MultiplayerGameState.o: src/States/MultiplayerGameState.cpp src/States/MultiplayerGameState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/MultiplayerGameState.o: src/States/MultiplayerGameState.cpp src/States/MultiplayerGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/EndState.o: src/States/EndState.cpp src/States/EndState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/EndState.o: src/States/EndState.cpp src/States/EndState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/SettingsState.o: src/States/SettingsState.cpp src/States/SettingsState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/SettingsState.o: src/States/SettingsState.cpp src/States/SettingsState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/GamePauseState.o: src/States/GamePauseState.cpp src/States/GamePauseState.h src/States/AbstractGameState.h
+$(TARGET_DIR)/GamePauseState.o: src/States/GamePauseState.cpp src/States/GamePauseState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 src/States/AbstractGameState.h: src/States/StatesNames.h src/ViewModels/Abstract/BaseViewModel.h
