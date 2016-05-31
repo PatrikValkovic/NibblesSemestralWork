@@ -34,7 +34,7 @@ run: compile
 clean:
 	[ ! -d $(TARGET_DIR) ] || rm -rf $(TARGET_DIR)
 	[ ! -d doc/html ] || rm -rf doc/html
-	[ ! -x nibbles.exe ] || rm nibbles.exe
+	[ ! -x valkopat ] || rm valkopat
 	@echo Cleaned
 
 doc:
