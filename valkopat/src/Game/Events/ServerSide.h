@@ -13,14 +13,10 @@
 #include <functional>
 #include <cstring>
 #include <map>
-#include "AbstractEvent.h"
 #include "../Worm.h"
 #include "../PlayGround.h"
 #include "../PlaygroundFactory.h"
 #include "../NetworkCommunication.h"
-
-//TODO remove
-#include <iostream>
 
 namespace Game
 {

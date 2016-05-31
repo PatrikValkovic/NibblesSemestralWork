@@ -1,7 +1,7 @@
 #ifndef CERVISEMESTRALKA_DISCARDINGINPUT_H
 #define CERVISEMESTRALKA_DISCARDINGINPUT_H
-#include "../../ViewModels/Abstract/AbstractInput.h"
 #include "BaseTask.h"
+#include "../../ViewModels/Abstract/AbstractInput.h"
 
 namespace Game
 {

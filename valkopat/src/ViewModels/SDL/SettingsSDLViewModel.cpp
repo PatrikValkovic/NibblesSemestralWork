@@ -16,4 +16,21 @@ void ViewModel::SettingsSDLViewModel::ShowActualLanguage() const
     //TODO
 }
 
+void ViewModel::SettingsSDLViewModel::ShowKeySettings() const
+{
+
+}
+
+map<Game::Keys, Game::Actions> ViewModel::SettingsSDLViewModel::CreateNewSetting()
+{
+    using namespace Game;
+    return std::map<Keys, Actions>();
+}
+
+void ViewModel::SettingsSDLViewModel::NotAbleToSetSettings(Game::Keys K)
+{
+
+}
+
+
 #endif

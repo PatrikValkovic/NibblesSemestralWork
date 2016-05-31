@@ -2,7 +2,6 @@
 #define CERVISEMESTRALKA_NCURSESVIEWMODEL_H
 #ifdef USE_NCURSES
 #include <iostream>
-
 #include "../Abstract/BaseViewModel.h"
 #include "SplashScreenNCursesViewModel.h"
 #include "MenuNCursesViewModel.h"
