@@ -48,6 +48,7 @@ ViewModel::ConsoleInput::ConsoleInput() : Index(0)
 void ViewModel::ConsoleInput::DiscardBuffer()
 {
     this->Buffer.clear();
+    Index = 0;
 }
 
 Game::Keys ViewModel::ConsoleInput::GetNextStroke()
@@ -65,7 +66,6 @@ Game::Keys ViewModel::ConsoleInput::GetNextStroke()
             if (Finded == KeyTranslate.end())
                 continue;
             this->Buffer.push_back(Finded->second);
-            break;
         }
         this->BackMode(OldTermios);
     }

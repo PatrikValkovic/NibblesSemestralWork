@@ -27,20 +27,24 @@ int ViewModel::SplashPauseScreenConsoleViewModel::ShowPauseWithMenu(std::map<int
         Menu.insert(pair<int, pair<int, string>>(indexer++, X));
     });
 
-    //render it
+    int Choice;
+    cin.clear();
+
     while (true)
     {
         for_each(Menu.begin(), Menu.end(), [this](pair<int, pair<int, string>> Write) {
             cout << Write.first << ": " << Translation->GetTranslation(Write.second.second) << endl;
         });
         cout << Translation->GetTranslation("ChoiceFromUser") << ':';
-        int Choice;
-        if (cin.fail())
+
+        if(cin.fail())
         {
             cin.clear();
-            cin.ignore(INT_MAX, '\n');
+            cin.ignore(INT_MAX,'\n');
         }
+
         cin >> Choice;
+
         try
         {
             return Menu.at(Choice).first;

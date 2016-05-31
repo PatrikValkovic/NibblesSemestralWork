@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include "../Abstract/SplashPauseScreenAbstractViewModel.h"
+#include "ConsoleInput.h"
 
 namespace ViewModel
 {
