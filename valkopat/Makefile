@@ -175,20 +175,29 @@ $(TARGET_DIR)/ServerListener.o: src/Game/Tasks/ServerListener.cpp src/Game/Tasks
 $(TARGET_DIR)/Exceptions.o: $(TARGET_DIR)/Exception.o $(TARGET_DIR)/InvalidArgumentException.o $(TARGET_DIR)/OutOfRangeException.o $(TARGET_DIR)/InvalidFormatException.o $(TARGET_DIR)/ServerException.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
+$(TARGET_DIR)/InvalidArgumentException.o: src/Exceptions/InvalidArgumentException.cpp src/Exceptions/InvalidArgumentException.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Exception.o: src/Exceptions/Exception.cpp src/Exceptions/Exception.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/Exceptions/OutOfRangeException.h src/Exceptions/Exception.h
+$(TARGET_DIR)/OutOfRangeException.o: src/Exceptions/OutOfRangeException.cpp src/Exceptions/OutOfRangeException.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h src/Exceptions/Exception.h
+$(TARGET_DIR)/InvalidFormatException.o: src/Exceptions/InvalidFormatException.cpp src/Exceptions/InvalidFormatException.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/ServerException.o: src/Exceptions/ServerException.cpp src/Exceptions/ServerException.h src/Exceptions/Exception.h
+$(TARGET_DIR)/ServerException.o: src/Exceptions/ServerException.cpp src/Exceptions/ServerException.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+src/Exceptions/ServerException.h: src/Exceptions/Exception.h
+
+src/Exceptions/InvalidFormatException.h: src/Exceptions/Exception.h
+
+src/Exceptions/OutOfRangeException.h: src/Exceptions/Exception.h
+
+src/Exceptions/InvalidArgumentException.h: src/Exceptions/Exception.h
+
 
 #################
 ##	TRANSLATE  ##
