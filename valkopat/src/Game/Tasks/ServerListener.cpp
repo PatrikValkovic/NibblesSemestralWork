@@ -24,7 +24,7 @@ void Game::Task::ServerListener::run()
         });
 
         if(Finded==EndIter)
-            throw new Exceptions::ServerException("Obtained wrong ID of worm",,__LINE__,__FILE__);
+            throw new Exceptions::ServerException("Obtained wrong ID of worm",__LINE__,__FILE__);
 
         //apply action
         Worm* Working = *Finded;
