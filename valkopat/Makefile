@@ -39,7 +39,7 @@ clean:
 
 doc:
 	cd doc
-	doxygen doxconfig.cfg
+	doxygen doc/doxconfig.cfg
 
 debug: | Debug compile
 
