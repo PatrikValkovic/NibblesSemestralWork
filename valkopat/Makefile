@@ -448,7 +448,7 @@ src/ViewModels/CONSOLE/QuitConsoleViewModel.h: src/ViewModels/Abstract/QuitAbstr
 
 src/ViewModels/CONSOLE/ScoreConsoleViewModel.h: src/ViewModels/Abstract/ScoreAbstractViewModel.h
 
-src/ViewModels/CONSOLE/SettingsConsoleViewModel.h: src/ViewModels/Abstract/SettingsAbstractViewModel.h src/Game/Settings.h
+src/ViewModels/CONSOLE/SettingsConsoleViewModel.h: src/ViewModels/Abstract/SettingsAbstractViewModel.h
 
 src/ViewModels/CONSOLE/SingleplayerMenuConsoleViewModel.h: src/ViewModels/Abstract/SingleplayerMenuAbstractViewModel.h src/Game/PlaygroundFactory.h
 
@@ -472,7 +472,7 @@ src/ViewModels/Abstract/QuitAbstractViewModel.h: src/ViewModels/Abstract/ViewMod
 
 src/ViewModels/Abstract/ScoreAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
 
-src/ViewModels/Abstract/SettingsAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+src/ViewModels/Abstract/SettingsAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h src/Game/Settings.h
 
 src/ViewModels/Abstract/SingleplayerMenuAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
 

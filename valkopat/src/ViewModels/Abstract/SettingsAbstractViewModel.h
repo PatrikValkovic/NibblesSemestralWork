@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "ViewModelDerivatingClass.h"
+#include "../../Game/Settings.h"
 
 namespace ViewModel
 {
@@ -24,8 +25,10 @@ namespace ViewModel
         { }
 
         virtual int ShowMenu(std::map<int,LanguageOverwiew> LanguagesToChoose, std::map<int,string> Entries) const = 0;
-
         virtual void ShowActualLanguage() const = 0;
+        virtual void ShowKeySettings() const = 0;
+        virtual map<Game::Keys, Game::Actions> CreateNewSetting() = 0;
+        virtual void NotAbleToSetSettings(Game::Keys K) = 0;
 
         inline map<string,string> GetAviablesLanguages() const
         {

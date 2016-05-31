@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <limits>
 #include "../Abstract/SettingsAbstractViewModel.h"
-#include "../../Game/Settings.h"
 
 
 namespace ViewModel
@@ -21,7 +20,7 @@ namespace ViewModel
         virtual void ShowActualLanguage() const;
         virtual void ShowKeySettings() const;
         virtual map<Game::Keys, Game::Actions> CreateNewSetting();
-        void NotAbleToSetSettings(Game::Keys K);
+        virtual void NotAbleToSetSettings(Game::Keys K);
     private:
         static const std::map<Game::Keys, char> KeyTranslate;
         static const map<Game::Actions, std::string> TranslateActions;
