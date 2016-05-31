@@ -26,19 +26,20 @@ LINKER = ld
 #Base actions
 all: compile doc
 
-compile: | Configure nibbles.exe
-	chmod +x nibbles.exe
+compile: | Configure valkopat
 
 run: compile
-	./nibbles.exe
+	./valkopat
 
 clean:
 	[ ! -d $(TARGET_DIR) ] || rm -rf $(TARGET_DIR)
+	[ ! -d doc/html ] || rm -rf doc/html
 	[ ! -x nibbles.exe ] || rm nibbles.exe
 	@echo Cleaned
 
 doc:
-	@echo DocGenerating
+	cd doc
+	doxygen doxconfig.cfg
 
 debug: | Debug compile
 
@@ -72,8 +73,9 @@ Debug:
 ##  FINAL COMPILATION ##
 ########################
 
-nibbles.exe: $(TARGET_DIR)/nibbles.exe
+valkopat: $(TARGET_DIR)/nibbles.exe
 	cp $< $@
+	chmod +x $@
 
 $(TARGET_DIR)/nibbles.exe: $(TARGET_DIR)/all.o $(TARGET_DIR)/ViewModels.o
 	$(COMPILER) -o $@ $^ $(COMPILE_FLAGS)
