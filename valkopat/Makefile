@@ -238,7 +238,29 @@ $(TARGET_DIR)/SettingsState.o: src/States/SettingsState.cpp src/States/SettingsS
 $(TARGET_DIR)/GamePauseState.o: src/States/GamePauseState.cpp src/States/GamePauseState.h src/States/AbstractGameState.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-src/States/AbstractGameState.h : src/States/StatesNames.h
+src/States/AbstractGameState.h: src/States/StatesNames.h src/ViewModels/Abstract/BaseViewModel.h
+
+src/States/EndState.h: src/States/AbstractGameState.h
+
+src/States/GamePauseState.h: src/States/AbstractGameState.h src/ViewModels/Abstract/BaseViewModel.h
+
+src/States/GameStates.h: src/States/AbstractGameState.h
+
+src/States/MenuGameState.h: src/States/AbstractGameState.h src/ViewModels/Abstract/BaseViewModel.h
+
+src/States/MultiplayerGameState.h: src/States/AbstractGameState.h
+
+src/States/MenuGameState.h: src/States/AbstractGameState.h src/ViewModels/Abstract/NetMenuAbstractViewModel.h src/Game/Events/ServerSide.h src/Game/Events/ClientSide.h src/Game/Tasks/DiscardingInput.h src/Game/Tasks/ServerListener.h src/Game/GameContent.h src/Game/NetworkCommunication.h
+
+src/States/PlayingState.h: src/States/AbstractGameState.h src/Game/Enums.h src/Game/GameContent.h
+
+src/States/SettingsState.h: src/States/AbstractGameState.h src/ViewModels/Abstract/SettingsAbstractViewModel.h
+
+src/States/SingleplayerGameState.h: src/States/AbstractGameState.h src/Game/PlaygroundFactory.h src/Game/Worm.h src/Game/GameContent.h src/Game/Events/Single.h src/Game/Tasks/WaitingTask.h src/Game/Tasks/DiscardingInput.h src/Game/AIFactory.h
+
+src/States/SplashScreenGameState.h: src/States/AbstractGameState.h
+
+
 
 ##################
 ##	VIEW MODELS ##
