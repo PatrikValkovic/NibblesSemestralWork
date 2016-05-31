@@ -364,3 +364,28 @@ $(TARGET_DIR)/QuitConsoleViewModel.o: src/ViewModels/CONSOLE/QuitConsoleViewMode
 
 $(TARGET_DIR)/ConsoleInput.o: src/ViewModels/CONSOLE/ConsoleInput.cpp src/ViewModels/CONSOLE/ConsoleInput.h src/ViewModels/Abstract/AbstractInput.h
 	g++ -c -o $@ $< $(COMPILE_FLAGS)
+
+## ABSTRACT
+src/ViewModels/Abstract/AbstractInput.h: src/Game/Enums.h
+
+src/ViewModels/Abstract/BaseViewModel.h: src/Translation/TranslateEngine.h src/ViewModels/Abstract/SplashPauseScreenAbstractViewModel.h src/ViewModels/Abstract/MenuAbstractViewModel.h src/ViewModels/Abstract/SettingsAbstractViewModel.h src/ViewModels/Abstract/MultiplayerAbstractViewModel.h src/ViewModels/Abstract/NetMenuAbstractViewModel.h src/ViewModels/Abstract/SingleplayerMenuAbstractViewModel.h src/ViewModels/Abstract/GameAbstractViewModel.h src/ViewModels/Abstract/ScoreAbstractViewModel.h src/ViewModels/Abstract/QuitAbstractViewModel.h src/ViewModels/Abstract/AbstractInput.h
+
+src/ViewModels/Abstract/GameAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h src/Game/GameContent.h
+
+src/ViewModels/Abstract/MenuAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/MultiplayerAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/NetMenuAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/QuitAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/ScoreAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/SettingsAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/SingleplayerMenuAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/SplashPauseScreenAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+
+src/ViewModels/Abstract/ViewModelDerivatingClass.h: src/Translation/TranslateEngine.h
