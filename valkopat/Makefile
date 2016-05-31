@@ -91,28 +91,28 @@ $(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_D
 $(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
+$(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/Game/NibbleGame.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/GameEntities.o: $(TARGET_DIR)/Worm.o $(TARGET_DIR)/Point.o $(TARGET_DIR)/PlaygroundFactory.o $(TARGET_DIR)/Playground.o $(TARGET_DIR)/GameContent.o $(TARGET_DIR)/Settings.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h src/Game/Enums.h src/Game/Point.h
+$(TARGET_DIR)/Worm.o: src/Game/Worm.cpp src/Game/Worm.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/Point.o: src/Game/Point.cpp src/Game/Point.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h src/Game/PlayGround.h src/Exceptions/InvalidFormatException.h src/Exceptions/InvalidArgumentException.h src/Exceptions/Exception.h
+$(TARGET_DIR)/PlaygroundFactory.o: src/Game/PlaygroundFactory.cpp src/Game/PlaygroundFactory.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h src/Game/Enums.h src/Game/Point.h
+$(TARGET_DIR)/Playground.o: src/Game/PlayGround.cpp src/Game/PlayGround.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/GameContent.o: src/Game/GameContent.cpp src/Game/GameContent.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h src/Game/Enums.h
+$(TARGET_DIR)/Settings.o: src/Game/Settings.cpp src/Game/Settings.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/AIFactory.o: src/Game/AIFactory.cpp src/Game/AIFactory.h
@@ -120,6 +120,22 @@ $(TARGET_DIR)/AIFactory.o: src/Game/AIFactory.cpp src/Game/AIFactory.h
 
 $(TARGET_DIR)/NetworkCommunication.o: src/Game/NetworkCommunication.cpp src/Game/NetworkCommunication.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+src/Game/AIFactory.h: src/Exceptions/InvalidArgumentException.h src/Game/Tasks/RandomAI.h src/Game/Tasks/BFSAI.h
+
+src/Game/GameContent.h: src/Game/Worm.h src/Game/PlayGround.h src/Game/Events/EventContainer.h src/Game/Tasks/BaseTask.h
+
+src/Game/NetworkCommunication.h: src/Exceptions/ServerException.h src/Game/Enums.h
+
+src/Game/NibbleGame.h: src/ViewModels/Abstract/BaseViewModel.h src/States/GameStates.h
+
+src/Game/PlayGround.h: src/Exceptions/OutOfRangeException.h src/Game/Enums.h src/Game/Point.h
+
+src/Game/PlaygroundFactory.h: src/Exceptions/OutOfRangeException.h src/Exceptions/InvalidArgumentException.h src/Exceptions/InvalidFormatException.h src/Game/PlayGround.h
+
+src/Game/Settings.h: src/Game/Enums.h src/Exceptions/InvalidArgumentException.h
+
+src/Game/Worm.h: src/Game/Enums.h src/Game/Point.h
 
 ##############
 ##	EVENTS  ##

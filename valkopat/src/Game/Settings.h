@@ -4,8 +4,8 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-#include "Enums.h"
 #include "../Exceptions/InvalidArgumentException.h"
+#include "Enums.h"
 
 namespace Game
 {
