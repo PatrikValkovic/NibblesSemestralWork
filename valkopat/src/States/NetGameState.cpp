@@ -34,7 +34,7 @@ GameStates::AbstractGameState* GameStates::NetGameState::run()
     NewContent->Ground = CreatedPlayground;
     ClientSide* ClientSideEvent = new ClientSide(ClientSock, this->RenderingModel->InputModel());
     DiscardingInput* DiscardTask = new DiscardingInput(this->RenderingModel->InputModel());
-    ServerListener* ServerListenerTask = new ServerListener(ClientSock,NewContent->Worms);
+    ServerListener* ServerListenerTask = new ServerListener(ClientSock,NewContent->Worms,PlayerWorm->GetId());
 
     NewContent->Events.AddEvent(ClientSideEvent);
     NewContent->Tasks.push_back(ServerListenerTask);

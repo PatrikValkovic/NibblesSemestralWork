@@ -8,6 +8,7 @@ void Game::Task::ServerListener::run()
     Actions RecivedAction;
     while(NetworkCommunication::TryRecvActionsOfPlayer(this->CliSocket,IdOfPlayer,RecivedAction))
     {
+        //delete all worms if is local player
         if(RecivedAction==Actions::Pause && IdOfPlayer==IdOfCurrentPlayer)
         {
             for_each(this->InGameWorms.begin(),this->InGameWorms.end(),[](Worm* W){
@@ -15,7 +16,7 @@ void Game::Task::ServerListener::run()
             });
         }
 
-
+        //find worm that action is for
         vector<Worm*>::iterator MovingIter = InGameWorms.begin();
         vector<Worm*>::iterator EndIter = InGameWorms.end();
         vector<Worm*>::iterator Finded = find_if(MovingIter,EndIter,[&IdOfPlayer](Worm* W){
@@ -25,6 +26,7 @@ void Game::Task::ServerListener::run()
         if(Finded==EndIter)
             throw new Exceptions::ServerException("Obtained wrong ID of worm",,__LINE__,__FILE__);
 
+        //apply action
         Worm* Working = *Finded;
         if(RecivedAction==Actions::Pause)
             Working->StopPlaying();
