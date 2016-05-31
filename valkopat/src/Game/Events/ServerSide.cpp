@@ -121,6 +121,8 @@ void Game::Event::ServerSide::SendActions(map<Worm*, Actions> ToSend)
         for_each(ToSend.begin(), ToSend.end(), [&SendSocket](pair<Worm*, Actions> X) {
             NetworkCommunication::SendActionsOfPlayer(SendSocket,X.first->GetId(),X.second);
         });
+        if(ToSend.find(P.second)!=ToSend.end() && ToSend.find(P.second)->second==Actions::Pause)
+            P.second->StopPlaying();
     });
 }
 
