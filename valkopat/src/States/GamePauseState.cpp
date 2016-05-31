@@ -6,19 +6,20 @@ GameStates::GamePauseState::GamePauseState(ViewModel::BaseViewModel* RenderingMo
 
 GameStates::AbstractGameState* GameStates::GamePauseState::run()
 {
-    using std::map;
-    using std::string;
-    using std::pair;
+    using namespace std;
     using ViewModel::SplashPauseScreenAbstractViewModel;
+
     SplashPauseScreenAbstractViewModel* ViewModel = this->RenderingModel->SplashPauseScreenModel();
 
-    map<int,string> MenuEntries = {
-            {0,"ReturnToMenuPauseEntry"}
-    };
-    if(this->GameState->Playing())
-        MenuEntries.insert(pair<int,string>(1,"ReturnToGamePauseEntry"));
+    map<int, string> MenuEntries;
+    if (this->GameState->Playing())
+        MenuEntries.insert(pair < int, string > (0, "ReturnToGamePauseEntry"));
+    else
+        ViewModel->ShowFinalScore(this->GameState->GetWorms());
 
-    AbstractGameState* ArrayWithStates[2] = {this->Menu,this->GameState};
+    MenuEntries.insert(pair < int, string > (1, "ReturnToMenuPauseEntry"));
+
+    AbstractGameState* ArrayWithStates[2] = {this->GameState,this->Menu};
 
     int Returned = ViewModel->ShowPauseWithMenu(MenuEntries);
 

@@ -2,7 +2,9 @@
 #define CERVISEMESTRALKA_SPLASHSCREENABSTRACTVIEWMODEL_H
 #include <string>
 #include <map>
+#include <vector>
 #include "ViewModelDerivatingClass.h"
+#include "../../Game/Worm.h"
 
 namespace ViewModel
 {
@@ -19,6 +21,8 @@ namespace ViewModel
         virtual void ShowSplashScreen() = 0;
 
         virtual int ShowPauseWithMenu(std::map<int,string> MenuEntry) = 0;
+
+        virtual void ShowFinalScore(std::vector<Game::Worm*> Worms) = 0;
     };
 }
 

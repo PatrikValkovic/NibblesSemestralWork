@@ -132,6 +132,13 @@ bool GameStates::PlayingState::Playing()
     }) != End;
 }
 
+std::vector<Game::Worm*> GameStates::PlayingState::GetWorms()
+{
+    return this->ContentOfGame->Worms;
+}
+
+
+
 
 
 

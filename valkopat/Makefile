@@ -524,6 +524,6 @@ src/ViewModels/Abstract/SettingsAbstractViewModel.h: src/ViewModels/Abstract/Vie
 
 src/ViewModels/Abstract/SingleplayerMenuAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
 
-src/ViewModels/Abstract/SplashPauseScreenAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h
+src/ViewModels/Abstract/SplashPauseScreenAbstractViewModel.h: src/ViewModels/Abstract/ViewModelDerivatingClass.h src/Game/Worm.h
 
 src/ViewModels/Abstract/ViewModelDerivatingClass.h: src/Translation/TranslateEngine.h

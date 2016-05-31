@@ -27,6 +27,8 @@ namespace GameStates
 
         bool Playing();
 
+        std::vector<Game::Worm*> GetWorms();
+
     private:
         MenuGameState* Menu;
         GamePauseState* Pause;
