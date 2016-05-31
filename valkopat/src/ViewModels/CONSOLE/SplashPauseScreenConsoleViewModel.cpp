@@ -53,6 +53,11 @@ int ViewModel::SplashPauseScreenConsoleViewModel::ShowPauseWithMenu(std::map<int
     }
 }
 
+void ViewModel::SplashPauseScreenConsoleViewModel::ShowFinalScore(std::vector<Game::Worm*> Worms)
+{
+    //TODO
+}
+
 
 #endif
 

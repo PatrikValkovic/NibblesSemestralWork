@@ -13,6 +13,8 @@ namespace ViewModel
         virtual void ShowSplashScreen();
 
         virtual int ShowPauseWithMenu(std::map<int,string> MenuEntry);
+
+        virtual void ShowFinalScore(std::vector<Game::Worm*> Worms);
     };
 }
 

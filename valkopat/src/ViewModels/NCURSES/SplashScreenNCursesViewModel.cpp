@@ -15,6 +15,11 @@ int ViewModel::SplashScreenNCursesViewModel::ShowPauseWithMenu(std::map<int, str
     return 0;
 }
 
+void ViewModel::SplashScreenNCursesViewModel::ShowFinalScore(std::vector<Game::Worm*> Worms)
+{
+
+}
+
 
 #endif
 
