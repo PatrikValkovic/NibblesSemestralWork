@@ -5,9 +5,27 @@
 
 namespace ViewModel
 {
-    class NetMenuNCursesViewModel : public NetMenuAbstractViewModel
+    class NetMenuNCursesVIewModel : public NetMenuAbstractViewModel
     {
+    public:
+        NetMenuNCursesVIewModel(const Translate::TranslateEngine* Translation);
 
+        virtual string Level();
+        virtual int CountOfPlayers(int Max);
+        virtual pair<string,string> GetIPAndPort();
+        virtual bool CreateNewServer();
+        virtual void ServerCreated();
+        virtual void ServerNotCreated();
+        virtual void CreatingAndConnectingError();
+        virtual void CannotConnect();
+        virtual void ServerNotRespond();
+        virtual void ServerRespond();
+        virtual void LevelToUse(string NameOfLevel);
+        virtual void HaveMap(bool Have);
+        virtual string GetName();
+        virtual void PlayerConnected(string NameOfPlayer);
+        virtual void BeginGame();
+        virtual void WaitingForRestOfPlayers();
     };
 }
 

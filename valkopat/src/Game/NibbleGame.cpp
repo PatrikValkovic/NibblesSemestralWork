@@ -6,7 +6,7 @@ Game::NibbleGame::NibbleGame(ViewModel::BaseViewModel* RenderingEngine)
 
 void Game::NibbleGame::run()
 {
-    using namespace GameState;
+    using namespace GameStates;
     AbstractGameState* ActualState = this->States->GetFirstState();
     while(ActualState!=nullptr)
         ActualState = ActualState->run();
@@ -14,8 +14,15 @@ void Game::NibbleGame::run()
 
 void Game::NibbleGame::init()
 {
-    this->States = new GameState::GameStates(this->RenderEngine);
+    this->States = new GameStates::GameStates(this->RenderEngine);
 }
+
+Game::NibbleGame::~NibbleGame()
+{
+    delete this->States;
+}
+
+
 
 
 

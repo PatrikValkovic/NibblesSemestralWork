@@ -6,9 +6,10 @@
 
 namespace ViewModel
 {
-    class ScoreSDLViewModel : ScoreAbstractViewModel
+    class ScoreSDLViewModel : public ScoreAbstractViewModel
     {
-
+    public:
+        ScoreSDLViewModel(const Translate::TranslateEngine* Translation);
     };
 }
 

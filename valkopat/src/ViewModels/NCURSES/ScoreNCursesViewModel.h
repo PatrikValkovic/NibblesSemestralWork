@@ -6,8 +6,11 @@
 
 namespace ViewModel
 {
-    class ScoreNCursesViewModel : ScoreAbstractViewModel
+    class ScoreNCursesViewModel : public ScoreAbstractViewModel
     {
+    public:
+        ScoreNCursesViewModel(const Translate::TranslateEngine* Translation);
+
 
     };
 }

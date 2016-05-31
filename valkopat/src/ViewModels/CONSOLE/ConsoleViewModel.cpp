@@ -6,19 +6,21 @@ const char* ViewModel::ConsoleViewModel::GetNameofViewModel()
     return "Console";
 }
 
-void ViewModel::ConsoleViewModel::init()
+void ViewModel::ConsoleViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    SplashScren = new SplashScreenConsoleViewModel();
-    Menu = new MenuConsoleViewModel();
-    Language = new LanguageConsoleViewModel();
-    Multiplayer = new MultiplayerConsoleViewModel();
-    NetMenu = new NetMenuConsoleViewModel();
-    Singpleplayer = new SingpleplayerMenuConsoleViewModel();
-    Game = new GameConsoleViewModel();
-    Score = new ScoreConsoleViewModel();
+    SplashScren = new SplashPauseScreenConsoleViewModel(Translate);
+    Menu = new MenuConsoleViewModel(Translate);
+    Language = new SettingsConsoleViewModel(Translate);
+    Multiplayer = new MultiplayerConsoleViewModel(Translate);
+    NetMenu = new NetMenuConsoleViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuConsoleViewModel(Translate);
+    Game = new GameConsoleViewModel(Translate);
+    Score = new ScoreConsoleViewModel(Translate);
+    Quit = new QuitConsoleViewModel(Translate);
+    Input = new ConsoleInput();
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::ConsoleViewModel::SplashPauseScreenModel()
 {
     return this->SplashScren;
 }
@@ -28,7 +30,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::ConsoleViewModel::MenuModel()
     return this->Menu;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::ConsoleViewModel::LanguageModel()
 {
     return this->Language;
 }
@@ -58,17 +60,16 @@ ViewModel::ScoreAbstractViewModel* ViewModel::ConsoleViewModel::ScoreModel()
     return this->Score;
 }
 
-ViewModel::ConsoleViewModel::~ConsoleViewModel()
+ViewModel::QuitAbstractViewModel* ViewModel::ConsoleViewModel::QuitModel()
 {
-    delete SplashScren;
-    delete Menu;
-    delete Language;
-    delete Multiplayer;
-    delete NetMenu;
-    delete Singpleplayer;
-    delete Game;
-    delete Score;
+    return this->Quit;
 }
+
+ViewModel::AbstractInput* ViewModel::ConsoleViewModel::InputModel()
+{
+    return Input;
+}
+
 
 
 #endif

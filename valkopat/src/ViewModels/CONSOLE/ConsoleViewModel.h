@@ -4,41 +4,35 @@
 #include <iostream>
 
 #include "../Abstract/BaseViewModel.h"
-#include "SplashScreenConsoleViewModel.h"
+#include "SplashPauseScreenConsoleViewModel.h"
 #include "MenuConsoleViewModel.h"
-#include "LanguageConsoleViewModel.h"
+#include "SettingsConsoleViewModel.h"
 #include "MultiplayerConsoleViewModel.h"
 #include "NetMenuConsoleViewModel.h"
-#include "SingpleplayerMenuConsoleViewModel.h"
+#include "SingleplayerMenuConsoleViewModel.h"
 #include "GameConsoleViewModel.h"
 #include "ScoreConsoleViewModel.h"
+#include "QuitConsoleViewModel.h"
+#include "ConsoleInput.h"
 
 namespace ViewModel
 {
     class ConsoleViewModel : public BaseViewModel
     {
     public:
-        virtual ~ConsoleViewModel();
         virtual const char* GetNameofViewModel();
-        virtual void init();
+        virtual void init(const Translate::TranslateEngine* Translate);
 
-        virtual SplashScreenAbstractViewModel* SplashScreenModel();
+        virtual SplashPauseScreenAbstractViewModel* SplashPauseScreenModel();
         virtual MenuAbstractViewModel* MenuModel();
-        virtual LanguageAbstractViewModel* LanguageModel();
+        virtual SettingsAbstractViewModel* LanguageModel();
         virtual MultiplayerMenuAbstractViewModel* MultiplayerModel();
         virtual NetMenuAbstractViewModel* NetModel();
         virtual SingleplayerMenuAbstractViewModel* SingleplayerModel();
         virtual GameAbstractViewModel* GameModel();
         virtual ScoreAbstractViewModel* ScoreModel();
-    private:
-        SplashScreenAbstractViewModel* SplashScren;
-        MenuAbstractViewModel* Menu;
-        LanguageAbstractViewModel* Language;
-        MultiplayerMenuAbstractViewModel* Multiplayer;
-        NetMenuAbstractViewModel* NetMenu;
-        SingleplayerMenuAbstractViewModel* Singpleplayer;
-        GameAbstractViewModel* Game;
-        ScoreAbstractViewModel* Score;
+        virtual QuitAbstractViewModel* QuitModel();
+        virtual AbstractInput* InputModel();
     };
 }
 

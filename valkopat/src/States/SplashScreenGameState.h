@@ -4,20 +4,22 @@
 #include <chrono>
 #include <thread>
 #include "AbstractGameState.h"
-#include "MenuGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class SplashScreenGameState : public AbstractGameState
     {
     public:
-        SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel,MenuGameState* NextState);
+        SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel);
         virtual AbstractGameState* run();
+
+        void AddStates(MenuGameState* NextState);
 
     private:
         MenuGameState* NextState;
-        const uint32_t SleepForSecond = 1;
+        const uint32_t SleepForSecond;
     };
 }
 
+#include "MenuGameState.h"
 #endif //CERVISEMESTRALKA_SPLASHSCREENGAMESTATE_H

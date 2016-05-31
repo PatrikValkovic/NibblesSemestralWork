@@ -1,0 +1,66 @@
+cz:Čeština
+WhoMakeIt:Vytvořeno Patrikem Valkovičem
+DateOfCreation:letní semestr 2016
+HightSchool:České vysoké učení technické v Praze
+Faculty:Fakulta informačních technologií
+SettingsMenuEntry:Nastavení
+NetGameMenuEntry:Začít hrát po síti
+SingleplayerMenuEntry:Hrát proti počítači
+MultiplayerMenuEntry:Hra více hráčů
+EndMenuEntry:Ukončit program
+ChoiceFromUser:Vaše volba
+WrongEntry:Špatná volba, prosím opakujte akci
+WillBeExited:Program bude ukončen
+LastWord:Nashledanou
+LabelActualActivatedLanguage:Aktuálně používaný jazyk
+FromLanguageBackToMenu:Návrat zpět do menu
+ChangeLanguageTo:Změnit jazyk na
+ChooseName:Vaše jméno
+CountOfAI:Počet počítačem ovládaných hadů
+AviableLevels:Dostupné levely
+LevelChoose:Výběr levelu
+ClearMap:Čistá mapa
+BorderedMap:Ohraničená mapa
+MaxCount:Maximální počet je
+ScoreOf:Bodů hráče
+WormDead:Vyřazen
+ReturnToGamePauseEntry:Návrat do hry
+ReturnToMenuPauseEntry:Ukončit hru a vrátit se to menu
+PauseHeading:Hra pozastavena
+ChooseAILevel:Vyberte si obtížnost počítače
+RandomAI:Náhodný pohyb
+BFSAI:Hledání nejkratší cesty
+CountOfPlayers:Počet hráčů
+NamePlayer0:Jméno prvního hráče
+NamePlayer1:Jméno druhého hráče
+NamePlayer2:Jméno třetího hráče
+SettingsForPlayer:Nastavení pro hráče
+Up:nahoru
+Down:dolu
+Left:vlevo
+Right:vpravo
+Pause:pozastavit hru
+ChangeSettingForPlayer1:Změnit nastavení prvního hráče
+ChangeSettingForPlayer2:Změnit nastavení druhého hráče
+ChangeSettingForPlayer3:Změnit nastavení třetího hráče
+PushKeyToChange:Stiskněte klávesu, kterou chcete použit pro
+EnterToDontChange:(enter pokud chcete zanechat původní nastavení)
+NotAbleToApplySetting:Nepodařilo se aplikovat nastavení pro klávesu
+ChooseMode:Co chcete udělat?
+CreateNewServer:Vytvořit nový server
+ConnectToServer:Připojit se na server
+ServerIPPort:Zadejte IP adresu a port server ve formátu IP:Port
+ServerCreated:Server byl úspěšně vytvořen
+ServerNotCreated:Server se bohužel nepodařilo vytvořit
+ErrorWhenCreatingAndConnectiong:Z neznámého důvodu se nepodařilo připojit na server, návrat do menu
+CannotConnect:Nepodařilo se připojit na server, prosím opakujte akci
+ServerNotRespond:Server neodpovídá
+ServerRespond:Server odpovídá
+LevelToBeUse:Bude použit level
+MapExists:Mapa byla načtena
+MapDontExists:Mapa bude stažena
+PlayerConnected:Připojil se hráč
+GameBegin:Hra začíná
+WaitingForPlayer:Čekám na zbytek hráčů
+Result:Výsledky hry
+WithScore:dosažené scóre

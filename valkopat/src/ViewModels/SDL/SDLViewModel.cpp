@@ -6,12 +6,21 @@ const char* ViewModel::SDLViewModel::GetNameofViewModel()
     return "SDL";
 }
 
-void ViewModel::SDLViewModel::init()
+void ViewModel::SDLViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    //TODO
+    SplashScren = new SplashScreenSDLViewModel(Translate);
+    Menu = new MenuSDLViewModel(Translate);
+    Language = new SettingsSDLViewModel(Translate);
+    Multiplayer = new MultiplayerSDLViewModel(Translate);
+    NetMenu = new NetMenuSDLViewModel(Translate);
+    Singpleplayer = new SingleplayerMenuSDLViewModel(Translate);
+    Game = new GameSDLViewModel(Translate);
+    Score = new ScoreSDLViewModel(Translate);
+    Quit = new QuitSDLViewModel(Translate);
+    Input = new SDLInput();
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::SDLViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::SDLViewModel::SplashPauseScreenModel()
 {
     //TODO
     return NULL;
@@ -23,7 +32,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::SDLViewModel::MenuModel()
     return NULL;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::SDLViewModel::LanguageModel()
 {
     //TODO
     return NULL;
@@ -54,6 +63,18 @@ ViewModel::GameAbstractViewModel* ViewModel::SDLViewModel::GameModel()
 }
 
 ViewModel::ScoreAbstractViewModel* ViewModel::SDLViewModel::ScoreModel()
+{
+    //TODO
+    return NULL;
+}
+
+ViewModel::QuitAbstractViewModel* ViewModel::SDLViewModel::QuitModel()
+{
+    //TODO
+    return NULL;
+}
+
+ViewModel::AbstractInput* ViewModel::SDLViewModel::InputModel()
 {
     //TODO
     return NULL;

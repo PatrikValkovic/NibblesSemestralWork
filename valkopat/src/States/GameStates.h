@@ -2,10 +2,8 @@
 #define CERVISEMESTRALKA_GAMESTATES_H
 #include <vector>
 #include "AbstractGameState.h"
-#include "SplashScreenGameState.h"
-#include "MenuGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class GameStates
     {
@@ -23,4 +21,13 @@ namespace GameState
 }
 
 
+#include "SettingsState.h"
+#include "EndState.h"
+#include "GamePauseState.h"
+#include "MenuGameState.h"
+#include "MultiplayerGameState.h"
+#include "NetGameState.h"
+#include "PlayingState.h"
+#include "SingleplayerGameState.h"
+#include "SplashScreenGameState.h"
 #endif //CERVISEMESTRALKA_GAMESTATES_H

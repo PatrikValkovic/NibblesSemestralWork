@@ -2,7 +2,7 @@
 #define CERVISEMESTRALKA_ENDSTATE_H
 #include "AbstractGameState.h"
 
-namespace GameState
+namespace GameStates
 {
     class EndState : public AbstractGameState
     {
@@ -10,6 +10,8 @@ namespace GameState
         EndState(ViewModel::BaseViewModel* RenderingModel);
 
         virtual AbstractGameState* run();
+
+        void AddStates();
     };
 }
 

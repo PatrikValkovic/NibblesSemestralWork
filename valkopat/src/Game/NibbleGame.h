@@ -9,11 +9,12 @@ namespace Game
     {
     public:
         NibbleGame(ViewModel::BaseViewModel* RenderingEngine);
+        ~NibbleGame();
         void run();
         void init();
 
     private:
-        GameState::GameStates* States;
+        GameStates::GameStates* States;
         ViewModel::BaseViewModel* RenderEngine;
     };
 }

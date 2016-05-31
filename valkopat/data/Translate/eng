@@ -1,0 +1,66 @@
+eng:English
+WhoMakeIt:Made by Patrik Valkovic
+DateOfCreation:summer semester 2016
+HightSchool:Czech Technical University in Prague
+Faculty:Faculty of Information Technology
+SettingsMenuEntry:Settings
+NetGameMenuEntry:Play over network
+SingleplayerMenuEntry:Singleplayer
+MultiplayerMenuEntry:Play with friends on one PC
+EndMenuEntry:Quit
+ChoiceFromUser:Your choice
+WrongEntry:Wrong choice, please try again
+WillBeExited:Program will be terminated
+LastWord:Goodbye
+LabelActualActivatedLanguage:Current language
+FromLanguageBackToMenu:Return back to menu
+ChangeLanguageTo:Change language to
+ChooseName:Your name
+CountOfAI:Count of AI worms
+AviableLevels:Available levels
+LevelChoose:Choose level
+ClearMap:Clear map
+BorderedMap:Bounded map
+MaxCount:The maximum number is
+ScoreOf:Points of player
+WormDead:Dead
+ReturnToGamePauseEntry:Return to game
+ReturnToMenuPauseEntry:Quit game and return to menu
+PauseHeading:Game paused
+ChooseAILevel:Choose the difficulty of AI
+RandomAI:Random move
+BFSAI:Finding the shortest path
+CountOfPlayers:Count of players
+NamePlayer0:Name of first player
+NamePlayer1:Name of second player
+NamePlayer2:Name of third player
+SettingsForPlayer:Setting for player
+Up:Up
+Down:Down
+Left:Left
+Right:Right
+Pause:Pause game
+ChangeSettingForPlayer1:Change setting of first player
+ChangeSettingForPlayer2:Change setting of second player
+ChangeSettingForPlayer3:Change setting of third player
+PushKeyToChange:Press key, what you want use to
+EnterToDontChange:(enter if you want to leave original settings)
+NotAbleToApplySetting:Failed to apply the setting key
+ChooseMode:What to do?
+CreateNewServer:Create new server
+ConnectToServer:Connect to existing server
+ServerIPPort:Enter the IP address and port of the server in the format IP:Port
+ServerCreated:Server was successfully created
+ServerNotCreated:Server failed to create
+ErrorWhenCreatingAndConnectiong:For unknown reasons, failed to connect to a server, returning to menu
+CannotConnect:Failed to connect to the server, please try again
+ServerNotRespond:Server not responding
+ServerRespond:Server responds
+LevelToBeUse:Level to use
+MapExists:Map was loaded
+MapDontExists:Map will be downloaded
+PlayerConnected:Player connected
+GameBegin:Starting game
+WaitingForPlayer:Waiting for rest of players
+Result:Final score
+WithScore:with score

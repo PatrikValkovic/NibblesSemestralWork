@@ -6,12 +6,21 @@ const char* ViewModel::NCursesViewModel::GetNameofViewModel()
     return "NCurses";
 }
 
-void ViewModel::NCursesViewModel::init()
+void ViewModel::NCursesViewModel::init(const Translate::TranslateEngine* Translate)
 {
-    //TODO
+    SplashScren = new SplashScreenNCursesViewModel(Translate);
+    Menu = new MenuNCursesViewModel(Translate);
+    Language = new SettingsNCursesViewModel(Translate);
+    Multiplayer = new MultiplayerNCursesViewModel(Translate);
+    NetMenu = new NetMenuNCursesVIewModel(Translate);
+    Singpleplayer = new SingleplayerMenuNCursesViewModel(Translate);
+    Game = new GameNCursesViewModel(Translate);
+    Score = new ScoreNCursesViewModel(Translate);
+    Quit = new QuitNCursesViewModel(Translate);
+    Input = new NCursesInput();
 }
 
-ViewModel::SplashScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashScreenModel()
+ViewModel::SplashPauseScreenAbstractViewModel* ViewModel::NCursesViewModel::SplashPauseScreenModel()
 {
     //TODO
     return NULL;
@@ -23,7 +32,7 @@ ViewModel::MenuAbstractViewModel* ViewModel::NCursesViewModel::MenuModel()
     return NULL;
 }
 
-ViewModel::LanguageAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
+ViewModel::SettingsAbstractViewModel* ViewModel::NCursesViewModel::LanguageModel()
 {
     //TODO
     return NULL;
@@ -54,6 +63,18 @@ ViewModel::GameAbstractViewModel* ViewModel::NCursesViewModel::GameModel()
 }
 
 ViewModel::ScoreAbstractViewModel* ViewModel::NCursesViewModel::ScoreModel()
+{
+    //TODO
+    return NULL;
+}
+
+ViewModel::QuitAbstractViewModel* ViewModel::NCursesViewModel::QuitModel()
+{
+    //TODO
+    return NULL;
+}
+
+ViewModel::AbstractInput* ViewModel::NCursesViewModel::InputModel()
 {
     //TODO
     return NULL;
