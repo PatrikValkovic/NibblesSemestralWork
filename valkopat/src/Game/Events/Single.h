@@ -2,8 +2,8 @@
 #define CERVISEMESTRALKA_SINGPLE_H
 #include <map>
 #include "AbstractEvent.h"
-#include "../Worm.h"
 #include "../../ViewModels/Abstract/AbstractInput.h"
+#include "../Worm.h"
 #include "../Settings.h"
 
 namespace Game

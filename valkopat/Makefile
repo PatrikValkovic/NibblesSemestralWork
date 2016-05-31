@@ -128,17 +128,26 @@ $(TARGET_DIR)/NetworkCommunication.o: src/Game/NetworkCommunication.cpp src/Game
 $(TARGET_DIR)/Events.o: $(TARGET_DIR)/Single.o $(TARGET_DIR)/EventContainer.o $(TARGET_DIR)/ServerSide.o $(TARGET_DIR)/ClientSide.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h src/Game/Events/AbstractEvent.h src/Game/Worm.h
+$(TARGET_DIR)/Single.o: src/Game/Events/Single.cpp src/Game/Events/Single.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Events/EventContainer.h src/Game/Events/AbstractEvent.h
+$(TARGET_DIR)/EventContainer.o: src/Game/Events/EventContainer.cpp src/Game/Events/EventContainer.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/ServerSide.o: src/Game/Events/ServerSide.cpp src/Game/Events/ServerSide.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/ClientSide.o: src/Game/Events/ClientSide.cpp src/Game/Events/ClientSide.h src/Game/Events/AbstractEvent.h
+$(TARGET_DIR)/ClientSide.o: src/Game/Events/ClientSide.cpp src/Game/Events/ClientSide.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+src/Game/Events/ClientSide.h: src/Game/Events/AbstractEvent.h src/ViewModels/Abstract/AbstractInput.h src/Game/Enums.h src/Game/Settings.h src/Game/Worm.h src/Game/NetworkCommunication.h
+
+src/Game/Events/EventContainer.h: src/Game/Events/AbstractEvent.h
+
+src/Game/Events/ServerSide.h: src/Game/Events/AbstractEvent.h src/Game/Worm.h src/Game/PlayGround.h src/Game/PlaygroundFactory.h src/Game/NetworkCommunication.h
+
+src/Game/Events/Single.h: src/Game/Events/AbstractEvent.h src/ViewModels/Abstract/AbstractInput.h src/Game/Worm.h src/Game/Settings.h
+
 
 #############
 ##	TASKS  ##
@@ -147,26 +156,39 @@ $(TARGET_DIR)/ClientSide.o: src/Game/Events/ClientSide.cpp src/Game/Events/Clien
 $(TARGET_DIR)/Tasks.o: $(TARGET_DIR)/BaseTask.o $(TARGET_DIR)/WaitingTask.o $(TARGET_DIR)/RandomAI.o $(TARGET_DIR)/BFSAI.o $(TARGET_DIR)/BaseAITask.o $(TARGET_DIR)/DiscardingInput.o $(TARGET_DIR)/ServerListener.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp src/Game/Tasks/BaseTask.h
+$(TARGET_DIR)/BaseTask.o: src/Game/Tasks/BaseTask.cpp
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/WaitingTask.h src/Game/Tasks/BaseTask.h
+$(TARGET_DIR)/WaitingTask.o: src/Game/Tasks/WaitingTask.cpp src/Game/Tasks/WaitingTask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/BaseAITask.o: src/Game/Tasks/BaseAITask.cpp src/Game/Tasks/BaseAITask.h src/Game/Tasks/BaseTask.h
+$(TARGET_DIR)/BaseAITask.o: src/Game/Tasks/BaseAITask.cpp src/Game/Tasks/BaseAITask.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/RandomAI.o: src/Game/Tasks/RandomAI.cpp src/Game/Tasks/RandomAI.h src/Game/Tasks/BaseAITask.h
+$(TARGET_DIR)/RandomAI.o: src/Game/Tasks/RandomAI.cpp src/Game/Tasks/RandomAI.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/BFSAI.o: src/Game/Tasks/BFSAI.cpp src/Game/Tasks/BFSAI.h src/Game/Tasks/BaseAITask.h
+$(TARGET_DIR)/BFSAI.o: src/Game/Tasks/BFSAI.cpp src/Game/Tasks/BFSAI.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/DiscardingInput.o: src/Game/Tasks/DiscardingInput.cpp src/Game/Tasks/DiscardingInput.h src/Game/Tasks/BaseTask.h
+$(TARGET_DIR)/DiscardingInput.o: src/Game/Tasks/DiscardingInput.cpp src/Game/Tasks/DiscardingInput.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-$(TARGET_DIR)/ServerListener.o: src/Game/Tasks/ServerListener.cpp src/Game/Tasks/ServerListener.h src/Game/Tasks/BaseTask.h
+$(TARGET_DIR)/ServerListener.o: src/Game/Tasks/ServerListener.cpp src/Game/Tasks/ServerListener.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
+
+src/Game/Tasks/BaseAITask.h: src/Game/Tasks/BaseTask.h src/Game/Worm.h src/Game/GameContent.h
+
+src/Game/Tasks/BFSAI.h: src/Game/Tasks/BaseAITask.h src/Exceptions/InvalidArgumentException.h
+
+src/Game/Tasks/DiscardingInput.h: src/Game/Tasks/BaseTask.h src/ViewModels/Abstract/AbstractInput.h
+
+src/Game/Tasks/RandomAI.h: src/Game/Tasks/BaseAITask.h
+
+src/Game/Tasks/ServerListener.h: src/Game/Tasks/BaseTask.h src/Game/Worm.h src/Game/NetworkCommunication.h
+
+src/Game/Tasks/WaitingTask.h: src/Game/Tasks/BaseTask.h
+
 
 ##################
 ##	EXCEPTIONS  ##
