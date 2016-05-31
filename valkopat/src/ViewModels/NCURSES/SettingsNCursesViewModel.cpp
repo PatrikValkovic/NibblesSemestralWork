@@ -16,6 +16,21 @@ void ViewModel::SettingsNCursesViewModel::ShowActualLanguage() const
     //TODO
 }
 
+void ViewModel::SettingsNCursesViewModel::ShowKeySettings() const
+{
+
+}
+
+void ViewModel::SettingsNCursesViewModel::NotAbleToSetSettings(Game::Keys K)
+{
+
+}
+
+map<Game::Keys, Game::Actions> ViewModel::SettingsNCursesViewModel::CreateNewSetting()
+{
+    using namespace Game;
+    return std::map<Keys, Actions>();
+}
 
 
 #endif
