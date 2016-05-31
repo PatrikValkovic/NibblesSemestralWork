@@ -16,10 +16,11 @@ namespace Game
         class ServerListener : public BaseTask
         {
         public:
-            ServerListener (int ClientSocket,vector<Worm*> Worms);
+            ServerListener (int ClientSocket,vector<Worm*> Worms,int PlayerId);
             virtual void run();
         private:
             int CliSocket;
+            int IdOfCurrentPlayer;
             vector<Worm*> InGameWorms;
         };
     }

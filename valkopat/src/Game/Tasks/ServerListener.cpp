@@ -8,9 +8,11 @@ void Game::Task::ServerListener::run()
     Actions RecivedAction;
     while(NetworkCommunication::TryRecvActionsOfPlayer(this->CliSocket,IdOfPlayer,RecivedAction))
     {
-        if(RecivedAction==Actions::Pause)
+        if(RecivedAction==Actions::Pause && IdOfPlayer==IdOfCurrentPlayer)
         {
-            //TODO delete all if is current player
+            for_each(this->InGameWorms.begin(),this->InGameWorms.end(),[](Worm* W){
+               W->StopPlaying();
+            });
         }
 
 
@@ -21,10 +23,7 @@ void Game::Task::ServerListener::run()
         });
 
         if(Finded==EndIter)
-        {
-            //TODO this should happend
-            continue;
-        }
+            throw new Exceptions::ServerException("Obtained wrong ID of worm",,__LINE__,__FILE__);
 
         Worm* Working = *Finded;
         if(RecivedAction==Actions::Pause)
@@ -34,8 +33,8 @@ void Game::Task::ServerListener::run()
     }
 }
 
-Game::Task::ServerListener::ServerListener(int ClientSocket, vector<Worm*> Worms)
-        : CliSocket(ClientSocket), InGameWorms(Worms)
+Game::Task::ServerListener::ServerListener(int ClientSocket, vector<Worm*> Worms, int PlayerId)
+        : CliSocket(ClientSocket), IdOfCurrentPlayer(PlayerId), InGameWorms(Worms)
 { }
 
 
