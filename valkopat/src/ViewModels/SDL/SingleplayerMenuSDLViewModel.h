@@ -2,6 +2,8 @@
 #define CERVISEMESTRALKA_SINGPLEPLAYERMENUSDLVIEWMODEL_H
 #ifdef USE_SDL
 #include "../Abstract/SingleplayerMenuAbstractViewModel.h"
+
+
 namespace ViewModel
 {
     class SingleplayerMenuSDLViewModel : public SingleplayerMenuAbstractViewModel
