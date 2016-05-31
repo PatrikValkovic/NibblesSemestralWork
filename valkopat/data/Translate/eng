@@ -62,3 +62,5 @@ MapDontExists:Map will be downloaded
 PlayerConnected:Player connected
 GameBegin:Starting game
 WaitingForPlayer:Waiting for rest of players
+Result:Final score
+WithScore:with score

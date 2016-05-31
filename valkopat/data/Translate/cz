@@ -62,3 +62,5 @@ MapDontExists:Mapa bude stažena
 PlayerConnected:Připojil se hráč
 GameBegin:Hra začíná
 WaitingForPlayer:Čekám na zbytek hráčů
+Result:Výsledky hry
+WithScore:dosažené scóre

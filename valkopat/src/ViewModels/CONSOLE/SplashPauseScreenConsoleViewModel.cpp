@@ -55,7 +55,25 @@ int ViewModel::SplashPauseScreenConsoleViewModel::ShowPauseWithMenu(std::map<int
 
 void ViewModel::SplashPauseScreenConsoleViewModel::ShowFinalScore(std::vector<Game::Worm*> Worms)
 {
-    //TODO
+    using namespace std;
+    using Game::Worm;
+    cout << Translation->GetTranslation("Result") << endl;
+
+    sort(Worms.begin(), Worms.end(), [](Worm* First, Worm* Second) {
+        return First->GetSegment().size() > Second->GetSegment().size();
+    });
+
+    int Index = 1;
+    for_each(Worms.begin(), Worms.end(), [&Index,this](Worm* W) {
+        cout << Index++
+                << ' '
+                << W->GetName()
+                << ' '
+                << Translation->GetTranslation("WithScore")
+                << ' '
+                << W->GetSegment().size()
+                << endl;
+    });
 }
 
 
