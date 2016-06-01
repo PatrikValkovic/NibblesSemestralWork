@@ -121,7 +121,7 @@ void Game::NetworkCommunication::RecvName(int Socket, string& Name)
     char* Buffer;
 
     recv(Socket, &LengthOfName, sizeof(size_t), 0);
-    Buffer = (char*) calloc(LengthOfName + 1, 0);
+    Buffer = (char*) calloc(LengthOfName + 1, 1);
     recv(Socket, Buffer, LengthOfName, 0);
     Name = string(Buffer);
 
