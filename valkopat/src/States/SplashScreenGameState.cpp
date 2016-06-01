@@ -13,7 +13,7 @@ GameStates::AbstractGameState* GameStates::SplashScreenGameState::run()
 }
 
 GameStates::SplashScreenGameState::SplashScreenGameState(ViewModel::BaseViewModel* RenderingModel)
-        : AbstractGameState(RenderingModel), SleepForSecond(0) //TODO replace by 1
+        : AbstractGameState(RenderingModel), SleepForSecond(1)
 { }
 
 void GameStates::SplashScreenGameState::AddStates(MenuGameState* NextState)
