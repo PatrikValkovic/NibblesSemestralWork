@@ -8,11 +8,20 @@ namespace Game
 {
     namespace Task
     {
+        /**
+         * Task that represent waiting cycle in main loop
+         */
         class WaitingTask : public BaseTask
         {
         private:
+            /**
+             * How long to wait
+             */
             static const int WaitingTimeInMiliseconds;
         public:
+            /**
+             * Start waiting
+             */
             virtual void run();
         };
 
