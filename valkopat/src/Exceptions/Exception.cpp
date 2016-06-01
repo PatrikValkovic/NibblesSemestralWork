@@ -18,8 +18,8 @@ Exceptions::Exception::Exception(string Message, int Line, string FileName)
         : Exception(Message, Line, FileName, NULL)
 { }
 
-Exceptions::Exception::Exception(string Message, int Line, Exception* InnerException)
-        : Exception(Message, Line, "", InnerException)
+Exceptions::Exception::Exception(string Message, Exception* InnerException)
+        : Exception(Message, -1, "", InnerException)
 { }
 
 Exceptions::Exception::Exception(string ErrorMessage, int LineNumber, string File, Exception* InnerException)
