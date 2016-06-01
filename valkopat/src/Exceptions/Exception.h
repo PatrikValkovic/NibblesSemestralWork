@@ -1,6 +1,5 @@
 #ifndef CERVISEMESTRALKA_EXCEPTION_H
 #define CERVISEMESTRALKA_EXCEPTION_H
-#include <exception>
 #include <string>
 
 using namespace std;
@@ -11,7 +10,7 @@ namespace Exceptions
     /**
      * Base class for all exceptions in project. Contain informations about Message, Line, Filename and InnerException
      */
-    class Exception : public std::exception
+    class Exception
     {
     private:
         string Message;
