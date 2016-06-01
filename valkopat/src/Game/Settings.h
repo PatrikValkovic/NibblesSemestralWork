@@ -22,7 +22,7 @@ namespace Game
          */
         Settings();
         static Settings* Instance;
-    public:
+    public  :
         /**
          * Return instance of Settings
          * @return Already created instance of Settings

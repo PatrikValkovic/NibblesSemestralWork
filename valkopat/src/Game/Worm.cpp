@@ -18,7 +18,6 @@ Game::Worm::Worm(int PositionX, int PositionY, Actions Direction, int Id)
         Segments.push_back(Segment(PositionX + a*RightAdding,PositionY+a*DownAdding));
 }
 
-#include <iostream>
 void Game::Worm::Move(Actions Direction)
 {
     if(!IsPlaying())
