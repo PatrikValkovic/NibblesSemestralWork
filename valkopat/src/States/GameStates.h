@@ -5,17 +5,45 @@
 
 namespace GameStates
 {
+    /**
+     * Class that create all states
+     */
     class GameStates
     {
     public:
+        /**
+         * Create new instance of GameStates and also create all needed states for game
+         * @param Model Rendering submodule
+         * @return New instance of GameState
+         */
         GameStates(ViewModel::BaseViewModel* Model);
+
+        /**
+         * Destructor - delete all states of game
+         */
         ~GameStates();
 
+        /**
+         * Return starting state, which will the game begin
+         * @return Starting state of game
+         */
         AbstractGameState* GetFirstState() const;
 
     private:
+
+        /**
+         * Rendering submodule
+         */
         ViewModel::BaseViewModel* RenderingModel;
+
+        /**
+         * Vector of all created states
+         */
         std::vector<AbstractGameState*> AllStates;
+
+        /**
+         * First state of game
+         */
         AbstractGameState* First;
     };
 }
