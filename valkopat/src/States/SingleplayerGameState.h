@@ -12,13 +12,30 @@
 
 namespace GameStates
 {
+    /**
+     * Represent state that create Game::Content to play again AI
+     */
     class SingleplayerGameState : public AbstractGameState
     {
     public:
+        /**
+         * Create new instance of SingleplayerGameState
+         * @param RenderingModel Rendering submodule
+         * @return New instance of SingleplayerGameState
+         */
         SingleplayerGameState(ViewModel::BaseViewModel* RenderingModel);
 
+        /**
+         * Ask user for informations and create GameContent with AI player
+         * @return Next state to run
+         */
         virtual AbstractGameState* run();
 
+        /**
+         * Fill needed states
+         * @param GameState State with game loop
+         * @param MenuState State with game menu
+         */
         void AddStates(PlayingState* GameState, MenuGameState* MenuState);
 
     private:
