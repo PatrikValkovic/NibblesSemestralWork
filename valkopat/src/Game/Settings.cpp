@@ -98,7 +98,7 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewAction)
                      [&NewAction, &OldKey](pair<Keys, Actions> X) {
                          if (X.second == NewAction)
                              OldKey = X.first;
-                     });
+                     };
             WorkingPlayerSettings.Action.erase(OldKey);
             WorkingPlayerSettings.Action.insert(pair<Keys, Actions>(NewKey, NewAction));
         }
