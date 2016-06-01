@@ -1,9 +1,16 @@
-#include <iostream>
 #include "Exceptions/Exception.h"
 #include "Translation/TranslateEngine.h"
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
 
+/*! \mainpage Nibbles game
+ * Nibbles game remake of Nibbles (https://en.wikipedia.org/wiki/Nibbles_%28video_game%29)\n
+ * Author: Patrik Valkovič\n
+ * Semestral work\n
+ * Summer semester 2015/2016\n
+ * Czech Technical University in Prague\n
+ * Faculty of Information Technology\n
+ */
 
 
 /**
