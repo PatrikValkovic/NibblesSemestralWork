@@ -126,7 +126,7 @@ map<Game::Keys, Game::Actions> ViewModel::SettingsConsoleViewModel::CreateNewSet
         {
             cout << Translation->GetTranslation("PushKeyToChange")
             << ':'
-            << Translation->GetTranslation(TranslateActions.at(ActionsToChange.at(a)))
+            << Translation->GetTranslation(TranslateActions.at(ActionsToChange.at((unsigned long) a)))
             << ' '
             << Translation->GetTranslation("EnterToDontChange")
             << ':';
