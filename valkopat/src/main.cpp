@@ -1,11 +1,8 @@
 #include <iostream>
-#include <cstdio>
 #include "Exceptions/Exception.h"
 #include "Translation/TranslateEngine.h"
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
-#include "Game/AIFactory.h"
-#include "Game/Settings.h"
 
 int main()
 {
