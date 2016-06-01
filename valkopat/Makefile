@@ -1,6 +1,6 @@
 #Variable definitions
-USE_SDL = 1
-USE_NCURSES = 1
+USE_SDL = 0
+USE_NCURSES = 0
 USE_CONSOLE = 1
 TARGET_DIR = build
 
