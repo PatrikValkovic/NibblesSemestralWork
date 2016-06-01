@@ -17,23 +17,69 @@
 
 namespace GameStates
 {
+    /**
+     * Represent state, which manage creating of game objects from server
+     */
     class NetGameState : public AbstractGameState
     {
     public:
+        /**
+         * Create new instance of NetGameState
+         * @param RenderingModel Rendering submodule
+         * @return New instance of NetGameState
+         */
         NetGameState(ViewModel::BaseViewModel* RenderingModel);
 
+        /**
+         * Get informations from user and prepare game to run
+         * @return Next state to run
+         */
         virtual AbstractGameState* run();
 
+        /**
+         * Fill needed states
+         * @param GameState State with game loop
+         * @param MenuState State with main menu of the game
+         */
         void AddStates(PlayingState* GameState, MenuGameState* MenuState);
 
     private:
         PlayingState* PlayState;
         MenuGameState* Menu;
 
+        /**
+         * Get informations from server and create Playground
+         * @param Socket Socket of client
+         * @return New instance of Game::PlayGround
+         */
         PlayGround* CreatePlayground(int Socket);
+
+        /**
+         * Create client socket of player, if needed also create and run server
+         * @return Client socket
+         */
         int CreateSocket();
+
+        /**
+         * Check if server responds
+         * @param Socket ClientSocket
+         * @return True if server respond, false otherwise
+         */
         bool SayHello(int Socket);
+
+        /**
+         * Get informations from user and create his Game::Worm
+         * @param Socket Client socket
+         * @param Name Name of player
+         * @return New instance of Game::Worm representing player on current PC
+         */
         Worm* GetInfoAboutPlayer(int Socket,string Name);
+
+        /**
+         * Wait fot other players to connect
+         * @param Socket Client socket
+         * @return Vector of other players worms
+         */
         vector<Worm*> WaitToRestOfWorms(int Socket);
     };
 }
