@@ -2,7 +2,7 @@
 
 void Game::NetworkCommunication::SendHeader(int Socket, Game::ServerActions Header)
 {
-    send(Socket, &Header, sizeof(Game::ServerActions), 0);
+    send(Socket, &Header, sizeof(Game::ServerActions), MSG_NOSIGNAL);
 }
 
 Game::ServerActions Game::NetworkCommunication::RecvHeader(int Socket)
