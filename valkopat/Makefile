@@ -90,7 +90,7 @@ $(TARGET_DIR)/all.o: $(TARGET_DIR)/game.o $(TARGET_DIR)/Exceptions.o
 $(TARGET_DIR)/game.o: $(TARGET_DIR)/main.o $(TARGET_DIR)/NibbleGame.o $(TARGET_DIR)/States.o $(TARGET_DIR)/GameEntities.o $(TARGET_DIR)/Events.o $(TARGET_DIR)/Tasks.o $(TARGET_DIR)/AIFactory.o $(TARGET_DIR)/NetworkCommunication.o
 	$(LINKER) -r -o $@ $^
 
-$(TARGET_DIR)/main.o: src/main.cpp src/Game/NibbleGame.h
+$(TARGET_DIR)/main.o: src/main.cpp
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
 $(TARGET_DIR)/NibbleGame.o: src/Game/NibbleGame.cpp src/Game/NibbleGame.h
@@ -138,6 +138,8 @@ src/Game/PlaygroundFactory.h: src/Exceptions/OutOfRangeException.h src/Exception
 src/Game/Settings.h: src/Game/Enums.h src/Exceptions/InvalidArgumentException.h
 
 src/Game/Worm.h: src/Game/Enums.h src/Game/Point.h
+
+src/main.cpp: src/Exceptions/Exception.h src/Translation/TranslateEngine.h src/ViewModels/ViewModelChooser.h src/Game/NibbleGame.h
 
 ##############
 ##	EVENTS  ##
