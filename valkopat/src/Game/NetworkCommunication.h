@@ -177,7 +177,7 @@ namespace Game
          * @param Socket Socket to send
          */
         static void SendEndOfWait(int Socket);
-        /**
+        /**s
          * Recive what other users do
          * @param Socket Socket to recive
          * @param IDOfPlayer ID of user, which done action
