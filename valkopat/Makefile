@@ -33,13 +33,13 @@ run: compile
 
 clean:
 	[ ! -d $(TARGET_DIR) ] || rm -rf $(TARGET_DIR)
-	[ ! -d doc/html ] || rm -rf doc/html
+	[ ! -d doc ] || rm -rf doc
 	[ ! -x valkopat ] || rm valkopat
 	@echo Cleaned
 
 doc:
-	cd doc
-	doxygen doc/doxconfig.cfg
+	[ ! -d doc ] || mkdir doc
+	doxygen doxygen.cfg
 
 debug: | Debug compile
 

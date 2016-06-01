@@ -181,7 +181,7 @@ namespace Game
          * Create new segment and append it to end of worm
          */
         void IncrementSize();
-        
+
         /**
          * @return ID of Worm
          */
