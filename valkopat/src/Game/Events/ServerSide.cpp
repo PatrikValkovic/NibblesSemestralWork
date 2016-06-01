@@ -50,14 +50,13 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
             S->SendActions(ActMap);
             S->NextFrame();
         }
-
-        delete S;
     }
     catch(Exceptions::Exception* e)
     {
         cout << e->ToString() << endl;
         delete e;
     }
+    delete S;
 }
 
 int Game::Event::ServerSide::NewUserSocket()
