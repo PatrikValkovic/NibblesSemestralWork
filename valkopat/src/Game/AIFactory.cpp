@@ -26,6 +26,8 @@ Game::AIFactory::AIFactory()
 
 Game::AIFactory* Game::AIFactory::GetInstance()
 {
+    if(Game::AIFactory::Instance==NULL)
+        Game::AIFactory::Instance = new AIFactory();
     return Game::AIFactory::Instance;
 }
 
