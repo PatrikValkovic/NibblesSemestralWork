@@ -17,14 +17,15 @@ namespace Game
     //singleton
     private:
         /**
-         * Singleton instance
-         */
-        static Settings Instance;
-        /**
          * Private contructor, creates base setting
          * @return New instance of Settings
          */
         Settings();
+        /**
+         * Singleton instance
+         */
+        static Settings* Instance;
+
     public:
         /**
          * Return instance of Settings

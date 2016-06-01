@@ -21,8 +21,7 @@ namespace Game
         /**
          * Singleton instance
          */
-        static AIFactory Instance;
-
+        static AIFactory* Instance;
         /**
          * Private contructor - create templates of AI tasks
          * @return

@@ -1,5 +1,8 @@
 #include "Settings.h"
 
+Game::Settings* Game::Settings::Instance = NULL;
+
+
 Game::Settings::Settings()
 {
     using std::pair;
@@ -38,12 +41,15 @@ Game::Settings::Settings()
 
 Game::Settings* Game::Settings::GetInstance()
 {
-    return &Game::Settings::Instance;
+    return Game::Settings::Instance;
 }
 
 Game::Settings::~Settings()
 {
-
+    if(Settings::Instance!=NULL)
+    {
+        Settings::Instance = NULL;
+    }
 }
 
 bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Actions& Action) const
