@@ -14,7 +14,7 @@ namespace Game
     //singleton
     private:
         Settings();
-        static Settings Instance;
+        static Settings* Instance;
     public:
         static Settings* GetInstance();
         Settings(const Settings&) = delete;

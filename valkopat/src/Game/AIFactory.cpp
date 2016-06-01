@@ -1,12 +1,18 @@
 #include "AIFactory.h"
 
+Game::AIFactory* Game::AIFactory::Instance = NULL;
+
 Game::AIFactory::~AIFactory()
 {
-    using namespace std;
-    using Game::Task::BaseAITask;
-    for_each(this->Tasks.begin(), this->Tasks.end(), [](pair<string, BaseAITask*> X) {
-        delete X.second;
-    });
+    if (Game::AIFactory::Instance != NULL)
+    {
+        using namespace std;
+        using Game::Task::BaseAITask;
+        for_each(this->Tasks.begin(), this->Tasks.end(), [](pair<string, BaseAITask*> X) {
+            delete X.second;
+        });
+        Game::AIFactory::Instance = NULL;
+    }
 }
 
 Game::AIFactory::AIFactory()
@@ -20,7 +26,7 @@ Game::AIFactory::AIFactory()
 
 Game::AIFactory* Game::AIFactory::GetInstance()
 {
-    return &Instance;
+    return Game::AIFactory::Instance;
 }
 
 std::vector<std::string> Game::AIFactory::GetNamesOfAILevels()
@@ -42,12 +48,13 @@ std::vector<Game::Task::BaseAITask*> Game::AIFactory::CreatesTaskForWorms(std::v
     using Game::Task::BaseAITask;
 
     vector<BaseAITask*> Tasks;
-    map<string,BaseAITask*>::iterator AITaskIter = this->Tasks.find(NameOfLevel);
-    if(AITaskIter==this->Tasks.end())
-        throw new Exceptions::InvalidArgumentException("AI level with name " + NameOfLevel + " dont exists",__LINE__,__FILE__);
+    map<string, BaseAITask*>::iterator AITaskIter = this->Tasks.find(NameOfLevel);
+    if (AITaskIter == this->Tasks.end())
+        throw new Exceptions::InvalidArgumentException("AI level with name " + NameOfLevel + " dont exists", __LINE__,
+                                                       __FILE__);
 
-    for_each(Worms.begin(),Worms.end(),[&Game,&Tasks,&AITaskIter](Worm* X){
-        Tasks.push_back(AITaskIter->second->CreateInstance(X,Game));
+    for_each(Worms.begin(), Worms.end(), [&Game, &Tasks, &AITaskIter](Worm* X) {
+        Tasks.push_back(AITaskIter->second->CreateInstance(X, Game));
     });
 
     return Tasks;
