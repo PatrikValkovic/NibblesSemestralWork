@@ -41,12 +41,14 @@ Game::Settings::Settings()
 
 Game::Settings* Game::Settings::GetInstance()
 {
+    if (Game::Settings::Instance == NULL)
+        Game::Settings::Instance = new Settings();
     return Game::Settings::Instance;
 }
 
 Game::Settings::~Settings()
 {
-    if(Settings::Instance!=NULL)
+    if (Settings::Instance != NULL)
     {
         Settings::Instance = NULL;
     }
@@ -93,7 +95,6 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewAction)
         {
             Changed = true;
             Keys OldKey = Keys::Key1;
-            for_each(WorkingPlayerSettings.Action.begin(), WorkingPlayerSettings.Action.end(),
                      [&NewAction, &OldKey](pair<Keys, Actions> X) {
                          if (X.second == NewAction)
                              OldKey = X.first;

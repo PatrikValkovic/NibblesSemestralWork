@@ -2,7 +2,7 @@
 
 void Game::NetworkCommunication::SendHeader(int Socket, Game::ServerActions Header)
 {
-    send(Socket, &Header, sizeof(Game::ServerActions), 0);
+    send(Socket, &Header, sizeof(Game::ServerActions), MSG_NOSIGNAL);
 }
 
 Game::ServerActions Game::NetworkCommunication::RecvHeader(int Socket)
@@ -121,7 +121,7 @@ void Game::NetworkCommunication::RecvName(int Socket, string& Name)
     char* Buffer;
 
     recv(Socket, &LengthOfName, sizeof(size_t), 0);
-    Buffer = (char*) calloc(LengthOfName + 1, 0);
+    Buffer = (char*) calloc(LengthOfName + 1, 1);
     recv(Socket, Buffer, LengthOfName, 0);
     Name = string(Buffer);
 

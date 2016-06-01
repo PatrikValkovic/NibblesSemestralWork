@@ -25,29 +25,37 @@ void Game::Event::ServerSide::ThreadRun(ServerSide* S)
 {
     using namespace std;
     using namespace Game;
-    int ClientIndex = 0;
-    while ((int) S->Players.size() < S->CountOfPlayers)
-    {
-        int NewPlayer;
-        if ((NewPlayer = S->NewUserSocket()) == -1 || !NetworkCommunication::RecvHello(NewPlayer))
-            continue;
-        NetworkCommunication::SendHello(NewPlayer);
-        S->ResolveMap(NewPlayer);
-        Worm* NewPlayerWorm = S->CreateWorm(NewPlayer, ClientIndex++);
-        S->SendInfoAboutConnectedPlayers(NewPlayer);
-        S->SendInfoThatPlayerWasConnected(NewPlayerWorm);
-        S->Players.insert(pair<int, Worm*>(NewPlayer, NewPlayerWorm));
-    }
-    S->StartGame();
 
-    while (S->StillPlay())
+    try
     {
-        S->WaitMethod();
-        map<Worm*, Actions> ActMap = S->GetActionsFromUsers();
-        S->SendActions(ActMap);
-        S->NextFrame();
-    }
+        int ClientIndex = 0;
+        while ((int) S->Players.size() < S->CountOfPlayers)
+        {
+            int NewPlayer;
+            if ((NewPlayer = S->NewUserSocket()) == -1 || !NetworkCommunication::RecvHello(NewPlayer))
+                continue;
+            NetworkCommunication::SendHello(NewPlayer);
+            S->ResolveMap(NewPlayer);
+            Worm* NewPlayerWorm = S->CreateWorm(NewPlayer, ClientIndex++);
+            S->SendInfoAboutConnectedPlayers(NewPlayer);
+            S->SendInfoThatPlayerWasConnected(NewPlayerWorm);
+            S->Players.insert(pair<int, Worm*>(NewPlayer, NewPlayerWorm));
+        }
+        S->StartGame();
 
+        while (S->StillPlay())
+        {
+            S->WaitMethod();
+            map<Worm*, Actions> ActMap = S->GetActionsFromUsers();
+            S->SendActions(ActMap);
+            S->NextFrame();
+        }
+    }
+    catch(Exceptions::Exception* e)
+    {
+        cout << e->ToString() << endl;
+        delete e;
+    }
     delete S;
 }
 
