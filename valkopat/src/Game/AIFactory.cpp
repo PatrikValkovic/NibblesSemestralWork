@@ -1,7 +1,5 @@
 #include "AIFactory.h"
 
-Game::AIFactory* Game::AIFactory::Instance = NULL;
-
 Game::AIFactory::~AIFactory()
 {
     using namespace std;
@@ -9,8 +7,6 @@ Game::AIFactory::~AIFactory()
     for_each(this->Tasks.begin(), this->Tasks.end(), [](pair<string, BaseAITask*> X) {
         delete X.second;
     });
-    delete Instance;
-    Instance = NULL;
 }
 
 Game::AIFactory::AIFactory()
@@ -24,9 +20,7 @@ Game::AIFactory::AIFactory()
 
 Game::AIFactory* Game::AIFactory::GetInstance()
 {
-    if (Instance == NULL)
-        Instance = new AIFactory();
-    return Instance;
+    return &Instance;
 }
 
 std::vector<std::string> Game::AIFactory::GetNamesOfAILevels()

@@ -15,7 +15,7 @@ namespace Game
     {
         //singleton implementation
     private:
-        static AIFactory* Instance;
+        static AIFactory Instance;
         AIFactory();
     public:
         static AIFactory* GetInstance();
