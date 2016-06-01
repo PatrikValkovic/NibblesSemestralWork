@@ -27,7 +27,7 @@ namespace GameStates
         virtual AbstractGameState* run();
 
         /**
-         * Filling needed states
+         * Fill needed states
          * @param StateOfGame State of game
          * @param MenuState State of menu
          */
