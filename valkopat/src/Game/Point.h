@@ -8,8 +8,8 @@ namespace Game
         int PositionX = 0;
         int PositionY = 0;
     public:
-        int GetPositionX();
-        int GetPositionY();
+        int GetPositionX() const;
+        int GetPositionY() const;
         void SetPositionX(int X);
         void SetPositionY(int Y);
         Point();

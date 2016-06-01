@@ -2,12 +2,12 @@
 
 namespace Game
 {
-    int Point::GetPositionX()
+    int Point::GetPositionX() const
     {
         return this->PositionX;
     }
 
-    int Point::GetPositionY()
+    int Point::GetPositionY() const
     {
         return this->PositionY;
     }
