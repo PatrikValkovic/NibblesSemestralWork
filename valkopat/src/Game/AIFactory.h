@@ -27,10 +27,10 @@ namespace Game
     protected:
         std::map<string, Game::Task::BaseAITask*> Tasks;
     public:
-        std::vector<string> GetNamesOfAILevels();
+        std::vector<string> GetNamesOfAILevels() const;
         std::vector<Game::Task::BaseAITask*> CreatesTaskForWorms(std::vector<Worm*> Worms,
                                                                  GameContent* Game,
-                                                                 string NameOfLevel);
+                                                                 string NameOfLevel) const;
     };
 }
 

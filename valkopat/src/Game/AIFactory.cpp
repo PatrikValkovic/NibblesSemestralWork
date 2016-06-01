@@ -31,7 +31,7 @@ Game::AIFactory* Game::AIFactory::GetInstance()
     return Game::AIFactory::Instance;
 }
 
-std::vector<std::string> Game::AIFactory::GetNamesOfAILevels()
+std::vector<std::string> Game::AIFactory::GetNamesOfAILevels() const
 {
     using namespace std;
     using Game::Task::BaseAITask;
@@ -44,13 +44,13 @@ std::vector<std::string> Game::AIFactory::GetNamesOfAILevels()
 
 std::vector<Game::Task::BaseAITask*> Game::AIFactory::CreatesTaskForWorms(std::vector<Worm*> Worms,
                                                                           Game::GameContent* Game,
-                                                                          std::string NameOfLevel)
+                                                                          std::string NameOfLevel) const
 {
     using namespace std;
     using Game::Task::BaseAITask;
 
     vector<BaseAITask*> Tasks;
-    map<string, BaseAITask*>::iterator AITaskIter = this->Tasks.find(NameOfLevel);
+    map<string, BaseAITask*>::const_iterator AITaskIter = this->Tasks.find(NameOfLevel);
     if (AITaskIter == this->Tasks.end())
         throw new Exceptions::InvalidArgumentException("AI level with name " + NameOfLevel + " dont exists", __LINE__,
                                                        __FILE__);
