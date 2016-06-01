@@ -28,7 +28,7 @@ namespace GameStates
 
         /**
          * Main abstract method, that will run where is state changed
-         * @return Next state
+         * @return Next state, NULL if should game end
          */
         virtual AbstractGameState* run() = 0;
 
