@@ -22,8 +22,8 @@ Exceptions::InvalidArgumentException::InvalidArgumentException(string Message, i
         : Exceptions::Exception(Message, Line, FileName)
 { }
 
-Exceptions::InvalidArgumentException::InvalidArgumentException(string Message, int Line, Exception* InnerException)
-        : Exceptions::Exception(Message, Line, InnerException)
+Exceptions::InvalidArgumentException::InvalidArgumentException(string Message, Exception* InnerException)
+        : Exceptions::Exception(Message, InnerException)
 { }
 
 Exceptions::InvalidArgumentException::InvalidArgumentException(string ErrorMessage, int Line, string File,

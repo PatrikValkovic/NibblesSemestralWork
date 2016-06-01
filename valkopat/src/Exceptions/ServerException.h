@@ -11,7 +11,7 @@ namespace Exceptions
         ServerException(string Message);
         ServerException(string Message, int Line);
         ServerException(string Message, int Line, string FileName);
-        ServerException(string Message, int Line, Exception* InnerException);
+        ServerException(string Message, Exception* InnerException);
         ServerException(string ErrorMessage, int Line, string File, Exception* InnerException);
         virtual string GetType() const;
     };

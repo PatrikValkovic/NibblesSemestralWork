@@ -21,8 +21,8 @@ Exceptions::InvalidFormatException::InvalidFormatException(string Message, int L
         : Exceptions::Exception(Message, Line, FileName)
 { }
 
-Exceptions::InvalidFormatException::InvalidFormatException(string Message, int Line, Exception* InnerException)
-        : Exceptions::Exception(Message, Line, InnerException)
+Exceptions::InvalidFormatException::InvalidFormatException(string Message, Exception* InnerException)
+        : Exceptions::Exception(Message, InnerException)
 { }
 
 Exceptions::InvalidFormatException::InvalidFormatException(string ErrorMessage, int Line, string File,

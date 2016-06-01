@@ -21,8 +21,8 @@ Exceptions::ServerException::ServerException(string Message, int Line, string Fi
         : Exceptions::Exception(Message, Line, FileName)
 { }
 
-Exceptions::ServerException::ServerException(string Message, int Line, Exception* InnerException)
-        : Exceptions::Exception(Message, Line, InnerException)
+Exceptions::ServerException::ServerException(string Message, Exception* InnerException)
+        : Exceptions::Exception(Message, InnerException)
 { }
 
 Exceptions::ServerException::ServerException(string ErrorMessage, int Line, string File,

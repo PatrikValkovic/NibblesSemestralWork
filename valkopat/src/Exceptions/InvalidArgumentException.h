@@ -14,7 +14,7 @@ namespace Exceptions
         InvalidArgumentException(string Message);
         InvalidArgumentException(string Message, int Line);
         InvalidArgumentException(string Message, int Line, string FileName);
-        InvalidArgumentException(string Message, int Line, Exception* InnerException);
+        InvalidArgumentException(string Message, Exception* InnerException);
         InvalidArgumentException(string ErrorMessage, int Line, string File, Exception* InnerException);
 
         virtual string GetType() const;

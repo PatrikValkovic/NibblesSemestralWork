@@ -21,8 +21,8 @@ Exceptions::OutOfRangeException::OutOfRangeException(string Message, int Line, s
         : Exceptions::Exception(Message, Line, FileName)
 { }
 
-Exceptions::OutOfRangeException::OutOfRangeException(string Message, int Line, Exception* InnerException)
-        : Exceptions::Exception(Message, Line, InnerException)
+Exceptions::OutOfRangeException::OutOfRangeException(string Message, Exception* InnerException)
+        : Exceptions::Exception(Message, InnerException)
 { }
 
 Exceptions::OutOfRangeException::OutOfRangeException(string ErrorMessage, int Line, string File,

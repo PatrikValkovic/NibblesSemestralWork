@@ -11,7 +11,7 @@ namespace Exceptions
         InvalidFormatException(string Message);
         InvalidFormatException(string Message, int Line);
         InvalidFormatException(string Message, int Line, string FileName);
-        InvalidFormatException(string Message, int Line, Exception* InnerException);
+        InvalidFormatException(string Message, Exception* InnerException);
         InvalidFormatException(string ErrorMessage, int Line, string File, Exception* InnerException);
 
         virtual string GetType() const;
