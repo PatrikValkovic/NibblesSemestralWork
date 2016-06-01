@@ -3,6 +3,9 @@
 
 namespace Game
 {
+    /**
+     * Actions that could user call
+     */
     enum Actions
     {
         MoveUp,
@@ -12,6 +15,9 @@ namespace Game
         Pause
     };
 
+    /**
+     * Layer over input
+     */
     enum Keys
     {
         NONE,
@@ -53,6 +59,9 @@ namespace Game
         Key9
     };
 
+    /**
+     * Serer headers
+     */
     enum ServerActions
     {
         Hello = 0x12121212,
