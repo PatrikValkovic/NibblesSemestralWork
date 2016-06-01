@@ -5,19 +5,38 @@
 
 namespace GameStates
 {
+    /**
+     * Base abstract class for all States
+     */
     class AbstractGameState
     {
     public:
+        /**
+         * Create new instance of AbstractGameState and store rendering submodule
+         * @param RenderingModel Rendering submodule
+         * @return New instance of AbstractGameState
+         */
         AbstractGameState(ViewModel::BaseViewModel* RenderingModel)
                 : RenderingModel(RenderingModel)
         { }
 
+        /**
+         * Destructor
+         */
         virtual ~AbstractGameState()
         { }
 
+        /**
+         * Main abstract method, that will run where is state changed
+         * @return Next state
+         */
         virtual AbstractGameState* run() = 0;
 
     protected:
+
+        /**
+         * Rendering submodule
+         */
         ViewModel::BaseViewModel* RenderingModel;
     };
 }
