@@ -23,10 +23,10 @@ namespace Game
             Segment(int X, int Y) : Coords(X, Y)
             { }
 
-            int GetPositionX()
+            int GetPositionX() const
             { return Coords.GetPositionX(); };
 
-            int GetPositionY()
+            int GetPositionY() const
             { return Coords.GetPositionY(); };
 
             void SetPositionX(int X)
@@ -35,7 +35,7 @@ namespace Game
             void SetPositionY(int Y)
             { Coords.SetPositionY(Y); }
 
-            explicit operator Point()
+            explicit operator Point() const
             { return Coords; }
 
         };
@@ -55,7 +55,7 @@ namespace Game
         void SetName(std::string NewName);
         Actions GetMoveDirection() const;
         void SetMoveDirection(Actions Direction);
-        bool IsPlaying();
+        bool IsPlaying() const;
         void StopPlaying();
         void DecideDirection(Actions Direction, int& Down, int& Right) const;
 
@@ -64,7 +64,7 @@ namespace Game
         void ValidatePosition(int MaxWidth, int MaxHeight);
         void IncrementSize();
 
-        int GetId();
+        int GetId() const;
     };
 }
 

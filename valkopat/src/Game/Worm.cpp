@@ -89,7 +89,7 @@ Game::Actions Game::Worm::GetMoveDirection() const
     return this->MoveDirection;
 }
 
-bool Game::Worm::IsPlaying()
+bool Game::Worm::IsPlaying() const
 {
     return this->Playing;
 }
@@ -115,7 +115,7 @@ void Game::Worm::IncrementSize()
     this->Segments.push_back(CreatedSegment);
 }
 
-int Game::Worm::GetId()
+int Game::Worm::GetId() const
 {
     return this->Id;
 }
