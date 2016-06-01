@@ -7,6 +7,12 @@
 #include "Game/AIFactory.h"
 #include "Game/Settings.h"
 
+
+
+/**
+ * Entry point of application
+ * @return 1 if error occurs, 0 otherwise   
+ */
 int main()
 {
     try
