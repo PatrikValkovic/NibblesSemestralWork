@@ -23,15 +23,40 @@ namespace Game
         class ClientSide : public Abstract
         {
         public:
+            /**
+             * Create new instance of ClientSide event
+             * @param SockedId Socket of client
+             * @param Input Specific input for rendering submodule
+             * @return new instance of ClientSide event
+             */
             ClientSide(int SocketId,ViewModel::AbstractInput* Input);
+
+            /**
+             * Destructor, close client side socket
+             */
             virtual ~ClientSide();
 
+            /**
+             * Always return true
+             * @return True
+             */
             virtual bool HasActions();
 
+            /**
+             * Get inputs from ViewModel::AbstractInput class and send them to server
+             * @return Always true
+             */
             virtual bool ProccessActions();
 
         private:
+            /**
+             * Client socket
+             */
             int SocketId;
+
+            /**
+             * Rendering submodule specific input
+             */
             ViewModel::AbstractInput* InputFromUser;
         };
     }
