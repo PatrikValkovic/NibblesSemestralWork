@@ -21,9 +21,9 @@ namespace ViewModel
     class ViewModelChooser
     {
     public:
-        BaseViewModel* ChooseViewModel();
+        BaseViewModel* ChooseViewModel() const;
     private:
-        std::vector<BaseViewModel*> PrepareViewModels();
+        std::vector<BaseViewModel*> PrepareViewModels() const;
     };
 }
 
