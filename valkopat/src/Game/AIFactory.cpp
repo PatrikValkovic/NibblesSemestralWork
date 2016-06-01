@@ -4,13 +4,16 @@ Game::AIFactory* Game::AIFactory::Instance = NULL;
 
 Game::AIFactory::~AIFactory()
 {
-    using namespace std;
-    using Game::Task::BaseAITask;
-    for_each(this->Tasks.begin(), this->Tasks.end(), [](pair<string, BaseAITask*> X) {
-        delete X.second;
-    });
-    delete Instance;
-    Instance = NULL;
+    if(Instance!=NULL)
+    {
+        using namespace std;
+        using Game::Task::BaseAITask;
+        for_each(this->Tasks.begin(), this->Tasks.end(), [](pair<string, BaseAITask*> X) {
+            delete X.second;
+        });
+        delete Instance;
+        Instance = NULL;
+    }
 }
 
 Game::AIFactory::AIFactory()
