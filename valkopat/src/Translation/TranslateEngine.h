@@ -57,10 +57,23 @@ namespace Translate
         string GetActualLanguage() const;
 
     private:
+
+        /**
+         * Container for headers of translation
+         */
         struct AviableTranslations
         {
+            /**
+             * Name of file, where the translation was found
+             */
             string File;
+            /**
+             * Shortcut of language
+             */
             string Shortcut;
+            /**
+             * Fullname of language
+             */
             string LanguageName;
         };
 
@@ -75,25 +88,26 @@ namespace Translate
         string CurrentLangauge;
 
         /**
-         *
+         * Vector of file names, that contain translation
          */
         vector<string> TranslationFiles;
 
         /**
-         *
+         * Vector of aviable translations
          */
         vector<AviableTranslations> Aviable;
 
         /**
-         *
-         * @return
+         * Load all files in translation folder
+         * @throw Exceptions::Exception if no directory found
+         * @return Veector of file names in translation folder
          */
         vector<string> GetTranslateFiles() const;
 
         /**
-         *
-         * @param Files
-         * @return
+         * Parse headers of translation files
+         * @param Files Vector of file names, that contain translation
+         * @return Vector of aviable translations
          */
         vector<AviableTranslations> ReadHeaders(vector<string> Files) const;
 
