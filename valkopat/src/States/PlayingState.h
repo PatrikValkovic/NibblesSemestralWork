@@ -77,7 +77,7 @@ namespace GameStates
          * Check if there are events to run and proccess them
          * @return
          */
-        bool ProccessEvents();
+        bool ProccessEvents() const;
 
         /**
          * Check if there are overlaps objects and resolve it
@@ -87,7 +87,7 @@ namespace GameStates
         /**
          * Run all tasks in current Game::GameContent
          */
-        void RunTasks();
+        void RunTasks() const;
 
         /**
          * Check if worm is out of playiled and if yes, move it the other side of playiled

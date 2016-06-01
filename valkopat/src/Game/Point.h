@@ -20,11 +20,11 @@ namespace Game
         /**
          * @return X Coordinate of point
          */
-        int GetPositionX();
+        int GetPositionX() const;
         /**
          * @return Y Coordinate of Point
          */
-        int GetPositionY();
+        int GetPositionY() const;
         /**
          * Set X Coordinate of point
          * @param X X coordinate to set

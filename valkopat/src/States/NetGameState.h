@@ -52,20 +52,20 @@ namespace GameStates
          * @param Socket Socket of client
          * @return New instance of Game::PlayGround
          */
-        PlayGround* CreatePlayground(int Socket);
+        PlayGround* CreatePlayground(int Socket) const;
 
         /**
          * Create client socket of player, if needed also create and run server
          * @return Client socket
          */
-        int CreateSocket();
+        int CreateSocket() const;
 
         /**
          * Check if server responds
          * @param Socket ClientSocket
          * @return True if server respond, false otherwise
          */
-        bool SayHello(int Socket);
+        bool SayHello(int Socket) const;
 
         /**
          * Get informations from user and create his Game::Worm
@@ -73,14 +73,14 @@ namespace GameStates
          * @param Name Name of player
          * @return New instance of Game::Worm representing player on current PC
          */
-        Worm* GetInfoAboutPlayer(int Socket,string Name);
+        Worm* GetInfoAboutPlayer(int Socket,string Name) const;
 
         /**
          * Wait fot other players to connect
          * @param Socket Client socket
          * @return Vector of other players worms
          */
-        vector<Worm*> WaitToRestOfWorms(int Socket);
+        vector<Worm*> WaitToRestOfWorms(int Socket) const;
     };
 }
 

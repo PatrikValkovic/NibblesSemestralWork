@@ -1,6 +1,6 @@
 #include "ViewModelChooser.h"
 
-ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel()
+ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel() const
 {
     using namespace std;
     vector<BaseViewModel*> ViewModels = PrepareViewModels();
@@ -31,7 +31,7 @@ ViewModel::BaseViewModel* ViewModel::ViewModelChooser::ChooseViewModel()
     return ViewModels[Choosed];
 }
 
-std::vector<ViewModel::BaseViewModel*> ViewModel::ViewModelChooser::PrepareViewModels()
+std::vector<ViewModel::BaseViewModel*> ViewModel::ViewModelChooser::PrepareViewModels() const
 {
     std::vector<BaseViewModel*> ViewModels;
 #ifdef USE_CONSOLE

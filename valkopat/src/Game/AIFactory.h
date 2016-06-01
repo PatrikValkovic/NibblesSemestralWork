@@ -53,7 +53,7 @@ namespace Game
          * Return names of all tasks, that Game::AIFactory have templates
          * @return
          */
-        std::vector<string> GetNamesOfAILevels();
+        std::vector<string> GetNamesOfAILevels() const;
         /**
          * Create new AI task by template
          * @param Worms Vector of Worms to be controlled from task
@@ -63,7 +63,7 @@ namespace Game
          */
         std::vector<Game::Task::BaseAITask*> CreatesTaskForWorms(std::vector<Worm*> Worms,
                                                                  GameContent* Game,
-                                                                 string NameOfLevel);
+                                                                 string NameOfLevel) const;
     };
 }
 

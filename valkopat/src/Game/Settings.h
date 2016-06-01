@@ -83,7 +83,7 @@ namespace Game
          * @param IndexOfPlayer Index of specific player
          * @return map of Actions assigned to Keys in format map<Key,Action>
          */
-        std::map<Keys,Actions> GetSettingForPlayer(int IndexOfPlayer);
+        std::map<Keys,Actions> GetSettingForPlayer(int IndexOfPlayer) const;
 
         /**
          * Return max count of player, for which have setting

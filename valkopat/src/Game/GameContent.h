@@ -81,12 +81,12 @@ namespace Game
          * Create array of size char[HeightOfGame][WidthOfGame] allocated by new char[]
          * @return Array for playfield
          */
-        char** CreateArrayForGame();
+        char** CreateArrayForGame() const;
         /**
          * Method to delete array previously created by Game::GameContent::CreateArrayForGame
          * @param Array Array to delete
          */
-        void DeleteArrayForGame(char**& Array);
+        void DeleteArrayForGame(char**& Array) const;
     };
 }
 
