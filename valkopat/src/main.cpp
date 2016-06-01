@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Exceptions/Exception.h"
 #include "Translation/TranslateEngine.h"
 #include "ViewModels/ViewModelChooser.h"
