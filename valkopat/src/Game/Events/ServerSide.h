@@ -29,7 +29,7 @@ namespace Game
             ~ServerSide();
             void StartServer();
         private:
-            const int WaitForMiliseconds = 500;
+            const int WaitForMiliseconds = 750;
             map<int ,Worm*> Players;
             int ServerSock;
             int CountOfPlayers;
