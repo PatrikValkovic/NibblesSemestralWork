@@ -76,7 +76,7 @@ void Game::GameContent::GenerateFood()
     return;
 }
 
-char** Game::GameContent::CreateArrayForGame()
+char** Game::GameContent::CreateArrayForGame() const
 {
     char** Array = new char* [this->Ground->GetHeight()];
     for (int a = 0; a < this->Ground->GetHeight(); a++)
@@ -88,7 +88,7 @@ char** Game::GameContent::CreateArrayForGame()
     return Array;
 }
 
-void Game::GameContent::DeleteArrayForGame(char**& Array)
+void Game::GameContent::DeleteArrayForGame(char**& Array) const
 {
     for (int a = 0; a < this->Ground->GetHeight(); a++)
         delete[] Array[a];

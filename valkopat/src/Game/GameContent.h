@@ -34,8 +34,8 @@ namespace Game
         Point GetFood() const;
         void GenerateFood();
 
-        char** CreateArrayForGame();
-        void DeleteArrayForGame(char**& Array);
+        char** CreateArrayForGame() const;
+        void DeleteArrayForGame(char**& Array) const;
     };
 }
 
