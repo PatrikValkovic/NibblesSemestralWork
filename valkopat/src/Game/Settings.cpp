@@ -109,7 +109,7 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
     return Changed;
 }
 
-std::map<Game::Keys, Game::Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer)
+std::map<Game::Keys, Game::Actions> Game::Settings::GetSettingForPlayer(int IndexOfPlayer) const
 {
     using Exceptions::InvalidArgumentException;
     using namespace std;

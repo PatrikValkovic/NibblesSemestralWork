@@ -32,7 +32,7 @@ namespace Game
     public:
         bool GetAction(Keys Key,int& Player,Actions& Direction) const;
         bool SetAction(Keys NewKey, int Player, Actions NewDirection);
-        std::map<Keys,Actions> GetSettingForPlayer(int IndexOfPlayer);
+        std::map<Keys,Actions> GetSettingForPlayer(int IndexOfPlayer) const;
         int MaxCountOfPlayers() const;
     };
 }
