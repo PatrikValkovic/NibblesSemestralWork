@@ -68,15 +68,11 @@ namespace Game
             void SetPositionY(int Y)
             { Coords.SetPositionY(Y); }
 
-<<<<<<< HEAD
             /**
              * Recast to Point
              * @return instance of Point with same position as segment had
              */
-            explicit operator Point()
-=======
             explicit operator Point() const
->>>>>>> develop
             { return Coords; }
 
         };
@@ -143,18 +139,15 @@ namespace Game
          * @param Direction Direction where to newly head
          */
         void SetMoveDirection(Actions Direction);
-<<<<<<< HEAD
 
         /**
          * @return True if is Worm still in game, false otherwise
          */
-        bool IsPlaying();
+        bool IsPlaying() const;
+
         /**
          * Kill worm
          */
-=======
-        bool IsPlaying() const;
->>>>>>> develop
         void StopPlaying();
 
         /**
@@ -188,15 +181,11 @@ namespace Game
          * Create new segment and append it to end of worm
          */
         void IncrementSize();
-
-<<<<<<< HEAD
+        
         /**
          * @return ID of Worm
          */
-        int GetId();
-=======
         int GetId() const;
->>>>>>> develop
     };
 }
 
