@@ -32,8 +32,7 @@ namespace Exceptions
         Exception();
 
         /**
-         * Create new instance of Exception with message
-         * @param Message Message that informs about problem
+         * Create new instance of Exception with empty message
          * @return new instance of Exception class
          */
         Exception(string Message);
@@ -64,7 +63,7 @@ namespace Exceptions
         Exception(string Message, Exception* InnerException);
 
         /**
-         *
+         * Create new instance of Exception with all informations that could have
          * @param ErrorMessage Message that informs about problem
          * @param LineNumber Line where problem occurs
          * @param File File where problem occurs
