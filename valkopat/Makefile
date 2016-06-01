@@ -249,7 +249,7 @@ $(TARGET_DIR)/Translate.o : $(TARGET_DIR)/TranslateEngine.o
 $(TARGET_DIR)/TranslateEngine.o: src/Translation/TranslateEngine.cpp src/Translation/TranslateEngine.h
 	$(COMPILER) -c -o $@ $< $(COMPILE_FLAGS)
 
-src/Translation/TranslateEngine.h: src/Exceptions/InvalidArgumentException.h
+src/Translation/TranslateEngine.h: src/Exceptions/InvalidArgumentException.h src/Exceptions/InvalidFormatException.h
 
 ##############
 ##	STATES  ##

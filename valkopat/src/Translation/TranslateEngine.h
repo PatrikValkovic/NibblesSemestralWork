@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <dirent.h>
 #include "../Exceptions/InvalidArgumentException.h"
+#include "../Exceptions/InvalidFormatException.h"
 
 using namespace std;
 
@@ -56,32 +57,20 @@ namespace Translate
         string GetActualLanguage() const;
 
     private:
-        /**
-         *
-         */
         struct AviableTranslations
         {
-            /**
-             *
-             */
             string File;
-            /**
-             *
-             */
             string Shortcut;
-            /**
-             *
-             */
             string LanguageName;
         };
 
         /**
-         *
+         * Container for current language in format map<statement,translation>
          */
         map<string,string> TranslationForCurrentLanguage;
 
         /**
-         *
+         * Shortcut of current language
          */
         string CurrentLangauge;
 
@@ -109,7 +98,8 @@ namespace Translate
         vector<AviableTranslations> ReadHeaders(vector<string> Files) const;
 
         /**
-         *
+         * Load file, parse it and fill TranslationForCurrentLanguage map
+         * @throw Exceptions::InvalidFormatException if is file in wrong format
          * @param Filename
          */
         void LoadTranslation(string Filename);

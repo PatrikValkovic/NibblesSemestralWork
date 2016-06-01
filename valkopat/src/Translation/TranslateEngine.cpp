@@ -84,7 +84,7 @@ void Translate::TranslateEngine::LoadTranslation(string Filename)
         unsigned long Position = Line.find(':');
 
         if (Position == string::npos)
-            throw new Exceptions::Exception("Invalid format of translate file " + Filename, __LINE__, __FILE__);
+            throw new Exceptions::InvalidFormatException("Invalid format of translate file " + Filename, __LINE__, __FILE__);
 
         string Key = Line.substr(0, Position);
         string Translation = Line.substr(Position + 1);
