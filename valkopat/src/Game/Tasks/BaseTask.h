@@ -5,10 +5,20 @@ namespace Game
 {
     namespace Task
     {
+        /**
+         * Base abstract tak for inherit
+         */
         class BaseTask
         {
         public:
+            /**
+             * Destructor
+             */
             virtual ~BaseTask();
+
+            /**
+             * Abstract method to run every game loop
+             */
             virtual void run() = 0;
         };
 
