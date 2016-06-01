@@ -34,9 +34,9 @@ namespace GameStates
         GamePauseState* Pause;
         Game::GameContent* ContentOfGame = NULL;
         void MoveWorms();
-        bool ProccessEvents();
+        bool ProccessEvents() const;
         void CheckCollisions();
-        void RunTasks();
+        void RunTasks() const;
     };
 }
 

@@ -55,14 +55,14 @@ void GameStates::PlayingState::ValidatePositionsOfWorms()
 
 void GameStates::PlayingState::MoveWorms()
 {
-    for_each(this->ContentOfGame->Worms.begin(), this->ContentOfGame->Worms.end(), [](Worm* W) {
+    for_each(ContentOfGame->Worms.begin(), ContentOfGame->Worms.end(), [](Worm* W) {
         W->Move(W->GetMoveDirection());
     });
 
-    this->ValidatePositionsOfWorms();
+    ValidatePositionsOfWorms();
 }
 
-bool GameStates::PlayingState::ProccessEvents()
+bool GameStates::PlayingState::ProccessEvents() const
 {
     return this->ContentOfGame->Events.ProccessEvents();
 }
@@ -114,7 +114,7 @@ void GameStates::PlayingState::CheckCollisions()
     this->ContentOfGame->DeleteArrayForGame(Canvas);
 }
 
-void GameStates::PlayingState::RunTasks()
+void GameStates::PlayingState::RunTasks() const
 {
     using Game::Task::BaseTask;
     for_each(this->ContentOfGame->Tasks.begin(), this->ContentOfGame->Tasks.end(), [](BaseTask* X) {
