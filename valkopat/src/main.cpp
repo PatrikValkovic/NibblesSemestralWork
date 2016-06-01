@@ -1,17 +1,14 @@
 #include <iostream>
-#include <cstdio>
 #include "Exceptions/Exception.h"
 #include "Translation/TranslateEngine.h"
 #include "ViewModels/ViewModelChooser.h"
 #include "Game/NibbleGame.h"
-#include "Game/AIFactory.h"
-#include "Game/Settings.h"
 
 
 
 /**
  * Entry point of application
- * @return 1 if error occurs, 0 otherwise   
+ * @return 1 if error occurs, 0 otherwise
  */
 int main()
 {
