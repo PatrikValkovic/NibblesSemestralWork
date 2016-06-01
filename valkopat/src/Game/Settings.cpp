@@ -54,7 +54,7 @@ Game::Settings::~Settings()
     }
 }
 
-bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Actions& Direction) const
+bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Actions& Action) const
 {
     using std::for_each;
     using Game::Keys;
@@ -69,14 +69,14 @@ bool Game::Settings::GetAction(Game::Keys Key, int& Player, Game::Actions& Direc
         {
             Found = true;
             Player = WorkingSetting.Playerindex;
-            Direction = Finding->second;
+            Action = Finding->second;
         }
     });
 
     return Found;
 }
 
-bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
+bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewAction)
 {
     int PlayerIndex;
     Actions Direct;
@@ -96,12 +96,12 @@ bool Game::Settings::SetAction(Keys NewKey, int Player, Actions NewDirection)
             Changed = true;
             Keys OldKey = Keys::Key1;
             for_each(WorkingPlayerSettings.Action.begin(), WorkingPlayerSettings.Action.end(),
-                     [&NewDirection, &OldKey](pair<Keys, Actions> X) {
-                         if (X.second == NewDirection)
+                     [&NewAction, &OldKey](pair<Keys, Actions> X) {
+                         if (X.second == NewAction)
                              OldKey = X.first;
                      });
             WorkingPlayerSettings.Action.erase(OldKey);
-            WorkingPlayerSettings.Action.insert(pair<Keys, Actions>(NewKey, NewDirection));
+            WorkingPlayerSettings.Action.insert(pair<Keys, Actions>(NewKey, NewAction));
         }
         IndividualSetting[a] = WorkingPlayerSettings;
     }
