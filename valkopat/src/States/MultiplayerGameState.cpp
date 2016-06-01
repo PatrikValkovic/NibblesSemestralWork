@@ -20,7 +20,6 @@ GameStates::AbstractGameState* GameStates::MultiplayerGameState::run()
     NewGameContent->Ground = NewPlayground;
 
     int CountOfPlayer = Rendering->CountOfPlayers(min(NewPlayground->CountOfStartPositions(), 3));
-    vector<Worm*> Players;
     for (int a = 0; a < CountOfPlayer; a++)
     {
         //create player
