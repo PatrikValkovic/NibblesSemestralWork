@@ -1,11 +1,11 @@
 #include "PlaygroundFactory.h"
 
-Game::PlayGround* Game::PlaygroundFactory::GetLevel(string Level)
+Game::PlayGround* Game::PlaygroundFactory::GetLevel(string NameOfLevel)
 {
-    PlayGround* Playlevel = CreateLevelFromFile(Level);
+    PlayGround* Playlevel = CreateLevelFromFile(NameOfLevel);
 
     if (Playlevel == NULL)
-        throw new Exceptions::InvalidArgumentException("Level with this name doesnt exists", __LINE__, __FILE__);
+        throw new Exceptions::InvalidArgumentException("NameOfLevel with this name doesnt exists", __LINE__, __FILE__);
 
     return Playlevel;
 }
@@ -88,10 +88,10 @@ string Game::PlaygroundFactory::LoadNameOfLevel(string Filename)
     return NameOfLevel;
 }
 
-Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string LevelName)
+Game::PlayGround* Game::PlaygroundFactory::CreateLevelFromFile(string NameOfLevel)
 {
     //cout << "PlaygroundFactory.CreateLevelFromFile" << endl;
-    stringstream LevelContent(GetLevelInString(LevelName));
+    stringstream LevelContent(GetLevelInString(NameOfLevel));
     return ParseLevelFromStream(LevelContent);
 }
 
@@ -168,14 +168,14 @@ void Game::PlaygroundFactory::AddElementIntoPlayground(PlayGround* Playground, c
     return;
 }
 
-string Game::PlaygroundFactory::GetLevelInString(string LevelName)
+string Game::PlaygroundFactory::GetLevelInString(string NameOfLevel)
 {
     //cout << "PlaygroundFactory.GetLevelInString" << endl;
     using namespace std;
 
-    string NameOfFile = GetNameOfFileForLevel(LevelName);
+    string NameOfFile = GetNameOfFileForLevel(NameOfLevel);
     if (NameOfFile.empty())
-        throw new Exceptions::InvalidArgumentException("LevelName with name " + LevelName + " dont exists");
+        throw new Exceptions::InvalidArgumentException("NameOfLevel with name " + NameOfLevel + " dont exists");
 
     ifstream FileWithLevel("data/Levels/" + NameOfFile);
     string Lev = LoadFromStream(FileWithLevel);
