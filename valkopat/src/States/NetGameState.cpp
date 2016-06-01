@@ -56,7 +56,7 @@ void GameStates::NetGameState::AddStates(PlayingState* GameState, MenuGameState*
     this->Menu = MenuState;
 }
 
-Game::PlayGround* GameStates::NetGameState::CreatePlayground(int Socket)
+Game::PlayGround* GameStates::NetGameState::CreatePlayground(int Socket) const
 {
     using ViewModel::NetMenuAbstractViewModel;
     using Game::NetworkCommunication;
@@ -96,7 +96,7 @@ Game::PlayGround* GameStates::NetGameState::CreatePlayground(int Socket)
     return PlaygroundFactory::ParseLevelFromStream(Stream);
 }
 
-int GameStates::NetGameState::CreateSocket()
+int GameStates::NetGameState::CreateSocket() const
 {
     using ViewModel::NetMenuAbstractViewModel;
     using Game::PlayGround;
@@ -154,7 +154,7 @@ int GameStates::NetGameState::CreateSocket()
     return ClientSock;
 }
 
-bool GameStates::NetGameState::SayHello(int Socket)
+bool GameStates::NetGameState::SayHello(int Socket) const
 {
     using Game::NetworkCommunication;
 
@@ -168,7 +168,7 @@ bool GameStates::NetGameState::SayHello(int Socket)
     return true;
 }
 
-Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name)
+Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name) const
 {
     using namespace Game;
 
@@ -185,7 +185,7 @@ Game::Worm* GameStates::NetGameState::GetInfoAboutPlayer(int Socket, string Name
     return CreatedWorm;
 }
 
-vector<Worm*> GameStates::NetGameState::WaitToRestOfWorms(int Socket)
+vector<Worm*> GameStates::NetGameState::WaitToRestOfWorms(int Socket) const
 {
     using namespace std;
     using namespace Game;

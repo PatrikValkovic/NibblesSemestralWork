@@ -30,11 +30,11 @@ namespace GameStates
         PlayingState* PlayState;
         MenuGameState* Menu;
 
-        PlayGround* CreatePlayground(int Socket);
-        int CreateSocket();
-        bool SayHello(int Socket);
-        Worm* GetInfoAboutPlayer(int Socket,string Name);
-        vector<Worm*> WaitToRestOfWorms(int Socket);
+        PlayGround* CreatePlayground(int Socket) const;
+        int CreateSocket() const;
+        bool SayHello(int Socket) const;
+        Worm* GetInfoAboutPlayer(int Socket,string Name) const;
+        vector<Worm*> WaitToRestOfWorms(int Socket) const;
     };
 }
 
