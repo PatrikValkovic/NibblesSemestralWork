@@ -1,0 +1,18 @@
+Nibbles game.
+
+Implement the following game modes:
+
+  for at least two players on one computer,
+  for at least two more players on PC (network game)
+  to play against the computer (scalable artificial intelligence).
+
+The game must fulfill the following functions:
+
+  keeping rules,
+  loading game levels (maps) of the file (create a suitable format)
+  announcing the end of the game and its outcome
+
+
+Worms is a game where each player controls a worm. He moves across the screen, leaving a trail, which increases gradually consuming food. While trying to nenabourat obstacles (walls, other worms). Rules can be added additional gameplay elements.
+
+https://en.wikipedia.org/wiki/Nibbles_(video_game)
